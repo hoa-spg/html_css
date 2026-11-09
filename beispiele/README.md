@@ -11,11 +11,10 @@ Demoseite **nach** der jeweiligen Lektion. Öffnen mit Live Server (`index.html`
 | `2.2`  | Reset, Box Model (auch Tabelle), Display |
 | `2.3`  | Zebrastreifen, Vererbung, Formular-Styling, Spezifität |
 | `2.4`  | Sticky Header, fixierter „Nach oben“-Link |
-| `2.5`  | Header, Navigation und Footer mit Flexbox |
-| `2.6`  | Text/Bild-Layout und Karten mit Flex-Kindern |
-| `2.7`  | Seitenlayout mit CSS Grid (Inhalt + Sidebar) |
-| `2.8`  | Media Queries, Burger-Menü (nur CSS), Druckansicht |
-| `2.9`  | Sanfte Hover-Effekte: Transitions, Karten und Button mit `transform` |
+| `2.5`  | Flexbox: Header, Navigation und Footer; Text/Bild-Layout und Karten mit Flex-Kindern |
+| `2.6`  | Seitenlayout mit CSS Grid (Inhalt + Sidebar) |
+| `2.7`  | Media Queries, Burger-Menü (nur CSS), Druckansicht |
+| `2.8`  | Sanfte Hover-Effekte: Transitions, Karten und Button mit `transform` |
 | `3.1`  | `index-bootstrap.html`: Grid und Utilities |
 | `3.2`  | Bootstrap: Navbar, Cards, Formular, Alert |
 | `3.3`  | `index-tailwind.html`: dieselbe Seite mit Tailwind |

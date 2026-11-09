@@ -271,7 +271,7 @@ header {
   text-decoration: none;
 }
 
-/* ---- 2.5 Flexbox: Flex-Container --------------------------- */
+/* ---- 2.5 Flexbox: Container & Kinder --------------------- */
 
 /* Marke links, Navigation rechts */
 header {
@@ -302,7 +302,7 @@ header {
   margin-top: 2rem;
 }
 
-/* ---- 2.6 Flexbox: Flex-Kinder & Patterns ------------------- */
+/* -- Flex-Kinder: Text/Bild-Layout und Karten -- */
 
 /* Text und Bild nebeneinander: Text bekommt doppelt so viel Platz */
 .content-with-image {
@@ -348,7 +348,7 @@ header {
   margin: 1rem 1rem 0;
 }
 
-/* ---- 2.7 CSS Grid Grundlagen ------------------------------- */
+/* ---- 2.6 CSS Grid Grundlagen ------------------------------- */
 
 /* Zwei Spalten: Inhalt + 300px Sidebar */
 main {
@@ -374,7 +374,7 @@ main > aside {
   grid-row: 3;
 }
 
-/* ---- 2.8 Media Queries & responsive Grids ------------------ */
+/* ---- 2.7 Media Queries & responsive Grids ------------------ */
 
 /* Burger-Menü: Checkbox ist unsichtbar, das Label ist das Icon */
 #nav-toggle,
@@ -431,7 +431,7 @@ label[for="nav-toggle"] .bar {
   }
 }
 
-/* ---- 2.9 Transformationen & Transitions -------------------- */
+/* ---- 2.8 Transformationen & Transitions -------------------- */
 
 /* Der Schatten der Abschnitte (Hover aus 2.1) ändert sich jetzt sanft */
 section {

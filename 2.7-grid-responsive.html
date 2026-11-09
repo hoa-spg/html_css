@@ -6,7 +6,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>2.8 &ndash; Media Queries &amp; responsive Grids | HTML &amp; CSS Kurs</title>
+  <title>2.7 &ndash; Media Queries &amp; responsive Grids | HTML &amp; CSS Kurs</title>
   <script>(function () { var t = localStorage.getItem('kurs-theme') || 'dark'; document.documentElement.setAttribute('data-theme', t); })();</script>
   <link rel="stylesheet" href="assets/kurs.css">
   <link rel="stylesheet" id="hljs-theme"
@@ -44,11 +44,10 @@
         <a class="nav-link" href="2.2-box-model-display.html"><span class="ln">2.2</span>Box Model &amp; Display</a>
         <a class="nav-link" href="2.3-vererbung-spezifitaet.html"><span class="ln">2.3</span>Vererbung, Spezifit&auml;t &amp; Kaskade</a>
         <a class="nav-link" href="2.4-positionierung.html"><span class="ln">2.4</span>Positionierung &amp; z-index</a>
-        <a class="nav-link" href="2.5-flexbox-container.html"><span class="ln">2.5</span>Flexbox: Flex-Container</a>
-        <a class="nav-link" href="2.6-flexbox-kinder.html"><span class="ln">2.6</span>Flexbox: Flex-Kinder &amp; Patterns</a>
-        <a class="nav-link" href="2.7-grid-grundlagen.html"><span class="ln">2.7</span>CSS Grid Grundlagen</a>
-        <a class="nav-link" href="2.8-grid-responsive.html"><span class="ln">2.8</span>Media Queries &amp; responsive Grids</a>
-        <a class="nav-link" href="2.9-transform-transition.html"><span class="ln">2.9</span>Transformationen &amp; Transitions</a>
+        <a class="nav-link" href="2.5-flexbox.html"><span class="ln">2.5</span>Flexbox: Container &amp; Kinder</a>
+        <a class="nav-link" href="2.6-grid-grundlagen.html"><span class="ln">2.6</span>CSS Grid Grundlagen</a>
+        <a class="nav-link" href="2.7-grid-responsive.html"><span class="ln">2.7</span>Media Queries &amp; responsive Grids</a>
+        <a class="nav-link" href="2.8-transform-transition.html"><span class="ln">2.8</span>Transformationen &amp; Transitions</a>
       </div>
       <div class="nav-group">
         <div class="nav-group-label fw-label">Teil 3 &mdash; CSS-Frameworks</div>
@@ -61,7 +60,7 @@
 
   <main class="main-content">
     <header class="lesson-header">
-      <p class="lesson-eyebrow">Lektion 2.8 &mdash; Teil 2: CSS &amp; Layout</p>
+      <p class="lesson-eyebrow">Lektion 2.7 &mdash; Teil 2: CSS &amp; Layout</p>
       <h1>Media Queries &amp; responsive Grids</h1>
       <div class="lesson-tags">
         <span class="tag tag-css">CSS Grid</span>
@@ -127,7 +126,7 @@
   <div class="callout-body">
     <div class="callout-title">min-width oder max-width?</div>
     <ul>
-            <li><strong>Mobile First</strong> (empfohlen): Basis-CSS f&uuml;r kleine Bildschirme, dann mit <code>min-width</code> f&uuml;r gr&ouml;&szlig;ere erweitern (wie im Multiline-Beispiel aus Lektion 2.6 und bei Bootstrap).</li>
+            <li><strong>Mobile First</strong> (empfohlen): Basis-CSS f&uuml;r kleine Bildschirme, dann mit <code>min-width</code> f&uuml;r gr&ouml;&szlig;ere erweitern (wie im Multiline-Beispiel aus Lektion 2.5 und bei Bootstrap).</li>
             <li><strong>Desktop First</strong>: Basis f&uuml;r gro&szlig;e Bildschirme, dann mit <code>max-width</code> f&uuml;r kleinere vereinfachen (wie im Holy-Grail-Pattern unten).</li>
           </ul>
   </div>
@@ -444,7 +443,7 @@
         <h2>Projektschritt</h2>
 <div class="projekt-box">
   <div class="projekt-box-header">
-    <span class="projekt-step">Projektschritt 2.8</span>
+    <span class="projekt-step">Projektschritt 2.7</span>
     <h3>Responsive mit Burger-Men&uuml;</h3>
   </div>
 <p>Unter 800px Breite schalten wir das Grid ab und ersetzen die Navigation durch ein <strong>Burger-Men&uuml; ganz ohne JavaScript</strong>: Eine versteckte Checkbox merkt sich den Zustand, das zugeh&ouml;rige <code>&lt;label&gt;</code> ist das Icon.</p>
@@ -462,10 +461,10 @@
 </div>
   <div class="code-block">
   <div class="code-header">
-    <span class="code-filename">demoseite/css/style.css (neu in 2.8)</span>
+    <span class="code-filename">demoseite/css/style.css (neu in 2.7)</span>
     <span class="code-lang">CSS</span>
   </div>
-  <pre><code class="language-css">/* ---- 2.8 Media Queries &amp; responsive Grids ------------------ */
+  <pre><code class="language-css">/* ---- 2.7 Media Queries &amp; responsive Grids ------------------ */
 
 /* Burger-Menü: Checkbox ist unsichtbar, das Label ist das Icon */
 #nav-toggle,
@@ -522,7 +521,7 @@ label[for="nav-toggle"] .bar {
   }
 }</code></pre>
 </div>
-  <p class="mb-0">&#128193; Stand nach dieser Lektion: <a href="beispiele/2.8/index.html" target="_blank">beispiele/2.8/</a></p>
+  <p class="mb-0">&#128193; Stand nach dieser Lektion: <a href="beispiele/2.7/index.html" target="_blank">beispiele/2.7/</a></p>
 </div>
       </section>
 
@@ -582,9 +581,9 @@ label[for="nav-toggle"] .bar {
     </div>
 
     <nav class="lesson-nav">
-      <a class="nav-btn" href="2.7-grid-grundlagen.html">&larr; Lektion 2.7: CSS Grid Grundlagen</a>
-      <span class="nav-center-info">Lektion 2.8</span>
-      <a class="nav-btn primary" href="2.9-transform-transition.html">Lektion 2.9: Transformationen &amp; Transitions &rarr;</a>
+      <a class="nav-btn" href="2.6-grid-grundlagen.html">&larr; Lektion 2.6: CSS Grid Grundlagen</a>
+      <span class="nav-center-info">Lektion 2.7</span>
+      <a class="nav-btn primary" href="2.8-transform-transition.html">Lektion 2.8: Transformationen &amp; Transitions &rarr;</a>
     </nav>
   </main>
 

@@ -271,7 +271,7 @@ header {
   text-decoration: none;
 }
 
-/* ---- 2.5 Flexbox: Flex-Container --------------------------- */
+/* ---- 2.5 Flexbox: Container & Kinder --------------------- */
 
 /* Marke links, Navigation rechts */
 header {
@@ -302,7 +302,7 @@ header {
   margin-top: 2rem;
 }
 
-/* ---- 2.6 Flexbox: Flex-Kinder & Patterns ------------------- */
+/* -- Flex-Kinder: Text/Bild-Layout und Karten -- */
 
 /* Text und Bild nebeneinander: Text bekommt doppelt so viel Platz */
 .content-with-image {
@@ -346,4 +346,30 @@ header {
 .card h3,
 .card p {
   margin: 1rem 1rem 0;
+}
+
+/* ---- 2.6 CSS Grid Grundlagen ------------------------------- */
+
+/* Zwei Spalten: Inhalt + 300px Sidebar */
+main {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  column-gap: 2rem;
+  align-items: start;
+}
+
+/* Überschrift und alle Sections über beide Spalten (Linie 1 bis -1) */
+main > h1,
+main > section {
+  grid-column: 1 / -1;
+}
+
+/* Ausnahme: HTML-Elemente links, Sidebar rechts daneben */
+#elemente {
+  grid-column: 1;
+}
+
+main > aside {
+  grid-column: 2;
+  grid-row: 3;
 }

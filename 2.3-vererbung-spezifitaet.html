@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<!-- GENERIERT von kurse/_build (html_css) – nicht direkt bearbeiten!
+     Quelle: kurse/_build/html_css/lessons/, bauen: python3 _build/build.py html_css -->
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.3 &ndash; Vererbung, Spezifit&auml;t &amp; Kaskade | HTML &amp; CSS Kurs</title>
+  <script>(function () { var t = localStorage.getItem('kurs-theme') || 'dark'; document.documentElement.setAttribute('data-theme', t); })();</script>
+  <link rel="stylesheet" href="assets/kurs.css">
+  <link rel="stylesheet" id="hljs-theme"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+
+<body>
+
+  <button class="hamburger" id="hamburger" aria-label="Navigation &ouml;ffnen">&#9776;</button>
+  <div class="sidebar-overlay" id="overlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html">
+        <span class="brand-icon">&lt;/&gt;</span>
+        <div>
+          <div class="brand-name">HTML &amp; CSS</div>
+          <div class="brand-sub">Web- und Mobile Computing</div>
+        </div>
+      </a>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Dark/Light Mode"
+        title="Theme wechseln">&#9728;</button>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-group">
+        <div class="nav-group-label html-label">Teil 1 &mdash; Web &amp; HTML</div>
+        <a class="nav-link" href="1.1-geschichte-internet.html"><span class="ln">1.1</span>Geschichte des Internets</a>
+        <a class="nav-link" href="1.2-grundlagen-web.html"><span class="ln">1.2</span>Grundlagen des Web: HTML, HTTP, URL</a>
+        <a class="nav-link" href="1.3-html5-grundlagen.html"><span class="ln">1.3</span>HTML5: Spezifikation, DOM &amp; APIs</a>
+        <a class="nav-link" href="1.4-html-elemente-semantik.html"><span class="ln">1.4</span>HTML-Elemente &amp; Semantik</a>
+        <a class="nav-link" href="1.5-attribute-formulare.html"><span class="ln">1.5</span>Attribute &amp; Formulare</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label css-label">Teil 2 &mdash; CSS &amp; Layout</div>
+        <a class="nav-link" href="2.1-selektoren-properties.html"><span class="ln">2.1</span>Selektoren, Einheiten &amp; Properties</a>
+        <a class="nav-link" href="2.2-box-model-display.html"><span class="ln">2.2</span>Box Model &amp; Display</a>
+        <a class="nav-link" href="2.3-vererbung-spezifitaet.html"><span class="ln">2.3</span>Vererbung, Spezifit&auml;t &amp; Kaskade</a>
+        <a class="nav-link" href="2.4-positionierung.html"><span class="ln">2.4</span>Positionierung &amp; z-index</a>
+        <a class="nav-link" href="2.5-flexbox-container.html"><span class="ln">2.5</span>Flexbox: Flex-Container</a>
+        <a class="nav-link" href="2.6-flexbox-kinder.html"><span class="ln">2.6</span>Flexbox: Flex-Kinder &amp; Patterns</a>
+        <a class="nav-link" href="2.7-grid-grundlagen.html"><span class="ln">2.7</span>CSS Grid Grundlagen</a>
+        <a class="nav-link" href="2.8-grid-responsive.html"><span class="ln">2.8</span>Media Queries &amp; responsive Grids</a>
+        <a class="nav-link" href="2.9-transform-transition.html"><span class="ln">2.9</span>Transformationen &amp; Transitions</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label fw-label">Teil 3 &mdash; CSS-Frameworks</div>
+        <a class="nav-link" href="3.1-bootstrap-grundlagen.html"><span class="ln">3.1</span>Bootstrap: Setup, Grid &amp; Utilities</a>
+        <a class="nav-link" href="3.2-bootstrap-komponenten.html"><span class="ln">3.2</span>Bootstrap: Komponenten &amp; Anpassung</a>
+        <a class="nav-link" href="3.3-tailwind.html"><span class="ln">3.3</span>Tailwind CSS</a>
+      </div>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <header class="lesson-header">
+      <p class="lesson-eyebrow">Lektion 2.3 &mdash; Teil 2: CSS &amp; Layout</p>
+      <h1>Vererbung, Spezifit&auml;t &amp; Kaskade</h1>
+      <div class="lesson-tags">
+        <span class="tag tag-css">CSS</span>
+        <span class="tag tag-time">ca. 90 min</span>
+        <span class="tag tag-level">Vertiefung</span>
+      </div>
+    </header>
+
+    <div class="content-area">
+      <section class="section section-lernziele">
+        <h2>Lernziele</h2>
+        <ul class="lernziele-list">
+          <li>Alle Selektor-Kategorien kennen: Element, Klasse, ID, Attribut, Pseudo-Klassen/-Elemente, Kombinatoren</li>
+          <li>Verstehen, welche Properties vererbt werden und wie man Vererbung mit <code>inherit</code>, <code>initial</code>, <code>unset</code> steuert</li>
+          <li>Die <strong>Spezifit&auml;t</strong> eines Selektors berechnen</li>
+          <li>Den <strong>Cascading-Algorithmus</strong> Schritt f&uuml;r Schritt anwenden</li>
+          <li>Best Practices f&uuml;r wartbare Selektoren kennen und Konflikte mit den Entwicklertools debuggen</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2>1 &mdash; CSS-Selektoren: &Uuml;bersicht</h2>
+        <div class="callout callout-info">
+  <div class="callout-icon">&#8505;</div>
+  <div class="callout-body">
+    <div class="callout-title">Vertiefungskapitel</div>
+    <p>Diese Lektion vertieft Selektoren, Vererbung und Spezifit&auml;t. F&uuml;r die folgenden
+          Lektionen reichen die Grundlagen aus Lektion 2.1 &ndash; du kannst die Theorie also auch
+          sp&auml;ter durcharbeiten, etwa wenn eine Regel &bdquo;nicht greift&ldquo;. Den
+          <strong>Projektschritt</strong> solltest du trotzdem &uuml;bernehmen, weil die Demoseite in
+          den n&auml;chsten Lektionen darauf aufbaut.</p>
+  </div>
+</div>
+        <p>
+          <strong>CSS-Selektoren</strong> bestimmen, welche HTML-Elemente von CSS-Regeln betroffen sind.
+          In Lektion 2.1 haben wir die h&auml;ufigsten kennengelernt &ndash; hier kommt der vollst&auml;ndige
+          &Uuml;berblick.
+        </p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Kategorie</th><th>Beispiele</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Element-Selektoren</strong></td><td><code>p</code>, <code>div</code>, <code>h1</code></td></tr>
+              <tr><td><strong>Klassen-Selektoren</strong></td><td><code>.klasse</code></td></tr>
+              <tr><td><strong>ID-Selektoren</strong></td><td><code>#id</code></td></tr>
+              <tr><td><strong>Attribut-Selektoren</strong></td><td><code>[attribute]</code></td></tr>
+              <tr><td><strong>Pseudo-Selektoren</strong></td><td><code>:hover</code>, <code>::before</code></td></tr>
+              <tr><td><strong>Kombinatoren</strong></td><td><code>&nbsp;</code> (Leerzeichen: Nachfahre), <code>&gt;</code> (direktes Kind), <code>+</code> (n&auml;chstes Geschwister-Element), <code>~</code> (alle folgenden Geschwister)</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Beispiel</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">/* Element */        p { color: blue; }
+/* Klasse */         .text { color: red; }
+/* ID */             #header { color: green; }</code></pre>
+</div>
+      </section>
+
+      <section class="section">
+        <h2>2 &mdash; Element- und Klassen-Selektoren</h2>
+        <div class="two-col">
+          <div>
+            <h3 class="mt-0">Element-Selektoren</h3>
+            <ul>
+              <li>W&auml;hlen alle Elemente eines bestimmten Typs aus</li>
+              <li>Niedrigste Spezifit&auml;t</li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="mt-0">Klassen-Selektoren</h3>
+            <ul>
+              <li>Wiederverwendbare Styles f&uuml;r mehrere Elemente</li>
+              <li>Mit <code>.</code> (Punkt) eingeleitet</li>
+            </ul>
+          </div>
+        </div>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">HTML</span>
+    <span class="code-lang">HTML</span>
+  </div>
+  <pre><code class="language-xml">&lt;p&gt;Normaler Text&lt;/p&gt;
+&lt;p class="wichtig"&gt;Wichtiger Text&lt;/p&gt;
+&lt;p class="wichtig hervorgehoben"&gt;Sehr wichtig&lt;/p&gt;</code></pre>
+</div>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">CSS</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">p { color: black; }                    /* Alle Paragraphen */
+.wichtig { color: red; }               /* Klasse wichtig */
+.hervorgehoben { font-weight: bold; }  /* Klasse hervorgehoben */</code></pre>
+</div>
+        <div class="demo">
+  <div class="demo-label">Live-Vorschau</div>
+  <div class="demo-body">
+          <p style="margin:0;color:black">Normaler Text</p>
+          <p style="margin:0;color:red">Wichtiger Text</p>
+          <p style="margin:0;color:red;font-weight:bold">Sehr wichtig</p>
+        </div>
+</div>
+        <div class="callout callout-info">
+  <div class="callout-icon">&#8505;</div>
+  <div class="callout-body">
+    <div class="callout-title">Mehrere Klassen</div>
+    <p>Ein Element kann beliebig viele Klassen haben &ndash; durch Leerzeichen getrennt
+          (<code>class="wichtig hervorgehoben"</code>). Es bekommt dann die Styles aller Klassen.</p>
+  </div>
+</div>
+      </section>
+
+      <section class="section">
+        <h2>3 &mdash; ID- und Attribut-Selektoren</h2>
+        <div class="two-col">
+          <div>
+            <h3 class="mt-0">ID-Selektoren</h3>
+            <ul>
+              <li>Eindeutige Identifikation eines Elements</li>
+              <li>Mit <code>#</code> (Raute/Hash) eingeleitet</li>
+              <li>H&ouml;chste Spezifit&auml;t aller Selektoren</li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="mt-0">Attribut-Selektoren</h3>
+            <ul>
+              <li>W&auml;hlen Elemente anhand ihrer Attribute aus</li>
+              <li>Vielseitige Matching-M&ouml;glichkeiten</li>
+            </ul>
+          </div>
+        </div>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">HTML</span>
+    <span class="code-lang">HTML</span>
+  </div>
+  <pre><code class="language-xml">&lt;div id="header"&gt;Kopfbereich&lt;/div&gt;
+&lt;input type="email" required&gt;
+&lt;a href="mailto:test@example.com"&gt;Email&lt;/a&gt;</code></pre>
+</div>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">CSS</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">#header { background: blue; }           /* ID-Selektor */
+[required] { border: 2px solid red; }   /* Hat ein required-Attribut */
+[href^="mailto:"] { color: green; }     /* href beginnt mit mailto: */</code></pre>
+</div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Attribut-Selektor</th><th>Trifft Elemente, deren Attribut &hellip;</th></tr></thead>
+            <tbody>
+              <tr><td><code>[attr]</code></td><td>&hellip; vorhanden ist</td></tr>
+              <tr><td><code>[attr="wert"]</code></td><td>&hellip; genau <code>wert</code> ist</td></tr>
+              <tr><td><code>[attr^="wert"]</code></td><td>&hellip; mit <code>wert</code> beginnt</td></tr>
+              <tr><td><code>[attr$="wert"]</code></td><td>&hellip; mit <code>wert</code> endet</td></tr>
+              <tr><td><code>[attr*="wert"]</code></td><td>&hellip; <code>wert</code> irgendwo enth&auml;lt</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>4 &mdash; Pseudo-Selektoren und Kombinatoren</h2>
+        <div class="two-col">
+          <div>
+            <h3 class="mt-0">Pseudo-Klassen (mit <code>:</code>)</h3>
+            <ul>
+              <li>W&auml;hlen Elemente in bestimmten <strong>Zust&auml;nden</strong></li>
+              <li><code>:hover</code>, <code>:focus</code>, <code>:first-child</code>, <code>:nth-child()</code></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="mt-0">Pseudo-Elemente (mit <code>::</code>)</h3>
+            <ul>
+              <li>W&auml;hlen <strong>Teile</strong> von Elementen</li>
+              <li><code>::before</code>, <code>::after</code>, <code>::first-line</code></li>
+            </ul>
+          </div>
+        </div>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Pseudo-Klassen und -Elemente</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">a:hover { color: red; }                       /* Hover-Zustand */
+li:first-child { font-weight: bold; }         /* Erstes li-Element */
+p::first-line { text-transform: uppercase; }  /* Erste Zeile */</code></pre>
+</div>
+
+        <h3>Kombinatoren</h3>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Kombinatoren</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">/* Nachfahre */        .menu a { color: blue; }
+/* Direktes Kind */    .menu &gt; a { color: red; }
+/* Nachfolger */       h1 + p { margin-top: 0; }
+/* Geschwister */      h1 ~ p { color: gray; }</code></pre>
+</div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Kombinator</th><th>Bedeutung</th></tr></thead>
+            <tbody>
+              <tr><td><code>.menu a</code></td><td>alle <code>&lt;a&gt;</code> <strong>irgendwo innerhalb</strong> von <code>.menu</code> (auch tief verschachtelt)</td></tr>
+              <tr><td><code>.menu &gt; a</code></td><td>nur <code>&lt;a&gt;</code>, die <strong>direkte Kinder</strong> von <code>.menu</code> sind</td></tr>
+              <tr><td><code>h1 + p</code></td><td>das <code>&lt;p&gt;</code>, das <strong>unmittelbar nach</strong> einem <code>&lt;h1&gt;</code> folgt</td></tr>
+              <tr><td><code>h1 ~ p</code></td><td><strong>alle</strong> <code>&lt;p&gt;</code>, die nach einem <code>&lt;h1&gt;</code> auf derselben Ebene folgen</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>5 &mdash; CSS Inheritance (Vererbung)</h2>
+        <p>
+          Bestimmte CSS-Eigenschaften werden <strong>automatisch</strong> vom Eltern- an die
+          Kindelemente weitergegeben. Setzt man z.&nbsp;B. <code>color</code> auf <code>&lt;body&gt;</code>, wird
+          s&auml;mtlicher Text auf der Seite in dieser Farbe dargestellt.
+        </p>
+        <div class="two-col">
+          <div>
+            <h4>Vererbbare Eigenschaften</h4>
+            <ul>
+              <li><strong>Text:</strong> <code>color</code>, <code>font-family</code>, <code>font-size</code>, <code>line-height</code></li>
+              <li><strong>Listen:</strong> <code>list-style-type</code></li>
+              <li><strong>Tabellen:</strong> <code>border-collapse</code></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Nicht vererbbar</h4>
+            <ul>
+              <li><strong>Layout:</strong> <code>width</code>, <code>height</code>, <code>margin</code>, <code>padding</code></li>
+              <li><strong>Hintergrund &amp; Rahmen:</strong> <code>background-color</code>, <code>border</code></li>
+            </ul>
+          </div>
+        </div>
+        <h4>Steuerung</h4>
+        <div class="table-wrap">
+          <table>
+            <tbody>
+              <tr><td><code>inherit</code></td><td>Explizit vom Eltern-Element erben &ndash; auch bei nicht vererbbaren Properties</td></tr>
+              <tr><td><code>initial</code></td><td>Auf den Standardwert der Property (laut Spezifikation) zur&uuml;cksetzen</td></tr>
+              <tr><td><code>unset</code></td><td>Verh&auml;lt sich wie <code>inherit</code> bei vererbbaren Properties und wie <code>initial</code> bei allen anderen</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout callout-tip">
+  <div class="callout-icon">&#128161;</div>
+  <div class="callout-body">
+    <div class="callout-title">Faustregel</div>
+    <p>Alles, was mit <strong>Text</strong> zu tun hat, wird vererbt. Alles, was mit der
+          <strong>Box</strong> zu tun hat (Gr&ouml;&szlig;e, Abst&auml;nde, Rahmen, Hintergrund), nicht.</p>
+  </div>
+</div>
+      </section>
+
+      <section class="section">
+        <h2>6 &mdash; Inheritance-Beispiele</h2>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">HTML-Struktur</span>
+    <span class="code-lang">HTML</span>
+  </div>
+  <pre><code class="language-xml">&lt;body&gt;
+  &lt;div class="container"&gt;
+    &lt;p&gt;Dieser Text ist blau (geerbt)&lt;/p&gt;
+    &lt;p class="special"&gt;Spezieller Text&lt;/p&gt;
+    &lt;span&gt;Span-Text&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/body&gt;</code></pre>
+</div>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">CSS</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">body {
+  color: blue;      /* Vererbt sich */
+  margin: 20px;     /* Vererbt sich NICHT */
+}
+
+.container {
+  border: 1px solid black; /* Vererbt sich NICHT */
+}
+
+.special {
+  color: inherit;   /* Explizit erben: wird blau */
+  margin: inherit;  /* Explizit erben: wird 20px */
+}</code></pre>
+</div>
+        <p><strong>Ergebnis:</strong> Alle Texte sind blau, aber nur <code>.special</code> hat einen Margin von 20px.</p>
+        <div class="demo">
+  <div class="demo-label">Live-Vorschau</div>
+  <div class="demo-body">
+          <div style="color:blue">
+            <div style="border:1px solid black">
+              <p style="margin:0">Dieser Text ist blau (geerbt)</p>
+              <p style="margin:20px">Spezieller Text</p>
+              <span>Span-Text</span>
+            </div>
+          </div>
+        </div>
+</div>
+      </section>
+
+      <section class="section">
+        <h2>7 &mdash; CSS-Spezifit&auml;t</h2>
+        <p>
+          Die <strong>Spezifit&auml;t</strong> bestimmt, welche CSS-Regel angewendet wird, wenn
+          mehrere Regeln auf dasselbe Element zutreffen und sich widersprechen.
+        </p>
+        <h3>Spezifit&auml;ts-Berechnung</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>#</th><th>Art</th><th>Punkte</th><th>Beispiel</th></tr></thead>
+            <tbody>
+              <tr><td>1</td><td><strong>Inline-Styles</strong></td><td>1000</td><td><code>style="..."</code></td></tr>
+              <tr><td>2</td><td><strong>IDs</strong></td><td>100</td><td><code>#id</code></td></tr>
+              <tr><td>3</td><td><strong>Klassen, Attribute, Pseudo-Klassen</strong></td><td>10</td><td><code>.class</code>, <code>[attr]</code>, <code>:hover</code></td></tr>
+              <tr><td>4</td><td><strong>Elemente, Pseudo-Elemente</strong></td><td>1</td><td><code>div</code>, <code>::before</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout callout-info">
+  <div class="callout-icon">&#8505;</div>
+  <div class="callout-body">
+    <div class="callout-title">Faustregel</div>
+    <strong>Inline &gt; IDs &gt; Klassen &gt; Elemente</strong><br>
+          Bei gleicher Spezifit&auml;t gewinnt die <strong>sp&auml;ter definierte</strong> Regel!
+  </div>
+</div>
+        <div class="callout callout-warning">
+  <div class="callout-icon">&#9888;</div>
+  <div class="callout-body">
+    <div class="callout-title">Punkte sind kein echtes Zehnersystem</div>
+    <p>Die Schreibweise <code>0-1-2-1</code> ist genauer als eine Summe: Jede Stelle ist eine eigene
+          Kategorie. Auch 11 Klassen (11 &times; 10 = 110 &bdquo;Punkte&ldquo;) schlagen
+          <strong>keine</strong> einzige ID &ndash; zuerst wird die ID-Stelle verglichen, erst bei
+          Gleichstand die Klassen-Stelle.</p>
+  </div>
+</div>
+      </section>
+
+      <section class="section">
+        <h2>8 &mdash; Spezifit&auml;t: Beispiele</h2>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">HTML</span>
+    <span class="code-lang">HTML</span>
+  </div>
+  <pre><code class="language-xml">&lt;p id="wichtig" class="text highlight"&gt;Welche Farbe hat dieser Text?&lt;/p&gt;</code></pre>
+</div>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">CSS-Regeln und ihre Spezifität</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">p { color: black; }                    /* 0-0-0-1 = 1 */
+.text { color: blue; }                 /* 0-0-1-0 = 10 */
+.highlight { color: yellow; }          /* 0-0-1-0 = 10 */
+#wichtig { color: red; }               /* 0-1-0-0 = 100 */
+p.text.highlight { color: green; }     /* 0-0-2-1 = 21 */
+#wichtig.highlight { color: purple; }  /* 0-1-1-0 = 110 */</code></pre>
+</div>
+        <p><strong>Ergebnis:</strong> Der Text ist <strong style="color:#a855f7">purple</strong> (h&ouml;chste Spezifit&auml;t: 110).</p>
+        <h3>Bei Gleichstand</h3>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Gleiche Spezifität</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">.text { color: blue; }         /* Spezifität: 10 */
+.highlight { color: yellow; }  /* Spezifität: 10, aber später → gewinnt! */</code></pre>
+</div>
+      </section>
+
+      <section class="section">
+        <h2>9 &mdash; Der CSS-Cascading-Algorithmus</h2>
+        <p>
+          Das &bdquo;C&ldquo; in CSS steht f&uuml;r <strong>Cascading</strong>. Der Cascading-Algorithmus
+          bestimmt in folgender Reihenfolge, welcher Wert angewendet wird:
+        </p>
+        <ol>
+          <li>
+            <strong>Origin und Importance</strong>
+            <ul>
+              <li>Browser-Standard &lt; Benutzer &lt; Autor</li>
+              <li><code>!important</code> kehrt die Reihenfolge um</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Spezifit&auml;t</strong>
+            <ul><li>Inline (1000) &gt; ID (100) &gt; Klasse (10) &gt; Element (1)</li></ul>
+          </li>
+          <li>
+            <strong>Source Order (Reihenfolge)</strong>
+            <ul><li>Bei gleicher Spezifit&auml;t: sp&auml;ter definiert gewinnt</li></ul>
+          </li>
+          <li>
+            <strong>Inheritance</strong>
+            <ul><li>Gibt es gar keine Regel f&uuml;r das Element, werden vererbbare Eigenschaften vom Eltern-Element &uuml;bernommen</li></ul>
+          </li>
+        </ol>
+        <h3>Beispiel des kompletten Prozesses</h3>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Cascade</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">/* 1. Browser-Standard: color: black */
+/* 2. Autor-CSS: */ p { color: blue; }        /* Spez: 1 */
+/* 3. Autor-CSS: */ .text { color: red; }     /* Spez: 10 → gewinnt */
+/* 4. Autor-CSS: */ .other { color: green; }  /* Spez: 10, aber früher */
+/* 5. HTML: */     style="color: yellow"      /* Spez: 1000 → gewinnt */</code></pre>
+</div>
+        <p>
+          Ohne Inline-Style w&auml;re der Text rot (<code>.text</code> schl&auml;gt <code>p</code>). Mit dem
+          Inline-Style in Zeile 5 gewinnt am Ende gelb.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>10 &mdash; Praktische Tipps</h2>
+        <h3>Best Practices f&uuml;r CSS-Selektoren</h3>
+        <div class="do-dont">
+          <div class="do-box">
+            <h4>&#10003; DO</h4>
+            <ul>
+              <li>Verwende Klassen f&uuml;r wiederverwendbare Styles</li>
+              <li>Halte Selektoren so einfach wie m&ouml;glich</li>
+              <li>Nutze semantische Klassennamen</li>
+              <li>Strukturiere CSS logisch (generell &rarr; spezifisch)</li>
+            </ul>
+          </div>
+          <div class="dont-box">
+            <h4>&#10007; DON&rsquo;T</h4>
+            <ul>
+              <li>Vermeide zu spezifische Selektoren: <code>.menu ul li a</code></li>
+              <li>Verwende IDs nicht f&uuml;rs Styling (nur f&uuml;r JavaScript und Sprungmarken)</li>
+              <li>Vermeide <code>!important</code> (au&szlig;er in Ausnahmef&auml;llen)</li>
+              <li>Nutze keine Inline-Styles f&uuml;rs Design</li>
+            </ul>
+          </div>
+        </div>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Gut vs. schlecht</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">/* Gut */
+.navigation-link { color: blue; }
+.navigation-link:hover { color: red; }
+
+/* Schlecht */
+#header nav ul li a { color: blue !important; }</code></pre>
+</div>
+        <div class="callout callout-tip">
+  <div class="callout-icon">&#128161;</div>
+  <div class="callout-body">
+    <div class="callout-title">Debugging-Tipp</div>
+    <p>Die Browser-Entwicklertools zeigen im Tab <strong>Styles</strong> alle angewendeten Regeln
+          &ndash; &uuml;berschriebene Deklarationen sind durchgestrichen. F&auml;hrst du mit der Maus
+          &uuml;ber einen Selektor, zeigt Chrome dessen Spezifit&auml;t an.</p>
+  </div>
+</div>
+        <h3>Ressourcen</h3>
+        <ul>
+          <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors" target="_blank" rel="noopener">MDN CSS Selectors</a></li>
+          <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity" target="_blank" rel="noopener">MDN CSS Specificity</a></li>
+          <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Cascade" target="_blank" rel="noopener">MDN CSS Cascade</a></li>
+        </ul>
+      </section>
+
+      <section class="section section-projekt">
+        <h2>Projektschritt</h2>
+<div class="projekt-box">
+  <div class="projekt-box-header">
+    <span class="projekt-step">Projektschritt 2.3</span>
+    <h3>Zebrastreifen, Vererbung &amp; Formular</h3>
+  </div>
+<p>Mit Pseudo-Klassen, Vererbung und einem Attribut-Selektor gestalten wir Tabelle, Footer und Formular. Achte auf die Kommentare zur Spezifit&auml;t.</p>
+  <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">demoseite/css/style.css (neu in 2.3)</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">/* ---- 2.3 Vererbung, Spezifität &amp; Kaskade ------------------- */
+
+/* Zebrastreifen mit Pseudo-Klassen */
+tbody tr:nth-child(even) {
+  background: #d5dbdb;
+}
+
+tbody tr:hover {
+  background: #aab7b8;
+}
+
+/* Links im Footer erben die weiße Schrift vom footer */
+footer a {
+  color: inherit;
+}
+
+footer ul {
+  list-style: none;
+  padding: 0;
+}
+
+/* Kopf und Fuß ohne graue Section-Box (Spezifität: 0-0-1-1 schlägt 0-0-0-1) */
+footer section {
+  background: none;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+}
+
+footer h2 {
+  color: white;
+}
+
+/* Formular */
+label {
+  display: block;
+  margin: 1rem 0 0.25rem;
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  padding: 0.8rem;
+  border: 2px solid #bdc3c7;
+  border-radius: 5px;
+}
+
+input:focus {
+  outline: none;
+  border-color: #e74c3c;
+}
+
+/* Attribut-Selektor (0-0-1-1) überschreibt "input" (0-0-0-1) */
+input[type="checkbox"] {
+  width: auto;
+  margin-right: 0.5rem;
+}
+
+.newsletter-form button {
+  margin-top: 1rem;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 5px;
+  background: #e74c3c;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.newsletter-form button:hover {
+  background: #c0392b;
+}</code></pre>
+</div>
+  <p class="mb-0">&#128193; Stand nach dieser Lektion: <a href="beispiele/2.3/index.html" target="_blank">beispiele/2.3/</a></p>
+</div>
+      </section>
+
+      <section class="section section-fehler">
+        <h2>H&auml;ufige Fehler</h2>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Regel wird &bdquo;ignoriert&ldquo;</div>
+  <p><code>.rot { color: red; }</code> wirkt nicht, weil weiter oben <code>#inhalt p { color: black; }</code> steht.</p>
+          <p class="fehler-fix">Spezifit&auml;t vergleichen (0-1-0-1 schl&auml;gt 0-0-1-0). Die ID aus dem Selektor entfernen, statt mit <code>!important</code> nachzulegen.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Erwarten, dass margin oder border vererbt wird</div>
+  <p>Ein Rahmen auf dem Container erscheint nicht bei den Kindern.</p>
+          <p class="fehler-fix">Box-Eigenschaften werden nicht vererbt. Bei Bedarf die Kinder direkt selektieren oder <code>inherit</code> verwenden.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: !important-Spirale</div>
+  <p>Eine Regel wird mit <code>!important</code> erzwungen, die n&auml;chste &Auml;nderung braucht wieder <code>!important</code> &hellip;</p>
+          <p class="fehler-fix">Selektoren flach halten (eine Klasse) und Regeln in der Reihenfolge allgemein &rarr; spezifisch anordnen.</p>
+</div>
+      </section>
+
+      <section class="section section-aufgaben">
+        <h2>Aufgaben</h2>
+        <div class="aufgaben-list">
+          <div class="aufgabe">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Aufgabe 1</span>
+    <span class="aufgabe-title">Spezifit&auml;t berechnen</span>
+  </div>
+  <p>Berechne die Spezifit&auml;t (Schreibweise <code>0-0-0-0</code>) und ordne nach St&auml;rke:</p>
+            <ul>
+              <li><code>nav ul li a</code></li>
+              <li><code>.hauptnav__link:hover</code></li>
+              <li><code>#main-header .light</code></li>
+              <li><code>a[href^="mailto:"]</code></li>
+              <li><code>article p::first-line</code></li>
+            </ul>
+</div>
+          <div class="aufgabe">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Aufgabe 2</span>
+    <span class="aufgabe-title">Welche Farbe?</span>
+  </div>
+  <p>Ein <code>&lt;li class="aktiv"&gt;</code> steht in <code>&lt;ul id="menu"&gt;</code>. Es gelten <code>#menu li { color: gray; }</code>, <code>.aktiv { color: green; }</code> und <code>li { color: black !important; }</code>. Welche Farbe hat der Text &ndash; und warum?</p>
+</div>
+          <div class="aufgabe">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Aufgabe 3</span>
+    <span class="aufgabe-title">Kombinatoren auf der Demoseite</span>
+  </div>
+  <p>Formatiere auf der Demoseite den ersten Absatz direkt nach jeder <code>&lt;h2&gt;</code> kursiv (<code>h2 + p</code>) und den ersten Meilenstein im Lernprojekt fett (<code>li:first-child</code>).</p>
+</div>
+          <div class="aufgabe aufgabe-bonus">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Bonus</span>
+    <span class="aufgabe-title">Formular per Attribut-Selektor</span>
+  </div>
+  <p>Hebe im Einreichen-Formular alle Pflichtfelder (<code>[required]</code>) mit einem linken Rahmen hervor. Kennzeichne au&szlig;erdem alle externen Links (<code>a[href^="http"]</code>) mit einem nachgestellten &bdquo;&#8599;&ldquo; per <code>::after</code>.</p>
+</div>
+        </div>
+      </section>
+
+    </div>
+
+    <nav class="lesson-nav">
+      <a class="nav-btn" href="2.2-box-model-display.html">&larr; Lektion 2.2: Box Model &amp; Display</a>
+      <span class="nav-center-info">Lektion 2.3</span>
+      <a class="nav-btn primary" href="2.4-positionierung.html">Lektion 2.4: Positionierung &amp; z-index &rarr;</a>
+    </nav>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>
+    const ham = document.getElementById('hamburger');
+    const sb = document.getElementById('sidebar');
+    const ov = document.getElementById('overlay');
+    ham.addEventListener('click', () => { sb.classList.toggle('open'); ov.classList.toggle('visible'); });
+    ov.addEventListener('click', () => { sb.classList.remove('open'); ov.classList.remove('visible'); });
+    const cur = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-link').forEach(l => {
+      if (l.getAttribute('href') === cur) l.classList.add('active');
+    });
+    const themeBtn = document.getElementById('theme-toggle');
+    const applyTheme = (t) => {
+      document.documentElement.setAttribute('data-theme', t);
+      if (themeBtn) themeBtn.innerHTML = t === 'dark' ? '&#9728;' : '&#9790;';
+    };
+    applyTheme(localStorage.getItem('kurs-theme') || 'dark');
+    setTimeout(() => document.documentElement.classList.add('theme-transitions'), 50);
+    if (themeBtn) themeBtn.addEventListener('click', () => {
+      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('kurs-theme', next);
+      applyTheme(next);
+    });
+    hljs.highlightAll();
+  </script>
+</body>
+
+</html>

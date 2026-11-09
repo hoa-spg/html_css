@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 624 320" width="624" height="320" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <title>p id="myId": kein Leerzeichen erlaubt, Leerzeichen nötig, Attributname, Attributwert</title>
+  <rect width="624" height="320" fill="#ffffff"/>
+  <rect x="20" y="110" width="584" height="90" rx="8" fill="#1e2432"/>
+  <text x="56.0" y="172" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Consolas, monospace" font-size="50" font-weight="700" fill="#f0883e">&lt;</text>
+  <text x="88.0" y="172" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Consolas, monospace" font-size="50" font-weight="700" fill="#ff7b72">p</text>
+  <text x="152.0" y="172" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Consolas, monospace" font-size="50" font-weight="700" fill="#79c0ff">i</text>
+  <text x="184.0" y="172" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Consolas, monospace" font-size="50" font-weight="700" fill="#79c0ff">d</text>
+  <text x="216.0" y="172" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Consolas, monospace" font-size="50" font-weight="700" fill="#f0883e">=</text>
+  <text x="248.0" y="172" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Consolas, monospace" font-size="50" font-weight="700" fill="#a5d6ff">&quot;</text>
+  <text x="280.0" y="172" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Consolas, monospace" font-size="50" font-weight="700" fill="#a5d6ff">m</text>
+  <text x="312.0" y="172" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Consolas, monospace" font-size="50" font-weight="700" fill="#a5d6ff">y</text>
+  <text x="344.0" y="172" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Consolas, monospace" font-size="50" font-weight="700" fill="#a5d6ff">I</text>
+  <text x="376.0" y="172" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Consolas, monospace" font-size="50" font-weight="700" fill="#a5d6ff">d</text>
+  <text x="408.0" y="172" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Consolas, monospace" font-size="50" font-weight="700" fill="#a5d6ff">&quot;</text>
+  <text x="440.0" y="172" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Consolas, monospace" font-size="50" font-weight="700" fill="#f0883e">&gt;</text>
+  <text x="472.0" y="172" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Consolas, monospace" font-size="50" font-weight="700" fill="#f0883e">&lt;</text>
+  <text x="504.0" y="172" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Consolas, monospace" font-size="50" font-weight="700" fill="#f0883e">/</text>
+  <text x="536.0" y="172" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Consolas, monospace" font-size="50" font-weight="700" fill="#ff7b72">p</text>
+  <text x="568.0" y="172" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Consolas, monospace" font-size="50" font-weight="700" fill="#f0883e">&gt;</text>
+  <path d="M120.0,108 L120.0,72" fill="none" stroke="#1a7f37" stroke-width="2.5"/>
+  <text x="90.0" y="62" text-anchor="middle" font-size="17" font-weight="700" fill="#1a7f37">Leerzeichen nötig</text>
+  <path d="M232,108 L232,48" fill="none" stroke="#cf222e" stroke-width="2.5"/>
+  <path d="M200,108 L200,48" fill="none" stroke="#cf222e" stroke-width="2.5"/>
+  <text x="216.0" y="38" text-anchor="middle" font-size="17" font-weight="700" fill="#cf222e">kein Leerzeichen</text>
+  <path d="M424,108 L424,72" fill="none" stroke="#cf222e" stroke-width="2.5"/>
+  <text x="464" y="62" text-anchor="middle" font-size="17" font-weight="700" fill="#cf222e">kein Leerzeichen</text>
+  <path d="M139,208 L139,220 L197,220 L197,208 M168.0,220 L168.0,238" fill="none" stroke="#0969da" stroke-width="2.5"/>
+  <text x="168.0" y="266" text-anchor="middle" font-size="17" font-weight="700" fill="#0969da">Attributname</text>
+  <path d="M235,208 L235,220 L421,220 L421,208 M328.0,220 L328.0,238" fill="none" stroke="#0969da" stroke-width="2.5"/>
+  <text x="328.0" y="266" text-anchor="middle" font-size="17" font-weight="700" fill="#0969da">Attributwert</text>
+</svg>

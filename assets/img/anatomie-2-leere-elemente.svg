@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 300" width="700" height="300" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <title>br (Line Break) und hr (Horizontal Rule): nur ein öffnendes Tag</title>
+  <rect width="700" height="300" fill="#ffffff"/>
+  <g font-family="ui-monospace, 'SF Mono', Consolas, monospace" font-size="52" font-weight="700">
+    <rect x="70" y="100" width="220" height="96" rx="8" fill="#1e2432"/>
+    <text x="180" y="166" text-anchor="middle" fill="#f0883e">&lt;<tspan fill="#ff7b72">br</tspan>&gt;</text>
+    <rect x="410" y="100" width="220" height="96" rx="8" fill="#1e2432"/>
+    <text x="520" y="166" text-anchor="middle" fill="#f0883e">&lt;<tspan fill="#ff7b72">hr</tspan>&gt;</text>
+  </g>
+  <g font-size="18" font-weight="700" text-anchor="middle">
+    <text x="180" y="72" fill="#cf222e">Line Break</text>
+    <text x="520" y="72" fill="#cf222e">Horizontal Rule</text>
+    <text x="180" y="256" fill="#bc4c00">nur öffnendes Tag</text>
+    <text x="520" y="256" fill="#bc4c00">nur öffnendes Tag</text>
+  </g>
+  <g fill="none" stroke-width="2.5">
+    <path d="M180,80 L180,98" stroke="#cf222e"/>
+    <path d="M520,80 L520,98" stroke="#cf222e"/>
+    <path d="M80,206 L80,218 L280,218 L280,206 M180,218 L180,236" stroke="#bc4c00"/>
+    <path d="M420,206 L420,218 L620,218 L620,206 M520,218 L520,236" stroke="#bc4c00"/>
+  </g>
+</svg>

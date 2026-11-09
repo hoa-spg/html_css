@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<!-- GENERIERT von kurse/_build (html_css) – nicht direkt bearbeiten!
+     Quelle: kurse/_build/html_css/lessons/, bauen: python3 _build/build.py html_css -->
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.4 &ndash; Positionierung &amp; z-index | HTML &amp; CSS Kurs</title>
+  <script>(function () { var t = localStorage.getItem('kurs-theme') || 'dark'; document.documentElement.setAttribute('data-theme', t); })();</script>
+  <link rel="stylesheet" href="assets/kurs.css">
+  <link rel="stylesheet" id="hljs-theme"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+
+<body>
+
+  <button class="hamburger" id="hamburger" aria-label="Navigation &ouml;ffnen">&#9776;</button>
+  <div class="sidebar-overlay" id="overlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html">
+        <span class="brand-icon">&lt;/&gt;</span>
+        <div>
+          <div class="brand-name">HTML &amp; CSS</div>
+          <div class="brand-sub">Web- und Mobile Computing</div>
+        </div>
+      </a>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Dark/Light Mode"
+        title="Theme wechseln">&#9728;</button>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-group">
+        <div class="nav-group-label html-label">Teil 1 &mdash; Web &amp; HTML</div>
+        <a class="nav-link" href="1.1-geschichte-internet.html"><span class="ln">1.1</span>Geschichte des Internets</a>
+        <a class="nav-link" href="1.2-grundlagen-web.html"><span class="ln">1.2</span>Grundlagen des Web: HTML, HTTP, URL</a>
+        <a class="nav-link" href="1.3-html5-grundlagen.html"><span class="ln">1.3</span>HTML5: Spezifikation, DOM &amp; APIs</a>
+        <a class="nav-link" href="1.4-html-elemente-semantik.html"><span class="ln">1.4</span>HTML-Elemente &amp; Semantik</a>
+        <a class="nav-link" href="1.5-attribute-formulare.html"><span class="ln">1.5</span>Attribute &amp; Formulare</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label css-label">Teil 2 &mdash; CSS &amp; Layout</div>
+        <a class="nav-link" href="2.1-selektoren-properties.html"><span class="ln">2.1</span>Selektoren, Einheiten &amp; Properties</a>
+        <a class="nav-link" href="2.2-box-model-display.html"><span class="ln">2.2</span>Box Model &amp; Display</a>
+        <a class="nav-link" href="2.3-vererbung-spezifitaet.html"><span class="ln">2.3</span>Vererbung, Spezifit&auml;t &amp; Kaskade</a>
+        <a class="nav-link" href="2.4-positionierung.html"><span class="ln">2.4</span>Positionierung &amp; z-index</a>
+        <a class="nav-link" href="2.5-flexbox-container.html"><span class="ln">2.5</span>Flexbox: Flex-Container</a>
+        <a class="nav-link" href="2.6-flexbox-kinder.html"><span class="ln">2.6</span>Flexbox: Flex-Kinder &amp; Patterns</a>
+        <a class="nav-link" href="2.7-grid-grundlagen.html"><span class="ln">2.7</span>CSS Grid Grundlagen</a>
+        <a class="nav-link" href="2.8-grid-responsive.html"><span class="ln">2.8</span>Media Queries &amp; responsive Grids</a>
+        <a class="nav-link" href="2.9-transform-transition.html"><span class="ln">2.9</span>Transformationen &amp; Transitions</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label fw-label">Teil 3 &mdash; CSS-Frameworks</div>
+        <a class="nav-link" href="3.1-bootstrap-grundlagen.html"><span class="ln">3.1</span>Bootstrap: Setup, Grid &amp; Utilities</a>
+        <a class="nav-link" href="3.2-bootstrap-komponenten.html"><span class="ln">3.2</span>Bootstrap: Komponenten &amp; Anpassung</a>
+        <a class="nav-link" href="3.3-tailwind.html"><span class="ln">3.3</span>Tailwind CSS</a>
+      </div>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <header class="lesson-header">
+      <p class="lesson-eyebrow">Lektion 2.4 &mdash; Teil 2: CSS &amp; Layout</p>
+      <h1>Positionierung &amp; z-index</h1>
+      <div class="lesson-tags">
+        <span class="tag tag-css">CSS</span>
+        <span class="tag tag-time">ca. 90 min</span>
+        <span class="tag tag-level">Grundlagen</span>
+      </div>
+    </header>
+
+    <div class="content-area">
+      <section class="section section-lernziele">
+        <h2>Lernziele</h2>
+        <ul class="lernziele-list">
+          <li>Den &bdquo;normalen Fluss&ldquo; (normal flow) einer Seite verstehen</li>
+          <li>Die f&uuml;nf Positionierungsarten <code>static</code>, <code>relative</code>, <code>absolute</code>, <code>fixed</code> und <code>sticky</code> unterscheiden</li>
+          <li>Wissen, worauf sich ein absolut positioniertes Element bezieht</li>
+          <li>Mit <code>z-index</code> die Stapelreihenfolge steuern</li>
+          <li>Verstehen, was ein <strong>Stacking-Context</strong> ist und warum Kinder ihn nicht verlassen k&ouml;nnen</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2>1 &mdash; CSS Position</h2>
+        <figure class="figure">
+  <div class="figure-img dark-bg"><img src="assets/img/css-positioning.svg" alt="CSS-Positionierung: static, relative, absolute, fixed und sticky" loading="lazy" style="max-width:560px"></div>
+  <figcaption>CSS-Positionierung: static, relative, absolute, fixed und sticky</figcaption>
+</figure>
+        <p>
+          Normalerweise ordnet der Browser alle Boxen im <strong>normalen Fluss</strong> an:
+          Block-Elemente untereinander, Inline-Elemente nebeneinander in der Zeile (siehe Lektion 2.2).
+          Mit der Property <code>position</code> kann man Elemente aus diesem Fluss l&ouml;sen oder
+          gezielt verschieben. Zusammen mit <code>position</code> verwendet man die Offset-Properties
+          <code>top</code>, <code>right</code>, <code>bottom</code>, <code>left</code> und
+          <code>z-index</code>.
+        </p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Wert</th><th>Im normalen Fluss?</th><th>Bezugspunkt f&uuml;r top/left</th><th>z-index?</th></tr></thead>
+            <tbody>
+              <tr><td><code>static</code></td><td>ja</td><td>&ndash; (top/left wirken nicht)</td><td>nein</td></tr>
+              <tr><td><code>relative</code></td><td>ja (Platz bleibt reserviert)</td><td>die eigene urspr&uuml;ngliche Position</td><td>ja</td></tr>
+              <tr><td><code>absolute</code></td><td>nein</td><td>n&auml;chster positionierter Vorfahre, sonst Viewport</td><td>ja</td></tr>
+              <tr><td><code>fixed</code></td><td>nein</td><td>Viewport (bleibt beim Scrollen stehen)</td><td>ja</td></tr>
+              <tr><td><code>sticky</code></td><td>ja, bis zur Klebe-Position</td><td>Scroll-Container</td><td>ja</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>2 &mdash; position: static</h2>
+        <p>
+          <code>position: static</code> ist der <strong>Default</strong>. Das Element befindet sich im
+          &bdquo;normalen Fluss&ldquo; der Seite.
+        </p>
+        <p>
+          Der einzige Grund, ein Element explizit auf <code>position: static;</code> zu setzen, ist,
+          eine zuvor angewendete Positionierung gezielt wieder zu entfernen.
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">static</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">div {
+  position: static;
+
+  z-index: number; /* DOES NOT WORK */
+}</code></pre>
+</div>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/position-static.png" alt="Sechs static-Elemente im normalen Fluss" loading="lazy" style="max-width:440px"></div>
+  <figcaption>Sechs static-Elemente im normalen Fluss</figcaption>
+</figure>
+      </section>
+
+      <section class="section">
+        <h2>3 &mdash; position: relative</h2>
+        <p>
+          Das Element bleibt zwar im &bdquo;normalen Fluss&ldquo;, wird aber <strong>&bdquo;relativ zu sich
+          selbst&ldquo;</strong> verschoben.
+        </p>
+        <ol>
+          <li>Der freie Platz an der urspr&uuml;nglichen Stelle kann von <strong>keinem anderen Element</strong> eingenommen werden!</li>
+          <li>Erscheint &uuml;ber jedem static-Element.</li>
+          <li>Kann einen <code>z-index</code> bekommen.</li>
+          <li>Absolut positionierte Kind-Elemente werden <strong>in Bezug auf das relativ positionierte Parent-Element</strong> verschoben!</li>
+        </ol>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">relative</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">div {
+  position: relative;
+  top: 50px;
+  left: 50px;
+
+  z-index: number; /* OPTIONAL */
+}</code></pre>
+</div>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/position-relative.png" alt="Das relative-Element ist um 50px nach unten und rechts verschoben &ndash; sein urspr&uuml;nglicher Platz (gestrichelt) bleibt frei" loading="lazy" style="max-width:440px"></div>
+  <figcaption>Das relative-Element ist um 50px nach unten und rechts verschoben &ndash; sein urspr&uuml;nglicher Platz (gestrichelt) bleibt frei</figcaption>
+</figure>
+      </section>
+
+      <section class="section">
+        <h2>4 &mdash; position: absolute</h2>
+        <p>Das Element wird aus dem &bdquo;normalen Fluss&ldquo; genommen und unabh&auml;ngig verschoben.</p>
+        <ol>
+          <li>Andere Elemente tun so, als ob das Element <strong>nicht vorhanden</strong> w&auml;re.</li>
+          <li>Erscheint &uuml;ber jedem static-Element.</li>
+          <li>Kann einen <code>z-index</code> bekommen.</li>
+          <li>Braucht Inhalt (content) oder <code>width</code>/<code>height</code>, um eine Gr&ouml;&szlig;e zu haben.</li>
+          <li>Wird relativ zum <strong>n&auml;chsten positionierten Parent-Element</strong> (z.&nbsp;B. <code>position: relative</code>) platziert &ndash; oder, falls keines gefunden wird, relativ zum <strong>Viewport</strong> (0/0).</li>
+        </ol>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">absolute</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">div {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+
+  z-index: number; /* OPTIONAL */
+}</code></pre>
+</div>
+        <h3>Fall 1: kein positionierter Parent &rarr; &bdquo;relativ&ldquo; zum Viewport</h3>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/position-absolute-viewport.png" alt="Das absolute-Element liegt 50px von der linken oberen Ecke des Viewports entfernt; die anderen Elemente r&uuml;cken nach, als g&auml;be es es nicht" loading="lazy" style="max-width:440px"></div>
+  <figcaption>Das absolute-Element liegt 50px von der linken oberen Ecke des Viewports entfernt; die anderen Elemente r&uuml;cken nach, als g&auml;be es es nicht</figcaption>
+</figure>
+
+        <h3>Fall 2: &bdquo;relativ&ldquo; zum n&auml;chsten relativ positionierten Parent</h3>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">HTML</span>
+    <span class="code-lang">HTML</span>
+  </div>
+  <pre><code class="language-xml">&lt;div class="relative"&gt;
+  relative
+  &lt;div class="absolute"&gt;absolute&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">CSS</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+}</code></pre>
+</div>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/position-absolute-relative.png" alt="Das absolute-Element ist jetzt 50px/50px von der Ecke seines relative-Parents verschoben" loading="lazy" style="max-width:480px"></div>
+  <figcaption>Das absolute-Element ist jetzt 50px/50px von der Ecke seines relative-Parents verschoben</figcaption>
+</figure>
+        <div class="callout callout-tip">
+  <div class="callout-icon">&#128161;</div>
+  <div class="callout-body">
+    <div class="callout-title">Das wichtigste Muster: relative + absolute</div>
+    <p>Will man ein Element innerhalb eines anderen frei platzieren (z.&nbsp;B. ein Badge in der
+          Ecke einer Karte), bekommt der <strong>Parent</strong> <code>position: relative</code> (ohne
+          Verschiebung) und das <strong>Kind</strong> <code>position: absolute</code>.</p>
+  </div>
+</div>
+      </section>
+
+      <section class="section">
+        <h2>5 &mdash; position: fixed</h2>
+        <p>
+          Das Element wird aus dem &bdquo;normalen Fluss&ldquo; genommen und bleibt <strong>auch beim
+          Scrollen</strong> an seiner fest definierten Position.
+        </p>
+        <ol>
+          <li>Wird relativ zum <strong>Viewport</strong> (0/0) verschoben.</li>
+          <li>Erscheint &uuml;ber jedem static-Element.</li>
+          <li>Kann einen <code>z-index</code> bekommen.</li>
+          <li>Braucht Inhalt (content) oder <code>width</code>/<code>height</code>, um eine Gr&ouml;&szlig;e zu haben.</li>
+        </ol>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">fixed</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">div {
+  position: fixed;
+  top: number;
+  right: number;
+
+  z-index: number; /* OPTIONAL */
+}</code></pre>
+</div>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/position-fixed.png" alt="Ein fixed-Element mit Hintergrundbild f&uuml;llt den Viewport; ein relative-Element (wei&szlig;e Karte) scrollt dar&uuml;ber" loading="lazy"></div>
+  <figcaption>Ein fixed-Element mit Hintergrundbild f&uuml;llt den Viewport; ein relative-Element (wei&szlig;e Karte) scrollt dar&uuml;ber</figcaption>
+</figure>
+        <div class="callout callout-warning">
+  <div class="callout-icon">&#9888;</div>
+  <div class="callout-body">
+    <div class="callout-title">Achtung</div>
+    <p>Damit der Inhalt <strong>&uuml;ber</strong> das fixierte Hintergrundbild scrollen kann, muss er
+          selbst positioniert sein (z.&nbsp;B. <code>relative</code>). Ein static-Element w&uuml;rde
+          <strong>darunter</strong> scrollen &ndash; positionierte Elemente liegen immer &uuml;ber static-Elementen.</p>
+  </div>
+</div>
+      </section>
+
+      <section class="section">
+        <h2>6 &mdash; position: sticky</h2>
+        <p>
+          Das Element bleibt so lange im &bdquo;normalen Fluss&ldquo;, bis es beim Scrollen die
+          <code>top</code>-Position erreicht &ndash; dann <strong>klebt es an dieser Position fest</strong>.
+        </p>
+        <ol>
+          <li>Klebt fest, sobald die <code>top</code>-Position erreicht ist.</li>
+          <li>Erscheint &uuml;ber jedem static-Element.</li>
+          <li>Kann einen <code>z-index</code> bekommen.</li>
+          <li>Braucht Inhalt (content) oder <code>width</code>/<code>height</code>, um eine Gr&ouml;&szlig;e zu haben.</li>
+        </ol>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">sticky</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">div {
+  position: sticky;
+  top: number;
+  right: number;
+
+  z-index: number; /* OPTIONAL */
+}</code></pre>
+</div>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/position-sticky-1.png" alt="Am Anfang ist die Navigation im normalen Fluss und wird normal gescrollt" loading="lazy"></div>
+  <figcaption>Am Anfang ist die Navigation im normalen Fluss und wird normal gescrollt</figcaption>
+</figure>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/position-sticky-2.png" alt="Bei Erreichen von top: 0px klebt sie fest &ndash; der Inhalt scrollt darunter durch" loading="lazy"></div>
+  <figcaption>Bei Erreichen von top: 0px klebt sie fest &ndash; der Inhalt scrollt darunter durch</figcaption>
+</figure>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Beispiel orf.at</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">.site-nav { position: sticky; top: 0px; }</code></pre>
+</div>
+        <div class="callout callout-info">
+  <div class="callout-icon">&#8505;</div>
+  <div class="callout-body">
+    <div class="callout-title">sticky braucht einen Offset</div>
+    <p>Ohne <code>top</code> (oder <code>bottom</code>) verh&auml;lt sich <code>sticky</code> wie
+          <code>relative</code>. Au&szlig;erdem klebt das Element nur innerhalb seines Eltern-Elements
+          &ndash; ist der Parent zu Ende gescrollt, scrollt es mit weg.</p>
+  </div>
+</div>
+      </section>
+
+      <section class="section">
+        <h2>7 &mdash; z-index</h2>
+        <p>
+          Der <code>z-index</code> legt die Reihenfolge eines <strong>positionierten</strong> Elements
+          (also <em>nicht</em> <code>position: static</code>) und seiner Kinder auf der
+          <strong>z-Achse</strong> fest &ndash; also wer &uuml;ber wem liegt. H&ouml;here Werte liegen
+          weiter vorne, n&auml;her bei den Betrachtenden.
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">z-index</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">div {
+  position: relative | absolute |
+            fixed | sticky;
+
+  z-index: number;
+}</code></pre>
+</div>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/z-index.svg" alt="Die z-index-Property bestimmt die Reihenfolge der Elemente entlang der z-Achse des Stacking-Context (Richtung Betrachter)" loading="lazy" style="max-width:600px"></div>
+  <figcaption>Die z-index-Property bestimmt die Reihenfolge der Elemente entlang der z-Achse des Stacking-Context (Richtung Betrachter)</figcaption>
+</figure>
+      </section>
+
+      <section class="section">
+        <h2>8 &mdash; Stacking-Context</h2>
+        <p>
+          Wir erzeugen einen <strong>Stacking-Context</strong>, indem wir den <code>z-index</code> eines
+          positionierten Elements auf eine beliebige ganze Zahl setzen. Dabei passieren zwei Dinge:
+        </p>
+        <ol>
+          <li>Der <code>z-index</code> des aktuellen Elements wird gesetzt.</li>
+          <li>Es entsteht ein <strong>neuer Stacking-Context</strong> f&uuml;r das Element und seine Kind-Elemente. Die Kinder liegen nun <strong>innerhalb</strong> des Stacking-Contexts ihres Parents.</li>
+        </ol>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">HTML</span>
+    <span class="code-lang">HTML</span>
+  </div>
+  <pre><code class="language-xml">&lt;div class="foo"&gt;
+  &lt;div class="bar"&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">CSS</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">.foo { position: relative; z-index: 1; }</code></pre>
+</div>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/stacking-context-1.svg" alt="html-root bildet den Default-Stacking-Context (grau, stacking context 1). .foo erzeugt mit z-index: 1 einen eigenen (blau, stacking context 2), in dem .bar liegt" loading="lazy" style="max-width:440px"></div>
+  <figcaption>html-root bildet den Default-Stacking-Context (grau, stacking context 1). .foo erzeugt mit z-index: 1 einen eigenen (blau, stacking context 2), in dem .bar liegt</figcaption>
+</figure>
+
+        <h3>Kinder bleiben im Stacking-Context des Parents</h3>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">HTML</span>
+    <span class="code-lang">HTML</span>
+  </div>
+  <pre><code class="language-xml">&lt;div class="foo"&gt;
+  &lt;div class="bar"&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="baz"&gt;
+&lt;/div&gt;</code></pre>
+</div>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">CSS</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">.foo { position: relative; z-index: 1; }     /* grün */
+.bar { position: relative; z-index: 1000; }  /* blau */
+.baz { position: relative; z-index: 2; }     /* rot  */</code></pre>
+</div>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/stacking-context-2.svg" alt="Obwohl .bar z-index: 1000 hat, liegt es unter .baz (z-index: 2)" loading="lazy" style="max-width:480px"></div>
+  <figcaption>Obwohl .bar z-index: 1000 hat, liegt es unter .baz (z-index: 2)</figcaption>
+</figure>
+        <div class="callout callout-error">
+  <div class="callout-icon">&#10007;</div>
+  <div class="callout-body">
+    <div class="callout-title">Achtung</div>
+    <p>Kind-Elemente bleiben innerhalb des Stacking-Contexts ihres Parent-Elements. Das blaue
+          Element (<code>z-index: 1000</code>) liegt <strong>nicht</strong> &uuml;ber dem roten
+          (<code>z-index: 2</code>), weil sein Parent (gr&uuml;n) nur <code>z-index: 1</code> hat.
+          Verglichen werden immer nur Elemente <em>im selben</em> Stacking-Context: gr&uuml;n (1) gegen
+          rot (2) &ndash; rot gewinnt, samt allem, was in gr&uuml;n liegt.</p>
+  </div>
+</div>
+      </section>
+
+      <section class="section section-projekt">
+        <h2>Projektschritt</h2>
+<div class="projekt-box">
+  <div class="projekt-box-header">
+    <span class="projekt-step">Projektschritt 2.4</span>
+    <h3>Sticky Header &amp; &bdquo;Nach oben&ldquo;-Link</h3>
+  </div>
+<p>Der Header klebt beim Scrollen oben (<code>sticky</code>), der &bdquo;Nach oben&ldquo;-Link schwebt fixiert rechts unten (<code>fixed</code>).</p>
+  <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">demoseite/css/style.css (neu in 2.4)</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">/* ---- 2.4 Positionierung &amp; z-index -------------------------- */
+
+/* Kopfzeile bleibt beim Scrollen oben kleben */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* "Nach oben"-Link schwebt immer rechts unten */
+.back-to-top {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  z-index: 50;
+}
+
+.back-to-top a {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  background: #95a5a6;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+}</code></pre>
+</div>
+  <p class="mb-0">&#128193; Stand nach dieser Lektion: <a href="beispiele/2.4/index.html" target="_blank">beispiele/2.4/</a></p>
+</div>
+      </section>
+
+      <section class="section section-fehler">
+        <h2>H&auml;ufige Fehler</h2>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: absolute-Element springt in die Ecke der Seite</div>
+  <p>Das Badge erscheint ganz oben rechts im Browserfenster statt in der Karte.</p>
+          <p class="fehler-fix">Dem gew&uuml;nschten Bezugs-Element <code>position: relative</code> geben &ndash; sonst bezieht sich <code>absolute</code> auf den Viewport.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: z-index wirkt nicht</div>
+  <p><code>z-index: 999</code> auf einem Element ohne <code>position</code> hat keine Wirkung.</p>
+          <p class="fehler-fix"><code>z-index</code> funktioniert nur bei positionierten Elementen (<code>relative</code>, <code>absolute</code>, <code>fixed</code>, <code>sticky</code>) &ndash; und nur im Vergleich innerhalb desselben Stacking-Contexts.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: sticky klebt nicht</div>
+  <p>Die Navigation mit <code>position: sticky</code> scrollt ganz normal mit.</p>
+          <p class="fehler-fix">Einen Offset angeben (<code>top: 0</code>) und pr&uuml;fen, ob ein Vorfahre <code>overflow: hidden</code> hat &ndash; das verhindert sticky.</p>
+</div>
+      </section>
+
+      <section class="section section-aufgaben">
+        <h2>Aufgaben</h2>
+        <div class="aufgaben-list">
+          <div class="aufgabe">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Aufgabe 1</span>
+    <span class="aufgabe-title">Die f&uuml;nf Positionen nachbauen</span>
+  </div>
+  <p>Baue die Abbildungen dieser Lektion nach: sechs farbige Boxen in zwei Reihen, eine davon nacheinander <code>relative</code>, <code>absolute</code> (mit und ohne relativen Parent) und <code>fixed</code> positioniert.</p>
+</div>
+          <div class="aufgabe">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Aufgabe 2</span>
+    <span class="aufgabe-title">Zur&uuml;ck nach oben</span>
+  </div>
+  <p>Gib jeder Karte (<code>.card</code>) der Demoseite ein &bdquo;Neu&ldquo;-Badge in der rechten oberen Ecke (<code>position: relative</code> auf der Karte, <code>position: absolute</code> auf dem Badge).</p>
+</div>
+          <div class="aufgabe">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Aufgabe 3</span>
+    <span class="aufgabe-title">Stacking-Context</span>
+  </div>
+  <p>Baue das <code>.foo</code>/<code>.bar</code>/<code>.baz</code>-Beispiel nach. Was musst du &auml;ndern, damit das blaue Element &uuml;ber dem roten liegt? Finde zwei L&ouml;sungen.</p>
+</div>
+          <div class="aufgabe aufgabe-bonus">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Bonus</span>
+    <span class="aufgabe-title">Bild mit Bildunterschrift-Overlay</span>
+  </div>
+  <p>Lege &uuml;ber ein Kartenbild (in einem <code>&lt;figure&gt;</code>) eine halbtransparente Leiste mit dem Kartentitel, die am unteren Bildrand klebt (<code>position: absolute; bottom: 0;</code>).</p>
+</div>
+        </div>
+      </section>
+
+    </div>
+
+    <nav class="lesson-nav">
+      <a class="nav-btn" href="2.3-vererbung-spezifitaet.html">&larr; Lektion 2.3: Vererbung, Spezifit&auml;t &amp; Kaskade</a>
+      <span class="nav-center-info">Lektion 2.4</span>
+      <a class="nav-btn primary" href="2.5-flexbox-container.html">Lektion 2.5: Flexbox: Flex-Container &rarr;</a>
+    </nav>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>
+    const ham = document.getElementById('hamburger');
+    const sb = document.getElementById('sidebar');
+    const ov = document.getElementById('overlay');
+    ham.addEventListener('click', () => { sb.classList.toggle('open'); ov.classList.toggle('visible'); });
+    ov.addEventListener('click', () => { sb.classList.remove('open'); ov.classList.remove('visible'); });
+    const cur = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-link').forEach(l => {
+      if (l.getAttribute('href') === cur) l.classList.add('active');
+    });
+    const themeBtn = document.getElementById('theme-toggle');
+    const applyTheme = (t) => {
+      document.documentElement.setAttribute('data-theme', t);
+      if (themeBtn) themeBtn.innerHTML = t === 'dark' ? '&#9728;' : '&#9790;';
+    };
+    applyTheme(localStorage.getItem('kurs-theme') || 'dark');
+    setTimeout(() => document.documentElement.classList.add('theme-transitions'), 50);
+    if (themeBtn) themeBtn.addEventListener('click', () => {
+      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('kurs-theme', next);
+      applyTheme(next);
+    });
+    hljs.highlightAll();
+  </script>
+</body>
+
+</html>

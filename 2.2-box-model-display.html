@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<!-- GENERIERT von kurse/_build (html_css) – nicht direkt bearbeiten!
+     Quelle: kurse/_build/html_css/lessons/, bauen: python3 _build/build.py html_css -->
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.2 &ndash; Box Model &amp; Display | HTML &amp; CSS Kurs</title>
+  <script>(function () { var t = localStorage.getItem('kurs-theme') || 'dark'; document.documentElement.setAttribute('data-theme', t); })();</script>
+  <link rel="stylesheet" href="assets/kurs.css">
+  <link rel="stylesheet" id="hljs-theme"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+
+<body>
+
+  <button class="hamburger" id="hamburger" aria-label="Navigation &ouml;ffnen">&#9776;</button>
+  <div class="sidebar-overlay" id="overlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html">
+        <span class="brand-icon">&lt;/&gt;</span>
+        <div>
+          <div class="brand-name">HTML &amp; CSS</div>
+          <div class="brand-sub">Web- und Mobile Computing</div>
+        </div>
+      </a>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Dark/Light Mode"
+        title="Theme wechseln">&#9728;</button>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-group">
+        <div class="nav-group-label html-label">Teil 1 &mdash; Web &amp; HTML</div>
+        <a class="nav-link" href="1.1-geschichte-internet.html"><span class="ln">1.1</span>Geschichte des Internets</a>
+        <a class="nav-link" href="1.2-grundlagen-web.html"><span class="ln">1.2</span>Grundlagen des Web: HTML, HTTP, URL</a>
+        <a class="nav-link" href="1.3-html5-grundlagen.html"><span class="ln">1.3</span>HTML5: Spezifikation, DOM &amp; APIs</a>
+        <a class="nav-link" href="1.4-html-elemente-semantik.html"><span class="ln">1.4</span>HTML-Elemente &amp; Semantik</a>
+        <a class="nav-link" href="1.5-attribute-formulare.html"><span class="ln">1.5</span>Attribute &amp; Formulare</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label css-label">Teil 2 &mdash; CSS &amp; Layout</div>
+        <a class="nav-link" href="2.1-selektoren-properties.html"><span class="ln">2.1</span>Selektoren, Einheiten &amp; Properties</a>
+        <a class="nav-link" href="2.2-box-model-display.html"><span class="ln">2.2</span>Box Model &amp; Display</a>
+        <a class="nav-link" href="2.3-vererbung-spezifitaet.html"><span class="ln">2.3</span>Vererbung, Spezifit&auml;t &amp; Kaskade</a>
+        <a class="nav-link" href="2.4-positionierung.html"><span class="ln">2.4</span>Positionierung &amp; z-index</a>
+        <a class="nav-link" href="2.5-flexbox-container.html"><span class="ln">2.5</span>Flexbox: Flex-Container</a>
+        <a class="nav-link" href="2.6-flexbox-kinder.html"><span class="ln">2.6</span>Flexbox: Flex-Kinder &amp; Patterns</a>
+        <a class="nav-link" href="2.7-grid-grundlagen.html"><span class="ln">2.7</span>CSS Grid Grundlagen</a>
+        <a class="nav-link" href="2.8-grid-responsive.html"><span class="ln">2.8</span>Media Queries &amp; responsive Grids</a>
+        <a class="nav-link" href="2.9-transform-transition.html"><span class="ln">2.9</span>Transformationen &amp; Transitions</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label fw-label">Teil 3 &mdash; CSS-Frameworks</div>
+        <a class="nav-link" href="3.1-bootstrap-grundlagen.html"><span class="ln">3.1</span>Bootstrap: Setup, Grid &amp; Utilities</a>
+        <a class="nav-link" href="3.2-bootstrap-komponenten.html"><span class="ln">3.2</span>Bootstrap: Komponenten &amp; Anpassung</a>
+        <a class="nav-link" href="3.3-tailwind.html"><span class="ln">3.3</span>Tailwind CSS</a>
+      </div>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <header class="lesson-header">
+      <p class="lesson-eyebrow">Lektion 2.2 &mdash; Teil 2: CSS &amp; Layout</p>
+      <h1>Box Model &amp; Display</h1>
+      <div class="lesson-tags">
+        <span class="tag tag-css">CSS</span>
+        <span class="tag tag-time">ca. 90 min</span>
+        <span class="tag tag-level">Grundlagen</span>
+      </div>
+    </header>
+
+    <div class="content-area">
+      <section class="section section-lernziele">
+        <h2>Lernziele</h2>
+        <ul class="lernziele-list">
+          <li>Das <strong>Box Model</strong> mit Content, Padding, Border und Margin erkl&auml;ren</li>
+          <li>Die Kurzschreibweisen f&uuml;r <code>padding</code> und <code>margin</code> anwenden</li>
+          <li>Den Unterschied zwischen <code>box-sizing: content-box</code> und <code>border-box</code> kennen</li>
+          <li><code>display: block</code>, <code>inline</code> und <code>inline-block</code> unterscheiden und gezielt einsetzen</li>
+          <li>Die <strong>Line Box</strong>, <code>vertical-align</code> und die &bdquo;4px-L&uuml;cke&ldquo; zwischen Inline-Elementen verstehen</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2>1 &mdash; CSS BASICS: Box Layout Context</h2>
+        <p>
+          In Lektion 1.3 haben wir gesehen: <strong>HTML erzeugt Boxen</strong>. CSS (Cascading Style
+          Sheets) bestimmt, wie gro&szlig; diese Boxen sind, wie sie aussehen und wie sie angeordnet
+          werden. Eine Webseite ist aus CSS-Sicht nichts anderes als eine Anordnung von Rechtecken:
+        </p>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/box-layout.svg" alt="Eine Seite als Anordnung von Boxen: Header, Inhalt, Sidebar, Footer" loading="lazy" style="max-width:380px"></div>
+  <figcaption>Eine Seite als Anordnung von Boxen: Header, Inhalt, Sidebar, Footer</figcaption>
+</figure>
+      </section>
+
+      <section class="section">
+        <h2>2 &mdash; Box Model</h2>
+        <p>Jede Box besteht von innen nach au&szlig;en aus vier Schichten:</p>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/box-model.svg" alt="Das Box Model: Content &rarr; Padding &rarr; Border &rarr; Margin" loading="lazy" style="max-width:520px"></div>
+  <figcaption>Das Box Model: Content &rarr; Padding &rarr; Border &rarr; Margin</figcaption>
+</figure>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Schicht</th><th>Bedeutung</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Content</strong></td><td>Der eigentliche Inhalt (Text, Bild). Gr&ouml;&szlig;e &uuml;ber <code>width</code>/<code>height</code>.</td></tr>
+              <tr><td><strong>Padding</strong></td><td>Innenabstand zwischen Inhalt und Rahmen. Hat die Hintergrundfarbe des Elements.</td></tr>
+              <tr><td><strong>Border</strong></td><td>Rahmen um Padding und Inhalt.</td></tr>
+              <tr><td><strong>Margin</strong></td><td>Au&szlig;enabstand zu anderen Elementen. Immer transparent.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Box Model in CSS</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">header {
+  /* BOX-SIZING */
+  box-sizing: content-box;
+  box-sizing: border-box;
+
+  /* CONTENT */
+  width: 200px;
+  height: 100px;
+
+  /* PADDING */
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-bottom: 10px;
+  padding-right: 10px;
+  padding: 10px 20px;       /* top/bottom, left/right */
+  padding: 10px;            /* all sides */
+
+  /* BORDER */
+  border: 1px solid black;  /* all sides */
+
+  /* MARGIN */
+  margin: 10px;             /* all sides */
+}</code></pre>
+</div>
+
+        <h3>Die wichtigsten Box-Model-Properties im &Uuml;berblick</h3>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Box Model: Kurzschreibweisen</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">box-sizing: content-box | border-box;
+width: 50% | 100px;
+height: 75% | 100px;
+
+padding: 10px;                        /* alle Seiten 10px */
+padding: 10px 5px;                    /* oben/unten 10px, links/rechts 5px */
+padding-left/right/top/bottom: 10px;  /* nur eine Seite 10px */
+
+border: 1px solid black;
+
+margin: 10px;                         /* alle Seiten 10px */
+margin: 10px 5px;                     /* oben/unten 10px, links/rechts 5px */
+margin-left/right/top/bottom: 10px;   /* nur eine Seite 10px */</code></pre>
+</div>
+        <p>Prozentangaben bei <code>width</code> beziehen sich auf die Breite des Eltern-Elements (siehe Einheiten in Lektion 2.1).</p>
+
+        <h3>box-sizing: content-box vs. border-box</h3>
+        <div class="two-col">
+          <div class="callout callout-info mb-0">
+            <div class="callout-body">
+              <div class="callout-title">content-box</div>
+              <p>Ist der <strong>Default-Wert</strong>. <code>width</code> legt die Breite des
+              <em>Contents</em> fest. Padding und Border kommen noch dazu.<br>
+              Gesamtbreite = <code>width + padding + border</code></p>
+            </div>
+          </div>
+          <div class="callout callout-tip mb-0">
+            <div class="callout-body">
+              <div class="callout-title">border-box</div>
+              <p>Oft ist dieser Wert <strong>vorteilhaft</strong>. <code>width</code> ist die Breite
+              von Content + Padding + Border zusammen.<br>
+              Content-Breite = <code>width &minus; (padding + border)</code></p>
+            </div>
+          </div>
+        </div>
+        <p>Beispiel mit <code>width: 200px; padding: 20px; border: 5px solid;</code>:</p>
+        <div class="demo">
+  <div class="demo-label">Live-Vorschau</div>
+  <div class="demo-body">
+          <div style="box-sizing:content-box;width:200px;padding:20px;border:5px solid #0969da;background:#ddf4ff;margin-bottom:.75rem">content-box &rarr; 250px breit</div>
+          <div style="box-sizing:border-box;width:200px;padding:20px;border:5px solid #1a7f37;background:#dafbe1">border-box &rarr; 200px breit</div>
+        </div>
+</div>
+        <div class="callout callout-tip">
+  <div class="callout-icon">&#128161;</div>
+  <div class="callout-body">
+    <div class="callout-title">Best Practice</div>
+    <p>Viele Projekte setzen gleich am Anfang des Stylesheets
+          <code>*, *::before, *::after { box-sizing: border-box; }</code>. Dann entspricht
+          <code>width</code> immer der tats&auml;chlich sichtbaren Breite.</p>
+  </div>
+</div>
+      </section>
+
+      <section class="section">
+        <h2>3 &mdash; Block-Element</h2>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">display: block</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">header {
+  /* DISPLAY */
+  display: block;
+}</code></pre>
+</div>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/block-element.svg" alt="Block-Elemente nehmen die gesamte verf&uuml;gbare Breite (available space) ein und stehen untereinander" loading="lazy" style="max-width:420px"></div>
+  <figcaption>Block-Elemente nehmen die gesamte verf&uuml;gbare Breite (available space) ein und stehen untereinander</figcaption>
+</figure>
+        <p>
+          Ein Block-Element beginnt immer in einer <strong>neuen Zeile</strong> und nimmt die
+          <strong>gesamte verf&uuml;gbare Breite</strong> des Eltern-Elements ein &ndash; egal, wie viel
+          Inhalt es hat.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>4 &mdash; Inline-Element und Inline-Block-Element</h2>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/inline-vs-inline-block.svg" alt="Links inline: vertikales Padding/Margin &uuml;berlappt die Nachbarzeilen. Rechts inline-block: die Box schiebt die Zeilen auseinander" loading="lazy"></div>
+  <figcaption>Links inline: vertikales Padding/Margin &uuml;berlappt die Nachbarzeilen. Rechts inline-block: die Box schiebt die Zeilen auseinander</figcaption>
+</figure>
+
+        <h3>Inline</h3>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">display: inline</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">header {
+  /* DISPLAY */
+  display: inline;
+
+  /* CONTENT */
+  width: 100px;          /* ✗ wird ignoriert */
+  height: 50px;          /* ✗ wird ignoriert */
+
+  /* MARGIN TOP/BOTTOM */
+  margin-top: 10px;      /* ✗ wird ignoriert */
+  margin-bottom: 10px;   /* ✗ wird ignoriert */
+}</code></pre>
+</div>
+        <p>
+          Ein Inline-Element flie&szlig;t wie Text in der Zeile mit. <code>width</code>,
+          <code>height</code> sowie <code>margin-top</code>/<code>margin-bottom</code> haben
+          <strong>keine Wirkung</strong>. Vertikales Padding wird zwar gezeichnet, schiebt die
+          umliegenden Zeilen aber nicht weg &ndash; es &uuml;berlappt sie (schraffierte Fl&auml;che links).
+        </p>
+
+        <h3>Inline-Block</h3>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">display: inline-block</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">header {
+  /* DISPLAY */
+  display: inline-block;
+
+  /* CONTENT */
+  width: 100px;          /* ✓ wirkt */
+  height: 50px;          /* ✓ wirkt */
+
+  /* MARGIN TOP/BOTTOM */
+  margin-top: 10px;      /* ✓ wirkt */
+  margin-bottom: 10px;   /* ✓ wirkt */
+}</code></pre>
+</div>
+        <p>
+          <code>inline-block</code> kombiniert beides: Das Element steht <strong>in der Zeile</strong>
+          wie ein Inline-Element, respektiert aber <strong>Breite, H&ouml;he und alle Abst&auml;nde</strong>
+          wie ein Block-Element.
+        </p>
+        <div class="demo">
+  <div class="demo-label">Live-Vorschau</div>
+  <div class="demo-body">
+          <p style="margin:0 0 .6rem">Text mit <span style="display:inline;width:100px;height:50px;margin:10px 0;padding:4px;background:#ffd8b5;border:1px solid #bc4c00">inline</span> Element, das width/height ignoriert.</p>
+          <p style="margin:0">Text mit <span style="display:inline-block;width:100px;height:50px;margin:10px 0;padding:4px;background:#ddf4ff;border:1px solid #0969da">inline-block</span> Element, das width/height respektiert.</p>
+        </div>
+</div>
+      </section>
+
+      <section class="section">
+        <h2>5 &mdash; Block-Element vs. Inline-Element</h2>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/flow-direction.svg" alt="Block-Elemente folgen der flow direction (von oben nach unten), Inline-Elemente der writing direction (von links nach rechts)" loading="lazy" style="max-width:460px"></div>
+  <figcaption>Block-Elemente folgen der flow direction (von oben nach unten), Inline-Elemente der writing direction (von links nach rechts)</figcaption>
+</figure>
+
+        <h3>Wann verwendet man was?</h3>
+        <div class="two-col">
+          <div>
+            <h4>Inline</h4>
+            <ul>
+              <li>Textauszeichnungen wie <code>&lt;span&gt;</code></li>
+              <li>Hervorhebungen innerhalb eines Textes</li>
+              <li>Links innerhalb eines Flie&szlig;textes (<code>&lt;a&gt;</code>)</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Inline-Block</h4>
+            <ul>
+              <li>Kleine Buttons nebeneinander</li>
+              <li>Navigationsmen&uuml;s</li>
+              <li>Kleine Boxen oder Badges</li>
+              <li>Elemente, die nebeneinanderstehen, aber definierte Abmessungen haben sollen</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>Verhalten im Vergleich</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Behaviour</th><th>Inline</th><th>Inline-Block</th><th>Block</th></tr></thead>
+            <tbody>
+              <tr><td>Respects left/right padding</td><td class="text-green">YES</td><td class="text-green">YES</td><td class="text-green">YES</td></tr>
+              <tr><td>Respects top/bottom padding</td><td class="text-green">YES*</td><td class="text-green">YES</td><td class="text-green">YES</td></tr>
+              <tr><td>Respects left/right margin</td><td class="text-green">YES</td><td class="text-green">YES</td><td class="text-green">YES</td></tr>
+              <tr><td>Respects top/bottom margin</td><td class="text-red">NO</td><td class="text-green">YES</td><td class="text-green">YES</td></tr>
+              <tr><td>Respects width/height</td><td class="text-red">NO</td><td class="text-green">YES</td><td class="text-green">YES</td></tr>
+              <tr><td>Default width expands to parent element (not width of its contents)</td><td class="text-red">NO</td><td class="text-red">NO</td><td class="text-green">YES</td></tr>
+              <tr><td>Forces a line break</td><td class="text-red">NO</td><td class="text-red">NO</td><td class="text-green">YES</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p><small class="text-muted">* Wird gezeichnet, verdr&auml;ngt aber die Nachbarzeilen nicht (siehe Abbildung oben).</small></p>
+
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/block-vs-inline.svg" alt="Block-Elemente stapeln sich untereinander, Inline-Elemente stehen nebeneinander in der Zeile" loading="lazy" style="max-width:300px"></div>
+  <figcaption>Block-Elemente stapeln sich untereinander, Inline-Elemente stehen nebeneinander in der Zeile</figcaption>
+</figure>
+        <div class="two-col">
+          <div>
+            <h4>Block</h4>
+            <ul>
+              <li>Beginnt immer in einer <strong>neuen Zeile</strong>.</li>
+              <li>Der <strong>Parent</strong> bestimmt die Breite (nimmt die ganze verf&uuml;gbare Breite ein).</li>
+              <li><code>&lt;main&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;header&gt;</code>, <code>&lt;footer&gt;</code>, <code>&lt;aside&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;div&gt;</code>, <code>&lt;p&gt;</code>, <code>&lt;h1&gt;</code>&hellip;<code>&lt;h6&gt;</code></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Inline</h4>
+            <ul>
+              <li>Beginnt nicht in einer neuen Zeile, sondern wird in eine <strong>bestehende Zeile</strong> eingebettet.</li>
+              <li>Der <strong>Inhalt</strong> bestimmt die Breite (nimmt nur so viel wie n&ouml;tig).</li>
+              <li><code>&lt;a&gt;</code>, <code>&lt;img&gt;</code>, <code>&lt;span&gt;</code>, <code>&lt;label&gt;</code></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>6 &mdash; The Line Box</h2>
+        <p>
+          Alle Inline-Elemente einer Zeile sitzen gemeinsam in einer gedachten
+          <strong>Line Box</strong>. Standardm&auml;&szlig;ig werden sie an der <strong>Grundlinie</strong>
+          (baseline) des Textes ausgerichtet. Mit <code>vertical-align</code> l&auml;sst sich das &auml;ndern:
+        </p>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/line-box.svg" alt="Alle Elemente sind &bdquo;inline&ldquo; (gestrichelte Linien = Ober- und Unterkante der Line Box). Ein Element mit vertical-align: top sitzt oben" loading="lazy" style="max-width:520px"></div>
+  <figcaption>Alle Elemente sind &bdquo;inline&ldquo; (gestrichelte Linien = Ober- und Unterkante der Line Box). Ein Element mit vertical-align: top sitzt oben</figcaption>
+</figure>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">vertical-align</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">img {
+  /* VERTICAL ALIGN */
+  vertical-align: top;
+  vertical-align: middle;
+  vertical-align: bottom;
+}</code></pre>
+</div>
+
+        <h3>The Line Box and 4px gap?</h3>
+        <p>
+          Stehen mehrere Inline- oder Inline-Block-Elemente nebeneinander, entsteht zwischen ihnen
+          eine kleine L&uuml;cke von ca. 4px. Der Grund: Der <strong>Zeilenumbruch bzw. die Leerzeichen
+          im HTML-Quelltext</strong> werden als Leerzeichen dargestellt &ndash; genau wie zwischen zwei
+          W&ouml;rtern.
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Woher die L&uuml;cke kommt</span>
+    <span class="code-lang">HTML</span>
+  </div>
+  <pre><code class="language-xml">&lt;nav&gt;
+  &lt;a&gt;&lt;/a&gt;[Whitespace]
+  &lt;a&gt;&lt;/a&gt;[Whitespace]
+  &lt;a&gt;&lt;/a&gt;[Whitespace]
+&lt;/nav&gt;</code></pre>
+</div>
+        <div class="demo">
+  <div class="demo-label">Live-Vorschau</div>
+  <div class="demo-body">
+          <div><span style="display:inline-block;width:60px;height:30px;background:#0969da"></span>
+            <span style="display:inline-block;width:60px;height:30px;background:#0969da"></span>
+            <span style="display:inline-block;width:60px;height:30px;background:#0969da"></span>
+            &larr; L&uuml;cken durch Whitespace</div>
+          <div style="margin-top:.5rem"><span style="display:inline-block;width:60px;height:30px;background:#1a7f37"></span><span style="display:inline-block;width:60px;height:30px;background:#1a7f37"></span><span style="display:inline-block;width:60px;height:30px;background:#1a7f37"></span> &larr; ohne Whitespace im Quelltext</div>
+        </div>
+</div>
+        <div class="callout callout-tip">
+  <div class="callout-icon">&#128161;</div>
+  <div class="callout-body">
+    <div class="callout-title">Moderne L&ouml;sung</div>
+    <p>Statt Whitespace im HTML zu entfernen, verwendet man f&uuml;r Elemente nebeneinander heute
+          <strong>Flexbox</strong> (Lektion 2.5) &ndash; dort gibt es diese L&uuml;cke nicht, und Abst&auml;nde
+          werden mit <code>gap</code> gesteuert. Bei Bildern hilft <code>vertical-align: bottom</code>
+          gegen die kleine L&uuml;cke <em>unter</em> dem Bild.</p>
+  </div>
+</div>
+      </section>
+
+      <section class="section section-projekt">
+        <h2>Projektschritt</h2>
+<div class="projekt-box">
+  <div class="projekt-box-header">
+    <span class="projekt-step">Projektschritt 2.2</span>
+    <h3>Reset, Box Model &amp; Display</h3>
+  </div>
+<p>Jetzt bekommen die Bereiche der Seite Abst&auml;nde, Rahmen und eine maximale Breite, und die Navigation steht nebeneinander. H&auml;nge den Abschnitt an <code>style.css</code> an.</p>
+  <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">demoseite/css/style.css (neu in 2.2)</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">/* ---- 2.2 Box Model &amp; Display ------------------------------ */
+
+/* Reset: width = sichtbare Breite, keine Browser-Abstände */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  line-height: 1.6;
+  background-color: whitesmoke;
+}
+
+header {
+  padding: 1rem;
+}
+
+/* Navigationspunkte nebeneinander */
+#nav-menu ul {
+  list-style: none;
+}
+
+#nav-menu li {
+  display: inline-block;
+  margin: 1rem 1rem 0 0;
+}
+
+/* Inhalt zentriert mit maximaler Breite */
+main {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+}
+
+h1 {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  border-radius: 10px;
+}
+
+h2 {
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 3px solid;
+}
+
+section,
+aside {
+  margin: 2rem 0;
+  padding: 2rem;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+p,
+ul,
+ol,
+table {
+  margin-bottom: 1rem;
+}
+
+ul,
+ol {
+  padding-left: 2rem;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: bottom;
+}
+
+footer {
+  padding: 2rem;
+  margin-top: 3rem;
+}
+
+/* Tabelle: volle Breite, Innenabstand in den Zellen */
+table {
+  width: 100%;
+}
+
+th,
+td {
+  padding: 0.8rem;
+}</code></pre>
+</div>
+  <p class="mb-0">&#128193; Stand nach dieser Lektion: <a href="beispiele/2.2/index.html" target="_blank">beispiele/2.2/</a></p>
+</div>
+      </section>
+
+      <section class="section section-fehler">
+        <h2>H&auml;ufige Fehler</h2>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Breite &uuml;bersteigt den Container</div>
+  <p>Ein Element mit <code>width: 100%; padding: 20px;</code> ist breiter als sein Eltern-Element und erzeugt einen horizontalen Scrollbalken.</p>
+          <p class="fehler-fix"><code>box-sizing: border-box;</code> setzen &ndash; dann sind Padding und Border in den 100&nbsp;% enthalten.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: width/height auf Inline-Elementen</div>
+  <p><code>&lt;a&gt;</code> oder <code>&lt;span&gt;</code> reagieren nicht auf <code>width</code>, <code>height</code> oder <code>margin-top</code>.</p>
+          <p class="fehler-fix">Das Element mit <code>display: inline-block</code> (oder <code>block</code>) umstellen.</p>
+</div>
+      </section>
+
+      <section class="section section-aufgaben">
+        <h2>Aufgaben</h2>
+        <div class="aufgaben-list">
+          <div class="aufgabe">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Aufgabe 1</span>
+    <span class="aufgabe-title">Box Model berechnen</span>
+  </div>
+  <p>Ein Element hat <code>width: 300px; padding: 10px 20px; border: 2px solid; margin: 15px;</code>. Wie breit ist es sichtbar (inkl. Border) mit <code>content-box</code>? Wie breit mit <code>border-box</code>? Wie viel horizontalen Platz nimmt es inkl. Margin ein?</p>
+</div>
+          <div class="aufgabe">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Aufgabe 2</span>
+    <span class="aufgabe-title">Inline, Inline-Block, Block</span>
+  </div>
+  <p>Erstelle drei <code>&lt;span&gt;</code>-Elemente mit <code>width: 120px; height: 60px; margin: 20px;</code> und einer Hintergrundfarbe. Stelle sie nacheinander auf <code>inline</code>, <code>inline-block</code> und <code>block</code> und beschreibe die Unterschiede.</p>
+</div>
+          <div class="aufgabe">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Aufgabe 3</span>
+    <span class="aufgabe-title">Box Model in den Entwicklertools</span>
+  </div>
+  <p>W&auml;hle auf der Demoseite eine <code>&lt;section&gt;</code> aus und lies im Tab <strong>Computed</strong> Content-Breite, Padding, Border und Margin ab. &Auml;ndere <code>max-width</code> von <code>&lt;main&gt;</code> auf <code>960px</code> &ndash; was passiert?</p>
+</div>
+          <div class="aufgabe aufgabe-bonus">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Bonus</span>
+    <span class="aufgabe-title">Die 4px-L&uuml;cke</span>
+  </div>
+  <p>Stelle die Karten (<code>.card</code>) der Demoseite auf <code>display: inline-block; width: 250px;</code>, damit sie nebeneinander stehen. Miss die L&uuml;cke zwischen ihnen in den Entwicklertools. Finde zwei Wege, sie zu entfernen.</p>
+</div>
+        </div>
+      </section>
+
+    </div>
+
+    <nav class="lesson-nav">
+      <a class="nav-btn" href="2.1-selektoren-properties.html">&larr; Lektion 2.1: Selektoren, Einheiten &amp; Properties</a>
+      <span class="nav-center-info">Lektion 2.2</span>
+      <a class="nav-btn primary" href="2.3-vererbung-spezifitaet.html">Lektion 2.3: Vererbung, Spezifit&auml;t &amp; Kaskade &rarr;</a>
+    </nav>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>
+    const ham = document.getElementById('hamburger');
+    const sb = document.getElementById('sidebar');
+    const ov = document.getElementById('overlay');
+    ham.addEventListener('click', () => { sb.classList.toggle('open'); ov.classList.toggle('visible'); });
+    ov.addEventListener('click', () => { sb.classList.remove('open'); ov.classList.remove('visible'); });
+    const cur = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-link').forEach(l => {
+      if (l.getAttribute('href') === cur) l.classList.add('active');
+    });
+    const themeBtn = document.getElementById('theme-toggle');
+    const applyTheme = (t) => {
+      document.documentElement.setAttribute('data-theme', t);
+      if (themeBtn) themeBtn.innerHTML = t === 'dark' ? '&#9728;' : '&#9790;';
+    };
+    applyTheme(localStorage.getItem('kurs-theme') || 'dark');
+    setTimeout(() => document.documentElement.classList.add('theme-transitions'), 50);
+    if (themeBtn) themeBtn.addEventListener('click', () => {
+      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('kurs-theme', next);
+      applyTheme(next);
+    });
+    hljs.highlightAll();
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1240 680" width="1240" height="680" font-family="ui-monospace, 'SF Mono', Consolas, monospace">
+  <title>Obwohl .bar z-index 1000 hat, liegt es unter .baz mit z-index 2</title>
+  <rect width="1240" height="680" fill="#ffffff"/>
+  <rect x="20" y="20" width="1200" height="640" rx="6" fill="#d0d7de"/>
+  <text x="40" y="54" font-size="22" fill="#57606a">html</text>
+  <!-- .foo (z-index 1) -->
+  <rect x="60" y="80" width="760" height="460" rx="6" fill="#3fb950"/>
+  <text x="90" y="125" font-size="26" fill="#ffffff">.foo {</text>
+  <text x="120" y="160" font-size="26" fill="#ffffff">z-index: 1;</text>
+  <text x="90" y="195" font-size="26" fill="#ffffff">}</text>
+  <!-- .bar (z-index 1000, innerhalb .foo) -->
+  <rect x="400" y="160" width="520" height="340" rx="6" fill="#58a6ff"/>
+  <text x="430" y="205" font-size="26" fill="#ffffff">.bar {</text>
+  <text x="460" y="240" font-size="26" fill="#ffffff">z-index: 1000;</text>
+  <text x="430" y="275" font-size="26" fill="#ffffff">}</text>
+  <!-- .baz (z-index 2) -->
+  <rect x="740" y="300" width="460" height="340" rx="6" fill="#f85149"/>
+  <text x="770" y="345" font-size="26" fill="#ffffff">.baz {</text>
+  <text x="800" y="380" font-size="26" fill="#ffffff">z-index: 2;</text>
+  <text x="770" y="415" font-size="26" fill="#ffffff">}</text>
+</svg>

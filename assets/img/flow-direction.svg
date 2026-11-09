@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 400" width="700" height="400" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <title>Block-Elemente folgen der flow direction von oben nach unten, Inline-Elemente der writing direction von links nach rechts</title>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1f2328"/></marker>
+  </defs>
+  <rect width="700" height="400" fill="#ffffff"/>
+  <!-- writing direction -->
+  <line x1="220" y1="30" x2="500" y2="30" stroke="#f0883e" stroke-width="3" marker-end="url(#a)"/>
+  <text x="360" y="22" text-anchor="middle" font-size="16" font-weight="700" fill="#bc4c00">writing direction</text>
+  <!-- flow direction -->
+  <line x1="190" y1="60" x2="190" y2="380" stroke="#58a6ff" stroke-width="3" marker-end="url(#a)"/>
+  <text x="175" y="220" text-anchor="end" font-size="16" font-weight="700" fill="#0969da">flow direction</text>
+  <!-- Blöcke -->
+  <rect x="220" y="60" width="280" height="50" rx="5" fill="#ddf4ff" stroke="#58a6ff" stroke-width="2"/>
+  <rect x="220" y="125" width="280" height="160" rx="5" fill="#ddf4ff" stroke="#58a6ff" stroke-width="2"/>
+  <rect x="220" y="300" width="280" height="50" rx="5" fill="#ddf4ff" stroke="#58a6ff" stroke-width="2"/>
+  <!-- Inline-Elemente im mittleren Block -->
+  <g fill="#f0883e">
+    <rect x="235" y="140" width="70" height="26" rx="3"/><rect x="312" y="140" width="90" height="26" rx="3"/><rect x="409" y="140" width="76" height="26" rx="3"/>
+    <rect x="235" y="176" width="50" height="26" rx="3"/><rect x="292" y="176" width="80" height="26" rx="3"/><rect x="379" y="176" width="106" height="26" rx="3"/>
+    <rect x="235" y="212" width="96" height="26" rx="3"/><rect x="338" y="212" width="60" height="26" rx="3"/><rect x="405" y="212" width="80" height="26" rx="3"/>
+    <rect x="235" y="248" width="70" height="26" rx="3"/>
+  </g>
+  <text x="267" y="198" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">inline</text>
+  <!-- Legende -->
+  <rect x="540" y="150" width="26" height="20" rx="3" fill="#ddf4ff" stroke="#58a6ff" stroke-width="2"/>
+  <text x="576" y="166" font-size="16" fill="#1f2328">block</text>
+  <rect x="540" y="190" width="26" height="20" rx="3" fill="#f0883e"/>
+  <text x="576" y="206" font-size="16" fill="#1f2328">inline</text>
+</svg>

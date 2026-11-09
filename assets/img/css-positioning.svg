@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="800" height="420" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <title>CSS-Positionierung: static, relative, absolute, fixed, sticky</title>
+  <rect width="800" height="420" fill="#0d1117"/>
+  <text x="400" y="70" text-anchor="middle" font-size="42" font-weight="800" fill="#e6edf3" letter-spacing="2">CSS Positioning</text>
+  <text x="400" y="106" text-anchor="middle" font-family="ui-monospace, Consolas, monospace" font-size="18" fill="#8b949e">position: static | relative | absolute | fixed | sticky</text>
+  <g font-family="ui-monospace, Consolas, monospace" font-size="15" fill="#c9d1d9" text-anchor="middle">
+    <!-- static -->
+    <rect x="40" y="150" width="130" height="170" rx="6" fill="none" stroke="#30363d" stroke-width="2"/>
+    <rect x="58" y="170" width="94" height="30" rx="3" fill="#8b949e"/><rect x="58" y="210" width="94" height="30" rx="3" fill="#8b949e"/><rect x="58" y="250" width="94" height="30" rx="3" fill="#8b949e"/>
+    <text x="105" y="350">static</text>
+    <!-- relative -->
+    <rect x="190" y="150" width="130" height="170" rx="6" fill="none" stroke="#30363d" stroke-width="2"/>
+    <rect x="208" y="170" width="94" height="30" rx="3" fill="#8b949e"/>
+    <rect x="208" y="210" width="94" height="30" rx="3" fill="none" stroke="#58a6ff" stroke-dasharray="4 3"/>
+    <rect x="222" y="220" width="94" height="30" rx="3" fill="#58a6ff"/>
+    <rect x="208" y="250" width="94" height="30" rx="3" fill="#8b949e"/>
+    <text x="255" y="350">relative</text>
+    <!-- absolute -->
+    <rect x="340" y="150" width="130" height="170" rx="6" fill="none" stroke="#30363d" stroke-width="2"/>
+    <rect x="358" y="170" width="94" height="30" rx="3" fill="#8b949e"/><rect x="358" y="210" width="94" height="30" rx="3" fill="#8b949e"/>
+    <rect x="410" y="270" width="50" height="40" rx="3" fill="#f0883e"/>
+    <text x="405" y="350">absolute</text>
+    <!-- fixed -->
+    <rect x="490" y="150" width="130" height="170" rx="6" fill="none" stroke="#30363d" stroke-width="2"/>
+    <rect x="508" y="190" width="94" height="30" rx="3" fill="#8b949e"/><rect x="508" y="230" width="94" height="30" rx="3" fill="#8b949e"/><rect x="508" y="270" width="94" height="30" rx="3" fill="#8b949e"/>
+    <rect x="490" y="150" width="130" height="26" rx="3" fill="#a78bfa"/>
+    <text x="555" y="350">fixed</text>
+    <!-- sticky -->
+    <rect x="640" y="150" width="130" height="170" rx="6" fill="none" stroke="#30363d" stroke-width="2"/>
+    <rect x="658" y="166" width="94" height="22" rx="3" fill="#8b949e"/>
+    <rect x="640" y="196" width="130" height="24" rx="3" fill="#3fb950"/>
+    <rect x="658" y="230" width="94" height="30" rx="3" fill="#8b949e"/><rect x="658" y="270" width="94" height="30" rx="3" fill="#8b949e"/>
+    <text x="705" y="350">sticky</text>
+  </g>
+</svg>

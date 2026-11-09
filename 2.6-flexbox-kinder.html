@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<!-- GENERIERT von kurse/_build (html_css) – nicht direkt bearbeiten!
+     Quelle: kurse/_build/html_css/lessons/, bauen: python3 _build/build.py html_css -->
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.6 &ndash; Flexbox: Flex-Kinder &amp; Patterns | HTML &amp; CSS Kurs</title>
+  <script>(function () { var t = localStorage.getItem('kurs-theme') || 'dark'; document.documentElement.setAttribute('data-theme', t); })();</script>
+  <link rel="stylesheet" href="assets/kurs.css">
+  <link rel="stylesheet" id="hljs-theme"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+
+<body>
+
+  <button class="hamburger" id="hamburger" aria-label="Navigation &ouml;ffnen">&#9776;</button>
+  <div class="sidebar-overlay" id="overlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html">
+        <span class="brand-icon">&lt;/&gt;</span>
+        <div>
+          <div class="brand-name">HTML &amp; CSS</div>
+          <div class="brand-sub">Web- und Mobile Computing</div>
+        </div>
+      </a>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Dark/Light Mode"
+        title="Theme wechseln">&#9728;</button>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-group">
+        <div class="nav-group-label html-label">Teil 1 &mdash; Web &amp; HTML</div>
+        <a class="nav-link" href="1.1-geschichte-internet.html"><span class="ln">1.1</span>Geschichte des Internets</a>
+        <a class="nav-link" href="1.2-grundlagen-web.html"><span class="ln">1.2</span>Grundlagen des Web: HTML, HTTP, URL</a>
+        <a class="nav-link" href="1.3-html5-grundlagen.html"><span class="ln">1.3</span>HTML5: Spezifikation, DOM &amp; APIs</a>
+        <a class="nav-link" href="1.4-html-elemente-semantik.html"><span class="ln">1.4</span>HTML-Elemente &amp; Semantik</a>
+        <a class="nav-link" href="1.5-attribute-formulare.html"><span class="ln">1.5</span>Attribute &amp; Formulare</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label css-label">Teil 2 &mdash; CSS &amp; Layout</div>
+        <a class="nav-link" href="2.1-selektoren-properties.html"><span class="ln">2.1</span>Selektoren, Einheiten &amp; Properties</a>
+        <a class="nav-link" href="2.2-box-model-display.html"><span class="ln">2.2</span>Box Model &amp; Display</a>
+        <a class="nav-link" href="2.3-vererbung-spezifitaet.html"><span class="ln">2.3</span>Vererbung, Spezifit&auml;t &amp; Kaskade</a>
+        <a class="nav-link" href="2.4-positionierung.html"><span class="ln">2.4</span>Positionierung &amp; z-index</a>
+        <a class="nav-link" href="2.5-flexbox-container.html"><span class="ln">2.5</span>Flexbox: Flex-Container</a>
+        <a class="nav-link" href="2.6-flexbox-kinder.html"><span class="ln">2.6</span>Flexbox: Flex-Kinder &amp; Patterns</a>
+        <a class="nav-link" href="2.7-grid-grundlagen.html"><span class="ln">2.7</span>CSS Grid Grundlagen</a>
+        <a class="nav-link" href="2.8-grid-responsive.html"><span class="ln">2.8</span>Media Queries &amp; responsive Grids</a>
+        <a class="nav-link" href="2.9-transform-transition.html"><span class="ln">2.9</span>Transformationen &amp; Transitions</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label fw-label">Teil 3 &mdash; CSS-Frameworks</div>
+        <a class="nav-link" href="3.1-bootstrap-grundlagen.html"><span class="ln">3.1</span>Bootstrap: Setup, Grid &amp; Utilities</a>
+        <a class="nav-link" href="3.2-bootstrap-komponenten.html"><span class="ln">3.2</span>Bootstrap: Komponenten &amp; Anpassung</a>
+        <a class="nav-link" href="3.3-tailwind.html"><span class="ln">3.3</span>Tailwind CSS</a>
+      </div>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <header class="lesson-header">
+      <p class="lesson-eyebrow">Lektion 2.6 &mdash; Teil 2: CSS &amp; Layout</p>
+      <h1>Flexbox: Flex-Kinder &amp; Patterns</h1>
+      <div class="lesson-tags">
+        <span class="tag tag-css">Flexbox</span>
+        <span class="tag tag-time">ca. 90 min</span>
+        <span class="tag tag-level">Layout</span>
+      </div>
+    </header>
+
+    <div class="content-area">
+      <section class="section section-lernziele">
+        <h2>Lernziele</h2>
+        <ul class="lernziele-list">
+          <li>Die Reihenfolge von Flex-Kindern mit <code>order</code> &auml;ndern</li>
+          <li>Wachsen und Schrumpfen mit <code>flex-grow</code> und <code>flex-shrink</code> steuern</li>
+          <li>Die Wunschgr&ouml;&szlig;e <code>flex-basis</code> verstehen &ndash; und den Unterschied zwischen <code>0</code> und <code>auto</code></li>
+          <li>Die Kurzschreibweise <code>flex</code> lesen und die typischen Werte kennen</li>
+          <li>Zwei Praxis-Patterns umsetzen: Text-Bild-Layout mit responsiven Medien und ein mehrzeiliges Mobile-First-Layout</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2>1 &mdash; Flex-Kinder</h2>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/flex-items.svg" alt="Die direkten Kinder eines Flex-Containers sind die Flex-Items (Flex-Kinder)" loading="lazy" style="max-width:420px"></div>
+  <figcaption>Die direkten Kinder eines Flex-Containers sind die Flex-Items (Flex-Kinder)</figcaption>
+</figure>
+        <p>
+          W&auml;hrend die Properties aus Lektion 2.5 auf den Container gesetzt werden, stehen die
+          folgenden Properties auf den <strong>einzelnen Kindern</strong>. Damit kann man jedes Kind
+          individuell steuern.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>2 &mdash; order</h2>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">order</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">div {
+  order: number;
+}</code></pre>
+</div>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/flex-order.svg" alt="Kinder mit order 1, 1, 1, 2, 3 &ndash; ein Kind mit order -1 r&uuml;ckt nach vorne, eines mit 99 ganz nach hinten" loading="lazy" style="max-width:420px"></div>
+  <figcaption>Kinder mit order 1, 1, 1, 2, 3 &ndash; ein Kind mit order -1 r&uuml;ckt nach vorne, eines mit 99 ganz nach hinten</figcaption>
+</figure>
+        <p>Standardm&auml;&szlig;ig werden die Flex-Elemente in der Reihenfolge des DOM-Baums angeordnet (alle haben <code>order: 0</code>).</p>
+        <p><code>order</code> steuert die Reihenfolge, in der sie im Flex-Container erscheinen. Kleinere Werte kommen zuerst.</p>
+        <div class="callout callout-warning">
+  <div class="callout-icon">&#9888;</div>
+  <div class="callout-body">
+    <div class="callout-title">Nur visuell</div>
+    <code>order</code> &auml;ndert nur die <em>Darstellung</em>. Screenreader und die Tab-Taste folgen
+          weiterhin der Reihenfolge im HTML. Wichtige Inhalte sollten deshalb auch im HTML in einer
+          sinnvollen Reihenfolge stehen.
+  </div>
+</div>
+      </section>
+
+      <section class="section">
+        <h2>3 &mdash; flex-grow</h2>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">flex-grow</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">div {
+  flex-grow: number;
+}</code></pre>
+</div>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/flex-grow.svg" alt="Oben: alle Kinder flex-grow: 1. Unten: das mittlere Kind hat flex-grow: 2" loading="lazy" style="max-width:420px"></div>
+  <figcaption>Oben: alle Kinder flex-grow: 1. Unten: das mittlere Kind hat flex-grow: 2</figcaption>
+</figure>
+        <p><code>flex-grow</code> <em>(default 0)</em> definiert die F&auml;higkeit eines Flex-Kindes, bei Bedarf zu <strong>wachsen</strong>.</p>
+        <ul>
+          <li>Sind alle Flex-Kinder auf <code>1</code> eingestellt, wird der verbleibende Platz im Container gleichm&auml;&szlig;ig auf alle Kinder verteilt.</li>
+          <li>Ist ein Flex-Kind auf <code>2</code> und die anderen auf <code>1</code> eingestellt, bekommt dieses Kind <strong>doppelt so viel vom verbleibenden Platz</strong> wie jedes der anderen.</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2>4 &mdash; flex-shrink</h2>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">flex-shrink</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">div {
+  flex-shrink: number;
+}</code></pre>
+</div>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/flex-grow.svg" alt="flex-shrink funktioniert spiegelbildlich: Ein Kind mit h&ouml;herem Wert gibt mehr Platz ab" loading="lazy" style="max-width:420px"></div>
+  <figcaption>flex-shrink funktioniert spiegelbildlich: Ein Kind mit h&ouml;herem Wert gibt mehr Platz ab</figcaption>
+</figure>
+        <p>
+          <code>flex-shrink</code> <em>(default 1)</em> definiert die F&auml;higkeit eines Flex-Kindes,
+          bei Bedarf zu <strong>schrumpfen</strong> &ndash; also wenn der Platz im Container nicht f&uuml;r
+          alle reicht. Mit <code>flex-shrink: 0</code> schrumpft ein Kind gar nicht.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>5 &mdash; flex-basis</h2>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">flex-basis</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">div {
+  flex-basis: px | % | auto;
+}</code></pre>
+</div>
+        <p>
+          <code>flex-basis</code> ist die <strong>Wunschgr&ouml;&szlig;e</strong> eines Elements,
+          <em>bevor</em> der verbleibende Platz verteilt wird. Es kann eine L&auml;nge
+          (z.&nbsp;B. <code>100%</code>, <code>0px</code>) oder <code>auto</code> sein.
+        </p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Wert</th><th>Bedeutung</th><th>Sinnvoll mit</th></tr></thead>
+            <tbody>
+              <tr><td><code>flex-basis: auto</code> <em>(default)</em></td><td>&bdquo;Ich m&ouml;chte so gro&szlig; wie mein Inhalt sein.&ldquo;</td><td>&ndash;</td></tr>
+              <tr><td><code>flex-basis: 0px</code></td><td>&bdquo;Ich m&ouml;chte 0px gro&szlig; sein.&ldquo;</td><td><code>flex-grow</code></td></tr>
+              <tr><td><code>flex-basis: 100%</code></td><td>&bdquo;Ich m&ouml;chte so breit wie der Container sein.&ldquo;</td><td><code>flex-wrap: wrap</code> &rarr; siehe Flexbox &ndash; Multiline</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>flex-basis: 0 vs. flex-basis: auto</h3>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/flex-basis-0-vs-auto.svg" alt="Oben: All Space Distributed (flex-basis: 0) &ndash; die Breiten verhalten sich exakt 1:1:2. Unten: Extra Space Distributed (flex-basis: auto) &ndash; nur der Restplatz wird 1:1:2 verteilt" loading="lazy" style="max-width:560px"></div>
+  <figcaption>Oben: All Space Distributed (flex-basis: 0) &ndash; die Breiten verhalten sich exakt 1:1:2. Unten: Extra Space Distributed (flex-basis: auto) &ndash; nur der Restplatz wird 1:1:2 verteilt</figcaption>
+</figure>
+        <div class="two-col">
+          <div>
+            <h4>flex-basis: 0</h4>
+            <p>Der <strong>ganze</strong> Flex-Container (ALL SPACE) wird proportional zum <code>flex-grow</code>-Wert auf die Flex-Kinder verteilt. Der Inhalt spielt keine Rolle.</p>
+          </div>
+          <div>
+            <h4>flex-basis: auto</h4>
+            <p>Jedes Kind bekommt zuerst den Platz f&uuml;r seinen Inhalt. Nur der <strong>&uuml;brige</strong> Bereich (EXTRA SPACE) wird proportional zum <code>flex-grow</code>-Wert verteilt.</p>
+          </div>
+        </div>
+        <div class="callout callout-info">
+  <div class="callout-icon">&#8505;</div>
+  <div class="callout-body">
+    <div class="callout-title">Flex-Algorithmus</div>
+    <p>Zuerst <strong>Basis</strong> &rarr; dann <strong>shrink</strong> (falls zu wenig Platz) &rarr;
+          dann <strong>grow</strong> (falls Platz &uuml;brig).</p>
+  </div>
+</div>
+      </section>
+
+      <section class="section">
+        <h2>6 &mdash; Flex-Shorthand</h2>
+        <p>In der Praxis schreibt man <code>flex-grow</code>, <code>flex-shrink</code> und <code>flex-basis</code> fast immer zusammen mit der Kurzform <code>flex</code>:</p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">flex-Shorthand</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">/* Three values: flex-grow &amp; flex-shrink &amp; flex-basis */
+flex: 0 0 100%;
+
+/* One value, unitless number: flex-grow */
+flex: 1;
+/* → entspricht flex: 1 1 0; */</code></pre>
+</div>
+
+        <h3>Typische Werte &ndash; und was sie &bdquo;sagen&ldquo;</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Wert</th><th>Bedeutung</th><th>Hinweis</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><code>flex: 0 1 auto</code> <em>(default)</em></td>
+                <td>&bdquo;I want to be the width of my real content &hellip; BUT if necessary I will shrink.&ldquo;</td>
+                <td>Verhindert, dass die Zeile &uuml;berl&auml;uft.</td>
+              </tr>
+              <tr>
+                <td><code>flex: 1 0 auto</code></td>
+                <td>&bdquo;I want to be the width of my real content &hellip; BUT if possible I will grow.&ldquo;</td>
+                <td class="text-red">Kann die Zeile &uuml;berlaufen lassen (DANGEROUS!)</td>
+              </tr>
+              <tr>
+                <td><code>flex: 1 1 auto</code></td>
+                <td>&bdquo;I want to be the width of my real content &hellip; BUT let&rsquo;s see if I have to grow or shrink.&ldquo;</td>
+                <td>Flexibel in beide Richtungen.</td>
+              </tr>
+              <tr>
+                <td><code>flex: 0 0 auto</code></td>
+                <td>&bdquo;I will be the width of my real content &hellip; and nobody touches me!&ldquo;</td>
+                <td class="text-red">Kann die Zeile &uuml;berlaufen lassen (DANGEROUS!)</td>
+              </tr>
+              <tr>
+                <td><code>flex: 1 0 0px</code><br><code>flex: 1</code></td>
+                <td>&bdquo;I will start with my absolute minimum size &hellip; BUT if possible I will grow.&ldquo;</td>
+                <td>Auf alle Kinder gesetzt, werden alle <strong>gleich gro&szlig;</strong>.</td>
+              </tr>
+              <tr>
+                <td><code>flex: 0 0 100%</code></td>
+                <td>&bdquo;I will take the entire flex-line for me.&ldquo;</td>
+                <td>Sinnvoll mit <code>flex-wrap: wrap</code>.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout callout-info">
+  <div class="callout-icon">&#8505;</div>
+  <div class="callout-body">
+    <div class="callout-title">Pr&auml;zisierung zu flex: 1</div>
+    <p>Laut Spezifikation steht <code>flex: 1</code> f&uuml;r <code>flex: 1 1 0</code> (mit
+          <code>flex-shrink: 1</code>). F&uuml;r das Ergebnis &bdquo;alle gleich gro&szlig;&ldquo; macht das keinen
+          Unterschied, denn mit <code>flex-basis: 0</code> muss ohnehin nichts schrumpfen.</p>
+  </div>
+</div>
+        <div class="demo">
+  <div class="demo-label">Live-Vorschau: flex: 1 auf allen drei Kindern</div>
+  <div class="demo-body">
+          <div style="display:flex;gap:6px;background:#ede4f7;padding:6px;border-radius:6px">
+            <div style="flex:1;background:#f4a261;padding:8px;border-radius:4px">kurz</div>
+            <div style="flex:1;background:#f4a261;padding:8px;border-radius:4px">ein deutlich l&auml;ngerer Inhalt</div>
+            <div style="flex:1;background:#f4a261;padding:8px;border-radius:4px">kurz</div>
+          </div>
+        </div>
+</div>
+      </section>
+
+      <section class="section">
+        <h2>7 &mdash; Flexbox mit responsiven Medien</h2>
+        <p>Pattern: Ein Artikel mit Text und Bild nebeneinander, beide gleich breit.</p>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/flex-responsive-media.png" alt="Bild und Text stehen nebeneinander, beide teilen sich den Platz gleichm&auml;&szlig;ig" loading="lazy"></div>
+  <figcaption>Bild und Text stehen nebeneinander, beide teilen sich den Platz gleichm&auml;&szlig;ig</figcaption>
+</figure>
+        <h3>1) Responsive Media</h3>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Schritt 1</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">img, video {
+  max-width: 100%;
+  height: auto;
+  /* remove bottom gap from img/video */
+  vertical-align: bottom;
+}</code></pre>
+</div>
+        <h3>2) img/video in ein anderes Tag einpacken</h3>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Schritt 2</span>
+    <span class="code-lang">HTML</span>
+  </div>
+  <pre><code class="language-xml">&lt;div&gt;&lt;img src=""&gt;&lt;/div&gt;</code></pre>
+</div>
+        <ul>
+          <li><code>img</code>/<code>video</code> haben einen &bdquo;intrinsic content&ldquo; (eine eigene, nat&uuml;rliche Gr&ouml;&szlig;e) &ndash; als direktes Flex-Kind verhalten sie sich deshalb oft unerwartet. :-(</li>
+          <li><code>max-width: 100%</code> gehorcht dann seinem &bdquo;Master&ldquo;, dem Wrapper-Tag. :-)</li>
+          <li>Der Wrapper wiederum wird von Flexbox gesteuert.</li>
+        </ul>
+        <h3>3) Flex-Container</h3>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Schritt 3</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">.intro-article {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}</code></pre>
+</div>
+        <h3>4) Flex-Kinder</h3>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Schritt 4</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">.intro-article__content,
+.intro-article__media {
+  flex: 1;
+}</code></pre>
+</div>
+      </section>
+
+      <section class="section">
+        <h2>8 &mdash; Flexbox: Multiline-Layout (Mobile First)</h2>
+        <p>
+          Pattern: Ein komplettes Seitenlayout mit Header, Hauptinhalt, zwei Sidebars und Footer, das
+          sich an die Bildschirmbreite anpasst. Wir beginnen mit dem Layout f&uuml;r Smartphones
+          (<strong>Mobile First</strong>) und erweitern es f&uuml;r gr&ouml;&szlig;ere Bildschirme.
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">HTML</span>
+    <span class="code-lang">HTML</span>
+  </div>
+  <pre><code class="language-xml">&lt;div class="wrapper"&gt;
+  &lt;header class="header"&gt;Header&lt;/header&gt;
+  &lt;article class="main"&gt;...&lt;/article&gt;
+  &lt;aside class="aside aside-1"&gt;Aside 1&lt;/aside&gt;
+  &lt;aside class="aside aside-2"&gt;Aside 2&lt;/aside&gt;
+  &lt;footer class="footer"&gt;Footer&lt;/footer&gt;
+&lt;/div&gt;</code></pre>
+</div>
+        <h3>1) Flex-Container</h3>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Schritt 1</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">.wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}</code></pre>
+</div>
+        <h3>2) Flex-Kinder &ndash; Mobile First</h3>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Schritt 2</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">/* Jedes Kind nimmt die ganze Zeile ein → alles untereinander */
+.wrapper &gt; * {
+  flex: 0 0 100%;
+}</code></pre>
+</div>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/flex-multiline-mobile.png" alt="Mobile: alle Bereiche untereinander" loading="lazy" style="max-width:380px"></div>
+  <figcaption>Mobile: alle Bereiche untereinander</figcaption>
+</figure>
+        <h3>3) Flex-Kinder &ndash; Tablet</h3>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Schritt 3</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">@media all and (min-width: 600px) {
+  /* Die beiden Asides teilen sich eine Zeile */
+  .aside { flex: 1 0 0; }
+}</code></pre>
+</div>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/flex-multiline-tablet.png" alt="Tablet: Aside 1 und Aside 2 nebeneinander" loading="lazy" style="max-width:560px"></div>
+  <figcaption>Tablet: Aside 1 und Aside 2 nebeneinander</figcaption>
+</figure>
+        <h3>4) Flex-Kinder &ndash; Desktop</h3>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Schritt 4</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">@media all and (min-width: 800px) {
+  .main { flex: 3 0 0; }
+  .header { order: 1; }
+  .aside-1 { order: 2; }
+  .main { order: 3; }
+  .aside-2 { order: 4; }
+  .footer { order: 5; }
+}</code></pre>
+</div>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/flex-multiline-desktop.png" alt="Desktop: Aside 1 &ndash; Main (dreimal so breit) &ndash; Aside 2 in einer Zeile" loading="lazy"></div>
+  <figcaption>Desktop: Aside 1 &ndash; Main (dreimal so breit) &ndash; Aside 2 in einer Zeile</figcaption>
+</figure>
+        <div class="callout callout-info">
+  <div class="callout-icon">&#8505;</div>
+  <div class="callout-body">
+    <div class="callout-title">@media</div>
+    <p>Die Regeln in <code>@media all and (min-width: 600px) { … }</code> gelten nur, wenn das
+          Browserfenster mindestens 600px breit ist. Media Queries behandeln wir ausf&uuml;hrlich in
+          Lektion 2.8.</p>
+  </div>
+</div>
+      </section>
+
+      <section class="section">
+        <h2>9 &mdash; Flexbox: Summary</h2>
+        <h3>Flex-Container</h3>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Flex-Container</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">display: flex | inline-flex;
+
+flex-direction: row (default) | column | row-reverse | column-reverse;
+flex-wrap: nowrap (default) | wrap | wrap-reverse;
+flex-flow: row nowrap (default); /* Shorthand for flex-direction &amp; flex-wrap */
+
+justify-content: flex-start (default) | center | flex-end | space-around | space-between | space-evenly;
+align-items: flex-start | center | flex-end | stretch (default) | baseline;
+align-content: flex-start (default) | center | flex-end | stretch;
+gap: 10px;</code></pre>
+</div>
+        <h3>Flex-Kinder</h3>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Flex-Kinder</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">order: number;
+flex-grow: number;
+flex-shrink: number;
+flex-basis: auto | px | %;
+flex: 0 1 auto (default); /* Shorthand for flex-grow &amp; flex-shrink &amp; flex-basis */</code></pre>
+</div>
+      </section>
+
+      <section class="section section-projekt">
+        <h2>Projektschritt</h2>
+<div class="projekt-box">
+  <div class="projekt-box-header">
+    <span class="projekt-step">Projektschritt 2.6</span>
+    <h3>Text/Bild-Layout &amp; Karten</h3>
+  </div>
+<p>Jetzt steuern wir die Flex-Kinder: Text und Bild im HTML-Abschnitt teilen sich den Platz 2&nbsp;:&nbsp;1, die CSS-Karten brechen automatisch um, und mit <code>order: -1</code> steht das Bild oben, obwohl es im HTML zuletzt kommt.</p>
+  <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">demoseite/css/style.css (neu in 2.6)</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">/* ---- 2.6 Flexbox: Flex-Kinder &amp; Patterns ------------------- */
+
+/* Text und Bild nebeneinander: Text bekommt doppelt so viel Platz */
+.content-with-image {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.text-content {
+  flex: 2;
+}
+
+.content-with-image img {
+  flex: 1;
+  min-width: 0;
+  max-width: 200px;
+}
+
+/* Karten in Reihen, die automatisch umbrechen */
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.card {
+  flex: 1 1 250px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 10px;
+  background: white;
+}
+
+.card img {
+  order: -1;           /* Bild nach oben, obwohl es im HTML zuletzt steht */
+  height: 150px;
+  object-fit: cover;
+}
+
+.card h3,
+.card p {
+  margin: 1rem 1rem 0;
+}</code></pre>
+</div>
+  <p class="mb-0">&#128193; Stand nach dieser Lektion: <a href="beispiele/2.6/index.html" target="_blank">beispiele/2.6/</a></p>
+</div>
+      </section>
+
+      <section class="section section-fehler">
+        <h2>H&auml;ufige Fehler</h2>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Gleich gro&szlig;e Spalten werden ungleich</div>
+  <p>Mit <code>flex-grow: 1</code> allein sind Spalten mit mehr Text breiter.</p>
+          <p class="fehler-fix"><code>flex: 1</code> verwenden &ndash; das setzt zus&auml;tzlich <code>flex-basis: 0</code>, sodass der Inhalt keine Rolle spielt.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Bild sprengt das Flex-Layout</div>
+  <p>Ein gro&szlig;es Bild als direktes Flex-Kind schrumpft nicht und dr&uuml;ckt den Text weg.</p>
+          <p class="fehler-fix">Bild in einen Wrapper packen, dem Wrapper <code>flex: 1</code> geben und dem Bild <code>max-width: 100%</code>.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Overflow durch flex-shrink: 0</div>
+  <p>Mit <code>flex: 0 0 auto</code> oder <code>flex: 1 0 auto</code> l&auml;uft die Zeile auf schmalen Bildschirmen &uuml;ber.</p>
+          <p class="fehler-fix">Schrumpfen erlauben (<code>flex-shrink: 1</code>) oder <code>flex-wrap: wrap</code> setzen.</p>
+</div>
+      </section>
+
+      <section class="section section-aufgaben">
+        <h2>Aufgaben</h2>
+        <div class="aufgaben-list">
+          <div class="aufgabe">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Aufgabe 1</span>
+    <span class="aufgabe-title">Platz berechnen</span>
+  </div>
+  <p>Ein Container ist 900px breit. Drei Kinder haben <code>flex: 1</code>, <code>flex: 2</code> und <code>flex: 3</code>. Wie breit wird jedes Kind? Was &auml;ndert sich, wenn ein Kind zus&auml;tzlich <code>flex-basis: 300px</code> hat?</p>
+</div>
+          <div class="aufgabe">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Aufgabe 2</span>
+    <span class="aufgabe-title">Multiline nachbauen</span>
+  </div>
+  <p>Baue das Multiline-Layout aus Abschnitt 8 nach und teste es in den Entwicklertools mit dem Ger&auml;temodus (<kbd>Strg</kbd>+<kbd>Shift</kbd>+<kbd>M</kbd>) f&uuml;r Mobile, Tablet und Desktop.</p>
+</div>
+          <div class="aufgabe">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Aufgabe 3</span>
+    <span class="aufgabe-title">Suchfeld w&auml;chst mit</span>
+  </div>
+  <p>Stelle das Newsletter-Formular der Demoseite auf eine Zeile um: Die beiden Eingabefelder teilen sich den freien Platz (<code>flex: 1</code>), der Button beh&auml;lt seine Gr&ouml;&szlig;e (<code>flex: 0 0 auto</code>).</p>
+</div>
+          <div class="aufgabe aufgabe-bonus">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Bonus</span>
+    <span class="aufgabe-title">Sticky Footer</span>
+  </div>
+  <p>Sorge daf&uuml;r, dass der Footer auch bei wenig Inhalt immer ganz unten im Fenster steht: <code>body</code> als Flex-Container mit <code>flex-direction: column; min-height: 100vh;</code> &ndash; welches Kind braucht <code>flex: 1</code>?</p>
+</div>
+        </div>
+      </section>
+
+    </div>
+
+    <nav class="lesson-nav">
+      <a class="nav-btn" href="2.5-flexbox-container.html">&larr; Lektion 2.5: Flexbox: Flex-Container</a>
+      <span class="nav-center-info">Lektion 2.6</span>
+      <a class="nav-btn primary" href="2.7-grid-grundlagen.html">Lektion 2.7: CSS Grid Grundlagen &rarr;</a>
+    </nav>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>
+    const ham = document.getElementById('hamburger');
+    const sb = document.getElementById('sidebar');
+    const ov = document.getElementById('overlay');
+    ham.addEventListener('click', () => { sb.classList.toggle('open'); ov.classList.toggle('visible'); });
+    ov.addEventListener('click', () => { sb.classList.remove('open'); ov.classList.remove('visible'); });
+    const cur = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-link').forEach(l => {
+      if (l.getAttribute('href') === cur) l.classList.add('active');
+    });
+    const themeBtn = document.getElementById('theme-toggle');
+    const applyTheme = (t) => {
+      document.documentElement.setAttribute('data-theme', t);
+      if (themeBtn) themeBtn.innerHTML = t === 'dark' ? '&#9728;' : '&#9790;';
+    };
+    applyTheme(localStorage.getItem('kurs-theme') || 'dark');
+    setTimeout(() => document.documentElement.classList.add('theme-transitions'), 50);
+    if (themeBtn) themeBtn.addEventListener('click', () => {
+      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('kurs-theme', next);
+      applyTheme(next);
+    });
+    hljs.highlightAll();
+  </script>
+</body>
+
+</html>

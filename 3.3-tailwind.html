@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<!-- GENERIERT von kurse/_build (html_css) – nicht direkt bearbeiten!
+     Quelle: kurse/_build/html_css/lessons/, bauen: python3 _build/build.py html_css -->
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3.3 &ndash; Tailwind CSS | HTML &amp; CSS Kurs</title>
+  <script>(function () { var t = localStorage.getItem('kurs-theme') || 'dark'; document.documentElement.setAttribute('data-theme', t); })();</script>
+  <link rel="stylesheet" href="assets/kurs.css">
+  <link rel="stylesheet" id="hljs-theme"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+
+<body>
+
+  <button class="hamburger" id="hamburger" aria-label="Navigation &ouml;ffnen">&#9776;</button>
+  <div class="sidebar-overlay" id="overlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html">
+        <span class="brand-icon">&lt;/&gt;</span>
+        <div>
+          <div class="brand-name">HTML &amp; CSS</div>
+          <div class="brand-sub">Web- und Mobile Computing</div>
+        </div>
+      </a>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Dark/Light Mode"
+        title="Theme wechseln">&#9728;</button>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-group">
+        <div class="nav-group-label html-label">Teil 1 &mdash; Web &amp; HTML</div>
+        <a class="nav-link" href="1.1-geschichte-internet.html"><span class="ln">1.1</span>Geschichte des Internets</a>
+        <a class="nav-link" href="1.2-grundlagen-web.html"><span class="ln">1.2</span>Grundlagen des Web: HTML, HTTP, URL</a>
+        <a class="nav-link" href="1.3-html5-grundlagen.html"><span class="ln">1.3</span>HTML5: Spezifikation, DOM &amp; APIs</a>
+        <a class="nav-link" href="1.4-html-elemente-semantik.html"><span class="ln">1.4</span>HTML-Elemente &amp; Semantik</a>
+        <a class="nav-link" href="1.5-attribute-formulare.html"><span class="ln">1.5</span>Attribute &amp; Formulare</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label css-label">Teil 2 &mdash; CSS &amp; Layout</div>
+        <a class="nav-link" href="2.1-selektoren-properties.html"><span class="ln">2.1</span>Selektoren, Einheiten &amp; Properties</a>
+        <a class="nav-link" href="2.2-box-model-display.html"><span class="ln">2.2</span>Box Model &amp; Display</a>
+        <a class="nav-link" href="2.3-vererbung-spezifitaet.html"><span class="ln">2.3</span>Vererbung, Spezifit&auml;t &amp; Kaskade</a>
+        <a class="nav-link" href="2.4-positionierung.html"><span class="ln">2.4</span>Positionierung &amp; z-index</a>
+        <a class="nav-link" href="2.5-flexbox-container.html"><span class="ln">2.5</span>Flexbox: Flex-Container</a>
+        <a class="nav-link" href="2.6-flexbox-kinder.html"><span class="ln">2.6</span>Flexbox: Flex-Kinder &amp; Patterns</a>
+        <a class="nav-link" href="2.7-grid-grundlagen.html"><span class="ln">2.7</span>CSS Grid Grundlagen</a>
+        <a class="nav-link" href="2.8-grid-responsive.html"><span class="ln">2.8</span>Media Queries &amp; responsive Grids</a>
+        <a class="nav-link" href="2.9-transform-transition.html"><span class="ln">2.9</span>Transformationen &amp; Transitions</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label fw-label">Teil 3 &mdash; CSS-Frameworks</div>
+        <a class="nav-link" href="3.1-bootstrap-grundlagen.html"><span class="ln">3.1</span>Bootstrap: Setup, Grid &amp; Utilities</a>
+        <a class="nav-link" href="3.2-bootstrap-komponenten.html"><span class="ln">3.2</span>Bootstrap: Komponenten &amp; Anpassung</a>
+        <a class="nav-link" href="3.3-tailwind.html"><span class="ln">3.3</span>Tailwind CSS</a>
+      </div>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <header class="lesson-header">
+      <p class="lesson-eyebrow">Lektion 3.3 &mdash; Teil 3: CSS-Frameworks</p>
+      <h1>Tailwind CSS</h1>
+      <div class="lesson-tags">
+        <span class="tag tag-fw">Tailwind CSS</span>
+        <span class="tag tag-time">ca. 90 min</span>
+        <span class="tag tag-level">Framework</span>
+      </div>
+    </header>
+
+    <div class="content-area">
+      <section class="section section-lernziele">
+        <h2>Lernziele</h2>
+        <ul class="lernziele-list">
+          <li>Den <strong>Utility-First</strong>-Ansatz von Tailwind vom Komponenten-Ansatz von Bootstrap unterscheiden</li>
+          <li>Tailwind f&uuml;r Experimente &uuml;ber das CDN-Script einbinden</li>
+          <li>Die wichtigsten Utility-Klassen f&uuml;r Abst&auml;nde, Farben, Typografie, Flexbox und Grid lesen und schreiben</li>
+          <li>Responsive Varianten (<code>md:</code>, <code>lg:</code>) und Zustands-Varianten (<code>hover:</code>, <code>focus:</code>, <code>dark:</code>) einsetzen</li>
+          <li>Entscheiden, wann eigenes CSS, Bootstrap oder Tailwind sinnvoll ist</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2>1 &mdash; Was ist Tailwind CSS?</h2>
+        <p>
+          <strong>Tailwind CSS</strong> ist ein CSS-Framework, das &ndash; anders als Bootstrap &ndash;
+          <strong>keine fertigen Komponenten</strong> wie Cards oder Navbars mitbringt. Stattdessen
+          liefert es sehr viele kleine <strong>Utility-Klassen</strong>, die jeweils genau eine
+          CSS-Eigenschaft setzen. Das Aussehen entsteht, indem man diese Klassen direkt im HTML
+          kombiniert.
+        </p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th></th><th>Bootstrap</th><th>Tailwind CSS</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Ansatz</strong></td><td>Komponenten (<code>card</code>, <code>btn</code>, <code>navbar</code>)</td><td>Utility-First (<code>p-6</code>, <code>rounded</code>, <code>bg-white</code>)</td></tr>
+              <tr><td><strong>Aussehen</strong></td><td>Einheitlicher &bdquo;Bootstrap-Look&ldquo;</td><td>Kein Standard-Look, alles individuell</td></tr>
+              <tr><td><strong>JavaScript</strong></td><td>Eigene JS-Komponenten (Modal, Dropdown &hellip;)</td><td>Keines &ndash; Interaktion selbst programmieren</td></tr>
+              <tr><td><strong>HTML</strong></td><td>Wenige, sprechende Klassen</td><td>Viele kurze Klassen pro Element</td></tr>
+              <tr><td><strong>Einsatz</strong></td><td>Schnelle Prototypen, Admin-Oberfl&auml;chen</td><td>Individuelle Designs, Komponenten-Frameworks (React, Vue, Angular)</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Dieselbe Karte in beiden Frameworks:</p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Bootstrap</span>
+    <span class="code-lang">HTML</span>
+  </div>
+  <pre><code class="language-xml">&lt;div class="card h-100 shadow-sm"&gt;
+  &lt;div class="card-body"&gt;
+    &lt;h2 class="h5 card-title"&gt;Karte 1&lt;/h2&gt;
+    &lt;p class="card-text"&gt;Bootstrap liefert viele vorgefertigte Komponenten und sinnvolle Standardabstände.&lt;/p&gt;
+    &lt;a href="#formular" class="btn btn-primary"&gt;Zum Formular&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Tailwind</span>
+    <span class="code-lang">HTML</span>
+  </div>
+  <pre><code class="language-xml">&lt;div class="h-full rounded-lg bg-white p-6 shadow-sm"&gt;
+  &lt;h2 class="text-xl font-semibold"&gt;Karte 1&lt;/h2&gt;
+  &lt;p class="mt-3 text-slate-600"&gt;Tailwind arbeitet mit Utility-Klassen, die direkt Aussehen und Abstände definieren.&lt;/p&gt;
+  &lt;a href="#formular" class="mt-4 inline-block rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"&gt;Zum Formular&lt;/a&gt;
+&lt;/div&gt;</code></pre>
+</div>
+        <div class="callout callout-tip">
+  <div class="callout-icon">&#128161;</div>
+  <div class="callout-body">
+    <div class="callout-title">Utilities sind nur CSS</div>
+    <p>Jede Tailwind-Klasse entspricht einer bekannten CSS-Deklaration: <code>p-6</code> ist
+          <code>padding: 1.5rem</code>, <code>rounded-lg</code> ist <code>border-radius: 0.5rem</code>,
+          <code>flex</code> ist <code>display: flex</code>. Wer CSS kann, kann Tailwind sehr schnell lesen.</p>
+  </div>
+</div>
+      </section>
+
+      <section class="section">
+        <h2>2 &mdash; Setup</h2>
+        <p>F&uuml;r Experimente und kleine Seiten reicht ein Script-Tag im <code>&lt;head&gt;</code> (Tailwind 4, Browser-Build):</p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">index.html (head)</span>
+    <span class="code-lang">HTML</span>
+  </div>
+  <pre><code class="language-xml">&lt;script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"&gt;&lt;/script&gt;</code></pre>
+</div>
+        <p>
+          Das Script durchsucht die Seite nach Tailwind-Klassen und erzeugt das passende CSS direkt im
+          Browser.
+        </p>
+        <div class="callout callout-warning">
+  <div class="callout-icon">&#9888;</div>
+  <div class="callout-body">
+    <div class="callout-title">Nur f&uuml;r Entwicklung</div>
+    <p>Der Browser-Build ist f&uuml;r Prototypen gedacht. In echten Projekten wird Tailwind &uuml;ber
+          <strong>npm</strong> installiert und von einem Build-Tool (z.&nbsp;B. Vite) zu einer kleinen
+          CSS-Datei kompiliert, die nur die tats&auml;chlich verwendeten Klassen enth&auml;lt (siehe
+          JavaScript-Kurs, Lektion 1.1: Node.js und npm).</p>
+  </div>
+</div>
+      </section>
+
+      <section class="section">
+        <h2>3 &mdash; Die wichtigsten Utility-Klassen</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Bereich</th><th>Beispiele</th><th>CSS dahinter</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Abst&auml;nde</strong></td><td><code>p-4</code>, <code>px-4</code>, <code>py-2</code>, <code>mt-3</code>, <code>mx-auto</code></td><td>padding / margin (1 Einheit = 0.25rem)</td></tr>
+              <tr><td><strong>Gr&ouml;&szlig;e</strong></td><td><code>w-full</code>, <code>h-40</code>, <code>max-w-6xl</code></td><td>width, height, max-width</td></tr>
+              <tr><td><strong>Farben</strong></td><td><code>bg-white</code>, <code>bg-blue-600</code>, <code>text-slate-600</code>, <code>border-slate-300</code></td><td>background-color, color, border-color (Abstufung 50&ndash;950)</td></tr>
+              <tr><td><strong>Typografie</strong></td><td><code>text-xl</code>, <code>text-4xl</code>, <code>font-semibold</code>, <code>text-center</code></td><td>font-size, font-weight, text-align</td></tr>
+              <tr><td><strong>Rahmen &amp; Schatten</strong></td><td><code>border</code>, <code>rounded</code>, <code>rounded-full</code>, <code>shadow-sm</code></td><td>border, border-radius, box-shadow</td></tr>
+              <tr><td><strong>Flexbox</strong></td><td><code>flex</code>, <code>flex-col</code>, <code>items-center</code>, <code>justify-between</code>, <code>gap-4</code></td><td>display: flex, flex-direction, align-items, justify-content, gap</td></tr>
+              <tr><td><strong>Grid</strong></td><td><code>grid</code>, <code>grid-cols-3</code>, <code>col-span-2</code></td><td>display: grid, grid-template-columns, grid-column</td></tr>
+              <tr><td><strong>Position</strong></td><td><code>sticky</code>, <code>top-0</code>, <code>absolute</code>, <code>z-10</code></td><td>position, top, z-index</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Werte au&szlig;erhalb der Skala schreibt man in eckige Klammern: <code>w-[300px]</code>, <code>bg-[#e74c3c]</code>.</p>
+      </section>
+
+      <section class="section">
+        <h2>4 &mdash; Varianten: responsive und Zust&auml;nde</h2>
+        <p>
+          Ein Pr&auml;fix vor einer Klasse schr&auml;nkt sie auf einen Breakpoint oder Zustand ein. Wie bei
+          Bootstrap gilt <strong>Mobile First</strong>: Klassen ohne Pr&auml;fix gelten immer,
+          <code>md:</code> ab 768px aufw&auml;rts.
+        </p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Pr&auml;fix</th><th>Bedeutung</th><th>Entspricht</th></tr></thead>
+            <tbody>
+              <tr><td><code>sm:</code> <code>md:</code> <code>lg:</code> <code>xl:</code></td><td>ab 640 / 768 / 1024 / 1280px</td><td><code>@media (min-width: …)</code></td></tr>
+              <tr><td><code>hover:</code></td><td>Maus &uuml;ber dem Element</td><td><code>:hover</code></td></tr>
+              <tr><td><code>focus:</code></td><td>Element hat den Fokus</td><td><code>:focus</code></td></tr>
+              <tr><td><code>even:</code></td><td>jedes zweite Element</td><td><code>:nth-child(even)</code></td></tr>
+              <tr><td><code>dark:</code></td><td>Betriebssystem im Dark Mode</td><td><code>@media (prefers-color-scheme: dark)</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Responsives Karten-Grid</span>
+    <span class="code-lang">HTML</span>
+  </div>
+  <pre><code class="language-xml">&lt;!-- mobil 1 Spalte, ab md 3 Spalten --&gt;
+&lt;div class="grid gap-6 md:grid-cols-3"&gt;
+  &lt;div class="rounded-lg bg-white p-6 shadow-sm"&gt;…&lt;/div&gt;
+  &lt;div class="rounded-lg bg-white p-6 shadow-sm"&gt;…&lt;/div&gt;
+  &lt;div class="rounded-lg bg-white p-6 shadow-sm"&gt;…&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Formularfeld mit Fokus-Zustand</span>
+    <span class="code-lang">HTML</span>
+  </div>
+  <pre><code class="language-xml">&lt;label for="email" class="mb-2 block font-medium"&gt;E-Mail&lt;/label&gt;
+&lt;input type="email" id="email" placeholder="name@beispiel.de"
+       class="w-full rounded border border-slate-300 px-3 py-2 focus:border-blue-500 focus:outline-none"&gt;</code></pre>
+</div>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Dark Mode</span>
+    <span class="code-lang">HTML</span>
+  </div>
+  <pre><code class="language-xml">&lt;body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100"&gt;</code></pre>
+</div>
+      </section>
+
+      <section class="section">
+        <h2>5 &mdash; Eigenes CSS, Bootstrap oder Tailwind?</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Ansatz</th><th>St&auml;rken</th><th>Schw&auml;chen</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Eigenes CSS</strong></td><td>Volle Kontrolle, kein Overhead, sauberes HTML</td><td>Viel Arbeit, Konsistenz muss man selbst sicherstellen</td></tr>
+              <tr><td><strong>Bootstrap</strong></td><td>Sehr schnell, fertige Komponenten inkl. JavaScript</td><td>Seiten sehen &auml;hnlich aus, Anpassungen k&auml;mpfen gegen Vorgaben</td></tr>
+              <tr><td><strong>Tailwind</strong></td><td>Individuelles Design ohne eigenes Stylesheet, konsistente Skala</td><td>Lange Klassenlisten im HTML, Build-Schritt f&uuml;r Produktion</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout callout-info">
+  <div class="callout-icon">&#8505;</div>
+  <div class="callout-body">
+    <div class="callout-title">Ausblick</div>
+    <p>In Komponenten-Frameworks wie React (2. Jahr) wird eine Karte nur einmal als Komponente
+          geschrieben und dann wiederverwendet. Die langen Tailwind-Klassenlisten stehen dann nur noch
+          an einer Stelle &ndash; deshalb ist Tailwind dort besonders beliebt.</p>
+  </div>
+</div>
+        <p>
+          Dokumentation: <a href="https://tailwindcss.com/docs" target="_blank" rel="noopener">tailwindcss.com/docs</a>
+        </p>
+      </section>
+
+      <section class="section section-projekt">
+        <h2>Projektschritt</h2>
+        <div class="projekt-box">
+  <div class="projekt-box-header">
+    <span class="projekt-step">Projektschritt 3.3</span>
+    <h3>Die Demoseite mit Tailwind</h3>
+  </div>
+<p>
+            Zum Abschluss von Teil 3 bauen wir die Demoseite ein drittes Mal als
+            <code>index-tailwind.html</code>. Vergleiche die drei Fassungen nebeneinander: eigenes CSS
+            (<code>index.html</code>), Bootstrap und Tailwind.
+          </p>
+          <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">demoseite/index-tailwind.html (Ausschnitt)</span>
+    <span class="code-lang">HTML</span>
+  </div>
+  <pre><code class="language-xml">&lt;header class="sticky top-0 bg-slate-800 text-white"&gt;
+  &lt;div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-4 py-4"&gt;
+    &lt;span class="text-2xl font-bold"&gt;Web- and Mobile Computing&lt;/span&gt;
+    &lt;nav class="flex flex-wrap gap-6"&gt;
+      &lt;a class="hover:text-slate-300" href="#html"&gt;HTML&lt;/a&gt;
+      …
+    &lt;/nav&gt;
+  &lt;/div&gt;
+&lt;/header&gt;
+
+&lt;main class="mx-auto max-w-6xl px-4 py-12"&gt;
+  &lt;!-- Inhalt + Sidebar: ab lg 2 + 1 Spalten --&gt;
+  &lt;div class="mb-8 grid gap-6 lg:grid-cols-3"&gt;
+    &lt;section id="elemente" class="rounded-lg bg-white p-6 shadow-sm lg:col-span-2"&gt;
+      …
+      &lt;tr class="even:bg-slate-100"&gt;…&lt;/tr&gt;
+    &lt;/section&gt;
+    &lt;aside class="rounded-lg bg-amber-200 p-6"&gt;…&lt;/aside&gt;
+  &lt;/div&gt;
+
+  &lt;!-- Karten: mobil 1, ab sm 2, ab lg 3 --&gt;
+  &lt;div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"&gt;
+    &lt;article class="overflow-hidden rounded-lg bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-md"&gt;
+      &lt;img src="img/box_model.png" class="h-40 w-full object-cover" alt="Boxmodell"&gt;
+      &lt;div class="p-4"&gt;
+        &lt;h3 class="text-lg font-semibold"&gt;Boxmodell&lt;/h3&gt;
+        &lt;p class="mt-1 text-slate-600"&gt;Content, Padding, Border und Margin.&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/article&gt;
+    …
+  &lt;/div&gt;
+&lt;/main&gt;</code></pre>
+</div>
+          <p class="mb-0">&#128193; Stand nach dieser Lektion: <a href="beispiele/3.3/index-tailwind.html" target="_blank">beispiele/3.3/</a></p>
+</div>
+      </section>
+
+      <section class="section section-fehler">
+        <h2>H&auml;ufige Fehler</h2>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Bootstrap-Klassen in Tailwind (oder umgekehrt)</div>
+  <p><code>class="btn btn-primary"</code> oder <code>container row col-md-6</code> bewirken in Tailwind nichts bzw. etwas anderes.</p>
+          <p class="fehler-fix">Die beiden Frameworks haben unterschiedliche Klassennamen &ndash; nicht mischen, und immer in der Doku des verwendeten Frameworks nachschlagen.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Responsive Pr&auml;fix falsch herum gedacht</div>
+  <p><code>md:hidden</code> wird als &bdquo;auf Tablets verstecken&ldquo; verstanden.</p>
+          <p class="fehler-fix">Mobile First: <code>md:hidden</code> versteckt ab 768px <strong>aufw&auml;rts</strong>. &bdquo;Nur mobil verstecken&ldquo; ist <code>hidden md:block</code>.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Klassen dynamisch zusammengesetzt</div>
+  <p><code>"bg-" + farbe + "-600"</code> in JavaScript erzeugt eine Klasse, die der Tailwind-Build nie im Quelltext gesehen hat &ndash; sie hat daher keine Styles.</p>
+          <p class="fehler-fix">Immer vollst&auml;ndige Klassennamen im Code schreiben (z.&nbsp;B. eine Zuordnung <code>{ rot: 'bg-red-600', blau: 'bg-blue-600' }</code>).</p>
+</div>
+      </section>
+
+      <section class="section section-aufgaben">
+        <h2>Aufgaben</h2>
+        <div class="aufgaben-list">
+          <div class="aufgabe">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Aufgabe 1</span>
+    <span class="aufgabe-title">Klassen &uuml;bersetzen</span>
+  </div>
+  <p>Schreibe f&uuml;r jede Klasse die entsprechende CSS-Deklaration auf: <code>mx-auto</code>, <code>max-w-6xl</code>, <code>py-12</code>, <code>rounded-full</code>, <code>items-center</code>, <code>lg:col-span-2</code>, <code>hover:-translate-y-1</code>.</p>
+</div>
+          <div class="aufgabe">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Aufgabe 2</span>
+    <span class="aufgabe-title">Fehlende Bereiche erg&auml;nzen</span>
+  </div>
+  <p>Erg&auml;nze in <code>index-tailwind.html</code> die Abschnitte &bdquo;Lernprojekt&ldquo; (nummerierte Liste mit <code>list-decimal pl-6</code>) und einen &bdquo;Nach oben&ldquo;-Link, der mit <code>fixed bottom-6 right-6</code> rechts unten schwebt.</p>
+</div>
+          <div class="aufgabe">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Aufgabe 3</span>
+    <span class="aufgabe-title">Dark Mode</span>
+  </div>
+  <p>Erg&auml;nze <code>dark:</code>-Varianten f&uuml;r Hintergrund, Text und Karten, sodass die Seite im Dark Mode des Betriebssystems gut lesbar ist.</p>
+</div>
+          <div class="aufgabe aufgabe-bonus">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Bonus</span>
+    <span class="aufgabe-title">Drei Fassungen vergleichen</span>
+  </div>
+  <p>Vergleiche <code>index.html</code>, <code>index-bootstrap.html</code> und <code>index-tailwind.html</code>: Anzahl Zeilen HTML/CSS, Aufwand f&uuml;r eine Farb&auml;nderung, Lesbarkeit. Welche Variante w&uuml;rdest du f&uuml;r dein Lernprojekt w&auml;hlen &ndash; und warum?</p>
+</div>
+        </div>
+      </section>
+
+    </div>
+
+    <nav class="lesson-nav">
+      <a class="nav-btn" href="3.2-bootstrap-komponenten.html">&larr; Lektion 3.2: Bootstrap: Komponenten &amp; Anpassung</a>
+      <span class="nav-center-info">Lektion 3.3</span>
+      <a class="nav-btn primary" href="index.html">Kurs&uuml;bersicht &rarr;</a>
+    </nav>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>
+    const ham = document.getElementById('hamburger');
+    const sb = document.getElementById('sidebar');
+    const ov = document.getElementById('overlay');
+    ham.addEventListener('click', () => { sb.classList.toggle('open'); ov.classList.toggle('visible'); });
+    ov.addEventListener('click', () => { sb.classList.remove('open'); ov.classList.remove('visible'); });
+    const cur = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-link').forEach(l => {
+      if (l.getAttribute('href') === cur) l.classList.add('active');
+    });
+    const themeBtn = document.getElementById('theme-toggle');
+    const applyTheme = (t) => {
+      document.documentElement.setAttribute('data-theme', t);
+      if (themeBtn) themeBtn.innerHTML = t === 'dark' ? '&#9728;' : '&#9790;';
+    };
+    applyTheme(localStorage.getItem('kurs-theme') || 'dark');
+    setTimeout(() => document.documentElement.classList.add('theme-transitions'), 50);
+    if (themeBtn) themeBtn.addEventListener('click', () => {
+      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('kurs-theme', next);
+      applyTheme(next);
+    });
+    hljs.highlightAll();
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demoseite – Tailwind</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body class="bg-slate-100 text-slate-800">
+  <header class="sticky top-0 bg-slate-800 text-white">
+    <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-4 py-4">
+      <span class="text-2xl font-bold">Web- and Mobile Computing</span>
+      <nav class="flex flex-wrap gap-6">
+        <a class="hover:text-slate-300" href="#html">HTML</a>
+        <a class="hover:text-slate-300" href="#elemente">HTML-Elemente</a>
+        <a class="hover:text-slate-300" href="#css">CSS</a>
+        <a class="hover:text-slate-300" href="#kontakt">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-6xl px-4 py-12">
+    <h1 class="mb-10 text-center text-4xl font-bold">Demoseite: Webdesign Grundkurs</h1>
+
+    <section id="html" class="mb-8 rounded-lg bg-white p-6 shadow-sm">
+      <h2 class="mb-4 border-b-2 border-red-500 pb-2 text-2xl font-semibold text-red-600">HTML Grundlagen</h2>
+      <div class="flex flex-col items-center gap-6 md:flex-row">
+        <p class="flex-[2]">
+          HTML entstand Anfang der 1990er-Jahre am CERN. Heute steht HTML5 für
+          modernes, semantisches HTML.
+        </p>
+        <img src="img/html5_logo.png" class="w-32" alt="HTML5 Logo">
+      </div>
+    </section>
+
+    <!-- Inhalt + Sidebar: ab lg 2 + 1 Spalten -->
+    <div class="mb-8 grid gap-6 lg:grid-cols-3">
+      <section id="elemente" class="rounded-lg bg-white p-6 shadow-sm lg:col-span-2">
+        <h2 class="mb-4 border-b-2 border-red-500 pb-2 text-2xl font-semibold text-red-600">HTML Elemente</h2>
+        <table class="w-full text-left">
+          <thead class="bg-slate-800 text-white">
+            <tr><th class="px-4 py-2">Element</th><th class="px-4 py-2">Erklärung</th></tr>
+          </thead>
+          <tbody>
+            <tr class="even:bg-slate-100"><td class="px-4 py-2"><code>head</code></td><td class="px-4 py-2">Metadaten und Titel</td></tr>
+            <tr class="even:bg-slate-100"><td class="px-4 py-2"><code>body</code></td><td class="px-4 py-2">Sichtbare Inhalte</td></tr>
+            <tr class="even:bg-slate-100"><td class="px-4 py-2"><code>a</code></td><td class="px-4 py-2">Hyperlink</td></tr>
+            <tr class="even:bg-slate-100"><td class="px-4 py-2"><code>img</code></td><td class="px-4 py-2">Bild (leeres Element)</td></tr>
+          </tbody>
+        </table>
+      </section>
+      <aside class="rounded-lg bg-amber-200 p-6">
+        <h3 class="mb-2 text-xl font-semibold">Visual Studio Code</h3>
+        <p>Kostenloser Editor mit den Extensions Live Server und W3C Validator.</p>
+      </aside>
+    </div>
+
+    <section id="css" class="mb-8">
+      <h2 class="mb-4 border-b-2 border-red-500 pb-2 text-2xl font-semibold text-red-600">CSS</h2>
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <article class="overflow-hidden rounded-lg bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-md">
+          <img src="img/box_model.png" class="h-40 w-full object-cover" alt="Boxmodell">
+          <div class="p-4">
+            <h3 class="text-lg font-semibold">Boxmodell</h3>
+            <p class="mt-1 text-slate-600">Content, Padding, Border und Margin.</p>
+          </div>
+        </article>
+        <article class="overflow-hidden rounded-lg bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-md">
+          <img src="img/flexbox.png" class="h-40 w-full object-cover" alt="Flexbox">
+          <div class="p-4">
+            <h3 class="text-lg font-semibold">Flexbox</h3>
+            <p class="mt-1 text-slate-600">1D-Layout mit flexiblen Größen.</p>
+          </div>
+        </article>
+        <article class="overflow-hidden rounded-lg bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-md">
+          <img src="img/grid.png" class="h-40 w-full object-cover" alt="Grid">
+          <div class="p-4">
+            <h3 class="text-lg font-semibold">Grid</h3>
+            <p class="mt-1 text-slate-600">2D-Layout mit Spalten und Zeilen.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="kontakt" class="rounded-lg bg-white p-6 shadow-sm">
+      <h2 class="mb-4 border-b-2 border-red-500 pb-2 text-2xl font-semibold text-red-600">Kontakt</h2>
+      <address>HTL Spengergasse, Spengergasse 20, 1050 Wien</address>
+    </section>
+  </main>
+
+  <footer class="bg-slate-800 py-8 text-white">
+    <form class="mx-auto mb-6 grid max-w-6xl gap-4 px-4 md:grid-cols-3" action="/newsletter" method="post">
+      <input type="text" name="name" placeholder="Ihr Name" required
+             class="rounded px-3 py-2 text-slate-800 focus:outline-2 focus:outline-red-500">
+      <input type="email" name="email" placeholder="ihre.email@example.com" required
+             class="rounded px-3 py-2 text-slate-800 focus:outline-2 focus:outline-red-500">
+      <button type="submit" class="rounded bg-red-600 px-4 py-2 font-semibold hover:bg-red-700">Newsletter abonnieren</button>
+    </form>
+    <p class="mx-auto max-w-6xl px-4 text-sm text-slate-400">© 2026 HTL Spengergasse</p>
+  </footer>
+</body>
+
+</html>

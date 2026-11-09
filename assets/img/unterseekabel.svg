@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 420" width="760" height="420" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <title>Schematischer Querschnitt durch ein Unterseekabel: Glasfasern in der Mitte, umgeben von Schutzrohr, Stahldrähten, Kupfer und Isolierung</title>
+  <rect width="760" height="420" fill="#ffffff"/>
+  <g transform="translate(210,210)">
+    <!-- Außenhülle -->
+    <circle r="180" fill="#1f2328"/>
+    <!-- Isolierung (Polyethylen) -->
+    <circle r="160" fill="#8b949e"/>
+    <!-- Kupferleiter -->
+    <circle r="120" fill="#d18a3c"/>
+    <!-- Stahldrähte -->
+    <circle r="108" fill="#c9d1d9"/>
+    <g fill="#6e7681" stroke="#c9d1d9" stroke-width="2">
+      <circle cx="0" cy="-88" r="17"/><circle cx="62" cy="-62" r="17"/><circle cx="88" cy="0" r="17"/>
+      <circle cx="62" cy="62" r="17"/><circle cx="0" cy="88" r="17"/><circle cx="-62" cy="62" r="17"/>
+      <circle cx="-88" cy="0" r="17"/><circle cx="-62" cy="-62" r="17"/>
+    </g>
+    <!-- Schutzrohr -->
+    <circle r="62" fill="#e3b341"/>
+    <circle r="50" fill="#fff8c5"/>
+    <!-- Glasfasern -->
+    <g fill="#58a6ff" stroke="#0969da" stroke-width="1.5">
+      <circle cx="0" cy="0" r="9"/><circle cx="22" cy="0" r="9"/><circle cx="-22" cy="0" r="9"/>
+      <circle cx="11" cy="19" r="9"/><circle cx="-11" cy="19" r="9"/><circle cx="11" cy="-19" r="9"/>
+      <circle cx="-11" cy="-19" r="9"/><circle cx="33" cy="19" r="9"/><circle cx="-33" cy="-19" r="9"/>
+    </g>
+  </g>
+  <!-- Beschriftungen -->
+  <g stroke="#1f2328" stroke-width="1.5">
+    <line x1="225" y1="205" x2="440" y2="70"/>
+    <line x1="263" y1="191" x2="440" y2="130"/>
+    <line x1="298" y1="210" x2="440" y2="190"/>
+    <line x1="317" y1="249" x2="440" y2="250"/>
+    <line x1="325" y1="290" x2="440" y2="310"/>
+    <line x1="319" y1="340" x2="440" y2="370"/>
+  </g>
+  <g font-size="17" fill="#1f2328">
+    <text x="450" y="76"><tspan font-weight="700">Glasfasern</tspan> – Daten als Licht</text>
+    <text x="450" y="136">Schutzrohr mit Gel</text>
+    <text x="450" y="196">Stahldrähte – Zugfestigkeit</text>
+    <text x="450" y="256">Kupferleiter – Strom für die Verstärker</text>
+    <text x="450" y="316">Isolierung (Polyethylen)</text>
+    <text x="450" y="376">Außenhülle</text>
+  </g>
+</svg>

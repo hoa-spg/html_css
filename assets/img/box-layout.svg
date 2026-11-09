@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 400" width="560" height="400" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-weight="700" font-size="22" text-anchor="middle" fill="#ffffff">
+  <title>Eine Seite als Anordnung von Boxen: Header, Inhalt, Sidebar, Footer</title>
+  <rect width="560" height="400" fill="#ffffff"/>
+  <rect x="10" y="10" width="540" height="380" rx="10" fill="#1f2328"/>
+  <rect x="30" y="30" width="500" height="60" rx="6" fill="#f0883e"/>
+  <text x="280" y="68">Header</text>
+  <rect x="30" y="105" width="340" height="190" rx="6" fill="#58a6ff"/>
+  <text x="200" y="207">Inhalt</text>
+  <rect x="385" y="105" width="145" height="190" rx="6" fill="#a78bfa"/>
+  <text x="457" y="207">Sidebar</text>
+  <rect x="30" y="310" width="500" height="60" rx="6" fill="#3fb950"/>
+  <text x="280" y="348">Footer</text>
+</svg>

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 290" width="460" height="290" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <title>flex-wrap: Die Kinder werden auf mehrere Zeilen umbrochen</title>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1f2328"/></marker></defs>
+  <rect width="460" height="290" fill="#ffffff"/>
+  <text x="20" y="38" font-family="ui-monospace, 'SF Mono', Consolas, monospace" font-size="16" text-anchor="start" fill="#1f2328">flex-wrap: nowrap</text>
+  <rect x="20" y="48" width="420" height="64" rx="8" fill="#ddf4ff" stroke="#58a6ff" stroke-width="2.5"/>
+  <rect x="30" y="58" width="54.212765957446805" height="44" rx="5" fill="#f0883e" stroke="#bc4c00" stroke-width="2"/>
+  <rect x="90.2127659574468" y="58" width="38.72340425531915" height="44" rx="5" fill="#f0883e" stroke="#bc4c00" stroke-width="2"/>
+  <rect x="134.93617021276594" y="58" width="69.70212765957447" height="44" rx="5" fill="#f0883e" stroke="#bc4c00" stroke-width="2"/>
+  <rect x="210.63829787234042" y="58" width="46.46808510638298" height="44" rx="5" fill="#f0883e" stroke="#bc4c00" stroke-width="2"/>
+  <rect x="263.1063829787234" y="58" width="61.95744680851064" height="44" rx="5" fill="#f0883e" stroke="#bc4c00" stroke-width="2"/>
+  <rect x="331.063829787234" y="58" width="42.59574468085106" height="44" rx="5" fill="#f0883e" stroke="#bc4c00" stroke-width="2"/>
+  <rect x="379.65957446808505" y="58" width="50.340425531914896" height="44" rx="5" fill="#f0883e" stroke="#bc4c00" stroke-width="2"/>
+  <text x="20" y="145" font-family="ui-monospace, 'SF Mono', Consolas, monospace" font-size="16" text-anchor="start" fill="#1f2328">flex-wrap: wrap</text>
+  <rect x="20" y="155" width="420" height="118" rx="8" fill="#ddf4ff" stroke="#58a6ff" stroke-width="2.5"/>
+  <rect x="30" y="165" width="70" height="44" rx="5" fill="#f0883e" stroke="#bc4c00" stroke-width="2"/>
+  <rect x="108" y="165" width="50" height="44" rx="5" fill="#f0883e" stroke="#bc4c00" stroke-width="2"/>
+  <rect x="166" y="165" width="90" height="44" rx="5" fill="#f0883e" stroke="#bc4c00" stroke-width="2"/>
+  <rect x="264" y="165" width="60" height="44" rx="5" fill="#f0883e" stroke="#bc4c00" stroke-width="2"/>
+  <rect x="332" y="165" width="80" height="44" rx="5" fill="#f0883e" stroke="#bc4c00" stroke-width="2"/>
+  <rect x="30" y="219" width="55" height="44" rx="5" fill="#f0883e" stroke="#bc4c00" stroke-width="2"/>
+  <rect x="93" y="219" width="65" height="44" rx="5" fill="#f0883e" stroke="#bc4c00" stroke-width="2"/>
+</svg>

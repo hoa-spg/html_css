@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 590 665" width="590" height="665" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <title>align-content: flex-start, flex-end, center, stretch, space-between, space-around</title>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1f2328"/></marker></defs>
+  <rect width="590" height="665" fill="#ffffff"/>
+  <text x="20" y="38" font-family="ui-monospace, 'SF Mono', Consolas, monospace" font-size="15" text-anchor="start" fill="#1f2328">align-content: flex-start</text>
+  <rect x="20" y="48" width="230" height="160" rx="8" fill="#ddf4ff" stroke="#58a6ff" stroke-width="2.5"/>
+  <rect x="30" y="58" width="50" height="28" rx="5" fill="#f0883e" stroke="#bc4c00" stroke-width="2"/>
+  <rect x="88" y="58" width="70" height="28" rx="5" fill="#f0883e" stroke="#bc4c00" stroke-width="2"/>
+  <rect x="166" y="58" width="40" height="28" rx="5" fill="#f0883e" stroke="#bc4c00" stroke-width="2"/>
+  <rect x="30" y="92" width="60" height="28" rx="5" fill="#f0883e" stroke="#bc4c00" stroke-width="2"/>
+  <rect x="98" y="92" width="45" height="28" rx="5" fill="#f0883e" stroke="#bc4c00" stroke-width="2"/>
+  <rect x="151" y="92" width="55" height="28" rx="5" fill="#f0883e" stroke="#bc4c00" stroke-width="2"/>
+  <rect x="30" y="126" width="80" height="28" rx="5" fill="#f0883e" stroke="#bc4c00" stroke-width="2"/>
+  <rect x="118" y="126" width="50" height="28" rx="5" fill="#f0883e" stroke="#bc4c00" stroke-width="2"/>
+  <text x="310" y="38" font-family="ui-monospace, 'SF Mono', Consolas, monospace" font-size="15" text-anchor="start" fill="#1f2328">align-content: flex-end</text>
+  <rect x="310" y="48" width="230" height="160" rx="8" fill="#ddf4ff" stroke="#58a6ff" stroke-width="2.5"/>
+  <rect x="320" y="102" width="50" height="28" rx="5" fill="#f0883e" stroke="#bc4c00" stroke-width="2"/>
+  <rect x="378" y="102" width="70" height="28" rx="5" fill="#f0883e" stroke="#bc4c00" stroke-width="2"/>
+  <rect x="456" y="102" width="40" height="28" rx="5" fill="#f0883e" stroke="#bc4c00" stroke-width="2"/>
+  <rect x="320" y="136" width="60" height="28" rx="5" fill="#f0883e" stroke="#bc4c00" stroke-width="2"/>
+  <rect x="388" y="136" width="45" height="28" rx="5" fill="#f0883e" stroke="#bc4c00" stroke-width="2"/>
+  <rect x="441" y="136" width="55" height="28" rx="5" fill="#f0883e" stroke="#bc4c00" stroke-width="2"/>
+  <rect x="320" y="170" width="80" height="28" rx="5" fill="#f0883e" stroke="#bc4c00" stroke-width="2"/>
+  <rect x="408" y="170" width="50" height="28" rx="5" fill="#f0883e" stroke="#bc4c00" stroke-width="2"/>
+  <text x="20" y="253" font-family="ui-monospace, 'SF Mono', Consolas, monospace" font-size="15" text-anchor="start" fill="#1f2328">align-content: center</text>
+  <rect x="20" y="263" width="230" height="160" rx="8" fill="#ddf4ff" stroke="#58a6ff" stroke-width="2.5"/>
+  <rect x="30" y="295.0" width="50" height="28" rx="5" fill="#f0883e" stroke="#bc4c00" stroke-width="2"/>
+  <rect x="88" y="295.0" width="70" height="28" rx="5" fill="#f0883e" stroke="#bc4c00" stroke-width="2"/>
+  <rect x="166" y="295.0" width="40" height="28" rx="5" fill="#f0883e" stroke="#bc4c00" stroke-width="2"/>
+  <rect x="30" y="329.0" width="60" height="28" rx="5" fill="#f0883e" stroke="#bc4c00" stroke-width="2"/>
+  <rect x="98" y="329.0" width="45" height="28" rx="5" fill="#f0883e" stroke="#bc4c00" stroke-width="2"/>
+  <rect x="151" y="329.0" width="55" height="28" rx="5" fill="#f0883e" stroke="#bc4c00" stroke-width="2"/>
+  <rect x="30" y="363.0" width="80" height="28" rx="5" fill="#f0883e" stroke="#bc4c00" stroke-width="2"/>
+  <rect x="118" y="363.0" width="50" height="28" rx="5" fill="#f0883e" stroke="#bc4c00" stroke-width="2"/>
+  <text x="310" y="253" font-family="ui-monospace, 'SF Mono', Consolas, monospace" font-size="15" text-anchor="start" fill="#1f2328">align-content: stretch</text>
+  <rect x="310" y="263" width="230" height="160" rx="8" fill="#ddf4ff" stroke="#58a6ff" stroke-width="2.5"/>
+  <rect x="320" y="275.0" width="50" height="42.666666666666664" rx="5" fill="#f0883e" stroke="#bc4c00" stroke-width="2"/>
+  <rect x="378" y="275.0" width="70" height="42.666666666666664" rx="5" fill="#f0883e" stroke="#bc4c00" stroke-width="2"/>
+  <rect x="456" y="275.0" width="40" height="42.666666666666664" rx="5" fill="#f0883e" stroke="#bc4c00" stroke-width="2"/>
+  <rect x="320" y="321.6666666666667" width="60" height="42.666666666666664" rx="5" fill="#f0883e" stroke="#bc4c00" stroke-width="2"/>
+  <rect x="388" y="321.6666666666667" width="45" height="42.666666666666664" rx="5" fill="#f0883e" stroke="#bc4c00" stroke-width="2"/>
+  <rect x="441" y="321.6666666666667" width="55" height="42.666666666666664" rx="5" fill="#f0883e" stroke="#bc4c00" stroke-width="2"/>
+  <rect x="320" y="368.3333333333333" width="80" height="42.666666666666664" rx="5" fill="#f0883e" stroke="#bc4c00" stroke-width="2"/>
+  <rect x="408" y="368.3333333333333" width="50" height="42.666666666666664" rx="5" fill="#f0883e" stroke="#bc4c00" stroke-width="2"/>
+  <text x="20" y="468" font-family="ui-monospace, 'SF Mono', Consolas, monospace" font-size="15" text-anchor="start" fill="#1f2328">align-content: space-between</text>
+  <rect x="20" y="478" width="230" height="160" rx="8" fill="#ddf4ff" stroke="#58a6ff" stroke-width="2.5"/>
+  <rect x="30" y="488" width="50" height="28" rx="5" fill="#f0883e" stroke="#bc4c00" stroke-width="2"/>
+  <rect x="88" y="488" width="70" height="28" rx="5" fill="#f0883e" stroke="#bc4c00" stroke-width="2"/>
+  <rect x="166" y="488" width="40" height="28" rx="5" fill="#f0883e" stroke="#bc4c00" stroke-width="2"/>
+  <rect x="30" y="544.0" width="60" height="28" rx="5" fill="#f0883e" stroke="#bc4c00" stroke-width="2"/>
+  <rect x="98" y="544.0" width="45" height="28" rx="5" fill="#f0883e" stroke="#bc4c00" stroke-width="2"/>
+  <rect x="151" y="544.0" width="55" height="28" rx="5" fill="#f0883e" stroke="#bc4c00" stroke-width="2"/>
+  <rect x="30" y="600.0" width="80" height="28" rx="5" fill="#f0883e" stroke="#bc4c00" stroke-width="2"/>
+  <rect x="118" y="600.0" width="50" height="28" rx="5" fill="#f0883e" stroke="#bc4c00" stroke-width="2"/>
+  <text x="310" y="468" font-family="ui-monospace, 'SF Mono', Consolas, monospace" font-size="15" text-anchor="start" fill="#1f2328">align-content: space-around</text>
+  <rect x="310" y="478" width="230" height="160" rx="8" fill="#ddf4ff" stroke="#58a6ff" stroke-width="2.5"/>
+  <rect x="320" y="495.3333333333333" width="50" height="28" rx="5" fill="#f0883e" stroke="#bc4c00" stroke-width="2"/>
+  <rect x="378" y="495.3333333333333" width="70" height="28" rx="5" fill="#f0883e" stroke="#bc4c00" stroke-width="2"/>
+  <rect x="456" y="495.3333333333333" width="40" height="28" rx="5" fill="#f0883e" stroke="#bc4c00" stroke-width="2"/>
+  <rect x="320" y="544.0" width="60" height="28" rx="5" fill="#f0883e" stroke="#bc4c00" stroke-width="2"/>
+  <rect x="388" y="544.0" width="45" height="28" rx="5" fill="#f0883e" stroke="#bc4c00" stroke-width="2"/>
+  <rect x="441" y="544.0" width="55" height="28" rx="5" fill="#f0883e" stroke="#bc4c00" stroke-width="2"/>
+  <rect x="320" y="592.6666666666666" width="80" height="28" rx="5" fill="#f0883e" stroke="#bc4c00" stroke-width="2"/>
+  <rect x="408" y="592.6666666666666" width="50" height="28" rx="5" fill="#f0883e" stroke="#bc4c00" stroke-width="2"/>
+</svg>

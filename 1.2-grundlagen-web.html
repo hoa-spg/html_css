@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<!-- GENERIERT von kurse/_build (html_css) – nicht direkt bearbeiten!
+     Quelle: kurse/_build/html_css/lessons/, bauen: python3 _build/build.py html_css -->
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1.2 &ndash; Grundlagen des Web: HTML, HTTP, URL | HTML &amp; CSS Kurs</title>
+  <script>(function () { var t = localStorage.getItem('kurs-theme') || 'dark'; document.documentElement.setAttribute('data-theme', t); })();</script>
+  <link rel="stylesheet" href="assets/kurs.css">
+  <link rel="stylesheet" id="hljs-theme"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+
+<body>
+
+  <button class="hamburger" id="hamburger" aria-label="Navigation &ouml;ffnen">&#9776;</button>
+  <div class="sidebar-overlay" id="overlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html">
+        <span class="brand-icon">&lt;/&gt;</span>
+        <div>
+          <div class="brand-name">HTML &amp; CSS</div>
+          <div class="brand-sub">Web- und Mobile Computing</div>
+        </div>
+      </a>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Dark/Light Mode"
+        title="Theme wechseln">&#9728;</button>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-group">
+        <div class="nav-group-label html-label">Teil 1 &mdash; Web &amp; HTML</div>
+        <a class="nav-link" href="1.1-geschichte-internet.html"><span class="ln">1.1</span>Geschichte des Internets</a>
+        <a class="nav-link" href="1.2-grundlagen-web.html"><span class="ln">1.2</span>Grundlagen des Web: HTML, HTTP, URL</a>
+        <a class="nav-link" href="1.3-html5-grundlagen.html"><span class="ln">1.3</span>HTML5: Spezifikation, DOM &amp; APIs</a>
+        <a class="nav-link" href="1.4-html-elemente-semantik.html"><span class="ln">1.4</span>HTML-Elemente &amp; Semantik</a>
+        <a class="nav-link" href="1.5-attribute-formulare.html"><span class="ln">1.5</span>Attribute &amp; Formulare</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label css-label">Teil 2 &mdash; CSS &amp; Layout</div>
+        <a class="nav-link" href="2.1-selektoren-properties.html"><span class="ln">2.1</span>Selektoren, Einheiten &amp; Properties</a>
+        <a class="nav-link" href="2.2-box-model-display.html"><span class="ln">2.2</span>Box Model &amp; Display</a>
+        <a class="nav-link" href="2.3-vererbung-spezifitaet.html"><span class="ln">2.3</span>Vererbung, Spezifit&auml;t &amp; Kaskade</a>
+        <a class="nav-link" href="2.4-positionierung.html"><span class="ln">2.4</span>Positionierung &amp; z-index</a>
+        <a class="nav-link" href="2.5-flexbox-container.html"><span class="ln">2.5</span>Flexbox: Flex-Container</a>
+        <a class="nav-link" href="2.6-flexbox-kinder.html"><span class="ln">2.6</span>Flexbox: Flex-Kinder &amp; Patterns</a>
+        <a class="nav-link" href="2.7-grid-grundlagen.html"><span class="ln">2.7</span>CSS Grid Grundlagen</a>
+        <a class="nav-link" href="2.8-grid-responsive.html"><span class="ln">2.8</span>Media Queries &amp; responsive Grids</a>
+        <a class="nav-link" href="2.9-transform-transition.html"><span class="ln">2.9</span>Transformationen &amp; Transitions</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label fw-label">Teil 3 &mdash; CSS-Frameworks</div>
+        <a class="nav-link" href="3.1-bootstrap-grundlagen.html"><span class="ln">3.1</span>Bootstrap: Setup, Grid &amp; Utilities</a>
+        <a class="nav-link" href="3.2-bootstrap-komponenten.html"><span class="ln">3.2</span>Bootstrap: Komponenten &amp; Anpassung</a>
+        <a class="nav-link" href="3.3-tailwind.html"><span class="ln">3.3</span>Tailwind CSS</a>
+      </div>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <header class="lesson-header">
+      <p class="lesson-eyebrow">Lektion 1.2 &mdash; Teil 1: Web &amp; HTML</p>
+      <h1>Grundlagen des Web: HTML, HTTP, URL</h1>
+      <div class="lesson-tags">
+        <span class="tag tag-html">Web-Grundlagen</span>
+        <span class="tag tag-time">ca. 90 min</span>
+        <span class="tag tag-level">Einstieg</span>
+      </div>
+    </header>
+
+    <div class="content-area">
+      <section class="section section-lernziele">
+        <h2>Lernziele</h2>
+        <ul class="lernziele-list">
+          <li>Die Begriffe <strong>HTML</strong>, <strong>HTTP</strong> und <strong>URL</strong> definieren und voneinander abgrenzen</li>
+          <li>Eine URL in Scheme, Host, Path und Query-String zerlegen</li>
+          <li>Host, Hostname, Domain, TLD und FQDN unterscheiden</li>
+          <li>Die Aufgabenteilung von HTML, CSS und JavaScript erkl&auml;ren</li>
+          <li>Wissen, wo JavaScript heute &uuml;berall l&auml;uft (Web, Mobile, Desktop, Server)</li>
+          <li>Die Standardisierungsorganisationen <strong>W3C</strong> und <strong>WHATWG</strong> und die wichtigsten Nachschlagewerke kennen</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2>1 &mdash; HTML: Hypertext Markup Language</h2>
+        <p>
+          <strong>Hypertext Markup Language (HTML)</strong> ist eine textbasierte Auszeichnungssprache
+          <strong>zur Strukturierung</strong> elektronischer Dokumente wie Text mit Hyperlinks (&hellip;).
+          <br><small class="text-muted">Quelle: <a href="https://de.wikipedia.org/wiki/Hypertext_Markup_Language" target="_blank" rel="noopener">de.wikipedia.org/wiki/Hypertext_Markup_Language</a></small>
+        </p>
+        <p>
+          Das Schl&uuml;sselwort ist <strong>Hypertext</strong>: Dokumente sind nicht linear wie ein Buch,
+          sondern &uuml;ber <strong>Hyperlinks</strong> miteinander verkn&uuml;pft. Von jedem Dokument
+          kann man zu beliebigen anderen springen.
+        </p>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/hypertext.svg" alt="Hypertext: Dokumente A&ndash;F sind &uuml;ber Hyperlinks beliebig miteinander verkn&uuml;pft" loading="lazy" style="max-width:560px"></div>
+  <figcaption>Hypertext: Dokumente A&ndash;F sind &uuml;ber Hyperlinks beliebig miteinander verkn&uuml;pft</figcaption>
+</figure>
+
+        <p>
+          HTML beschreibt <em>was</em> ein Inhalt ist (&Uuml;berschrift, Absatz, Link &hellip;), nicht wie
+          er aussieht. Der Browser liest den HTML-Quelltext und stellt ihn dar. In den
+          <strong>Entwicklertools</strong> des Browsers (Taste <kbd>F12</kbd>) sieht man, welches
+          HTML-Element zu welchem Teil der Seite geh&ouml;rt:
+        </p>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/html-im-browser.png" alt="Links die gerenderte Seite &bdquo;Willkommen auf meiner Webseite&ldquo;, rechts der zugeh&ouml;rige HTML-Quelltext in den Entwicklertools" loading="lazy"></div>
+  <figcaption>Links die gerenderte Seite &bdquo;Willkommen auf meiner Webseite&ldquo;, rechts der zugeh&ouml;rige HTML-Quelltext in den Entwicklertools</figcaption>
+</figure>
+      </section>
+
+      <section class="section">
+        <h2>2 &mdash; HTTP: Hypertext Transfer Protocol</h2>
+        <p>
+          Das <strong>Hypertext Transfer Protocol (HTTP)</strong> ist ein (&hellip;)
+          <strong>Protokoll zur &Uuml;bertragung</strong> (&hellip;), um Webseiten
+          (Hypertext-Dokumente) aus dem World Wide Web (WWW) in einen Webbrowser zu laden.
+          <br><small class="text-muted">Quelle: <a href="https://de.wikipedia.org/wiki/Hypertext_Transfer_Protocol" target="_blank" rel="noopener">de.wikipedia.org/wiki/Hypertext_Transfer_Protocol</a></small>
+        </p>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/http-request-response.png" alt="Ablauf: Der Browser schickt einen HTTP-Request, der Webserver antwortet mit einer HTTP-Response" loading="lazy"></div>
+  <figcaption>Ablauf: Der Browser schickt einen HTTP-Request, der Webserver antwortet mit einer HTTP-Response</figcaption>
+</figure>
+        <p>Der Ablauf besteht immer aus zwei Teilen:</p>
+        <ol>
+          <li><strong>Request (Anfrage):</strong> Der Browser fragt eine Ressource an, z.&nbsp;B. <code>GET /index.html</code>.</li>
+          <li><strong>Response (Antwort):</strong> Der Webserver schickt die Ressource zur&uuml;ck &ndash; z.&nbsp;B. das HTML-Dokument &bdquo;Hello World!&ldquo;.</li>
+        </ol>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Vereinfachter HTTP-Request und HTTP-Response</span>
+    <span class="code-lang">HTTP</span>
+  </div>
+  <pre><code class="language-plaintext">GET /index.html HTTP/1.1
+Host: www.orf.at
+
+HTTP/1.1 200 OK
+Content-Type: text/html
+
+&lt;!DOCTYPE html&gt;
+&lt;html&gt; ... &lt;/html&gt;</code></pre>
+</div>
+      </section>
+
+      <section class="section">
+        <h2>3 &mdash; URL: Uniform Resource Locator</h2>
+        <p>
+          Eine <strong>URL</strong> (&bdquo;Uniform Resource Locator&ldquo;) ist die Webadresse einer
+          bestimmten <strong>Ressource</strong> im Internet &ndash; also von Webseiten, Mediendaten,
+          Dokumenten usw.
+        </p>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/url-aufbau.svg" alt="Aufbau einer URL: Protocol, Host, Path, Query String und Fragment" loading="lazy"></div>
+  <figcaption>Aufbau einer URL: Protocol, Host, Path, Query String und Fragment</figcaption>
+</figure>
+
+        <p>Am Beispiel <code>https://www.orf.at/stories/123/?query=beispiel</code>:</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Teil</th><th>Wert</th><th>Bedeutung</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Scheme / Protocol</strong></td><td><code>https</code></td><td>Das Protokoll f&uuml;r die Kommunikation (hier: sicheres HTTP).</td></tr>
+              <tr><td><strong>Host</strong></td><td><code>www.orf.at</code></td><td>Der Server, von dem die Ressource abgerufen wird (hier: die Website des ORF).</td></tr>
+              <tr><td><strong>Path</strong></td><td><code>/stories/123/</code></td><td>Der konkrete Ort der Ressource auf dem Server.</td></tr>
+              <tr><td><strong>Query-String</strong></td><td><code>?query=beispiel</code></td><td>Zus&auml;tzliche Parameter f&uuml;r die Anfrage, die an den Server &uuml;bermittelt werden. Hier wird ein Suchbegriff (&bdquo;beispiel&ldquo;) &uuml;bergeben.</td></tr>
+              <tr><td><strong>Fragment</strong></td><td><code>#article3</code></td><td>Sprungmarke innerhalb der Seite (wird nicht an den Server geschickt).</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>4 &mdash; Exkurs: Host vs. Hostname</h2>
+        <div class="two-col">
+          <div>
+            <h3 class="mt-0">Host</h3>
+            <p>
+              Im Kontext einer URL bezeichnet <strong>Host</strong> die Kombination aus Domain,
+              optional der Subdomain (Hostname) und der Portnummer.
+            </p>
+            <p>
+              Der Host gibt an, mit welchem Server im Internet der Browser eine Verbindung herstellen
+              soll, um eine Webseite abzurufen.
+            </p>
+          </div>
+          <div>
+            <h3 class="mt-0">Hostname</h3>
+            <p>
+              Der <strong>Hostname</strong> ist der Teil der URL, der den konkreten Server
+              identifiziert, mit dem sich der Browser verbinden soll.
+            </p>
+            <p>Er ist ein Teil des Hosts, der zus&auml;tzlich die Domain beinhaltet.</p>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>URL</th><th>Host</th><th>Hostname</th></tr></thead>
+            <tbody>
+              <tr><td><code>https://www.orf.at/stories/123</code></td><td><code>www.orf.at:443</code> (Port optional)</td><td><code>www</code></td></tr>
+              <tr><td><code>https://api.orf.at/stories/123</code></td><td><code>api.orf.at:443</code></td><td><code>api</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout callout-info">
+  <div class="callout-icon">&#8505;</div>
+  <div class="callout-body">
+    <div class="callout-title">Port 443</div>
+    <p>Ports sind wie &bdquo;T&uuml;rnummern&ldquo; eines Servers. HTTPS verwendet standardm&auml;&szlig;ig
+          Port <strong>443</strong>, HTTP Port <strong>80</strong>. Weil das der Standard ist, l&auml;sst
+          man den Port in der Adresszeile normalerweise weg.</p>
+  </div>
+</div>
+      </section>
+
+      <section class="section">
+        <h2>5 &mdash; Exkurs: Fully Qualified Domain Name (FQDN)</h2>
+        <p>
+          Der <strong>Fully Qualified Domain Name (FQDN)</strong> ist eine vollst&auml;ndige und
+          eindeutige Referenz auf einen einzelnen Host oder Server im Internet.
+        </p>
+        <p>
+          Er beinhaltet den <strong>Hostnamen</strong>, den <strong>Domainnamen</strong> und die
+          <strong>Top-Level-Domain (TLD)</strong>. Zusammen bilden sie einen vollst&auml;ndigen Pfad
+          durch die DNS-Hierarchie zu einem bestimmten Netzwerkhost.
+        </p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th colspan="2">Beispiel: <code>https://www.orf.at/stories/123</code></th></tr></thead>
+            <tbody>
+              <tr><td>Hostname</td><td><code>www</code></td></tr>
+              <tr><td>Domain</td><td><code>orf</code></td></tr>
+              <tr><td>TLD</td><td><code>at</code></td></tr>
+              <tr><td><strong>FQDN</strong></td><td><code>www.orf.at</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>6 &mdash; Exkurs: Beispiel orf.at</h2>
+        <p>Zum Abschluss alle Begriffe am Beispiel <a href="https://www.orf.at/" target="_blank" rel="noopener">https://www.orf.at/</a>:</p>
+        <div class="table-wrap">
+          <table>
+            <tbody>
+              <tr><td>Scheme</td><td><code>https</code></td></tr>
+              <tr><td>Host</td><td><code>www.orf.at</code> (vollst&auml;ndig: <code>www.orf.at:443</code>)</td></tr>
+              <tr><td>Hostname</td><td><code>www</code></td></tr>
+              <tr><td>Domain</td><td><code>orf</code></td></tr>
+              <tr><td>TLD</td><td><code>at</code></td></tr>
+              <tr><td>Path</td><td><code>/</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/orf-devtools.jpg" alt="orf.at mit ge&ouml;ffneten Entwicklertools (Tab &bdquo;Network&ldquo;): Hier sieht man Request-URL, Methode, Scheme und Host jeder Anfrage" loading="lazy"></div>
+  <figcaption>orf.at mit ge&ouml;ffneten Entwicklertools (Tab &bdquo;Network&ldquo;): Hier sieht man Request-URL, Methode, Scheme und Host jeder Anfrage</figcaption>
+</figure>
+      </section>
+
+      <section class="section">
+        <h2>7 &mdash; HTML, CSS und JavaScript</h2>
+        <p>Jede Webseite besteht aus drei Technologien mit klar getrennten Aufgaben:</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Technologie</th><th>Aufgabe</th><th>Vergleich</th></tr></thead>
+            <tbody>
+              <tr><td><strong>HTML</strong></td><td>for <strong>structure</strong> &ndash; Struktur und Inhalt</td><td>das Skelett</td></tr>
+              <tr><td><strong>CSS</strong></td><td>for <strong>design and layout</strong> &ndash; Aussehen und Anordnung</td><td>die Kleidung</td></tr>
+              <tr><td><strong>JavaScript</strong></td><td>for <strong>interaction</strong> &ndash; Verhalten und Interaktion</td><td>die Muskeln</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/html-css-js-logo.svg" alt="HTML, CSS und JavaScript" loading="lazy" style="max-width:380px"></div>
+  <figcaption>HTML, CSS und JavaScript</figcaption>
+</figure>
+
+        <h3>What is the latest?</h3>
+        <p>Die aktuellen Versionen der drei Technologien:</p>
+        <ul>
+          <li><strong>HTML 5.2</strong> (heute als &bdquo;Living Standard&ldquo; laufend weiterentwickelt)</li>
+          <li><strong>CSS 3</strong> (heute in einzelne Module aufgeteilt, die unabh&auml;ngig voneinander wachsen)</li>
+          <li><strong>JavaScript ES2024</strong></li>
+        </ul>
+
+        <h3>Browser Market Share 2023</h3>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/browser-market-share-2023.svg" alt="Browser-Marktanteile 2023: Chrome 63&nbsp;%, Safari 14,4&nbsp;%, Internet Explorer &amp; Edge 8&nbsp;%, Firefox 5,1&nbsp;%, Opera 1,8&nbsp;%" loading="lazy" style="max-width:640px"></div>
+  <figcaption>Browser-Marktanteile 2023: Chrome 63&nbsp;%, Safari 14,4&nbsp;%, Internet Explorer &amp; Edge 8&nbsp;%, Firefox 5,1&nbsp;%, Opera 1,8&nbsp;%</figcaption>
+</figure>
+        <div class="callout callout-tip">
+  <div class="callout-icon">&#128161;</div>
+  <div class="callout-body">
+    <div class="callout-title">Warum ist das wichtig?</div>
+    <p>Nicht jeder Browser unterst&uuml;tzt jedes neue Feature gleichzeitig. Mit
+          <a href="https://caniuse.com/" target="_blank" rel="noopener">caniuse.com</a> pr&uuml;fst du,
+          ob ein HTML-/CSS-/JS-Feature in den relevanten Browsern funktioniert.</p>
+  </div>
+</div>
+      </section>
+
+      <section class="section">
+        <h2>8 &mdash; JavaScript Everywhere</h2>
+        <p>
+          Mit HTML, CSS und JavaScript baut man l&auml;ngst nicht mehr nur Webseiten. Dieselben
+          Technologien laufen heute auf fast jeder Plattform:
+        </p>
+        <h3>Ionic Framework (Native Apps with JavaScript)</h3>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/ionic.jpg" alt="Ionic: &bdquo;The mobile SDK for the Web&ldquo; &ndash; mobile Apps f&uuml;r iOS und Android mit Webtechnologien" loading="lazy"></div>
+  <figcaption>Ionic: &bdquo;The mobile SDK for the Web&ldquo; &ndash; mobile Apps f&uuml;r iOS und Android mit Webtechnologien <small class="credit">Screenshot: ionicframework.com</small></figcaption>
+</figure>
+        <h3>Electron Framework (Desktop Apps with JavaScript)</h3>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/electron.jpg" alt="Electron: plattform&uuml;bergreifende Desktop-Apps mit JavaScript, HTML und CSS (z.&nbsp;B. Visual Studio Code)" loading="lazy"></div>
+  <figcaption>Electron: plattform&uuml;bergreifende Desktop-Apps mit JavaScript, HTML und CSS (z.&nbsp;B. Visual Studio Code) <small class="credit">Screenshot: electronjs.org</small></figcaption>
+</figure>
+        <h3>Node.js (JavaScript on the Server)</h3>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/nodejs.jpg" alt="Node.js: JavaScript-Laufzeitumgebung f&uuml;r Server" loading="lazy"></div>
+  <figcaption>Node.js: JavaScript-Laufzeitumgebung f&uuml;r Server <small class="credit">Screenshot: nodejs.org</small></figcaption>
+</figure>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/javascript-everywhere.svg" alt="JavaScript &ndash; JavaScript Everywhere" loading="lazy" style="max-width:560px"></div>
+  <figcaption>JavaScript &ndash; JavaScript Everywhere</figcaption>
+</figure>
+      </section>
+
+      <section class="section">
+        <h2>9 &mdash; Referenzen, Editoren &amp; Lernspiele</h2>
+        <div class="two-col">
+          <div>
+            <h3 class="mt-0">Referenzen</h3>
+            <ul>
+              <li><strong>MDN</strong> &ndash; <a href="https://developer.mozilla.org/de/" target="_blank" rel="noopener">developer.mozilla.org/de/</a></li>
+              <li><strong>CAN I USE</strong> &ndash; <a href="https://caniuse.com/" target="_blank" rel="noopener">caniuse.com</a></li>
+              <li><strong>W3Schools</strong> &ndash; <a href="https://www.w3schools.com/" target="_blank" rel="noopener">w3schools.com</a></li>
+            </ul>
+            <h3>CSS References</h3>
+            <ul>
+              <li><strong>CSS Tricks</strong> &ndash; <a href="https://css-tricks.com/" target="_blank" rel="noopener">css-tricks.com</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="mt-0">Editoren (installiert)</h3>
+            <p>IntelliJ, Visual Studio Code, jeder beliebige Texteditor</p>
+            <h3>Editoren (online)</h3>
+            <p>CodePen, JSFiddle, StackBlitz</p>
+            <h3>CSS Learning Games</h3>
+            <ul>
+              <li><strong>CSS Flexbox</strong> &ndash; <a href="https://flexboxfroggy.com/#de" target="_blank" rel="noopener">flexboxfroggy.com/#de</a></li>
+              <li><strong>CSS Grid</strong> &ndash; <a href="https://cssgridgarden.com/#de" target="_blank" rel="noopener">cssgridgarden.com/#de</a></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>10 &mdash; Wer macht die Standards? W3C und WHATWG</h2>
+        <h3>W3C &ndash; World Wide Web Consortium</h3>
+        <p><a href="https://www.w3.org/" target="_blank" rel="noopener">https://www.w3.org/</a></p>
+        <div class="table-wrap">
+          <table>
+            <tbody>
+              <tr><td><strong>Gr&uuml;ndung</strong></td><td>1994 von Tim Berners-Lee, dem Erfinder des World Wide Web.</td></tr>
+              <tr><td><strong>Organisation</strong></td><td>Eine internationale Gemeinschaft, in der Mitgliedsorganisationen, ein Vollzeit-Stab und die &Ouml;ffentlichkeit gemeinsam Webstandards entwickeln.</td></tr>
+              <tr><td><strong>Standards</strong></td><td>Entwickelt eine Vielzahl von Standards f&uuml;r das World Wide Web, darunter HTML, CSS, XML und viele andere.</td></tr>
+              <tr><td><strong>Dokumentation</strong></td><td>Die Spezifikationen durchlaufen verschiedene Stadien, bevor sie als Empfehlungen (Recommendations) ver&ouml;ffentlicht werden.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>WHATWG &ndash; Web Hypertext Application Technology Working Group</h3>
+        <p><a href="https://whatwg.org/" target="_blank" rel="noopener">https://whatwg.org/</a></p>
+        <div class="table-wrap">
+          <table>
+            <tbody>
+              <tr><td><strong>Gr&uuml;ndung</strong></td><td>2004 von Mitarbeitern von Apple, Mozilla und Opera &ndash; als Reaktion auf den Eindruck, dass das W3C die Entwicklung der f&uuml;r Webanwendungen n&ouml;tigen Technologien nicht ausreichend vorantrieb.</td></tr>
+              <tr><td><strong>Organisation</strong></td><td>Eine lose organisierte, offene Gemeinschaft von Einzelpersonen und Organisationen, die sich auf die Verbesserung der Webtechnologien konzentriert.</td></tr>
+              <tr><td><strong>Standards</strong></td><td>Fokussiert sich vor allem auf die Entwicklung von HTML und verwandten Webtechnologien.</td></tr>
+              <tr><td><strong>Dokumentation</strong></td><td>Die Spezifikationen gelten als &bdquo;lebende Standards&ldquo; (Living Standards): Sie werden laufend aktualisiert, statt in festen Versionen ver&ouml;ffentlicht zu werden.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>HTML5-Spezifikation</h3>
+        <p>
+          Die HTML5-Spezifikation der WHATWG ist ein <strong>&bdquo;Living Standard&ldquo;</strong>. Das
+          bedeutet, dass sie st&auml;ndig aktualisiert wird, um aktuelle Technologien und Best Practices
+          widerzuspiegeln. Das f&ouml;rdert eine moderne und effiziente Webentwicklung. Wichtige Teile der
+          HTML5-Spezifikation sind:
+        </p>
+        <ul>
+          <li>HTML-Tags</li>
+          <li>DOM (Document Object Model)</li>
+          <li>APIs (Schnittstellen)</li>
+          <li>Security Policies</li>
+        </ul>
+        <p>
+          <a href="https://www.w3.org/TR/2011/WD-html5-20110405/" target="_blank" rel="noopener">https://www.w3.org/TR/2011/WD-html5-20110405/</a><br>
+          <a href="https://html.spec.whatwg.org/multipage/" target="_blank" rel="noopener">https://html.spec.whatwg.org/multipage/</a>
+        </p>
+        <div class="callout callout-info">
+  <div class="callout-icon">&#8505;</div>
+  <div class="callout-body">
+    <div class="callout-title">Mehr dazu in Lektion 1.3</div>
+    <p>Diese vier Teile der Spezifikation &ndash; Tags, DOM, APIs und Security Policies &ndash;
+          schauen wir uns in der n&auml;chsten Lektion im Detail an.</p>
+  </div>
+</div>
+      </section>
+
+      <section class="section">
+        <h2>11 &mdash; Links und Quellen</h2>
+        <ul>
+          <li><strong>Referenz:</strong> <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/html" target="_blank" rel="noopener">developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/html</a></li>
+          <li><strong>HTML Validator:</strong> <a href="https://validator.w3.org/detailed.html" target="_blank" rel="noopener">validator.w3.org/detailed.html</a></li>
+          <li><strong>Tutorials:</strong> <a href="https://www.w3schools.com/" target="_blank" rel="noopener">w3schools.com</a></li>
+          <li><strong>W3C Konsortium:</strong> <a href="https://www.w3.org/" target="_blank" rel="noopener">w3.org</a></li>
+          <li><strong>Web Hypertext Application Technology Working Group:</strong> <a href="https://whatwg.org/" target="_blank" rel="noopener">whatwg.org</a></li>
+        </ul>
+      </section>
+
+      <section class="section section-projekt">
+        <h2>Projektschritt</h2>
+<div class="projekt-box">
+  <div class="projekt-box-header">
+    <span class="projekt-step">Projektschritt 1.2</span>
+    <h3>Bereiche und URLs der Demoseite planen</h3>
+  </div>
+<p>
+    Die Demoseite ist eine <strong>One-Page-Site</strong>: Alle Inhalte stehen auf einer Seite,
+    die Navigation springt per <strong>Fragment</strong> zu den einzelnen Bereichen. Lokal l&auml;uft
+    sie &uuml;ber den Live Server (Host <code>127.0.0.1:5500</code>).
+  </p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Bereich</th><th>Fragment</th><th>URL</th></tr></thead>
+      <tbody>
+        <tr><td>HTML Grundlagen</td><td><code>#html</code></td><td><code>http://127.0.0.1:5500/index.html#html</code></td></tr>
+        <tr><td>HTML Elemente</td><td><code>#elemente</code></td><td><code>http://127.0.0.1:5500/index.html#elemente</code></td></tr>
+        <tr><td>CSS</td><td><code>#css</code></td><td><code>http://127.0.0.1:5500/index.html#css</code></td></tr>
+        <tr><td>Lernprojekt</td><td><code>#lernprojekt</code></td><td><code>http://127.0.0.1:5500/index.html#lernprojekt</code></td></tr>
+        <tr><td>Kontakt</td><td><code>#kontakt</code></td><td><code>http://127.0.0.1:5500/index.html#kontakt</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>
+    Das Newsletter-Formular (ab Lektion 1.5) schickt seine Daten an den Path
+    <code>/newsletter</code> &ndash; also an eine andere URL auf demselben Host.
+  </p>
+</div>
+      </section>
+
+      <section class="section section-fehler">
+        <h2>H&auml;ufige Fehler</h2>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: HTML als Programmiersprache bezeichnen</div>
+  <p>HTML hat keine Variablen, Schleifen oder Bedingungen.</p>
+          <p class="fehler-fix">HTML ist eine <strong>Auszeichnungssprache</strong> (Markup Language), die Inhalte strukturiert. Programmiert wird mit JavaScript.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Host und Hostname verwechseln</div>
+  <p>&bdquo;Der Hostname von <code>https://www.orf.at</code> ist <code>www.orf.at</code>.&ldquo;</p>
+          <p class="fehler-fix"><code>www.orf.at</code> ist der Host (bzw. FQDN), der Hostname ist nur <code>www</code>.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Das Fragment f&uuml;r einen Server-Parameter halten</div>
+  <p>Alles nach <code>#</code> bleibt im Browser und wird <em>nicht</em> an den Server geschickt.</p>
+          <p class="fehler-fix">Daten f&uuml;r den Server geh&ouml;ren in den Query-String (<code>?key=value</code>), das Fragment dient nur als Sprungmarke.</p>
+</div>
+      </section>
+
+      <section class="section section-aufgaben">
+        <h2>Aufgaben</h2>
+        <div class="aufgaben-list">
+          <div class="aufgabe">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Aufgabe 1</span>
+    <span class="aufgabe-title">URLs zerlegen</span>
+  </div>
+  <p>Zerlege die folgenden URLs in Scheme, Host, Hostname, Domain, TLD, Path, Query-String und Fragment:</p>
+            <ul>
+              <li><code>https://www.spengergasse.at/?p=2135</code></li>
+              <li><code>https://developer.mozilla.org/de/docs/Web/HTML#referenzen</code></li>
+              <li><code>https://www.google.com/search?q=html&amp;hl=de</code></li>
+            </ul>
+</div>
+          <div class="aufgabe">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Aufgabe 2</span>
+    <span class="aufgabe-title">Requests beobachten</span>
+  </div>
+  <p>&Ouml;ffne <code>https://www.orf.at</code>, dr&uuml;cke <kbd>F12</kbd> und wechsle in den Tab <strong>Network</strong>. Lade die Seite neu. Wie viele Requests werden gesendet? Finde den ersten Request und notiere Methode, Status-Code und Content-Type.</p>
+</div>
+          <div class="aufgabe">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Aufgabe 3</span>
+    <span class="aufgabe-title">Can I use?</span>
+  </div>
+  <p>Pr&uuml;fe auf <a href="https://caniuse.com/" target="_blank" rel="noopener">caniuse.com</a>, ob die CSS-Features <code>flexbox</code>, <code>grid</code> und <code>subgrid</code> in Chrome, Firefox und Safari unterst&uuml;tzt werden.</p>
+</div>
+          <div class="aufgabe aufgabe-bonus">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Bonus</span>
+    <span class="aufgabe-title">Flexbox Froggy</span>
+  </div>
+  <p>Spiele die ersten 10 Level von <a href="https://flexboxfroggy.com/#de" target="_blank" rel="noopener">Flexbox Froggy</a>. Wir brauchen das Wissen in Teil 3 &ndash; du bist dann schon vorbereitet.</p>
+</div>
+        </div>
+      </section>
+
+    </div>
+
+    <nav class="lesson-nav">
+      <a class="nav-btn" href="1.1-geschichte-internet.html">&larr; Lektion 1.1: Geschichte des Internets</a>
+      <span class="nav-center-info">Lektion 1.2</span>
+      <a class="nav-btn primary" href="1.3-html5-grundlagen.html">Lektion 1.3: HTML5: Spezifikation, DOM &amp; APIs &rarr;</a>
+    </nav>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>
+    const ham = document.getElementById('hamburger');
+    const sb = document.getElementById('sidebar');
+    const ov = document.getElementById('overlay');
+    ham.addEventListener('click', () => { sb.classList.toggle('open'); ov.classList.toggle('visible'); });
+    ov.addEventListener('click', () => { sb.classList.remove('open'); ov.classList.remove('visible'); });
+    const cur = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-link').forEach(l => {
+      if (l.getAttribute('href') === cur) l.classList.add('active');
+    });
+    const themeBtn = document.getElementById('theme-toggle');
+    const applyTheme = (t) => {
+      document.documentElement.setAttribute('data-theme', t);
+      if (themeBtn) themeBtn.innerHTML = t === 'dark' ? '&#9728;' : '&#9790;';
+    };
+    applyTheme(localStorage.getItem('kurs-theme') || 'dark');
+    setTimeout(() => document.documentElement.classList.add('theme-transitions'), 50);
+    if (themeBtn) themeBtn.addEventListener('click', () => {
+      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('kurs-theme', next);
+      applyTheme(next);
+    });
+    hljs.highlightAll();
+  </script>
+</body>
+
+</html>

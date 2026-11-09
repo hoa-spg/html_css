@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<!-- GENERIERT von kurse/_build (html_css) – nicht direkt bearbeiten!
+     Quelle: kurse/_build/html_css/lessons/, bauen: python3 _build/build.py html_css -->
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.7 &ndash; CSS Grid Grundlagen | HTML &amp; CSS Kurs</title>
+  <script>(function () { var t = localStorage.getItem('kurs-theme') || 'dark'; document.documentElement.setAttribute('data-theme', t); })();</script>
+  <link rel="stylesheet" href="assets/kurs.css">
+  <link rel="stylesheet" id="hljs-theme"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+
+<body>
+
+  <button class="hamburger" id="hamburger" aria-label="Navigation &ouml;ffnen">&#9776;</button>
+  <div class="sidebar-overlay" id="overlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html">
+        <span class="brand-icon">&lt;/&gt;</span>
+        <div>
+          <div class="brand-name">HTML &amp; CSS</div>
+          <div class="brand-sub">Web- und Mobile Computing</div>
+        </div>
+      </a>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Dark/Light Mode"
+        title="Theme wechseln">&#9728;</button>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-group">
+        <div class="nav-group-label html-label">Teil 1 &mdash; Web &amp; HTML</div>
+        <a class="nav-link" href="1.1-geschichte-internet.html"><span class="ln">1.1</span>Geschichte des Internets</a>
+        <a class="nav-link" href="1.2-grundlagen-web.html"><span class="ln">1.2</span>Grundlagen des Web: HTML, HTTP, URL</a>
+        <a class="nav-link" href="1.3-html5-grundlagen.html"><span class="ln">1.3</span>HTML5: Spezifikation, DOM &amp; APIs</a>
+        <a class="nav-link" href="1.4-html-elemente-semantik.html"><span class="ln">1.4</span>HTML-Elemente &amp; Semantik</a>
+        <a class="nav-link" href="1.5-attribute-formulare.html"><span class="ln">1.5</span>Attribute &amp; Formulare</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label css-label">Teil 2 &mdash; CSS &amp; Layout</div>
+        <a class="nav-link" href="2.1-selektoren-properties.html"><span class="ln">2.1</span>Selektoren, Einheiten &amp; Properties</a>
+        <a class="nav-link" href="2.2-box-model-display.html"><span class="ln">2.2</span>Box Model &amp; Display</a>
+        <a class="nav-link" href="2.3-vererbung-spezifitaet.html"><span class="ln">2.3</span>Vererbung, Spezifit&auml;t &amp; Kaskade</a>
+        <a class="nav-link" href="2.4-positionierung.html"><span class="ln">2.4</span>Positionierung &amp; z-index</a>
+        <a class="nav-link" href="2.5-flexbox-container.html"><span class="ln">2.5</span>Flexbox: Flex-Container</a>
+        <a class="nav-link" href="2.6-flexbox-kinder.html"><span class="ln">2.6</span>Flexbox: Flex-Kinder &amp; Patterns</a>
+        <a class="nav-link" href="2.7-grid-grundlagen.html"><span class="ln">2.7</span>CSS Grid Grundlagen</a>
+        <a class="nav-link" href="2.8-grid-responsive.html"><span class="ln">2.8</span>Media Queries &amp; responsive Grids</a>
+        <a class="nav-link" href="2.9-transform-transition.html"><span class="ln">2.9</span>Transformationen &amp; Transitions</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label fw-label">Teil 3 &mdash; CSS-Frameworks</div>
+        <a class="nav-link" href="3.1-bootstrap-grundlagen.html"><span class="ln">3.1</span>Bootstrap: Setup, Grid &amp; Utilities</a>
+        <a class="nav-link" href="3.2-bootstrap-komponenten.html"><span class="ln">3.2</span>Bootstrap: Komponenten &amp; Anpassung</a>
+        <a class="nav-link" href="3.3-tailwind.html"><span class="ln">3.3</span>Tailwind CSS</a>
+      </div>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <header class="lesson-header">
+      <p class="lesson-eyebrow">Lektion 2.7 &mdash; Teil 2: CSS &amp; Layout</p>
+      <h1>CSS Grid Grundlagen</h1>
+      <div class="lesson-tags">
+        <span class="tag tag-css">CSS Grid</span>
+        <span class="tag tag-time">ca. 90 min</span>
+        <span class="tag tag-level">Layout</span>
+      </div>
+    </header>
+
+    <div class="content-area">
+      <section class="section section-lernziele">
+        <h2>Lernziele</h2>
+        <ul class="lernziele-list">
+          <li>Die Grundbegriffe von CSS Grid kennen: Container, Items, Lines, Tracks, Areas</li>
+          <li>Spalten und Zeilen mit <code>grid-template-columns</code>/<code>-rows</code>, <code>fr</code> und <code>repeat()</code> definieren</li>
+          <li>Abst&auml;nde und Ausrichtung im Grid steuern</li>
+          <li>Grid Items &uuml;ber Linien, <code>span</code> und benannte Bereiche (<code>grid-template-areas</code>) platzieren</li>
+          <li>Implizite Zeilen, <code>minmax()</code>, <code>auto-fit</code> und <code>auto-fill</code> einsetzen</li>
+          <li>Entscheiden, wann Grid und wann Flexbox das richtige Werkzeug ist</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2>1 &mdash; Was ist CSS Grid?</h2>
+        <p>
+          <strong>CSS Grid</strong> ist ein <strong>zweidimensionales</strong> Layout-System f&uuml;r das Web
+          &ndash; es kann <strong>Zeilen und Spalten gleichzeitig</strong> handhaben. Flexbox dagegen
+          ordnet Elemente immer entlang <em>einer</em> Achse an.
+        </p>
+        <h3>Hauptkonzepte</h3>
+        <div class="table-wrap">
+          <table>
+            <tbody>
+              <tr><td><strong>Grid Container</strong></td><td>Das Elternelement mit <code>display: grid</code></td></tr>
+              <tr><td><strong>Grid Items</strong></td><td>Die direkten Kindelemente des Containers</td></tr>
+              <tr><td><strong>Grid Lines</strong></td><td>Die Trennlinien zwischen den Tracks (nummeriert ab 1)</td></tr>
+              <tr><td><strong>Grid Tracks</strong></td><td>Die Zeilen und Spalten</td></tr>
+              <tr><td><strong>Grid Areas</strong></td><td>Benannte Bereiche im Grid (k&ouml;nnen mehrere Zellen umfassen)</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h3>Grundlegendes Beispiel</h3>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Grid</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">.container {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 100px 200px;
+  gap: 10px;
+}</code></pre>
+</div>
+        <p><strong>Resultat:</strong> 3 Spalten, 2 Zeilen mit Abstand. Die mittlere Spalte ist doppelt so breit wie die &auml;u&szlig;eren.</p>
+        <div class="demo">
+  <div class="demo-label">Live-Vorschau</div>
+  <div class="demo-body">
+          <div style="display:grid;grid-template-columns:1fr 2fr 1fr;grid-template-rows:50px 80px;gap:10px">
+            <div style="background:#ddf4ff;border:1px solid #0969da;padding:4px">1fr</div>
+            <div style="background:#ddf4ff;border:1px solid #0969da;padding:4px">2fr</div>
+            <div style="background:#ddf4ff;border:1px solid #0969da;padding:4px">1fr</div>
+            <div style="background:#ddf4ff;border:1px solid #0969da;padding:4px">4</div>
+            <div style="background:#ddf4ff;border:1px solid #0969da;padding:4px">5</div>
+            <div style="background:#ddf4ff;border:1px solid #0969da;padding:4px">6</div>
+          </div>
+        </div>
+</div>
+      </section>
+
+      <section class="section">
+        <h2>2 &mdash; Grid-Container-Eigenschaften I</h2>
+        <h3>Grid Container definieren</h3>
+        <p><code>display: grid | inline-grid</code> &ndash; aktiviert das Grid-Layout f&uuml;r das Element.</p>
+        <h3>grid-template-columns und grid-template-rows</h3>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Spalten definieren</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">.grid {
+  /* 3 gleiche Spalten */
+  grid-template-columns: 1fr 1fr 1fr;
+  /* oder kürzer: */
+  grid-template-columns: repeat(3, 1fr);
+
+  /* Verschiedene Größen */
+  grid-template-columns: 200px 1fr 100px;
+
+  /* Auto-Größe basierend auf Inhalt */
+  grid-template-columns: auto 1fr auto;
+}</code></pre>
+</div>
+        <h3>Einheiten</h3>
+        <div class="table-wrap">
+          <table>
+            <tbody>
+              <tr><td><code>fr</code> (fraction)</td><td>Teilt den <strong>verf&uuml;gbaren</strong> Platz auf (nachdem feste Gr&ouml;&szlig;en abgezogen wurden)</td></tr>
+              <tr><td><code>px</code>, <code>em</code>, <code>%</code></td><td>Feste Gr&ouml;&szlig;en</td></tr>
+              <tr><td><code>auto</code></td><td>Gr&ouml;&szlig;e basierend auf dem Inhalt</td></tr>
+              <tr><td><code>minmax()</code></td><td>Flexible Bereiche zwischen einem Minimum und einem Maximum</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout callout-info">
+  <div class="callout-icon">&#8505;</div>
+  <div class="callout-body">
+    <div class="callout-title">Beispiel zu fr</div>
+    <p>Bei <code>grid-template-columns: 200px 1fr 100px</code> in einem 900px breiten Container
+          bekommt die mittlere Spalte 900 &minus; 200 &minus; 100 = <strong>600px</strong>.</p>
+  </div>
+</div>
+      </section>
+
+      <section class="section">
+        <h2>3 &mdash; Grid-Container-Eigenschaften II</h2>
+        <h3>Abst&auml;nde: gap (fr&uuml;her grid-gap)</h3>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">gap</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">.grid {
+  gap: 20px;              /* Alle Abstände */
+  gap: 10px 20px;         /* row-gap column-gap */
+  row-gap: 10px;          /* Nur Zeilen */
+  column-gap: 20px;       /* Nur Spalten */
+}</code></pre>
+</div>
+        <h3>Ausrichtung: justify-items &amp; align-items</h3>
+        <p>Richten die Items <strong>innerhalb ihrer Zelle</strong> aus:</p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">justify-items / align-items</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">.grid {
+  justify-items: start | center | end | stretch;  /* horizontal */
+  align-items: start | center | end | stretch;    /* vertikal */
+  place-items: center;                            /* Kurzform für beide */
+}</code></pre>
+</div>
+        <h3>Ausrichtung: justify-content &amp; align-content</h3>
+        <p>Richten das <strong>gesamte Grid</strong> im Container aus (wenn das Grid kleiner als der Container ist):</p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">justify-content / align-content</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">.grid {
+  justify-content: start | center | end | space-between | space-around;
+  align-content: start | center | end | space-between | space-around;
+}</code></pre>
+</div>
+      </section>
+
+      <section class="section">
+        <h2>4 &mdash; Grid Items positionieren</h2>
+        <h3>Mit Grid Lines (linienbasiert)</h3>
+        <p>
+          Die Linien eines Grids sind durchnummeriert: Bei 3 Spalten gibt es die vertikalen Linien
+          1, 2, 3 und 4. Ein Item wird platziert, indem man angibt, von welcher bis zu welcher Linie es
+          reicht.
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Grid Lines</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">.item {
+  grid-column-start: 1;
+  grid-column-end: 3;      /* Von Linie 1 bis 3 */
+
+  /* oder kürzer: */
+  grid-column: 1 / 3;      /* Spalten 1–2 */
+  grid-row: 2 / 4;         /* Zeilen 2–3 */
+
+  /* Span-Notation */
+  grid-column: 1 / span 2; /* Start bei 1, erstreckt sich über 2 Spalten */
+  grid-row: span 3;        /* Erstreckt sich über 3 Zeilen */
+}</code></pre>
+</div>
+        <h3>Kurzform</h3>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">grid-area</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">.item {
+  grid-area: 2 / 1 / 4 / 3;  /* row-start / col-start / row-end / col-end */
+}</code></pre>
+</div>
+        <h3>Beispiel-HTML</h3>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">HTML</span>
+    <span class="code-lang">HTML</span>
+  </div>
+  <pre><code class="language-xml">&lt;div class="grid"&gt;
+  &lt;div class="item header"&gt;Header&lt;/div&gt;
+  &lt;div class="item content"&gt;Content&lt;/div&gt;
+  &lt;div class="item sidebar"&gt;Sidebar&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
+        <div class="demo">
+  <div class="demo-label">Live-Vorschau: Header &uuml;ber 2 Spalten (grid-column: 1 / 3)</div>
+  <div class="demo-body">
+          <div style="display:grid;grid-template-columns:2fr 1fr;gap:8px">
+            <div style="grid-column:1 / 3;background:#ffd8b5;border:1px solid #bc4c00;padding:6px">Header (grid-column: 1 / 3)</div>
+            <div style="background:#ddf4ff;border:1px solid #0969da;padding:6px;min-height:60px">Content</div>
+            <div style="background:#dafbe1;border:1px solid #1a7f37;padding:6px">Sidebar</div>
+          </div>
+        </div>
+</div>
+      </section>
+
+      <section class="section">
+        <h2>5 &mdash; Named Grid Areas</h2>
+        <p>Benannte Grid-Bereiche machen Layouts <strong>lesbar und wartbar</strong>: Man &bdquo;zeichnet&ldquo; das Layout direkt im CSS.</p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">CSS</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">.grid {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "header  header  header"
+    "sidebar main    ads"
+    "footer  footer  footer";
+  gap: 20px;
+}
+
+.header  { grid-area: header; }
+.sidebar { grid-area: sidebar; }
+.main    { grid-area: main; }
+.ads     { grid-area: ads; }
+.footer  { grid-area: footer; }</code></pre>
+</div>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">HTML</span>
+    <span class="code-lang">HTML</span>
+  </div>
+  <pre><code class="language-xml">&lt;div class="grid"&gt;
+  &lt;header class="header"&gt;Header&lt;/header&gt;
+  &lt;aside class="sidebar"&gt;Sidebar&lt;/aside&gt;
+  &lt;main class="main"&gt;Main Content&lt;/main&gt;
+  &lt;aside class="ads"&gt;Advertisements&lt;/aside&gt;
+  &lt;footer class="footer"&gt;Footer&lt;/footer&gt;
+&lt;/div&gt;</code></pre>
+</div>
+        <div class="demo">
+  <div class="demo-label">Live-Vorschau</div>
+  <div class="demo-body">
+          <div style="display:grid;grid-template-columns:1fr 3fr 1fr;grid-template-rows:auto 80px auto;grid-template-areas:'header header header' 'sidebar main ads' 'footer footer footer';gap:8px">
+            <div style="grid-area:header;background:#ffd8b5;padding:6px">Header</div>
+            <div style="grid-area:sidebar;background:#dafbe1;padding:6px">Sidebar</div>
+            <div style="grid-area:main;background:#ddf4ff;padding:6px">Main Content</div>
+            <div style="grid-area:ads;background:#fbefff;padding:6px">Ads</div>
+            <div style="grid-area:footer;background:#eaeef2;padding:6px">Footer</div>
+          </div>
+        </div>
+</div>
+        <div class="callout callout-tip">
+  <div class="callout-icon">&#128161;</div>
+  <div class="callout-body">
+    <div class="callout-title">Regeln f&uuml;r grid-template-areas</div>
+    <p>Jede Zeile in Anf&uuml;hrungszeichen ist eine Grid-Zeile; jedes Wort eine Zelle. Ein Bereich
+          muss ein <strong>Rechteck</strong> bilden. Ein Punkt (<code>.</code>) steht f&uuml;r eine leere Zelle.</p>
+  </div>
+</div>
+      </section>
+
+      <section class="section">
+        <h2>6 &mdash; Grid vs. Flexbox</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Aspekt</th><th>Flexbox</th><th>CSS Grid</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Dimensionen</strong></td><td>1D (eine Richtung)</td><td>2D (Zeilen + Spalten)</td></tr>
+              <tr><td><strong>Verwendung</strong></td><td>Komponenten-Layout</td><td>Seiten-Layout</td></tr>
+              <tr><td><strong>Content</strong></td><td>Content-First (Inhalt bestimmt die Gr&ouml;&szlig;e)</td><td>Layout-First (Raster bestimmt die Gr&ouml;&szlig;e)</td></tr>
+              <tr><td><strong>Ausrichtung</strong></td><td>Entlang einer Achse</td><td>In beide Richtungen</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="two-col">
+          <div>
+            <h4>Flexbox verwenden f&uuml;r</h4>
+            <ul>
+              <li>Navigation bars</li>
+              <li>Button groups</li>
+              <li>Zentrieren von Elementen</li>
+              <li>Gleichm&auml;&szlig;ige Verteilung</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Grid verwenden f&uuml;r</h4>
+            <ul>
+              <li>Seitenlayout (Header, Main, Footer)</li>
+              <li>Card grids</li>
+              <li>Dashboard layouts</li>
+              <li>Komplexe responsive Designs</li>
+            </ul>
+          </div>
+        </div>
+        <p><strong>Beide k&ouml;nnen kombiniert werden!</strong></p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Kombination</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">.page-grid { display: grid; }   /* Seitenlayout */
+.nav-flex { display: flex; }    /* Navigation innerhalb des Grids */</code></pre>
+</div>
+      </section>
+
+      <section class="section">
+        <h2>7 &mdash; Auto-Grid und minmax()</h2>
+        <h3>Automatische Grid-Erstellung: grid-auto-rows &amp; grid-auto-columns</h3>
+        <p>
+          Gibt es mehr Items als definierte Zellen, legt der Browser automatisch neue
+          (<strong>implizite</strong>) Zeilen an. Deren H&ouml;he steuert <code>grid-auto-rows</code>:
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">grid-auto-rows</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 200px;  /* Neue Zeilen haben 200px Höhe */
+}</code></pre>
+</div>
+        <h3>minmax() f&uuml;r flexible Gr&ouml;&szlig;en</h3>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">minmax()</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">.grid {
+  grid-template-columns: minmax(200px, 1fr) minmax(300px, 2fr);
+  grid-auto-rows: minmax(100px, auto);
+}</code></pre>
+</div>
+        <p>
+          <code>minmax(100px, auto)</code> bedeutet: mindestens 100px hoch, bei mehr Inhalt aber so hoch
+          wie n&ouml;tig.
+        </p>
+
+        <h3>auto-fit und auto-fill</h3>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">auto-fit / auto-fill</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">/* auto-fit: Spalten kollabieren, wenn sie leer sind */
+.grid {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+/* auto-fill: Spalten bleiben auch erhalten, wenn sie leer sind */
+.grid {
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}</code></pre>
+</div>
+        <p>
+          Der Browser legt so viele Spalten an, wie mit mindestens 250px Platz haben. Der Unterschied
+          zeigt sich nur bei <strong>wenigen Items</strong>: <code>auto-fit</code> streckt die
+          vorhandenen Items &uuml;ber die ganze Breite, <code>auto-fill</code> l&auml;sst leere Spalten stehen.
+        </p>
+        <div class="demo">
+  <div class="demo-label">Live-Vorschau mit 2 Items: oben auto-fit, unten auto-fill (minmax(120px, 1fr))</div>
+  <div class="demo-body">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin-bottom:8px">
+            <div style="background:#ddf4ff;border:1px solid #0969da;padding:6px">1</div>
+            <div style="background:#ddf4ff;border:1px solid #0969da;padding:6px">2</div>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px">
+            <div style="background:#dafbe1;border:1px solid #1a7f37;padding:6px">1</div>
+            <div style="background:#dafbe1;border:1px solid #1a7f37;padding:6px">2</div>
+          </div>
+        </div>
+</div>
+        <div class="callout callout-tip">
+  <div class="callout-icon">&#128161;</div>
+  <div class="callout-body">
+    <div class="callout-title">Perfekt f&uuml;r responsive Card-Layouts</div>
+    <code>repeat(auto-fit, minmax(250px, 1fr))</code> erzeugt ein Raster, das sich ganz
+          <strong>ohne Media Queries</strong> an jede Bildschirmbreite anpasst.
+  </div>
+</div>
+      </section>
+
+      <section class="section section-projekt">
+        <h2>Projektschritt</h2>
+<div class="projekt-box">
+  <div class="projekt-box-header">
+    <span class="projekt-step">Projektschritt 2.7</span>
+    <h3>Seitenlayout mit Grid</h3>
+  </div>
+<p>Das Seitenlayout wird zum Grid: Alle Bereiche laufen &uuml;ber beide Spalten, nur der Abschnitt &bdquo;HTML Elemente&ldquo; und die Sidebar stehen nebeneinander.</p>
+  <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">demoseite/css/style.css (neu in 2.7)</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">/* ---- 2.7 CSS Grid Grundlagen ------------------------------- */
+
+/* Zwei Spalten: Inhalt + 300px Sidebar */
+main {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  column-gap: 2rem;
+  align-items: start;
+}
+
+/* Überschrift und alle Sections über beide Spalten (Linie 1 bis -1) */
+main &gt; h1,
+main &gt; section {
+  grid-column: 1 / -1;
+}
+
+/* Ausnahme: HTML-Elemente links, Sidebar rechts daneben */
+#elemente {
+  grid-column: 1;
+}
+
+main &gt; aside {
+  grid-column: 2;
+  grid-row: 3;
+}</code></pre>
+</div>
+  <p class="mb-0">&#128193; Stand nach dieser Lektion: <a href="beispiele/2.7/index.html" target="_blank">beispiele/2.7/</a></p>
+</div>
+      </section>
+
+      <section class="section section-fehler">
+        <h2>H&auml;ufige Fehler</h2>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Spalten z&auml;hlen statt Linien</div>
+  <p><code>grid-column: 1 / 3</code> wird als &bdquo;Spalte 1 bis 3&ldquo; verstanden &ndash; das Item ist aber nur 2 Spalten breit.</p>
+          <p class="fehler-fix">Die Zahlen bezeichnen <strong>Linien</strong>. Wer in Spalten denkt, nimmt <code>grid-column: 1 / span 2</code>.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: grid-template-areas ung&uuml;ltig</div>
+  <p>Ein Bereich bildet eine L-Form oder eine Zeile hat weniger Zellen als die anderen &ndash; das ganze Layout f&auml;llt in sich zusammen.</p>
+          <p class="fehler-fix">Jede Zeile braucht gleich viele Eintr&auml;ge, und jeder benannte Bereich muss ein Rechteck sein.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: grid-area-Name in Anf&uuml;hrungszeichen</div>
+  <p><code>grid-area: "header";</code> wird ignoriert.</p>
+          <p class="fehler-fix">In <code>grid-template-areas</code> stehen die Zeilen in Anf&uuml;hrungszeichen, beim Item aber der Name <strong>ohne</strong>: <code>grid-area: header;</code></p>
+</div>
+      </section>
+
+      <section class="section section-aufgaben">
+        <h2>Aufgaben</h2>
+        <div class="aufgaben-list">
+          <div class="aufgabe">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Aufgabe 1</span>
+    <span class="aufgabe-title">Grid Garden</span>
+  </div>
+  <p>Spiele <a href="https://cssgridgarden.com/#de" target="_blank" rel="noopener">CSS Grid Garden</a> bis Level 28.</p>
+</div>
+          <div class="aufgabe">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Aufgabe 2</span>
+    <span class="aufgabe-title">Karten als Grid</span>
+  </div>
+  <p>Ersetze das Flexbox-Layout der Karten (<code>.cards</code>) durch <code>display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));</code>. Was ist anders als mit Flexbox, wenn die letzte Zeile nicht voll ist?</p>
+</div>
+          <div class="aufgabe">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Aufgabe 3</span>
+    <span class="aufgabe-title">Highlight-Karte</span>
+  </div>
+  <p>Lass die erste Karte im CSS-Abschnitt &uuml;ber zwei Spalten reichen (<code>grid-column: span 2</code>). Was passiert bei schmalen Bildschirmen?</p>
+</div>
+          <div class="aufgabe aufgabe-bonus">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Bonus</span>
+    <span class="aufgabe-title">Grid Inspector</span>
+  </div>
+  <p>&Ouml;ffne die Demoseite in Firefox oder Chrome, aktiviere in den Entwicklertools das Grid-Overlay und lass dir die Linien-Nummern anzeigen. Mach einen Screenshot.</p>
+</div>
+        </div>
+      </section>
+
+    </div>
+
+    <nav class="lesson-nav">
+      <a class="nav-btn" href="2.6-flexbox-kinder.html">&larr; Lektion 2.6: Flexbox: Flex-Kinder &amp; Patterns</a>
+      <span class="nav-center-info">Lektion 2.7</span>
+      <a class="nav-btn primary" href="2.8-grid-responsive.html">Lektion 2.8: Media Queries &amp; responsive Grids &rarr;</a>
+    </nav>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>
+    const ham = document.getElementById('hamburger');
+    const sb = document.getElementById('sidebar');
+    const ov = document.getElementById('overlay');
+    ham.addEventListener('click', () => { sb.classList.toggle('open'); ov.classList.toggle('visible'); });
+    ov.addEventListener('click', () => { sb.classList.remove('open'); ov.classList.remove('visible'); });
+    const cur = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-link').forEach(l => {
+      if (l.getAttribute('href') === cur) l.classList.add('active');
+    });
+    const themeBtn = document.getElementById('theme-toggle');
+    const applyTheme = (t) => {
+      document.documentElement.setAttribute('data-theme', t);
+      if (themeBtn) themeBtn.innerHTML = t === 'dark' ? '&#9728;' : '&#9790;';
+    };
+    applyTheme(localStorage.getItem('kurs-theme') || 'dark');
+    setTimeout(() => document.documentElement.classList.add('theme-transitions'), 50);
+    if (themeBtn) themeBtn.addEventListener('click', () => {
+      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('kurs-theme', next);
+      applyTheme(next);
+    });
+    hljs.highlightAll();
+  </script>
+</body>
+
+</html>

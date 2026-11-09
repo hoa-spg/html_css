@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<!-- GENERIERT von kurse/_build (html_css) – nicht direkt bearbeiten!
+     Quelle: kurse/_build/html_css/lessons/, bauen: python3 _build/build.py html_css -->
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1.5 &ndash; Attribute &amp; Formulare | HTML &amp; CSS Kurs</title>
+  <script>(function () { var t = localStorage.getItem('kurs-theme') || 'dark'; document.documentElement.setAttribute('data-theme', t); })();</script>
+  <link rel="stylesheet" href="assets/kurs.css">
+  <link rel="stylesheet" id="hljs-theme"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+
+<body>
+
+  <button class="hamburger" id="hamburger" aria-label="Navigation &ouml;ffnen">&#9776;</button>
+  <div class="sidebar-overlay" id="overlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html">
+        <span class="brand-icon">&lt;/&gt;</span>
+        <div>
+          <div class="brand-name">HTML &amp; CSS</div>
+          <div class="brand-sub">Web- und Mobile Computing</div>
+        </div>
+      </a>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Dark/Light Mode"
+        title="Theme wechseln">&#9728;</button>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-group">
+        <div class="nav-group-label html-label">Teil 1 &mdash; Web &amp; HTML</div>
+        <a class="nav-link" href="1.1-geschichte-internet.html"><span class="ln">1.1</span>Geschichte des Internets</a>
+        <a class="nav-link" href="1.2-grundlagen-web.html"><span class="ln">1.2</span>Grundlagen des Web: HTML, HTTP, URL</a>
+        <a class="nav-link" href="1.3-html5-grundlagen.html"><span class="ln">1.3</span>HTML5: Spezifikation, DOM &amp; APIs</a>
+        <a class="nav-link" href="1.4-html-elemente-semantik.html"><span class="ln">1.4</span>HTML-Elemente &amp; Semantik</a>
+        <a class="nav-link" href="1.5-attribute-formulare.html"><span class="ln">1.5</span>Attribute &amp; Formulare</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label css-label">Teil 2 &mdash; CSS &amp; Layout</div>
+        <a class="nav-link" href="2.1-selektoren-properties.html"><span class="ln">2.1</span>Selektoren, Einheiten &amp; Properties</a>
+        <a class="nav-link" href="2.2-box-model-display.html"><span class="ln">2.2</span>Box Model &amp; Display</a>
+        <a class="nav-link" href="2.3-vererbung-spezifitaet.html"><span class="ln">2.3</span>Vererbung, Spezifit&auml;t &amp; Kaskade</a>
+        <a class="nav-link" href="2.4-positionierung.html"><span class="ln">2.4</span>Positionierung &amp; z-index</a>
+        <a class="nav-link" href="2.5-flexbox-container.html"><span class="ln">2.5</span>Flexbox: Flex-Container</a>
+        <a class="nav-link" href="2.6-flexbox-kinder.html"><span class="ln">2.6</span>Flexbox: Flex-Kinder &amp; Patterns</a>
+        <a class="nav-link" href="2.7-grid-grundlagen.html"><span class="ln">2.7</span>CSS Grid Grundlagen</a>
+        <a class="nav-link" href="2.8-grid-responsive.html"><span class="ln">2.8</span>Media Queries &amp; responsive Grids</a>
+        <a class="nav-link" href="2.9-transform-transition.html"><span class="ln">2.9</span>Transformationen &amp; Transitions</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label fw-label">Teil 3 &mdash; CSS-Frameworks</div>
+        <a class="nav-link" href="3.1-bootstrap-grundlagen.html"><span class="ln">3.1</span>Bootstrap: Setup, Grid &amp; Utilities</a>
+        <a class="nav-link" href="3.2-bootstrap-komponenten.html"><span class="ln">3.2</span>Bootstrap: Komponenten &amp; Anpassung</a>
+        <a class="nav-link" href="3.3-tailwind.html"><span class="ln">3.3</span>Tailwind CSS</a>
+      </div>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <header class="lesson-header">
+      <p class="lesson-eyebrow">Lektion 1.5 &mdash; Teil 1: Web &amp; HTML</p>
+      <h1>Attribute &amp; Formulare</h1>
+      <div class="lesson-tags">
+        <span class="tag tag-html">HTML</span>
+        <span class="tag tag-time">ca. 90 min</span>
+        <span class="tag tag-level">Grundlagen</span>
+      </div>
+    </header>
+
+    <div class="content-area">
+      <section class="section section-lernziele">
+        <h2>Lernziele</h2>
+        <ul class="lernziele-list">
+          <li>Wissen, was HTML-Attribute sind, und die wichtigsten Attribute kennen</li>
+          <li>Boolean-Attribute wie <code>required</code>, <code>disabled</code>, <code>checked</code> verwenden</li>
+          <li>Ein Formular mit <code>&lt;form&gt;</code>, <code>&lt;label&gt;</code>, <code>&lt;input&gt;</code> und <code>&lt;button&gt;</code> aufbauen</li>
+          <li>Den Unterschied zwischen <code>id</code>, <code>for</code> und <code>name</code> erkl&auml;ren</li>
+          <li>Verschiedene Input-Typen sowie <code>&lt;textarea&gt;</code> und <code>&lt;select&gt;</code> einsetzen</li>
+          <li>Daten mit <code>action</code> und <code>method</code> (GET/POST) senden und eingebaute HTML-Validierung nutzen</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2>1 &mdash; HTML-Attribute</h2>
+        <p>
+          <strong>Attribute</strong> liefern zus&auml;tzliche Informationen zu einem HTML-Element oder
+          ver&auml;ndern sein Verhalten. Sie stehen immer im &ouml;ffnenden Tag:
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Syntax</span>
+    <span class="code-lang">HTML</span>
+  </div>
+  <pre><code class="language-xml">&lt;element attribut="wert"&gt;</code></pre>
+</div>
+        <p>Beispiele:</p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Beispiele</span>
+    <span class="code-lang">HTML</span>
+  </div>
+  <pre><code class="language-xml">&lt;a href="https://www.example.com"&gt;Link&lt;/a&gt;
+&lt;img src="bild.jpg" alt="Beschreibung des Bildes"&gt;
+&lt;input type="text" name="vorname"&gt;</code></pre>
+</div>
+      </section>
+
+      <section class="section">
+        <h2>2 &mdash; Wichtige Attribute</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Attribut</th><th>Bedeutung</th><th>Beispiel</th></tr></thead>
+            <tbody>
+              <tr><td><code>type</code></td><td>Art des Elements</td><td><code>&lt;input type="email"&gt;</code></td></tr>
+              <tr><td><code>placeholder</code></td><td>Eingabehinweis</td><td><code>placeholder="E-Mail"</code></td></tr>
+              <tr><td><code>required</code></td><td>Pflichtfeld</td><td><code>&lt;input required&gt;</code></td></tr>
+              <tr><td><code>for</code></td><td>Label-Verkn&uuml;pfung</td><td><code>&lt;label for="email"&gt;</code></td></tr>
+              <tr><td><code>action</code></td><td>Formularziel</td><td><code>&lt;form action="/anmelden"&gt;</code></td></tr>
+              <tr><td><code>method</code></td><td>&Uuml;bertragungsmethode</td><td><code>&lt;form method="post"&gt;</code></td></tr>
+              <tr><td><code>href</code></td><td>Linkziel</td><td><code>&lt;a href="seite.html"&gt;</code></td></tr>
+              <tr><td><code>src</code></td><td>Quelle von Bildern/Medien</td><td><code>&lt;img src="bild.jpg"&gt;</code></td></tr>
+              <tr><td><code>alt</code></td><td>Alternativtext</td><td><code>&lt;img alt="Logo"&gt;</code></td></tr>
+              <tr><td><code>id</code></td><td>eindeutige ID</td><td><code>&lt;section id="kontakt"&gt;</code></td></tr>
+              <tr><td><code>name</code></td><td>Feldname in Formularen</td><td><code>&lt;input name="vorname"&gt;</code></td></tr>
+              <tr><td><code>value</code></td><td>Feldwert</td><td><code>&lt;input value="Max"&gt;</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Boolean-Attribute</h3>
+        <p>
+          Manche Attribute brauchen keinen Wert: Ihre <strong>blo&szlig;e Anwesenheit</strong> schaltet
+          die Eigenschaft ein. Fehlt das Attribut, ist sie aus.
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Boolean-Attribute</span>
+    <span class="code-lang">HTML</span>
+  </div>
+  <pre><code class="language-xml">&lt;input required&gt;
+&lt;input disabled&gt;
+&lt;input checked&gt;</code></pre>
+</div>
+        <div class="callout callout-warning">
+  <div class="callout-icon">&#9888;</div>
+  <div class="callout-body">
+    <div class="callout-title">Achtung bei Boolean-Attributen</div>
+    <code>disabled="false"</code> schaltet das Feld <strong>trotzdem</strong> ab &ndash; denn das Attribut ist
+          vorhanden. Um es zu deaktivieren, muss man das Attribut ganz weglassen.
+  </div>
+</div>
+      </section>
+
+      <section class="section">
+        <h2>3 &mdash; HTML-Formulare</h2>
+        <p>Benutzereingaben werden &uuml;ber <strong>Formulare</strong> erfasst:</p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Formular</span>
+    <span class="code-lang">HTML</span>
+  </div>
+  <pre><code class="language-xml">&lt;form&gt; ... &lt;/form&gt;</code></pre>
+</div>
+        <p>Das einfachste Formular:</p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Einfachstes Formular</span>
+    <span class="code-lang">HTML</span>
+  </div>
+  <pre><code class="language-xml">&lt;form&gt;
+  &lt;label for="vorname"&gt;Vorname:&lt;/label&gt;
+  &lt;input type="text" id="vorname" name="vorname"&gt;
+  &lt;button type="submit"&gt;Absenden&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+</div>
+        <div class="demo">
+  <div class="demo-label">Live-Vorschau</div>
+  <div class="demo-body">
+          <form onsubmit="return false">
+            <label for="demo-vorname">Vorname:</label>
+            <input type="text" id="demo-vorname" name="vorname">
+            <button type="submit">Absenden</button>
+          </form>
+        </div>
+</div>
+      </section>
+
+      <section class="section">
+        <h2>4 &mdash; Rollen von form, label, input, button</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Element</th><th>Rolle</th></tr></thead>
+            <tbody>
+              <tr><td><code>&lt;form&gt;</code></td><td>fasst Eingabefelder zusammen</td></tr>
+              <tr><td><code>&lt;label&gt;</code></td><td>beschreibt ein Eingabefeld</td></tr>
+              <tr><td><code>&lt;input&gt;</code></td><td>nimmt Eingaben entgegen</td></tr>
+              <tr><td><code>&lt;button&gt;</code></td><td>l&ouml;st eine Aktion aus</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Drei Attribute werden gerne verwechselt:</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Attribut</th><th>Aufgabe</th></tr></thead>
+            <tbody>
+              <tr><td><code>id</code></td><td>identifiziert ein konkretes Element (eindeutig auf der Seite)</td></tr>
+              <tr><td><code>for</code></td><td>verbindet ein <code>&lt;label&gt;</code> mit dieser <code>id</code></td></tr>
+              <tr><td><code>name</code></td><td>Schl&uuml;ssel, unter dem der Wert an den Server &uuml;bertragen wird</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">id, for und name</span>
+    <span class="code-lang">HTML</span>
+  </div>
+  <pre><code class="language-xml">&lt;label for="email"&gt;E-Mail&lt;/label&gt;
+&lt;input id="email" name="kontakt_email"&gt;</code></pre>
+</div>
+        <p>
+          Hier verbindet <code>for="email"</code> das Label mit dem Feld <code>id="email"</code>
+          &ndash; ein Klick auf &bdquo;E-Mail&ldquo; setzt den Cursor ins Feld, und Screenreader lesen das
+          Label vor. Beim Absenden wird der Wert aber unter dem Namen <code>kontakt_email</code>
+          &uuml;bertragen, z.&nbsp;B. <code>?kontakt_email=max@example.com</code>.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>5 &mdash; Input-Typen</h2>
+        <p>Dasselbe Element <code>&lt;input&gt;</code> bekommt &uuml;ber das Attribut <code>type</code> verschiedene Funktionen:</p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Input-Typen</span>
+    <span class="code-lang">HTML</span>
+  </div>
+  <pre><code class="language-xml">&lt;input type="text"&gt;
+&lt;input type="email"&gt;
+&lt;input type="password"&gt;
+&lt;input type="number"&gt;
+&lt;input type="date"&gt;
+&lt;input type="checkbox"&gt;
+&lt;input type="radio"&gt;</code></pre>
+</div>
+        <div class="demo">
+  <div class="demo-label">Live-Vorschau</div>
+  <div class="demo-body">
+          <div style="display:grid;grid-template-columns:max-content 1fr;gap:.4rem .8rem;align-items:center">
+            <span>text</span><input type="text" placeholder="Freier Text">
+            <span>email</span><input type="email" placeholder="name@example.com">
+            <span>password</span><input type="password" value="geheim">
+            <span>number</span><input type="number" value="4">
+            <span>date</span><input type="date">
+            <span>checkbox</span><span><input type="checkbox" checked> vegetarisch</span>
+            <span>radio</span><span><input type="radio" name="demo-r" checked> leicht <input type="radio" name="demo-r"> schwer</span>
+          </div>
+        </div>
+</div>
+        <div class="callout callout-tip">
+  <div class="callout-icon">&#128161;</div>
+  <div class="callout-body">
+    <div class="callout-title">Der richtige Typ hilft mobil</div>
+    <p>Auf dem Smartphone zeigt <code>type="email"</code> eine Tastatur mit <code>@</code>,
+          <code>type="number"</code> eine Zifferntastatur und <code>type="date"</code> einen
+          Kalender. Au&szlig;erdem pr&uuml;ft der Browser das Format automatisch.</p>
+  </div>
+</div>
+      </section>
+
+      <section class="section">
+        <h2>6 &mdash; Weitere Formularelemente</h2>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">textarea, select, button</span>
+    <span class="code-lang">HTML</span>
+  </div>
+  <pre><code class="language-xml">&lt;textarea name="nachricht"&gt;&lt;/textarea&gt;
+
+&lt;select name="land"&gt;
+  &lt;option value="at"&gt;Österreich&lt;/option&gt;
+  &lt;option value="de"&gt;Deutschland&lt;/option&gt;
+  &lt;option value="ch"&gt;Schweiz&lt;/option&gt;
+&lt;/select&gt;
+
+&lt;button type="submit"&gt;Absenden&lt;/button&gt;
+&lt;button type="reset"&gt;Zurücksetzen&lt;/button&gt;</code></pre>
+</div>
+        <ul>
+          <li><code>&lt;textarea&gt;</code> &ndash; mehrzeiliges Textfeld</li>
+          <li><code>&lt;select&gt;</code> mit <code>&lt;option&gt;</code> &ndash; Auswahlliste; &uuml;bertragen wird das <code>value</code> der gew&auml;hlten Option (z.&nbsp;B. <code>land=at</code>)</li>
+          <li><code>&lt;button type="submit"&gt;</code> sendet das Formular ab, <code>&lt;button type="reset"&gt;</code> setzt alle Felder zur&uuml;ck</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2>7 &mdash; Daten senden: action, method + HTML-Validierung</h2>
+        <div class="table-wrap">
+          <table>
+            <tbody>
+              <tr><td><code>action</code></td><td>Wohin werden die Daten geschickt?</td></tr>
+              <tr><td><code>method</code></td><td>Wie werden die Daten &uuml;bertragen?</td></tr>
+              <tr><td><code>GET</code></td><td>Daten werden Teil der URL (Query-String)</td></tr>
+              <tr><td><code>POST</code></td><td>Daten werden im Request-Body &uuml;bertragen (nicht in der URL sichtbar)</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Suche mit GET</span>
+    <span class="code-lang">HTML</span>
+  </div>
+  <pre><code class="language-xml">&lt;form action="/suche" method="get"&gt;
+  &lt;input name="q"&gt;
+  &lt;button type="submit"&gt;Suchen&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+</div>
+        <p>Beispiel-Ergebnis nach Eingabe von &bdquo;html&ldquo;: <code>/suche?q=html</code></p>
+
+        <h3>Eingebaute Validierung ohne JavaScript</h3>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">HTML-Validierung</span>
+    <span class="code-lang">HTML</span>
+  </div>
+  <pre><code class="language-xml">&lt;input type="email" name="email" required&gt;
+&lt;input name="benutzername" required minlength="3" maxlength="20"&gt;</code></pre>
+</div>
+        <p>N&uuml;tzliche Attribute: <code>required</code>, <code>minlength</code>, <code>maxlength</code>, <code>min</code>, <code>max</code>, <code>pattern</code></p>
+        <div class="demo">
+  <div class="demo-label">Live-Vorschau: auf &bdquo;Pr&uuml;fen&ldquo; klicken, ohne etwas einzugeben</div>
+  <div class="demo-body">
+          <form onsubmit="return false" style="display:flex;gap:.5rem;flex-wrap:wrap">
+            <input type="email" name="email" required placeholder="E-Mail (Pflicht)">
+            <input name="benutzername" required minlength="3" maxlength="20" placeholder="Benutzername (3–20)">
+            <button type="submit">Pr&uuml;fen</button>
+          </form>
+        </div>
+</div>
+        <div class="callout callout-warning">
+  <div class="callout-icon">&#9888;</div>
+  <div class="callout-body">
+    <div class="callout-title">Validierung im Browser ersetzt keine Pr&uuml;fung am Server</div>
+    <p>Die HTML-Validierung verbessert die Bedienbarkeit, l&auml;sst sich aber leicht umgehen
+          (z.&nbsp;B. &uuml;ber die Entwicklertools). Ein Server muss empfangene Daten immer selbst
+          noch einmal pr&uuml;fen.</p>
+  </div>
+</div>
+      </section>
+
+      <section class="section section-projekt">
+        <h2>Projektschritt</h2>
+<div class="projekt-box">
+  <div class="projekt-box-header">
+    <span class="projekt-step">Projektschritt 1.5</span>
+    <h3>Newsletter-Formular</h3>
+  </div>
+<p>Im <code>&lt;footer&gt;</code> erg&auml;nzen wir ein Formular zur Newsletter-Anmeldung mit HTML-Validierung:</p>
+  <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">demoseite/index.html (footer)</span>
+    <span class="code-lang">HTML</span>
+  </div>
+  <pre><code class="language-xml">&lt;section class="newsletter"&gt;
+  &lt;h2&gt;Newsletter&lt;/h2&gt;
+  &lt;form class="newsletter-form" action="/newsletter" method="post"&gt;
+    &lt;label for="name"&gt;Name&lt;/label&gt;
+    &lt;input type="text" id="name" name="name" placeholder="Ihr Name" required&gt;
+
+    &lt;label for="email"&gt;E-Mail&lt;/label&gt;
+    &lt;input type="email" id="email" name="email" placeholder="ihre.email@example.com" required&gt;
+
+    &lt;label&gt;
+      &lt;input type="checkbox" name="kein-roboter" required&gt;
+      Ich bin kein Roboter
+    &lt;/label&gt;
+
+    &lt;button type="submit"&gt;Jetzt anmelden&lt;/button&gt;
+  &lt;/form&gt;
+&lt;/section&gt;</code></pre>
+</div>
+  <p>
+    Sende das Formular leer ab: Der Browser verhindert das Absenden und markiert das erste
+    Pflichtfeld. Mit g&uuml;ltigen Daten kommt ein 404-Fehler &ndash; erwartet, denn es gibt noch
+    keinen Server unter <code>/newsletter</code>.
+  </p>
+  <p class="mb-0">&#128193; Fertiger Stand am Ende von Teil 1: <a href="beispiele/1.5/index.html" target="_blank">beispiele/1.5/</a></p>
+</div>
+      </section>
+
+      <section class="section section-fehler">
+        <h2>H&auml;ufige Fehler</h2>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: name-Attribut vergessen</div>
+  <p>Das Feld wird angezeigt, beim Absenden fehlt der Wert aber komplett.</p>
+          <p class="fehler-fix">Nur Felder mit <code>name</code> werden &uuml;bertragen. Jedes Eingabefeld braucht ein <code>name</code>-Attribut.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: for und id passen nicht zusammen</div>
+  <p><code>&lt;label for="mail"&gt;</code> und <code>&lt;input id="email"&gt;</code> &ndash; das Label ist mit keinem Feld verkn&uuml;pft.</p>
+          <p class="fehler-fix">Der Wert von <code>for</code> muss exakt der <code>id</code> des Feldes entsprechen.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Passw&ouml;rter mit GET senden</div>
+  <p>Bei <code>method="get"</code> landen alle Daten in der URL &ndash; und damit im Verlauf und in Server-Logs.</p>
+          <p class="fehler-fix">F&uuml;r sensible Daten und Daten, die etwas ver&auml;ndern (Anmelden, Newsletter abonnieren), <code>method="post"</code> verwenden.</p>
+</div>
+      </section>
+
+      <section class="section section-aufgaben">
+        <h2>Aufgaben</h2>
+        <div class="aufgaben-list">
+          <div class="aufgabe">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Aufgabe 1</span>
+    <span class="aufgabe-title">Schwierigkeitsgrad per Radio-Buttons</span>
+  </div>
+  <p>Erg&auml;nze das Einreichen-Formular um drei Radio-Buttons &bdquo;leicht&ldquo;, &bdquo;mittel&ldquo;, &bdquo;schwer&ldquo;. Achte darauf, dass alle drei denselben <code>name</code> haben &ndash; warum ist das n&ouml;tig?</p>
+</div>
+          <div class="aufgabe">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Aufgabe 2</span>
+    <span class="aufgabe-title">Bild-Upload</span>
+  </div>
+  <p>Recherchiere den Input-Typ <code>file</code> und das Attribut <code>accept</code>. F&uuml;ge ein Feld hinzu, das nur Bilder (<code>image/*</code>) akzeptiert.</p>
+</div>
+          <div class="aufgabe">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Aufgabe 3</span>
+    <span class="aufgabe-title">GET vs. POST beobachten</span>
+  </div>
+  <p>&Auml;ndere die Methode des Einreichen-Formulars testweise auf <code>get</code> und sende es ab. Wie sieht die URL aus? &Auml;ndere sie danach wieder auf <code>post</code> und schau im Tab <strong>Network</strong> der Entwicklertools nach, wo die Daten nun stehen.</p>
+</div>
+          <div class="aufgabe aufgabe-bonus">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Bonus</span>
+    <span class="aufgabe-title">pattern f&uuml;r Postleitzahlen</span>
+  </div>
+  <p>F&uuml;ge ein Feld f&uuml;r eine &ouml;sterreichische Postleitzahl hinzu, das mit dem Attribut <code>pattern</code> genau vier Ziffern erzwingt.</p>
+</div>
+        </div>
+      </section>
+
+    </div>
+
+    <nav class="lesson-nav">
+      <a class="nav-btn" href="1.4-html-elemente-semantik.html">&larr; Lektion 1.4: HTML-Elemente &amp; Semantik</a>
+      <span class="nav-center-info">Lektion 1.5</span>
+      <a class="nav-btn primary" href="2.1-selektoren-properties.html">Lektion 2.1: Selektoren, Einheiten &amp; Properties &rarr;</a>
+    </nav>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>
+    const ham = document.getElementById('hamburger');
+    const sb = document.getElementById('sidebar');
+    const ov = document.getElementById('overlay');
+    ham.addEventListener('click', () => { sb.classList.toggle('open'); ov.classList.toggle('visible'); });
+    ov.addEventListener('click', () => { sb.classList.remove('open'); ov.classList.remove('visible'); });
+    const cur = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-link').forEach(l => {
+      if (l.getAttribute('href') === cur) l.classList.add('active');
+    });
+    const themeBtn = document.getElementById('theme-toggle');
+    const applyTheme = (t) => {
+      document.documentElement.setAttribute('data-theme', t);
+      if (themeBtn) themeBtn.innerHTML = t === 'dark' ? '&#9728;' : '&#9790;';
+    };
+    applyTheme(localStorage.getItem('kurs-theme') || 'dark');
+    setTimeout(() => document.documentElement.classList.add('theme-transitions'), 50);
+    if (themeBtn) themeBtn.addEventListener('click', () => {
+      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('kurs-theme', next);
+      applyTheme(next);
+    });
+    hljs.highlightAll();
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<!-- GENERIERT von kurse/_build (html_css) – nicht direkt bearbeiten!
+     Quelle: kurse/_build/html_css/lessons/, bauen: python3 _build/build.py html_css -->
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3.2 &ndash; Bootstrap: Komponenten &amp; Anpassung | HTML &amp; CSS Kurs</title>
+  <script>(function () { var t = localStorage.getItem('kurs-theme') || 'dark'; document.documentElement.setAttribute('data-theme', t); })();</script>
+  <link rel="stylesheet" href="assets/kurs.css">
+  <link rel="stylesheet" id="hljs-theme"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+
+<body>
+
+  <button class="hamburger" id="hamburger" aria-label="Navigation &ouml;ffnen">&#9776;</button>
+  <div class="sidebar-overlay" id="overlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html">
+        <span class="brand-icon">&lt;/&gt;</span>
+        <div>
+          <div class="brand-name">HTML &amp; CSS</div>
+          <div class="brand-sub">Web- und Mobile Computing</div>
+        </div>
+      </a>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Dark/Light Mode"
+        title="Theme wechseln">&#9728;</button>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-group">
+        <div class="nav-group-label html-label">Teil 1 &mdash; Web &amp; HTML</div>
+        <a class="nav-link" href="1.1-geschichte-internet.html"><span class="ln">1.1</span>Geschichte des Internets</a>
+        <a class="nav-link" href="1.2-grundlagen-web.html"><span class="ln">1.2</span>Grundlagen des Web: HTML, HTTP, URL</a>
+        <a class="nav-link" href="1.3-html5-grundlagen.html"><span class="ln">1.3</span>HTML5: Spezifikation, DOM &amp; APIs</a>
+        <a class="nav-link" href="1.4-html-elemente-semantik.html"><span class="ln">1.4</span>HTML-Elemente &amp; Semantik</a>
+        <a class="nav-link" href="1.5-attribute-formulare.html"><span class="ln">1.5</span>Attribute &amp; Formulare</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label css-label">Teil 2 &mdash; CSS &amp; Layout</div>
+        <a class="nav-link" href="2.1-selektoren-properties.html"><span class="ln">2.1</span>Selektoren, Einheiten &amp; Properties</a>
+        <a class="nav-link" href="2.2-box-model-display.html"><span class="ln">2.2</span>Box Model &amp; Display</a>
+        <a class="nav-link" href="2.3-vererbung-spezifitaet.html"><span class="ln">2.3</span>Vererbung, Spezifit&auml;t &amp; Kaskade</a>
+        <a class="nav-link" href="2.4-positionierung.html"><span class="ln">2.4</span>Positionierung &amp; z-index</a>
+        <a class="nav-link" href="2.5-flexbox-container.html"><span class="ln">2.5</span>Flexbox: Flex-Container</a>
+        <a class="nav-link" href="2.6-flexbox-kinder.html"><span class="ln">2.6</span>Flexbox: Flex-Kinder &amp; Patterns</a>
+        <a class="nav-link" href="2.7-grid-grundlagen.html"><span class="ln">2.7</span>CSS Grid Grundlagen</a>
+        <a class="nav-link" href="2.8-grid-responsive.html"><span class="ln">2.8</span>Media Queries &amp; responsive Grids</a>
+        <a class="nav-link" href="2.9-transform-transition.html"><span class="ln">2.9</span>Transformationen &amp; Transitions</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label fw-label">Teil 3 &mdash; CSS-Frameworks</div>
+        <a class="nav-link" href="3.1-bootstrap-grundlagen.html"><span class="ln">3.1</span>Bootstrap: Setup, Grid &amp; Utilities</a>
+        <a class="nav-link" href="3.2-bootstrap-komponenten.html"><span class="ln">3.2</span>Bootstrap: Komponenten &amp; Anpassung</a>
+        <a class="nav-link" href="3.3-tailwind.html"><span class="ln">3.3</span>Tailwind CSS</a>
+      </div>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <header class="lesson-header">
+      <p class="lesson-eyebrow">Lektion 3.2 &mdash; Teil 3: CSS-Frameworks</p>
+      <h1>Bootstrap: Komponenten &amp; Anpassung</h1>
+      <div class="lesson-tags">
+        <span class="tag tag-fw">Bootstrap</span>
+        <span class="tag tag-time">ca. 90 min</span>
+        <span class="tag tag-level">Framework</span>
+      </div>
+    </header>
+
+    <div class="content-area">
+      <section class="section section-lernziele">
+        <h2>Lernziele</h2>
+        <ul class="lernziele-list">
+          <li>Eine responsive <strong>Navbar</strong> mit Toggler und Dropdown aufbauen</li>
+          <li><strong>Cards</strong>, <strong>Forms</strong>, <strong>Buttons</strong> und <strong>Alerts</strong> einsetzen</li>
+          <li>Typische responsive Patterns umsetzen: Hero Section und Feature Cards</li>
+          <li>Interaktive JavaScript-Komponenten wie das <strong>Modal</strong> &uuml;ber <code>data-bs-*</code>-Attribute verwenden</li>
+          <li>Bootstrap mit CSS Custom Properties, SCSS-Variablen, eigenen Utilities und Icons anpassen</li>
+          <li>Best Practices f&uuml;r Performance und Barrierefreiheit kennen</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2>1 &mdash; Komponenten: Navigation</h2>
+        <p>Die <strong>Navbar</strong> ist eine responsive Navigationsleiste. Auf kleinen Bildschirmen klappt sie zu einem &bdquo;Hamburger&ldquo;-Men&uuml; zusammen.</p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Navbar – responsive Navigation</span>
+    <span class="code-lang">HTML</span>
+  </div>
+  <pre><code class="language-xml">&lt;nav class="navbar navbar-expand-lg navbar-dark bg-dark"&gt;
+  &lt;div class="container"&gt;
+    &lt;a class="navbar-brand" href="#"&gt;My Website&lt;/a&gt;
+
+    &lt;!-- Toggler für Mobile --&gt;
+    &lt;button class="navbar-toggler" type="button"
+            data-bs-toggle="collapse" data-bs-target="#navbarNav"&gt;
+      &lt;span class="navbar-toggler-icon"&gt;&lt;/span&gt;
+    &lt;/button&gt;
+
+    &lt;!-- Navigation Links --&gt;
+    &lt;div class="collapse navbar-collapse" id="navbarNav"&gt;
+      &lt;ul class="navbar-nav ms-auto"&gt;
+        &lt;li class="nav-item"&gt;
+          &lt;a class="nav-link active" href="#"&gt;Home&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class="nav-item"&gt;
+          &lt;a class="nav-link" href="#"&gt;About&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class="nav-item dropdown"&gt;
+          &lt;a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"&gt;
+            Services
+          &lt;/a&gt;
+          &lt;ul class="dropdown-menu"&gt;
+            &lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;Web Design&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;Development&lt;/a&gt;&lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/nav&gt;</code></pre>
+</div>
+        <div class="table-wrap">
+          <table>
+            <tbody>
+              <tr><td><code>navbar-expand-lg</code></td><td>Ab <code>lg</code> (992px) ist das Men&uuml; ausgeklappt, darunter erscheint der Toggler.</td></tr>
+              <tr><td><code>navbar-dark bg-dark</code></td><td>Helle Schrift auf dunklem Hintergrund.</td></tr>
+              <tr><td><code>data-bs-toggle="collapse"</code><br><code>data-bs-target="#navbarNav"</code></td><td>Ein Klick auf den Toggler klappt das Element mit <code>id="navbarNav"</code> auf und zu (braucht das Bootstrap-JavaScript).</td></tr>
+              <tr><td><code>ms-auto</code></td><td><code>margin-left: auto</code> (&bdquo;margin start&ldquo;) &ndash; schiebt die Links nach rechts.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>2 &mdash; Komponenten: Cards</h2>
+        <p><strong>Cards</strong> sind vielseitige Content-Container f&uuml;r Text, Bilder, Links usw.</p>
+        <h3>Basic Card</h3>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Basic Card</span>
+    <span class="code-lang">HTML</span>
+  </div>
+  <pre><code class="language-xml">&lt;div class="card" style="width: 18rem;"&gt;
+  &lt;img src="image.jpg" class="card-img-top" alt="..."&gt;
+  &lt;div class="card-body"&gt;
+    &lt;h5 class="card-title"&gt;Card title&lt;/h5&gt;
+    &lt;p class="card-text"&gt;Quick example text to build on the card title.&lt;/p&gt;
+    &lt;a href="#" class="btn btn-primary"&gt;Go somewhere&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
+        <h3>Card Grid Layout</h3>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Card Grid</span>
+    <span class="code-lang">HTML</span>
+  </div>
+  <pre><code class="language-xml">&lt;div class="row"&gt;
+  &lt;div class="col-md-4 mb-4"&gt;
+    &lt;div class="card h-100"&gt;
+      &lt;div class="card-body"&gt;
+        &lt;h5 class="card-title"&gt;Service 1&lt;/h5&gt;
+        &lt;p class="card-text"&gt;Description...&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="col-md-4 mb-4"&gt;
+    &lt;div class="card h-100"&gt;
+      &lt;div class="card-body"&gt;
+        &lt;h5 class="card-title"&gt;Service 2&lt;/h5&gt;
+        &lt;p class="card-text"&gt;Description...&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
+        <p>
+          <code>h-100</code> (<code>height: 100%</code>) sorgt daf&uuml;r, dass alle Cards einer Zeile gleich
+          hoch sind. <strong>Card-Varianten:</strong> <code>.card-header</code>, <code>.card-footer</code>,
+          <code>.text-center</code>, <code>.bg-primary</code>
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>3 &mdash; Komponenten: Forms</h2>
+        <p>Bootstrap bietet <strong>umfassende Form-Styles</strong> und Layout-Optionen.</p>
+        <h3>Basic Form</h3>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Basic Form</span>
+    <span class="code-lang">HTML</span>
+  </div>
+  <pre><code class="language-xml">&lt;form&gt;
+  &lt;div class="mb-3"&gt;
+    &lt;label for="email" class="form-label"&gt;Email address&lt;/label&gt;
+    &lt;input type="email" class="form-control" id="email" required&gt;
+    &lt;div class="form-text"&gt;We'll never share your email.&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="mb-3"&gt;
+    &lt;label for="password" class="form-label"&gt;Password&lt;/label&gt;
+    &lt;input type="password" class="form-control" id="password" required&gt;
+  &lt;/div&gt;
+
+  &lt;div class="mb-3 form-check"&gt;
+    &lt;input type="checkbox" class="form-check-input" id="remember"&gt;
+    &lt;label class="form-check-label" for="remember"&gt;Remember me&lt;/label&gt;
+  &lt;/div&gt;
+
+  &lt;button type="submit" class="btn btn-primary"&gt;Submit&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+</div>
+        <h3>Input Groups</h3>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Input Group</span>
+    <span class="code-lang">HTML</span>
+  </div>
+  <pre><code class="language-xml">&lt;div class="input-group mb-3"&gt;
+  &lt;span class="input-group-text"&gt;@&lt;/span&gt;
+  &lt;input type="text" class="form-control" placeholder="Username"&gt;
+&lt;/div&gt;</code></pre>
+</div>
+        <p><strong>Form Validation:</strong> <code>.is-valid</code>, <code>.is-invalid</code>, <code>.valid-feedback</code>, <code>.invalid-feedback</code></p>
+        <div class="callout callout-info">
+  <div class="callout-icon">&#8505;</div>
+  <div class="callout-body">
+    <div class="callout-title">Alles aus Lektion 1.5 gilt weiter</div>
+    <p>Bootstrap &auml;ndert nur das Aussehen. <code>label for</code>/<code>id</code>,
+          <code>name</code>, <code>required</code>, Input-Typen usw. funktionieren genauso wie in
+          reinem HTML.</p>
+  </div>
+</div>
+      </section>
+
+      <section class="section">
+        <h2>4 &mdash; Komponenten: Buttons &amp; Alerts</h2>
+        <h3>Buttons &ndash; verschiedene Styles und Gr&ouml;&szlig;en</h3>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Buttons</span>
+    <span class="code-lang">HTML</span>
+  </div>
+  <pre><code class="language-xml">&lt;!-- Button Variants --&gt;
+&lt;button class="btn btn-primary"&gt;Primary&lt;/button&gt;
+&lt;button class="btn btn-secondary"&gt;Secondary&lt;/button&gt;
+&lt;button class="btn btn-success"&gt;Success&lt;/button&gt;
+&lt;button class="btn btn-danger"&gt;Danger&lt;/button&gt;
+&lt;button class="btn btn-outline-primary"&gt;Outline&lt;/button&gt;
+
+&lt;!-- Button Sizes --&gt;
+&lt;button class="btn btn-primary btn-lg"&gt;Large&lt;/button&gt;
+&lt;button class="btn btn-primary"&gt;Default&lt;/button&gt;
+&lt;button class="btn btn-primary btn-sm"&gt;Small&lt;/button&gt;
+
+&lt;!-- Button Groups --&gt;
+&lt;div class="btn-group"&gt;
+  &lt;button class="btn btn-outline-primary"&gt;Left&lt;/button&gt;
+  &lt;button class="btn btn-outline-primary"&gt;Middle&lt;/button&gt;
+  &lt;button class="btn btn-outline-primary"&gt;Right&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+</div>
+        <div class="callout callout-tip">
+  <div class="callout-icon">&#128161;</div>
+  <div class="callout-body">
+    <div class="callout-title">Links, die wie Buttons aussehen</div>
+    <p>Die Klasse <code>btn</code> funktioniert auch auf <code>&lt;a&gt;</code>: <code>&lt;a href="#kontakt" class="btn btn-primary"&gt;</code> &ndash;
+          das ist die valide L&ouml;sung f&uuml;r das &bdquo;Button als Link&ldquo;-Problem aus Lektion 1.4.</p>
+  </div>
+</div>
+        <h3>Alerts &ndash; Nachrichten anzeigen</h3>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Alerts</span>
+    <span class="code-lang">HTML</span>
+  </div>
+  <pre><code class="language-xml">&lt;div class="alert alert-success alert-dismissible fade show"&gt;
+  &lt;strong&gt;Success!&lt;/strong&gt; Your action was completed.
+  &lt;button type="button" class="btn-close" data-bs-dismiss="alert"&gt;&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class="alert alert-warning"&gt;
+  &lt;strong&gt;Warning!&lt;/strong&gt; Please check your input.
+&lt;/div&gt;</code></pre>
+</div>
+      </section>
+
+      <section class="section">
+        <h2>5 &mdash; Responsive Design Patterns</h2>
+        <h3>Pattern 1: Hero Section</h3>
+        <p>Ein gro&szlig;er, auff&auml;lliger Einstiegsbereich ganz oben auf der Seite:</p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Hero Section</span>
+    <span class="code-lang">HTML</span>
+  </div>
+  <pre><code class="language-xml">&lt;div class="container-fluid bg-primary text-white py-5"&gt;
+  &lt;div class="container"&gt;
+    &lt;div class="row align-items-center"&gt;
+      &lt;div class="col-lg-6"&gt;
+        &lt;h1 class="display-4"&gt;Welcome&lt;/h1&gt;
+        &lt;p class="lead"&gt;Your success starts here.&lt;/p&gt;
+        &lt;a href="#" class="btn btn-light btn-lg"&gt;Get Started&lt;/a&gt;
+      &lt;/div&gt;
+      &lt;div class="col-lg-6"&gt;
+        &lt;img src="hero.jpg" class="img-fluid"&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
+        <p><code>img-fluid</code> entspricht <code>max-width: 100%; height: auto;</code> &ndash; dem &bdquo;Responsive Media&ldquo;-Muster aus Lektion 2.6.</p>
+        <h3>Pattern 2: Feature Cards</h3>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Feature Cards</span>
+    <span class="code-lang">HTML</span>
+  </div>
+  <pre><code class="language-xml">&lt;div class="container my-5"&gt;
+  &lt;div class="row g-4"&gt;
+    &lt;div class="col-md-6 col-lg-4"&gt;
+      &lt;div class="text-center"&gt;
+        &lt;i class="bi bi-gear fs-1 text-primary"&gt;&lt;/i&gt;
+        &lt;h4 class="mt-3"&gt;Feature 1&lt;/h4&gt;
+        &lt;p&gt;Description...&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;!-- Weitere Features... --&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
+        <p><code>g-4</code> setzt den Abstand (&bdquo;gutter&ldquo;) zwischen den Spalten &ndash; vergleichbar mit <code>gap</code>.</p>
+      </section>
+
+      <section class="section">
+        <h2>6 &mdash; JavaScript-Komponenten</h2>
+        <p>Interaktive Komponenten mit Bootstrap JS &ndash; gesteuert &uuml;ber <code>data-bs-*</code>-Attribute, ganz ohne eigenes JavaScript.</p>
+        <h3>Modal Dialog</h3>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Modal</span>
+    <span class="code-lang">HTML</span>
+  </div>
+  <pre><code class="language-xml">&lt;!-- Button trigger --&gt;
+&lt;button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal"&gt;
+  Open Modal
+&lt;/button&gt;
+
+&lt;!-- Modal --&gt;
+&lt;div class="modal fade" id="myModal"&gt;
+  &lt;div class="modal-dialog"&gt;
+    &lt;div class="modal-content"&gt;
+      &lt;div class="modal-header"&gt;
+        &lt;h5 class="modal-title"&gt;Modal title&lt;/h5&gt;
+        &lt;button type="button" class="btn-close" data-bs-dismiss="modal"&gt;&lt;/button&gt;
+      &lt;/div&gt;
+      &lt;div class="modal-body"&gt;
+        Modal content goes here...
+      &lt;/div&gt;
+      &lt;div class="modal-footer"&gt;
+        &lt;button type="button" class="btn btn-secondary" data-bs-dismiss="modal"&gt;
+          Close
+        &lt;/button&gt;
+        &lt;button type="button" class="btn btn-primary"&gt;Save&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
+        <h3>Weitere JS-Komponenten</h3>
+        <div class="table-wrap">
+          <table>
+            <tbody>
+              <tr><td><strong>Carousel</strong></td><td>Bildslider</td></tr>
+              <tr><td><strong>Collapse</strong></td><td>Ausklappbare Bereiche</td></tr>
+              <tr><td><strong>Tabs</strong></td><td>Tab-Navigation</td></tr>
+              <tr><td><strong>Tooltips</strong></td><td>Hover-Informationen</td></tr>
+              <tr><td><strong>Popovers</strong></td><td>Click-Informationen</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout callout-warning">
+  <div class="callout-icon">&#9888;</div>
+  <div class="callout-body">
+    <div class="callout-title">Ohne bootstrap.bundle.min.js passiert nichts</div>
+    <p>Modal, Dropdown, Collapse &amp; Co. brauchen das Bootstrap-Script. Fehlt es, sehen die
+          Komponenten zwar richtig aus, reagieren aber nicht auf Klicks.</p>
+  </div>
+</div>
+      </section>
+
+      <section class="section">
+        <h2>7 &mdash; Customization &amp; Themes</h2>
+        <h3>1. CSS Custom Properties &uuml;berschreiben</h3>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">CSS-Variablen</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">:root {
+  --bs-primary: #your-color;
+  --bs-font-sans-serif: 'Your Font', sans-serif;
+}</code></pre>
+</div>
+        <h3>2. SCSS-Variablen (bei Sass-Kompilierung)</h3>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">_custom.scss</span>
+    <span class="code-lang">SCSS</span>
+  </div>
+  <pre><code class="language-scss">// _custom.scss
+$primary: #your-brand-color;
+$font-family-sans-serif: 'Your Font', sans-serif;
+
+// Dann Bootstrap importieren
+@import "bootstrap/scss/bootstrap";</code></pre>
+</div>
+        <h3>3. Eigene Utility Classes</h3>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Eigene Utilities</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">.text-brand { color: #your-color; }
+.bg-gradient-brand {
+  background: linear-gradient(45deg, #color1, #color2);
+}</code></pre>
+</div>
+        <h3>4. Bootstrap Icons</h3>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Bootstrap Icons</span>
+    <span class="code-lang">HTML</span>
+  </div>
+  <pre><code class="language-xml">&lt;link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet"&gt;
+&lt;i class="bi bi-heart-fill text-danger"&gt;&lt;/i&gt;</code></pre>
+</div>
+        <div class="callout callout-info">
+  <div class="callout-icon">&#8505;</div>
+  <div class="callout-body">
+    <div class="callout-title">Platzhalter ersetzen</div>
+    <code>#your-color</code>, <code>#color1</code> usw. sind Platzhalter &ndash; dort geh&ouml;rt ein
+          echter Farbwert hin, z.&nbsp;B. <code>#2d6a4f</code>. Das eigene Stylesheet muss
+          <strong>nach</strong> Bootstrap eingebunden werden, damit es gewinnt (Cascade: Source Order).
+  </div>
+</div>
+      </section>
+
+      <section class="section">
+        <h2>8 &mdash; Best Practices &amp; Performance</h2>
+        <p><strong>Bootstrap effizient einsetzen:</strong></p>
+        <div class="do-dont">
+          <div class="do-box">
+            <h4>&#10003; DO</h4>
+            <ul>
+              <li>Verwende das <strong>Grid-System</strong> f&uuml;r Layout</li>
+              <li>Nutze <strong>Utility Classes</strong> f&uuml;r kleine Anpassungen</li>
+              <li>Setze auf <strong>Mobile-First</strong> responsive Design</li>
+              <li>Verwende <strong>semantisches HTML</strong> mit Bootstrap-Klassen</li>
+              <li>Teste auf <strong>verschiedenen Ger&auml;ten</strong></li>
+            </ul>
+          </div>
+          <div class="dont-box">
+            <h4>&#10007; DON&rsquo;T</h4>
+            <ul>
+              <li>&Uuml;berschreibe nicht zu viele Bootstrap-Styles</li>
+              <li>Vergiss nicht die <strong>Accessibility</strong></li>
+              <li>Lade keine unn&ouml;tigen JS-Komponenten</li>
+              <li>Verwende keine veralteten Bootstrap-Versionen</li>
+            </ul>
+          </div>
+        </div>
+        <h3>Performance-Tipps</h3>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Einbinden</span>
+    <span class="code-lang">HTML</span>
+  </div>
+  <pre><code class="language-xml">&lt;!-- CSS im &lt;head&gt;: nur benötigte Komponenten laden --&gt;
+&lt;link href="bootstrap.min.css" rel="stylesheet"&gt;
+
+&lt;!-- JavaScript vor dem Ende von &lt;body&gt; --&gt;
+&lt;script src="bootstrap.bundle.min.js"&gt;&lt;/script&gt;</code></pre>
+</div>
+        <h3>Customization-Workflow</h3>
+        <ol>
+          <li>Starte mit Standard-Bootstrap</li>
+          <li>Definiere eigene Farben/Fonts</li>
+          <li>Erweitere mit eigenem CSS</li>
+          <li>Teste das responsive Verhalten</li>
+        </ol>
+        <div class="callout callout-tip">
+  <div class="callout-icon">&#128161;</div>
+  <div class="callout-body">
+    <div class="callout-title">Accessibility</div>
+    <p>Bootstrap ist auf WCAG-Konformit&auml;t ausgelegt &ndash; achte trotzdem selbst auf
+          <code>alt</code>-Attribute und ARIA-Labels (z.&nbsp;B. <code>aria-label="Men&uuml; &ouml;ffnen"</code>
+          beim Navbar-Toggler und <code>aria-label="Schlie&szlig;en"</code> bei <code>btn-close</code>).</p>
+  </div>
+</div>
+      </section>
+
+      <section class="section">
+        <h2>9 &mdash; Live-Code-Beispiel: vollst&auml;ndiges Bootstrap-Layout</h2>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">bootstrap-demo.html</span>
+    <span class="code-lang">HTML</span>
+  </div>
+  <pre><code class="language-xml">&lt;!DOCTYPE html&gt;
+&lt;html lang="de"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Bootstrap Demo&lt;/title&gt;
+  &lt;link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;!-- Navigation --&gt;
+  &lt;nav class="navbar navbar-expand-lg navbar-dark bg-dark"&gt;
+    &lt;div class="container"&gt;
+      &lt;a class="navbar-brand" href="#"&gt;My Site&lt;/a&gt;
+      &lt;div class="navbar-nav ms-auto"&gt;
+        &lt;a class="nav-link" href="#"&gt;Home&lt;/a&gt;
+        &lt;a class="nav-link" href="#"&gt;About&lt;/a&gt;
+        &lt;a class="nav-link" href="#"&gt;Contact&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/nav&gt;
+
+  &lt;!-- Hero Section --&gt;
+  &lt;div class="bg-primary text-white py-5"&gt;
+    &lt;div class="container text-center"&gt;
+      &lt;h1 class="display-4"&gt;Welcome to Bootstrap&lt;/h1&gt;
+      &lt;p class="lead"&gt;Build responsive websites quickly&lt;/p&gt;
+      &lt;a href="#" class="btn btn-light btn-lg"&gt;Get Started&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;!-- Content --&gt;
+  &lt;div class="container my-5"&gt;
+    &lt;div class="row g-4"&gt;
+      &lt;div class="col-md-4"&gt;
+        &lt;div class="card h-100"&gt;
+          &lt;div class="card-body"&gt;
+            &lt;h5 class="card-title"&gt;Feature 1&lt;/h5&gt;
+            &lt;p class="card-text"&gt;Amazing feature description.&lt;/p&gt;
+            &lt;a href="#" class="btn btn-primary"&gt;Learn More&lt;/a&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;!-- 2 weitere Cards... --&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</div>
+        <h3>Ressourcen</h3>
+        <ul>
+          <li><strong>Bootstrap Official Documentation:</strong> <a href="https://getbootstrap.com/" target="_blank" rel="noopener">getbootstrap.com</a></li>
+          <li><strong>Bootstrap Examples:</strong> <a href="https://getbootstrap.com/docs/5.3/examples/" target="_blank" rel="noopener">getbootstrap.com/docs/5.3/examples/</a></li>
+          <li><strong>Bootstrap Icons:</strong> <a href="https://icons.getbootstrap.com/" target="_blank" rel="noopener">icons.getbootstrap.com</a></li>
+          <li><strong>Bootstrap Themes:</strong> <a href="https://themes.getbootstrap.com/" target="_blank" rel="noopener">themes.getbootstrap.com</a></li>
+        </ul>
+      </section>
+
+      <section class="section section-projekt">
+        <h2>Projektschritt</h2>
+<div class="projekt-box">
+  <div class="projekt-box-header">
+    <span class="projekt-step">Projektschritt 3.2</span>
+    <h3>Navbar, Cards und Newsletter-Formular</h3>
+  </div>
+<p>
+    Wir ersetzen in <code>index-bootstrap.html</code> den Header durch eine Navbar mit Toggler,
+    machen die Karten zu Bootstrap-Cards und gestalten das Newsletter-Formular mit
+    <code>form-control</code> und einer Input Group. Das Bootstrap-Script am Ende des <code>&lt;body&gt;</code>
+    ist f&uuml;r den Toggler n&ouml;tig.
+  </p>
+  <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">demoseite/index-bootstrap.html (Navbar)</span>
+    <span class="code-lang">HTML</span>
+  </div>
+  <pre><code class="language-xml">&lt;nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top"&gt;
+  &lt;div class="container"&gt;
+    &lt;a class="navbar-brand fw-bold" href="#"&gt;Web- and Mobile Computing&lt;/a&gt;
+    &lt;button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#hauptnav" aria-label="Menü öffnen"&gt;
+      &lt;span class="navbar-toggler-icon"&gt;&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;div class="collapse navbar-collapse" id="hauptnav"&gt;
+      &lt;ul class="navbar-nav ms-auto"&gt;
+        &lt;li class="nav-item"&gt;&lt;a class="nav-link" href="#html"&gt;HTML&lt;/a&gt;&lt;/li&gt;
+        …
+      &lt;/ul&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/nav&gt;</code></pre>
+</div>
+  <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">demoseite/index-bootstrap.html (Card)</span>
+    <span class="code-lang">HTML</span>
+  </div>
+  <pre><code class="language-xml">&lt;div class="col-md-6 col-lg-4"&gt;
+  &lt;div class="card h-100"&gt;
+    &lt;img src="img/box_model.png" class="card-img-top" alt="Boxmodell"&gt;
+    &lt;div class="card-body"&gt;
+      &lt;h3 class="card-title h5"&gt;Boxmodell&lt;/h3&gt;
+      &lt;p class="card-text"&gt;Content, Padding, Border und Margin.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
+  <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">demoseite/index-bootstrap.html (Newsletter im footer)</span>
+    <span class="code-lang">HTML</span>
+  </div>
+  <pre><code class="language-xml">&lt;form class="row g-3" action="/newsletter" method="post"&gt;
+  &lt;div class="col-md-5"&gt;
+    &lt;label for="name" class="form-label"&gt;Name&lt;/label&gt;
+    &lt;input type="text" class="form-control" id="name" name="name" required&gt;
+  &lt;/div&gt;
+  &lt;div class="col-md-5"&gt;
+    &lt;label for="email" class="form-label"&gt;E-Mail&lt;/label&gt;
+    &lt;div class="input-group"&gt;
+      &lt;span class="input-group-text"&gt;@&lt;/span&gt;
+      &lt;input type="email" class="form-control" id="email" name="email" required&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="col-md-2 d-flex align-items-end"&gt;
+    &lt;button type="submit" class="btn btn-danger w-100"&gt;Anmelden&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/form&gt;</code></pre>
+</div>
+  <p>
+    Vergleiche: Unser Burger-Men&uuml; aus Lektion 2.8 brauchte eine Checkbox und rund 40 Zeilen
+    CSS &ndash; hier erledigen <code>navbar-expand-md</code> und das Bootstrap-Script dasselbe.
+  </p>
+  <p class="mb-0">&#128193; Stand nach dieser Lektion: <a href="beispiele/3.2/index.html" target="_blank">beispiele/3.2/</a></p>
+</div>
+      </section>
+
+      <section class="section section-fehler">
+        <h2>H&auml;ufige Fehler</h2>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Navbar-Toggler oder Modal reagieren nicht</div>
+  <p>Die Komponenten sehen richtig aus, aber ein Klick bewirkt nichts.</p>
+          <p class="fehler-fix"><code>bootstrap.bundle.min.js</code> einbinden und pr&uuml;fen, ob <code>data-bs-target="#…"</code> exakt zur <code>id</code> des Ziel-Elements passt.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Eigenes CSS wird von Bootstrap &uuml;berschrieben</div>
+  <p><code>.btn { background: green; }</code> hat keine Wirkung.</p>
+          <p class="fehler-fix">Das eigene Stylesheet <strong>nach</strong> Bootstrap einbinden &ndash; oder besser die CSS-Variablen (<code>--bs-…</code>) anpassen bzw. eigene Klassen verwenden.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Alte Bootstrap-4-Klassen</div>
+  <p>Tutorials verwenden <code>ml-auto</code>, <code>data-toggle</code> oder <code>form-group</code> &ndash; in Bootstrap 5 passiert damit nichts.</p>
+          <p class="fehler-fix">Bootstrap 5 nutzt <code>ms-auto</code>/<code>me-auto</code>, <code>data-bs-toggle</code> und <code>mb-3</code>. Immer die Doku zur verwendeten Version lesen.</p>
+</div>
+      </section>
+
+      <section class="section section-aufgaben">
+        <h2>Aufgaben</h2>
+        <div class="aufgaben-list">
+          <div class="aufgabe">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Aufgabe 1</span>
+    <span class="aufgabe-title">Erfolgsmeldung</span>
+  </div>
+  <p>Mache den Info-Alert im Footer schlie&szlig;bar (<code>alert-dismissible</code>, <code>btn-close</code>).</p>
+</div>
+          <div class="aufgabe">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Aufgabe 2</span>
+    <span class="aufgabe-title">Hero Section</span>
+  </div>
+  <p>Erg&auml;nze die Bootstrap-Startseite um eine Hero Section mit &Uuml;berschrift, Lead-Text, einem Button &bdquo;Zum Lernprojekt&ldquo; und einem Bild (ab <code>lg</code> nebeneinander).</p>
+</div>
+          <div class="aufgabe">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Aufgabe 3</span>
+    <span class="aufgabe-title">Eigene Markenfarbe</span>
+  </div>
+  <p>Setze die Prim&auml;rfarbe &uuml;ber CSS Custom Properties auf das Rot der Demoseite <code>#e74c3c</code> und lege eine eigene Utility-Klasse <code>.bg-gradient-brand</code> an.</p>
+</div>
+          <div class="aufgabe aufgabe-bonus">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Bonus</span>
+    <span class="aufgabe-title">Kursinhalte als Tabs</span>
+  </div>
+  <p>Zeige die Abschnitte &bdquo;HTML&ldquo;, &bdquo;CSS&ldquo; und &bdquo;Lernprojekt&ldquo; der Bootstrap-Demoseite als Tabs an. Lies dazu in der Bootstrap-Doku den Abschnitt &bdquo;Navs &amp; tabs&ldquo;.</p>
+</div>
+        </div>
+      </section>
+
+    </div>
+
+    <nav class="lesson-nav">
+      <a class="nav-btn" href="3.1-bootstrap-grundlagen.html">&larr; Lektion 3.1: Bootstrap: Setup, Grid &amp; Utilities</a>
+      <span class="nav-center-info">Lektion 3.2</span>
+      <a class="nav-btn primary" href="3.3-tailwind.html">Lektion 3.3: Tailwind CSS &rarr;</a>
+    </nav>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>
+    const ham = document.getElementById('hamburger');
+    const sb = document.getElementById('sidebar');
+    const ov = document.getElementById('overlay');
+    ham.addEventListener('click', () => { sb.classList.toggle('open'); ov.classList.toggle('visible'); });
+    ov.addEventListener('click', () => { sb.classList.remove('open'); ov.classList.remove('visible'); });
+    const cur = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-link').forEach(l => {
+      if (l.getAttribute('href') === cur) l.classList.add('active');
+    });
+    const themeBtn = document.getElementById('theme-toggle');
+    const applyTheme = (t) => {
+      document.documentElement.setAttribute('data-theme', t);
+      if (themeBtn) themeBtn.innerHTML = t === 'dark' ? '&#9728;' : '&#9790;';
+    };
+    applyTheme(localStorage.getItem('kurs-theme') || 'dark');
+    setTimeout(() => document.documentElement.classList.add('theme-transitions'), 50);
+    if (themeBtn) themeBtn.addEventListener('click', () => {
+      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('kurs-theme', next);
+      applyTheme(next);
+    });
+    hljs.highlightAll();
+  </script>
+</body>
+
+</html>

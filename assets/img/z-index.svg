@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 480" width="1000" height="480" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <title>Die z-index-Property bestimmt die Reihenfolge der Elemente entlang der z-Achse in Richtung Betrachter</title>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1f2328"/>
+    </marker>
+  </defs>
+  <rect width="1000" height="480" fill="#ffffff"/>
+  <!-- Achsen -->
+  <line x1="60" y1="60" x2="300" y2="60" stroke="#1f2328" stroke-width="2" marker-end="url(#a)"/>
+  <text x="305" y="50" font-size="21" fill="#1f2328">x-Achse</text>
+  <line x1="60" y1="60" x2="60" y2="420" stroke="#1f2328" stroke-width="2" marker-end="url(#a)"/>
+  <text x="70" y="440" font-size="21" fill="#1f2328">y-Achse</text>
+  <!-- Stacking Context (Ebene 0) -->
+  <polygon points="60,60 260,100 260,380 60,420" fill="#8b949e"/>
+  <text x="75" y="95" font-size="19" fill="#ffffff">Stacking</text>
+  <text x="75" y="118" font-size="19" fill="#ffffff">Context</text>
+  <!-- Ebenen -->
+  <polygon points="300,140 420,160 420,340 300,360" fill="#a78bfa" opacity="0.92"/>
+  <text x="360" y="255" text-anchor="middle" font-size="19" font-family="ui-monospace, Consolas, monospace" fill="#ffffff">z: 1</text>
+  <polygon points="440,170 560,190 560,360 440,380" fill="#58a6ff" opacity="0.92"/>
+  <text x="500" y="280" text-anchor="middle" font-size="19" font-family="ui-monospace, Consolas, monospace" fill="#ffffff">z: 2</text>
+  <polygon points="580,200 700,220 700,380 580,400" fill="#3fb950" opacity="0.92"/>
+  <text x="640" y="305" text-anchor="middle" font-size="19" font-family="ui-monospace, Consolas, monospace" fill="#ffffff">z: 3</text>
+  <!-- z-Achse -->
+  <line x1="160" y1="240" x2="840" y2="380" stroke="#1f2328" stroke-width="2" marker-end="url(#a)"/>
+  <text x="790" y="350" font-size="21" fill="#1f2328">z-index</text>
+  <!-- Betrachter -->
+  <g transform="translate(900,390)" stroke="#1f2328" stroke-width="2.5" fill="none">
+    <circle cx="0" cy="-30" r="14"/>
+    <path d="M0,-16 L0,20 M-20,0 L20,0 M0,20 L-14,46 M0,20 L14,46"/>
+  </g>
+  <text x="900" y="460" text-anchor="middle" font-size="21" font-weight="700" fill="#1f2328">Betrachter</text>
+  <text x="620" y="80" font-size="21" fill="#57606a">Höherer z-index = näher</text>
+  <text x="620" y="108" font-size="21" fill="#57606a">beim Betrachter</text>
+</svg>

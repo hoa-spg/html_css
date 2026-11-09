@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<!-- GENERIERT von kurse/_build (html_css) – nicht direkt bearbeiten!
+     Quelle: kurse/_build/html_css/lessons/, bauen: python3 _build/build.py html_css -->
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.1 &ndash; Selektoren, Einheiten &amp; Properties | HTML &amp; CSS Kurs</title>
+  <script>(function () { var t = localStorage.getItem('kurs-theme') || 'dark'; document.documentElement.setAttribute('data-theme', t); })();</script>
+  <link rel="stylesheet" href="assets/kurs.css">
+  <link rel="stylesheet" id="hljs-theme"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+
+<body>
+
+  <button class="hamburger" id="hamburger" aria-label="Navigation &ouml;ffnen">&#9776;</button>
+  <div class="sidebar-overlay" id="overlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html">
+        <span class="brand-icon">&lt;/&gt;</span>
+        <div>
+          <div class="brand-name">HTML &amp; CSS</div>
+          <div class="brand-sub">Web- und Mobile Computing</div>
+        </div>
+      </a>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Dark/Light Mode"
+        title="Theme wechseln">&#9728;</button>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-group">
+        <div class="nav-group-label html-label">Teil 1 &mdash; Web &amp; HTML</div>
+        <a class="nav-link" href="1.1-geschichte-internet.html"><span class="ln">1.1</span>Geschichte des Internets</a>
+        <a class="nav-link" href="1.2-grundlagen-web.html"><span class="ln">1.2</span>Grundlagen des Web: HTML, HTTP, URL</a>
+        <a class="nav-link" href="1.3-html5-grundlagen.html"><span class="ln">1.3</span>HTML5: Spezifikation, DOM &amp; APIs</a>
+        <a class="nav-link" href="1.4-html-elemente-semantik.html"><span class="ln">1.4</span>HTML-Elemente &amp; Semantik</a>
+        <a class="nav-link" href="1.5-attribute-formulare.html"><span class="ln">1.5</span>Attribute &amp; Formulare</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label css-label">Teil 2 &mdash; CSS &amp; Layout</div>
+        <a class="nav-link" href="2.1-selektoren-properties.html"><span class="ln">2.1</span>Selektoren, Einheiten &amp; Properties</a>
+        <a class="nav-link" href="2.2-box-model-display.html"><span class="ln">2.2</span>Box Model &amp; Display</a>
+        <a class="nav-link" href="2.3-vererbung-spezifitaet.html"><span class="ln">2.3</span>Vererbung, Spezifit&auml;t &amp; Kaskade</a>
+        <a class="nav-link" href="2.4-positionierung.html"><span class="ln">2.4</span>Positionierung &amp; z-index</a>
+        <a class="nav-link" href="2.5-flexbox-container.html"><span class="ln">2.5</span>Flexbox: Flex-Container</a>
+        <a class="nav-link" href="2.6-flexbox-kinder.html"><span class="ln">2.6</span>Flexbox: Flex-Kinder &amp; Patterns</a>
+        <a class="nav-link" href="2.7-grid-grundlagen.html"><span class="ln">2.7</span>CSS Grid Grundlagen</a>
+        <a class="nav-link" href="2.8-grid-responsive.html"><span class="ln">2.8</span>Media Queries &amp; responsive Grids</a>
+        <a class="nav-link" href="2.9-transform-transition.html"><span class="ln">2.9</span>Transformationen &amp; Transitions</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label fw-label">Teil 3 &mdash; CSS-Frameworks</div>
+        <a class="nav-link" href="3.1-bootstrap-grundlagen.html"><span class="ln">3.1</span>Bootstrap: Setup, Grid &amp; Utilities</a>
+        <a class="nav-link" href="3.2-bootstrap-komponenten.html"><span class="ln">3.2</span>Bootstrap: Komponenten &amp; Anpassung</a>
+        <a class="nav-link" href="3.3-tailwind.html"><span class="ln">3.3</span>Tailwind CSS</a>
+      </div>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <header class="lesson-header">
+      <p class="lesson-eyebrow">Lektion 2.1 &mdash; Teil 2: CSS &amp; Layout</p>
+      <h1>Selektoren, Einheiten &amp; Properties</h1>
+      <div class="lesson-tags">
+        <span class="tag tag-css">CSS</span>
+        <span class="tag tag-time">ca. 90 min</span>
+        <span class="tag tag-level">Grundlagen</span>
+      </div>
+    </header>
+
+    <div class="content-area">
+      <section class="section section-lernziele">
+        <h2>Lernziele</h2>
+        <ul class="lernziele-list">
+          <li>Ein externes Stylesheet einbinden und den Aufbau einer CSS-Regel verstehen</li>
+          <li>Die h&auml;ufigsten Selektoren anwenden: Tag-, ID-, Klassen- und Nachkommens-Selektor</li>
+          <li>Die Pseudo-Klasse <code>:hover</code> und die Pseudo-Elemente <code>::before</code>/<code>::after</code> einsetzen</li>
+          <li>CSS-Einheiten (<code>px</code>, <code>%</code>, <code>em</code>, <code>rem</code>, <code>vh</code>, <code>vw</code>) unterscheiden</li>
+          <li>Die wichtigsten Properties f&uuml;r Schrift, Farbe, Display, Sichtbarkeit und Overflow kennen</li>
+          <li>Elemente ausrichten und ausblenden</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2>1 &mdash; CSS einbinden und Aufbau einer Regel</h2>
+        <p>
+          CSS schreibt man in eine eigene Datei und bindet sie im <code>&lt;head&gt;</code> mit <code>&lt;link&gt;</code> ein. Eine
+          <strong>CSS-Regel</strong> besteht aus einem <strong>Selektor</strong> (welche Elemente?) und
+          einem Block aus <strong>Deklarationen</strong> (<code>property: value;</code>):
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">index.html (head)</span>
+    <span class="code-lang">HTML</span>
+  </div>
+  <pre><code class="language-xml">&lt;link rel="stylesheet" href="css/style.css"&gt;</code></pre>
+</div>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">css/style.css</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">/* Selektor  { Property: Value; } */
+header {
+  background-color: steelblue;
+  color: white;
+}</code></pre>
+</div>
+      </section>
+
+      <section class="section">
+        <h2>2 &mdash; Common Selectors</h2>
+        <p>
+          Der <strong>Selektor</strong> bestimmt, auf welche HTML-Elemente eine CSS-Regel wirkt. Die
+          Grafik zeigt das Prinzip: Ein Selektor &bdquo;zielt&ldquo; auf bestimmte HTML-Elemente, die
+          dann die CSS-Regeln bekommen.
+        </p>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/selektoren.svg" alt="Selektor: verbindet HTML-Elemente mit CSS-Regeln" loading="lazy" style="max-width:360px"></div>
+  <figcaption>Selektor: verbindet HTML-Elemente mit CSS-Regeln</figcaption>
+</figure>
+        <p>Alle folgenden Beispiele beziehen sich auf dieses HTML:</p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Beispiel-HTML</span>
+    <span class="code-lang">HTML</span>
+  </div>
+  <pre><code class="language-xml">&lt;header id="main-header"&gt;
+  &lt;h1 class="light"&gt;..&lt;/h1&gt;
+&lt;/header&gt;
+&lt;main&gt;
+  &lt;article&gt;
+    &lt;header&gt;
+      &lt;h2 class="light"&gt;..&lt;/h2&gt;
+    &lt;/header&gt;
+  &lt;/article&gt;
+&lt;/main&gt;</code></pre>
+</div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Selektor</th><th>Beschreibung</th><th>Beispiel</th><th>Trifft im Beispiel</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Tag-Selektor</strong></td><td>Auswahl <strong>ALLER</strong> Elemente &uuml;ber ihren HTML-Tag.</td><td><code>header { .. }</code></td><td>beide <code>&lt;header&gt;</code></td></tr>
+              <tr><td><strong>ID-Selektor</strong></td><td>Auswahl <strong>EINES</strong> Elements &uuml;ber sein HTML-Attribut <code>id</code>.</td><td><code>#main-header { .. }</code></td><td>nur den &auml;u&szlig;eren <code>&lt;header&gt;</code></td></tr>
+              <tr><td><strong>Klassen-Selektor</strong></td><td>Auswahl <strong>ALLER</strong> Elemente &uuml;ber ihr HTML-Attribut <code>class</code>.</td><td><code>.light { .. }</code></td><td><code>&lt;h1&gt;</code> und <code>&lt;h2&gt;</code></td></tr>
+              <tr><td><strong>Nachkommens-Selektor</strong></td><td>Auswahl <strong>ALLER</strong> Elemente, die (beliebig tief) innerhalb eines anderen Elements liegen.</td><td><code>main header { .. }</code></td><td>nur den <code>&lt;header&gt;</code> im <code>&lt;article&gt;</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Deep Dive Selectors: <a href="https://developer.mozilla.org/de/docs/Web/CSS/CSS_Selectors" target="_blank" rel="noopener">developer.mozilla.org/de/docs/Web/CSS/CSS_Selectors</a></p>
+
+        <h3>Pseudo-Klasse :hover</h3>
+        <p>
+          Wird nur aktiv, wenn der User die <strong>Maus &uuml;ber das Element</strong> bewegt.
+          <strong>Achtung:</strong> Funktioniert nicht auf Mobilger&auml;ten (dort gibt es keinen Mauszeiger).
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Navigation</span>
+    <span class="code-lang">HTML</span>
+  </div>
+  <pre><code class="language-xml">&lt;nav&gt;
+  &lt;button&gt;Menü&lt;/button&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href="#"&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+</div>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">:hover</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">nav li:hover {
+  background-color: steelblue;
+}</code></pre>
+</div>
+
+        <h3>Pseudo-Elemente ::before / ::after</h3>
+        <p>F&uuml;gt einen Text oder ein Bild <strong>vor bzw. nach</strong> dem Inhalt eines Elements ein &ndash; ohne zus&auml;tzliches HTML.</p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">::before</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">nav button::before {
+  /* Fügt das Wort "Test" vor dem Button-Inhalt ein */
+  content: "Test";
+  /* Fügt ein SVG-Image vor dem Button-Inhalt ein */
+  content: url("data:image/svg+xml, ...");
+}</code></pre>
+</div>
+        <div class="callout callout-info">
+  <div class="callout-icon">&#8505;</div>
+  <div class="callout-body">
+    <div class="callout-title">Praxis: responsives Men&uuml;</div>
+    <p>Diese Technik wird z.&nbsp;B. f&uuml;r ein responsives Men&uuml; verwendet: Das
+          &bdquo;Hamburger&ldquo;-Icon (&#9776;) des Men&uuml;-Buttons wird per <code>::before</code> als SVG
+          eingef&uuml;gt, statt es als Bild ins HTML zu schreiben.</p>
+  </div>
+</div>
+        <div class="callout callout-warning">
+  <div class="callout-icon">&#9888;</div>
+  <div class="callout-body">
+    <div class="callout-title">content ist Pflicht</div>
+    <p>Ein Pseudo-Element wird nur angezeigt, wenn die Property <code>content</code> gesetzt ist
+          &ndash; notfalls als leerer String: <code>content: "";</code></p>
+  </div>
+</div>
+      </section>
+
+      <section class="section">
+        <h2>3 &mdash; Units in CSS</h2>
+        <figure class="figure">
+  <div class="figure-img dark-bg"><img src="assets/img/css-units.svg" alt="px, %, em, vh, rem, vw" loading="lazy"></div>
+  <figcaption>px, %, em, vh, rem, vw</figcaption>
+</figure>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Einheit</th><th>Bedeutung</th><th>Typischer Einsatz</th></tr></thead>
+            <tbody>
+              <tr><td><code>px</code></td><td>Absolute pixel value &ndash; absoluter Pixelwert</td><td>Rahmen, kleine feste Abst&auml;nde</td></tr>
+              <tr><td><code>%</code></td><td>A percentage of the parent element &ndash; 100&nbsp;% ist die Breite des Eltern-Elements</td><td>flexible Breiten</td></tr>
+              <tr><td><code>em</code></td><td>Relative to the font size of the element &ndash; relativ zur Schriftgr&ouml;&szlig;e des Elements selbst</td><td>Abst&auml;nde, die mit der Schrift mitwachsen</td></tr>
+              <tr><td><code>rem</code></td><td>Relative to the font size of the root element &ndash; relativ zur Schriftgr&ouml;&szlig;e von <code>&lt;html&gt;</code> (meist 16px)</td><td>Schriftgr&ouml;&szlig;en, Abst&auml;nde</td></tr>
+              <tr><td><code>vh</code></td><td>Relative to 1&nbsp;% of the viewport&rsquo;s height &ndash; 1&nbsp;% der Fensterh&ouml;he</td><td>Vollbild-Bereiche (<code>100vh</code>)</td></tr>
+              <tr><td><code>vw</code></td><td>Relative to 1&nbsp;% of the viewport&rsquo;s width &ndash; 1&nbsp;% der Fensterbreite</td><td>fensterbreite Elemente</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Deep Dive Units: <a href="https://smazee.com/blog/css-units-px-em-rem-vh-vw-vmin-vmax" target="_blank" rel="noopener">smazee.com/blog/css-units-px-em-rem-vh-vw-vmin-vmax</a></p>
+        <div class="callout callout-tip">
+  <div class="callout-icon">&#128161;</div>
+  <div class="callout-body">
+    <div class="callout-title">rem f&uuml;r Schriftgr&ouml;&szlig;en</div>
+    <p>Mit <code>rem</code> skaliert die ganze Seite mit, wenn Nutzer:innen im Browser eine
+          gr&ouml;&szlig;ere Standardschrift einstellen &ndash; gut f&uuml;r die Barrierefreiheit.
+          <code>1.5rem</code> = 1,5 &times; 16px = 24px.</p>
+  </div>
+</div>
+      </section>
+
+      <section class="section">
+        <h2>4 &mdash; Common Properties: Schrift, Farbe, Display &amp; Co.</h2>
+        <h3>Font / Text</h3>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Font / Text</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">font-family: 'Source Sans Pro', sans-serif;
+font-style: normal | italic;
+font-weight: normal | bold | 100 - 900;
+font-size: 1.5rem;
+line-height: 1.5rem;
+color: blue | #333;
+text-decoration: none | underline;
+text-transform: lowercase | uppercase;</code></pre>
+</div>
+
+        <h3>Color</h3>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Color</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">color: blue | #333;
+background-color: steelblue | #16416B;</code></pre>
+</div>
+
+        <h3>Display / Position</h3>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Display / Position</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">display: block | inline | inline-block | flex | none;
+position: static | relative | absolute | sticky | fixed;
+
+/* Funktionieren nur, wenn NICHT position: static */
+top: 10px;
+bottom: 10px;
+left: 5px;
+right: 5px;</code></pre>
+</div>
+        <p><small class="text-muted">Positionierung behandeln wir ausf&uuml;hrlich in Lektion 2.4, <code>display: flex</code> in Lektion 2.5.</small></p>
+
+        <h3>Visibility &amp; Overflow</h3>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Visibility / Overflow</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">/* Ist das Element sichtbar? */
+visibility: visible | hidden;
+
+/* Was passiert mit Inhalt, der größer als der Parent ist? */
+overflow: visible | hidden | scroll;</code></pre>
+</div>
+
+        <h3>Box Shadow</h3>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Box Shadow</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">/* x-Versatz | y-Versatz | Unschärfe | Farbe */
+box-shadow: 2px 3px 2px silver;</code></pre>
+</div>
+        <p>Box Shadow Generator: <a href="https://www.cssmatic.com/box-shadow" target="_blank" rel="noopener">cssmatic.com/box-shadow</a></p>
+        <div class="demo">
+  <div class="demo-label">Live-Vorschau</div>
+  <div class="demo-body">
+          <div style="display:inline-block;padding:1rem 1.5rem;background:#fff;border:1px solid #ddd;box-shadow:2px 3px 2px silver">box-shadow: 2px 3px 2px silver;</div>
+        </div>
+</div>
+      </section>
+
+      <section class="section">
+        <h2>5 &mdash; Common Properties: Alignment</h2>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Alignment</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">/* Ich, Inline-Kind, richte mich/andere in der Line Box aus.
+   Für solche Ausrichtungen wird Flexbox empfohlen (kommt später) */
+vertical-align: top | middle | bottom;
+
+/* Ich, Parent-Block, richte den Text meiner Inline-Kinder aus. */
+text-align: left | center | right;
+
+/* Ich, Kind-Block, zentriere mich horizontal im Parent-Block */
+margin: 0 auto;</code></pre>
+</div>
+        <div class="callout callout-info">
+  <div class="callout-icon">&#8505;</div>
+  <div class="callout-body">
+    <div class="callout-title">Wer richtet wen aus?</div>
+    <ul>
+            <li><code>vertical-align</code> setzt man auf das <strong>Inline-Element selbst</strong>.</li>
+            <li><code>text-align</code> setzt man auf den <strong>Eltern-Block</strong>; es wirkt auf dessen Inline-Inhalt.</li>
+            <li><code>margin: 0 auto</code> zentriert einen <strong>Block mit fester Breite</strong> (z.&nbsp;B. <code>max-width: 960px</code>).</li>
+          </ul>
+  </div>
+</div>
+      </section>
+
+      <section class="section">
+        <h2>6 &mdash; Common Properties: Elemente entfernen</h2>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Entfernen eines Elements</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">/* Variante 1:
+   Entfernt das Element aus dem normalen Fluss,
+   sodass andere Elemente den Platz einnehmen können. */
+display: none;
+
+/* Variante 2:
+   Lässt das Element im normalen Fluss,
+   sodass es weiterhin Platz einnimmt. */
+visibility: hidden;
+
+/* Variante 3:
+   Keine Höhe und versteckter Inhalt */
+max-height: 0;
+overflow: hidden;</code></pre>
+</div>
+        <div class="demo">
+  <div class="demo-label">Live-Vorschau</div>
+  <div class="demo-body">
+          <div style="display:flex;gap:1.5rem;flex-wrap:wrap">
+            <div><small>display: none</small><div style="border:1px dashed #999;padding:4px;width:150px"><div style="background:#ddf4ff;padding:4px">A</div><div style="display:none">B</div><div style="background:#ddf4ff;padding:4px">C</div></div></div>
+            <div><small>visibility: hidden</small><div style="border:1px dashed #999;padding:4px;width:150px"><div style="background:#ddf4ff;padding:4px">A</div><div style="visibility:hidden;padding:4px">B</div><div style="background:#ddf4ff;padding:4px">C</div></div></div>
+          </div>
+        </div>
+</div>
+        <div class="callout callout-tip">
+  <div class="callout-icon">&#128161;</div>
+  <div class="callout-body">
+    <div class="callout-title">Warum Variante 3?</div>
+    <code>display</code> l&auml;sst sich nicht animieren. <code>max-height</code> schon &ndash;
+          deshalb verwendet man Variante 3 zusammen mit <code>transition</code> f&uuml;r
+          auf- und zuklappende Men&uuml;s (siehe Lektion 2.9).
+  </div>
+</div>
+      </section>
+
+      <section class="section section-projekt">
+        <h2>Projektschritt</h2>
+<div class="projekt-box">
+  <div class="projekt-box-header">
+    <span class="projekt-step">Projektschritt 2.1</span>
+    <h3>Das erste Stylesheet: Typografie, Farben &amp; Tabelle</h3>
+  </div>
+<p>Lege <code>css/style.css</code> an und binde es mit <code>&lt;link rel="stylesheet" href="css/style.css"&gt;</code> im <code>&lt;head&gt;</code> ein. Der erste Abschnitt gibt der Seite Schrift, Farben, Hover-Effekte und eine gestaltete Tabelle.</p>
+  <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">demoseite/css/style.css (neu in 2.1)</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">/* ---- 2.1 Selektoren, Einheiten &amp; Properties ---------------- */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: #2c3e50;
+}
+
+header,
+footer {
+  background-color: #2c3e50;
+  color: white;
+}
+
+.brand {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+#nav-menu a {
+  color: white;
+  font-size: 1.2rem;
+  text-decoration: none;
+}
+
+#nav-menu a:hover {
+  color: #bdc3c7;
+}
+
+h1 {
+  font-size: 2.5rem;
+  text-align: center;
+  background: linear-gradient(45deg, #6a7988, #bdc3c7);
+}
+
+h2 {
+  color: #e74c3c;
+  font-size: 2rem;
+}
+
+section {
+  background-color: #e5e5e5;
+  box-shadow: 5px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+section:hover {
+  box-shadow: 5px 4px 20px rgba(0, 0, 0, 0.35);
+}
+
+aside {
+  background-color: #d6ac67;
+  color: white;
+}
+
+a {
+  color: #34495e;
+}
+
+/* Tabelle */
+table {
+  border-collapse: collapse;
+  background: white;
+}
+
+caption {
+  font-weight: bold;
+  text-align: left;
+}
+
+th {
+  background: #34495e;
+  color: white;
+  text-align: left;
+}
+
+/* Kleines Symbol vor jedem Footer-Link */
+footer li::before {
+  content: "→ ";
+}</code></pre>
+</div>
+  <p class="mb-0">&#128193; Stand nach dieser Lektion: <a href="beispiele/2.1/index.html" target="_blank">beispiele/2.1/</a></p>
+</div>
+      </section>
+
+      <section class="section section-fehler">
+        <h2>H&auml;ufige Fehler</h2>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Punkt bzw. Raute vergessen</div>
+  <p><code>card { … }</code> sucht ein (nicht existierendes) HTML-Element <code>&lt;card&gt;</code>.</p>
+          <p class="fehler-fix">Klassen mit Punkt (<code>.card</code>), IDs mit Raute (<code>#main-header</code>) selektieren.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Leerzeichen im Selektor an der falschen Stelle</div>
+  <p><code>nav li :hover</code> (mit Leerzeichen) bedeutet &bdquo;irgendein gehovertes Element <em>innerhalb</em> von li&ldquo;.</p>
+          <p class="fehler-fix">Pseudo-Klassen direkt anh&auml;ngen: <code>nav li:hover</code>.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Wichtige Inhalte nur per :hover erreichbar</div>
+  <p>Ein Untermen&uuml;, das nur bei <code>:hover</code> erscheint, ist auf dem Smartphone nicht bedienbar.</p>
+          <p class="fehler-fix">Hover nur f&uuml;r optische Effekte nutzen. F&uuml;r Men&uuml;s einen Button verwenden, der per Klick &ouml;ffnet.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Pfad zum Stylesheet falsch</div>
+  <p>Die Seite bleibt ungestylt, in der Konsole steht ein 404-Fehler f&uuml;r <code>style.css</code>.</p>
+          <p class="fehler-fix">Den relativen Pfad pr&uuml;fen: Liegt die Datei in <code>css/style.css</code>, lautet das Attribut <code>href="css/style.css"</code>.</p>
+</div>
+      </section>
+
+      <section class="section section-aufgaben">
+        <h2>Aufgaben</h2>
+        <div class="aufgaben-list">
+          <div class="aufgabe">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Aufgabe 1</span>
+    <span class="aufgabe-title">Selektoren zuordnen</span>
+  </div>
+  <p>Schreibe f&uuml;r das Beispiel-HTML aus Abschnitt 2 je einen Selektor, der (a) nur die <code>&lt;h2&gt;</code>, (b) beide &Uuml;berschriften, (c) nur den &auml;u&szlig;eren Header, (d) alle Header innerhalb von <code>&lt;article&gt;</code> trifft.</p>
+</div>
+          <div class="aufgabe">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Aufgabe 2</span>
+    <span class="aufgabe-title">Einheiten testen</span>
+  </div>
+  <p>Setze die Schriftgr&ouml;&szlig;e von <code>&lt;html&gt;</code> auf <code>20px</code>. Wie gro&szlig; sind nun &Uuml;berschriften mit <code>2rem</code>? Was passiert mit <code>2em</code> in einem Element, dessen Eltern-Element <code>font-size: 1.5rem</code> hat?</p>
+</div>
+          <div class="aufgabe">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Aufgabe 3</span>
+    <span class="aufgabe-title">Ausblenden vergleichen</span>
+  </div>
+  <p>Blende auf der Demoseite das <code>&lt;aside&gt;</code> nacheinander mit <code>display: none</code>, <code>visibility: hidden</code> und <code>max-height: 0; overflow: hidden;</code> aus. Beschreibe, wie sich das Layout jeweils ver&auml;ndert.</p>
+</div>
+          <div class="aufgabe aufgabe-bonus">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Bonus</span>
+    <span class="aufgabe-title">Symbol vor den &Uuml;berschriften</span>
+  </div>
+  <p>F&uuml;ge auf der Demoseite mit <code>::before</code> vor jeder <code>&lt;h2&gt;</code> ein Symbol ein (z.&nbsp;B. <code>&sect;&nbsp;</code>). F&auml;rbe das Symbol anders, sobald die Maus &uuml;ber der &Uuml;berschrift ist (<code>h2:hover::before</code>).</p>
+</div>
+        </div>
+      </section>
+
+    </div>
+
+    <nav class="lesson-nav">
+      <a class="nav-btn" href="1.5-attribute-formulare.html">&larr; Lektion 1.5: Attribute &amp; Formulare</a>
+      <span class="nav-center-info">Lektion 2.1</span>
+      <a class="nav-btn primary" href="2.2-box-model-display.html">Lektion 2.2: Box Model &amp; Display &rarr;</a>
+    </nav>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>
+    const ham = document.getElementById('hamburger');
+    const sb = document.getElementById('sidebar');
+    const ov = document.getElementById('overlay');
+    ham.addEventListener('click', () => { sb.classList.toggle('open'); ov.classList.toggle('visible'); });
+    ov.addEventListener('click', () => { sb.classList.remove('open'); ov.classList.remove('visible'); });
+    const cur = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-link').forEach(l => {
+      if (l.getAttribute('href') === cur) l.classList.add('active');
+    });
+    const themeBtn = document.getElementById('theme-toggle');
+    const applyTheme = (t) => {
+      document.documentElement.setAttribute('data-theme', t);
+      if (themeBtn) themeBtn.innerHTML = t === 'dark' ? '&#9728;' : '&#9790;';
+    };
+    applyTheme(localStorage.getItem('kurs-theme') || 'dark');
+    setTimeout(() => document.documentElement.classList.add('theme-transitions'), 50);
+    if (themeBtn) themeBtn.addEventListener('click', () => {
+      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('kurs-theme', next);
+      applyTheme(next);
+    });
+    hljs.highlightAll();
+  </script>
+</body>
+
+</html>

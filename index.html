@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<!-- GENERIERT von kurse/_build (html_css) – nicht direkt bearbeiten!
+     Quelle: kurse/_build/html_css/lessons/, bauen: python3 _build/build.py html_css -->
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML &amp; CSS Kurs</title>
+  <script>(function () { var t = localStorage.getItem('kurs-theme') || 'dark'; document.documentElement.setAttribute('data-theme', t); })();</script>
+  <link rel="stylesheet" href="assets/kurs.css">
+  <link rel="stylesheet" id="hljs-theme"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+
+<body>
+
+  <button class="hamburger" id="hamburger" aria-label="Navigation &ouml;ffnen">&#9776;</button>
+  <div class="sidebar-overlay" id="overlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html">
+        <span class="brand-icon">&lt;/&gt;</span>
+        <div>
+          <div class="brand-name">HTML &amp; CSS</div>
+          <div class="brand-sub">Web- und Mobile Computing</div>
+        </div>
+      </a>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Dark/Light Mode"
+        title="Theme wechseln">&#9728;</button>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-group">
+        <div class="nav-group-label html-label">Teil 1 &mdash; Web &amp; HTML</div>
+        <a class="nav-link" href="1.1-geschichte-internet.html"><span class="ln">1.1</span>Geschichte des Internets</a>
+        <a class="nav-link" href="1.2-grundlagen-web.html"><span class="ln">1.2</span>Grundlagen des Web: HTML, HTTP, URL</a>
+        <a class="nav-link" href="1.3-html5-grundlagen.html"><span class="ln">1.3</span>HTML5: Spezifikation, DOM &amp; APIs</a>
+        <a class="nav-link" href="1.4-html-elemente-semantik.html"><span class="ln">1.4</span>HTML-Elemente &amp; Semantik</a>
+        <a class="nav-link" href="1.5-attribute-formulare.html"><span class="ln">1.5</span>Attribute &amp; Formulare</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label css-label">Teil 2 &mdash; CSS &amp; Layout</div>
+        <a class="nav-link" href="2.1-selektoren-properties.html"><span class="ln">2.1</span>Selektoren, Einheiten &amp; Properties</a>
+        <a class="nav-link" href="2.2-box-model-display.html"><span class="ln">2.2</span>Box Model &amp; Display</a>
+        <a class="nav-link" href="2.3-vererbung-spezifitaet.html"><span class="ln">2.3</span>Vererbung, Spezifit&auml;t &amp; Kaskade</a>
+        <a class="nav-link" href="2.4-positionierung.html"><span class="ln">2.4</span>Positionierung &amp; z-index</a>
+        <a class="nav-link" href="2.5-flexbox-container.html"><span class="ln">2.5</span>Flexbox: Flex-Container</a>
+        <a class="nav-link" href="2.6-flexbox-kinder.html"><span class="ln">2.6</span>Flexbox: Flex-Kinder &amp; Patterns</a>
+        <a class="nav-link" href="2.7-grid-grundlagen.html"><span class="ln">2.7</span>CSS Grid Grundlagen</a>
+        <a class="nav-link" href="2.8-grid-responsive.html"><span class="ln">2.8</span>Media Queries &amp; responsive Grids</a>
+        <a class="nav-link" href="2.9-transform-transition.html"><span class="ln">2.9</span>Transformationen &amp; Transitions</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label fw-label">Teil 3 &mdash; CSS-Frameworks</div>
+        <a class="nav-link" href="3.1-bootstrap-grundlagen.html"><span class="ln">3.1</span>Bootstrap: Setup, Grid &amp; Utilities</a>
+        <a class="nav-link" href="3.2-bootstrap-komponenten.html"><span class="ln">3.2</span>Bootstrap: Komponenten &amp; Anpassung</a>
+        <a class="nav-link" href="3.3-tailwind.html"><span class="ln">3.3</span>Tailwind CSS</a>
+      </div>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <div class="index-hero">
+      <p class="lesson-eyebrow">Kurs&uuml;bersicht</p>
+      <h1>HTML &amp; CSS <span>Kurs</span></h1>
+      <p class="subtitle">
+        17 Lektionen &mdash; von der Geschichte des Internets &uuml;ber HTML5 und CSS bis zu
+        Flexbox, Grid, Bootstrap und Tailwind. Ein durchgehender Kurs mit Praxisprojekt.
+      </p>
+      <div class="lesson-tags" style="margin-top:1.25rem">
+        <span class="tag tag-html">HTML5</span>
+        <span class="tag tag-css">CSS3</span>
+        <span class="tag tag-css">Flexbox &amp; Grid</span>
+        <span class="tag tag-css">Bootstrap 5 &amp; Tailwind 4</span>
+        <span class="tag tag-time">Web- und Mobile Computing &middot; 1. Jahr</span>
+      </div>
+    </div>
+
+    <div class="content-area">
+
+      <div class="section">
+        <h2>Projektidee: Demoseite &bdquo;Webdesign Grundkurs&ldquo;</h2>
+        <p>
+          Im Mittelpunkt des Kurses steht eine einseitige <strong>Demoseite</strong>, die selbst die
+          Kursinhalte vorstellt: HTML-Grundlagen, eine Tabelle der wichtigsten Elemente, CSS-Themen als
+          Karten, Werkzeug-Tipps, das Lernprojekt, Kontakt und ein Newsletter-Formular. Die Seite w&auml;chst
+          mit jeder Lektion &ndash; zuerst als reines HTML, dann mit eigenem Stylesheet, responsivem Layout
+          und Burger-Men&uuml;, zum Abschluss zus&auml;tzlich als Bootstrap- und Tailwind-Fassung.
+        </p>
+        <p>
+          Unter <a href="beispiele/README.md">beispiele/</a> liegen der fertige HTML-Stand von Teil 1
+          und ab Teil 2 der Stand nach jeder Lektion
+          &ndash; z.&nbsp;B. <a href="beispiele/2.8/index.html">beispiele/2.8/</a> (responsive) oder
+          <a href="beispiele/3.3/index-tailwind.html">beispiele/3.3/</a> (Tailwind).
+        </p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Lektion</th><th>Was wird gebaut</th></tr></thead>
+            <tbody>
+              <tr><td>1.1 &ndash; 1.2</td><td>Ordnerstruktur, Bereiche und Sprungmarken planen</td></tr>
+              <tr><td>1.3 &ndash; 1.5</td><td>HTML5-Grundger&uuml;st, semantische Struktur, Newsletter-Formular</td></tr>
+              <tr><td>2.1 &ndash; 2.4</td><td>Stylesheet: Typografie, Tabelle, Box Model, Formular, sticky Header</td></tr>
+              <tr><td>2.5 &ndash; 2.6</td><td>Header, Navigation, Footer und Karten mit Flexbox</td></tr>
+              <tr><td>2.7 &ndash; 2.8</td><td>Seitenlayout mit Grid, Media Queries, Burger-Men&uuml; ohne JavaScript</td></tr>
+              <tr><td>2.9</td><td>Sanfte Hover-Effekte mit Transform und Transition</td></tr>
+              <tr><td>3.1 &ndash; 3.3</td><td>Dieselbe Seite mit Bootstrap und mit Tailwind</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2 class="html-header" style="border-bottom:2px solid rgba(240,136,62,0.4);padding-bottom:.5rem">
+          Teil 1 &mdash; Web &amp; HTML
+        </h2>
+        <div class="course-grid">
+          <a class="lesson-card html-card" href="1.1-geschichte-internet.html">
+            <span class="lesson-card-num">1.1</span>
+            <div class="lesson-card-content"><h4>Geschichte des Internets</h4><p>WMC-&Uuml;berblick, ARPANET, TCP/IP, Tim Berners-Lee, Zeitleiste, Infrastruktur</p></div>
+          </a>
+          <a class="lesson-card html-card" href="1.2-grundlagen-web.html">
+            <span class="lesson-card-num">1.2</span>
+            <div class="lesson-card-content"><h4>Grundlagen des Web: HTML, HTTP, URL</h4><p>URL-Aufbau, Host, FQDN, HTML/CSS/JS, W3C &amp; WHATWG, Referenzen</p></div>
+          </a>
+          <a class="lesson-card html-card" href="1.3-html5-grundlagen.html">
+            <span class="lesson-card-num">1.3</span>
+            <div class="lesson-card-content"><h4>HTML5: Spezifikation, DOM &amp; APIs</h4><p>Tags, Hello World, Boxen, DOM, APIs, Security Policies, Toolset</p></div>
+          </a>
+          <a class="lesson-card html-card" href="1.4-html-elemente-semantik.html">
+            <span class="lesson-card-num">1.4</span>
+            <div class="lesson-card-content"><h4>HTML-Elemente &amp; Semantik</h4><p>Anatomie eines Elements, Links &amp; Buttons, W3C Validator, Semantic Markup</p></div>
+          </a>
+          <a class="lesson-card html-card" href="1.5-attribute-formulare.html">
+            <span class="lesson-card-num">1.5</span>
+            <div class="lesson-card-content"><h4>Attribute &amp; Formulare</h4><p>Wichtige Attribute, form/label/input, Input-Typen, GET/POST, Validierung</p></div>
+          </a>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2 class="css-header" style="border-bottom:2px solid rgba(88,166,255,0.4);padding-bottom:.5rem">
+          Teil 2 &mdash; CSS &amp; Layout
+        </h2>
+        <div class="course-grid">
+          <a class="lesson-card css-card" href="2.1-selektoren-properties.html">
+            <span class="lesson-card-num">2.1</span>
+            <div class="lesson-card-content"><h4>Selektoren, Einheiten &amp; Properties</h4><p>CSS einbinden, Tag/ID/Klasse, :hover, ::before, px/em/rem/vh, Schrift, Farbe</p></div>
+          </a>
+          <a class="lesson-card css-card" href="2.2-box-model-display.html">
+            <span class="lesson-card-num">2.2</span>
+            <div class="lesson-card-content"><h4>Box Model &amp; Display</h4><p>Content, Padding, Border, Margin, box-sizing, block/inline/inline-block</p></div>
+          </a>
+          <a class="lesson-card css-card" href="2.3-vererbung-spezifitaet.html">
+            <span class="lesson-card-num">2.3</span>
+            <div class="lesson-card-content"><h4>Vererbung, Spezifit&auml;t &amp; Kaskade <span class="badge-vertiefung">Vertiefung</span></h4><p>Alle Selektoren, Kombinatoren, Inheritance, Spezifit&auml;t berechnen</p></div>
+          </a>
+          <a class="lesson-card css-card" href="2.4-positionierung.html">
+            <span class="lesson-card-num">2.4</span>
+            <div class="lesson-card-content"><h4>Positionierung &amp; z-index</h4><p>static, relative, absolute, fixed, sticky, Stacking-Context</p></div>
+          </a>
+          <a class="lesson-card css-card" href="2.5-flexbox-container.html">
+            <span class="lesson-card-num">2.5</span>
+            <div class="lesson-card-content"><h4>Flexbox: Flex-Container</h4><p>Achsen, flex-direction, flex-wrap, justify-content, align-items, gap</p></div>
+          </a>
+          <a class="lesson-card css-card" href="2.6-flexbox-kinder.html">
+            <span class="lesson-card-num">2.6</span>
+            <div class="lesson-card-content"><h4>Flexbox: Flex-Kinder &amp; Patterns</h4><p>order, grow, shrink, basis, flex-Shorthand, Multiline</p></div>
+          </a>
+          <a class="lesson-card css-card" href="2.7-grid-grundlagen.html">
+            <span class="lesson-card-num">2.7</span>
+            <div class="lesson-card-content"><h4>CSS Grid Grundlagen</h4><p>Tracks, fr, Lines, Named Areas, minmax(), auto-fit</p></div>
+          </a>
+          <a class="lesson-card css-card" href="2.8-grid-responsive.html">
+            <span class="lesson-card-num">2.8</span>
+            <div class="lesson-card-content"><h4>Media Queries &amp; responsive Grids</h4><p>@media, Holy Grail, Dashboard, Magazine, subgrid</p></div>
+          </a>
+          <a class="lesson-card css-card" href="2.9-transform-transition.html">
+            <span class="lesson-card-num">2.9</span>
+            <div class="lesson-card-content"><h4>Transformationen &amp; Transitions</h4><p>translate, scale, rotate, transition, Timing-Funktionen, prefers-reduced-motion</p></div>
+          </a>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2 class="fw-header" style="border-bottom:2px solid rgba(167,139,250,0.4);padding-bottom:.5rem">
+          Teil 3 &mdash; CSS-Frameworks
+        </h2>
+        <div class="course-grid">
+          <a class="lesson-card fw-card" href="3.1-bootstrap-grundlagen.html">
+            <span class="lesson-card-num">3.1</span>
+            <div class="lesson-card-content"><h4>Bootstrap: Setup, Grid &amp; Utilities</h4><p>CDN, 12-Spalten-Grid, Breakpoints, Utilities</p></div>
+          </a>
+          <a class="lesson-card fw-card" href="3.2-bootstrap-komponenten.html">
+            <span class="lesson-card-num">3.2</span>
+            <div class="lesson-card-content"><h4>Bootstrap: Komponenten &amp; Anpassung</h4><p>Navbar, Cards, Forms, Alerts, Modal, Theming</p></div>
+          </a>
+          <a class="lesson-card fw-card" href="3.3-tailwind.html">
+            <span class="lesson-card-num">3.3</span>
+            <div class="lesson-card-content"><h4>Tailwind CSS</h4><p>Utility-First, Varianten (md:, hover:, dark:), Vergleich mit Bootstrap</p></div>
+          </a>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Voraussetzungen &amp; Werkzeuge</h2>
+        <div class="callout callout-info">
+  <div class="callout-icon">&#8505;</div>
+  <div class="callout-body">
+    <div class="callout-title">Empfohlenes Vorwissen</div>
+    <p>Keines &mdash; der Kurs beginnt bei null.</p>
+  </div>
+</div>
+        <div class="callout callout-tip">
+  <div class="callout-icon">&#128161;</div>
+  <div class="callout-body">
+    <div class="callout-title">Empfohlene Tools</div>
+    <strong>Visual Studio Code</strong> mit den Extensions <strong>Live Server</strong> und
+          <strong>W3C Web Validator</strong>, ein aktueller Browser mit Entwicklertools (<kbd>F12</kbd>).
+  </div>
+</div>
+        <div class="callout callout-info">
+  <div class="callout-icon">&#8505;</div>
+  <div class="callout-body">
+    <div class="callout-title">Wie geht es weiter?</div>
+    <p>Im Anschluss folgt der <a href="../javascript/index.html">JavaScript-Kurs</a>, im zweiten Jahr
+          der <a href="../react/index.html">React-Kurs</a>.</p>
+  </div>
+</div>
+      </div>
+
+      <div class="section">
+        <h2>Kurs lokal ansehen</h2>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Lokaler Test</span>
+    <span class="code-lang">Bash</span>
+  </div>
+  <pre><code class="language-bash">python3 -m http.server 8080
+# → http://localhost:8080/index.html</code></pre>
+</div>
+      </div>
+
+    </div><!-- /content-area -->
+
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>
+    const ham = document.getElementById('hamburger');
+    const sb = document.getElementById('sidebar');
+    const ov = document.getElementById('overlay');
+    ham.addEventListener('click', () => { sb.classList.toggle('open'); ov.classList.toggle('visible'); });
+    ov.addEventListener('click', () => { sb.classList.remove('open'); ov.classList.remove('visible'); });
+    const cur = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-link').forEach(l => {
+      if (l.getAttribute('href') === cur) l.classList.add('active');
+    });
+    const themeBtn = document.getElementById('theme-toggle');
+    const applyTheme = (t) => {
+      document.documentElement.setAttribute('data-theme', t);
+      if (themeBtn) themeBtn.innerHTML = t === 'dark' ? '&#9728;' : '&#9790;';
+    };
+    applyTheme(localStorage.getItem('kurs-theme') || 'dark');
+    setTimeout(() => document.documentElement.classList.add('theme-transitions'), 50);
+    if (themeBtn) themeBtn.addEventListener('click', () => {
+      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('kurs-theme', next);
+      applyTheme(next);
+    });
+    hljs.highlightAll();
+  </script>
+</body>
+
+</html>

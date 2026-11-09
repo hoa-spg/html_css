@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<!-- GENERIERT von kurse/_build (html_css) – nicht direkt bearbeiten!
+     Quelle: kurse/_build/html_css/lessons/, bauen: python3 _build/build.py html_css -->
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3.1 &ndash; Bootstrap: Setup, Grid &amp; Utilities | HTML &amp; CSS Kurs</title>
+  <script>(function () { var t = localStorage.getItem('kurs-theme') || 'dark'; document.documentElement.setAttribute('data-theme', t); })();</script>
+  <link rel="stylesheet" href="assets/kurs.css">
+  <link rel="stylesheet" id="hljs-theme"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+
+<body>
+
+  <button class="hamburger" id="hamburger" aria-label="Navigation &ouml;ffnen">&#9776;</button>
+  <div class="sidebar-overlay" id="overlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html">
+        <span class="brand-icon">&lt;/&gt;</span>
+        <div>
+          <div class="brand-name">HTML &amp; CSS</div>
+          <div class="brand-sub">Web- und Mobile Computing</div>
+        </div>
+      </a>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Dark/Light Mode"
+        title="Theme wechseln">&#9728;</button>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-group">
+        <div class="nav-group-label html-label">Teil 1 &mdash; Web &amp; HTML</div>
+        <a class="nav-link" href="1.1-geschichte-internet.html"><span class="ln">1.1</span>Geschichte des Internets</a>
+        <a class="nav-link" href="1.2-grundlagen-web.html"><span class="ln">1.2</span>Grundlagen des Web: HTML, HTTP, URL</a>
+        <a class="nav-link" href="1.3-html5-grundlagen.html"><span class="ln">1.3</span>HTML5: Spezifikation, DOM &amp; APIs</a>
+        <a class="nav-link" href="1.4-html-elemente-semantik.html"><span class="ln">1.4</span>HTML-Elemente &amp; Semantik</a>
+        <a class="nav-link" href="1.5-attribute-formulare.html"><span class="ln">1.5</span>Attribute &amp; Formulare</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label css-label">Teil 2 &mdash; CSS &amp; Layout</div>
+        <a class="nav-link" href="2.1-selektoren-properties.html"><span class="ln">2.1</span>Selektoren, Einheiten &amp; Properties</a>
+        <a class="nav-link" href="2.2-box-model-display.html"><span class="ln">2.2</span>Box Model &amp; Display</a>
+        <a class="nav-link" href="2.3-vererbung-spezifitaet.html"><span class="ln">2.3</span>Vererbung, Spezifit&auml;t &amp; Kaskade</a>
+        <a class="nav-link" href="2.4-positionierung.html"><span class="ln">2.4</span>Positionierung &amp; z-index</a>
+        <a class="nav-link" href="2.5-flexbox-container.html"><span class="ln">2.5</span>Flexbox: Flex-Container</a>
+        <a class="nav-link" href="2.6-flexbox-kinder.html"><span class="ln">2.6</span>Flexbox: Flex-Kinder &amp; Patterns</a>
+        <a class="nav-link" href="2.7-grid-grundlagen.html"><span class="ln">2.7</span>CSS Grid Grundlagen</a>
+        <a class="nav-link" href="2.8-grid-responsive.html"><span class="ln">2.8</span>Media Queries &amp; responsive Grids</a>
+        <a class="nav-link" href="2.9-transform-transition.html"><span class="ln">2.9</span>Transformationen &amp; Transitions</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label fw-label">Teil 3 &mdash; CSS-Frameworks</div>
+        <a class="nav-link" href="3.1-bootstrap-grundlagen.html"><span class="ln">3.1</span>Bootstrap: Setup, Grid &amp; Utilities</a>
+        <a class="nav-link" href="3.2-bootstrap-komponenten.html"><span class="ln">3.2</span>Bootstrap: Komponenten &amp; Anpassung</a>
+        <a class="nav-link" href="3.3-tailwind.html"><span class="ln">3.3</span>Tailwind CSS</a>
+      </div>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <header class="lesson-header">
+      <p class="lesson-eyebrow">Lektion 3.1 &mdash; Teil 3: CSS-Frameworks</p>
+      <h1>Bootstrap: Setup, Grid &amp; Utilities</h1>
+      <div class="lesson-tags">
+        <span class="tag tag-fw">Bootstrap</span>
+        <span class="tag tag-time">ca. 90 min</span>
+        <span class="tag tag-level">Framework</span>
+      </div>
+    </header>
+
+    <div class="content-area">
+      <section class="section section-lernziele">
+        <h2>Lernziele</h2>
+        <ul class="lernziele-list">
+          <li>Wissen, was Bootstrap ist und welche Vorteile ein CSS-Framework bietet</li>
+          <li>Bootstrap 5 &uuml;ber ein CDN einbinden</li>
+          <li>Das <strong>12-Spalten-Grid</strong> mit Container, Row und Col verwenden</li>
+          <li>Mit den <strong>Breakpoints</strong> <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, <code>xxl</code> responsive Layouts bauen</li>
+          <li><strong>Utility Classes</strong> f&uuml;r Abst&auml;nde, Display, Flex, Farben und Typografie einsetzen</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2>1 &mdash; Was ist Bootstrap?</h2>
+        <p>
+          <strong>Bootstrap &ndash; das beliebteste CSS-Framework.</strong> Bootstrap ist ein
+          <strong>Open-Source-CSS-Framework</strong> f&uuml;r schnelle und responsive Webentwicklung. Statt
+          jedes Layout und jeden Button selbst zu schreiben, verwendet man fertige CSS-Klassen.
+        </p>
+        <h3>Warum Bootstrap?</h3>
+        <ul>
+          <li><strong>Schnelle Entwicklung:</strong> vorgefertigte Komponenten</li>
+          <li><strong>Responsive Design:</strong> Mobile-First-Ansatz</li>
+          <li><strong>Konsistenz:</strong> einheitliches Design-System</li>
+          <li><strong>Gro&szlig;e Community:</strong> viel Support und Dokumentation</li>
+          <li><strong>Anpassbar:</strong> eigene Themes und Styles</li>
+        </ul>
+        <h3>Bootstrap-5-Features</h3>
+        <ul>
+          <li>Kein jQuery mehr ben&ouml;tigt</li>
+          <li>Flexbox-basiertes Grid-System</li>
+          <li>CSS Custom Properties (CSS-Variablen)</li>
+          <li>Verbesserte API</li>
+          <li>Kleinere Dateigr&ouml;&szlig;e</li>
+        </ul>
+        <h3>Setup</h3>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Bootstrap per CDN einbinden</span>
+    <span class="code-lang">HTML</span>
+  </div>
+  <pre><code class="language-xml">&lt;link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"&gt;
+&lt;script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"&gt;&lt;/script&gt;</code></pre>
+</div>
+        <div class="callout callout-info">
+  <div class="callout-icon">&#8505;</div>
+  <div class="callout-body">
+    <div class="callout-title">Wo kommt was hin?</div>
+    <p>Das Stylesheet (<code>&lt;link&gt;</code>) geh&ouml;rt in den <code>&lt;head&gt;</code>, das Script am besten ans Ende des
+          <code>&lt;body&gt;</code>. Das JavaScript brauchst du nur f&uuml;r interaktive Komponenten (Dropdowns, Modals,
+          Navbar-Toggler &hellip;) &ndash; siehe Lektion 3.2.</p>
+  </div>
+</div>
+        <div class="callout callout-tip">
+  <div class="callout-icon">&#128161;</div>
+  <div class="callout-body">
+    <div class="callout-title">Du kennst die Technik schon</div>
+    <p>Bootstrap ist &bdquo;nur&ldquo; CSS. Alles, was es macht, beruht auf dem, was du in diesem Kurs
+          gelernt hast: Flexbox, Media Queries, Box Model, Klassen-Selektoren. Schau dir in den
+          Entwicklertools an, welche CSS-Regeln hinter einer Bootstrap-Klasse stecken!</p>
+  </div>
+</div>
+      </section>
+
+      <section class="section">
+        <h2>2 &mdash; Das Bootstrap-Grid-System</h2>
+        <p>
+          Bootstrap verwendet ein <strong>flexibles 12-Spalten-Grid-System</strong> auf Basis von CSS
+          Flexbox. Jede Zeile wird gedanklich in 12 gleich breite Spalten geteilt; jedes Element gibt
+          an, wie viele davon es belegt.
+        </p>
+        <h3>Grid-Struktur</h3>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Container → Row → Col</span>
+    <span class="code-lang">HTML</span>
+  </div>
+  <pre><code class="language-xml">&lt;div class="container"&gt;           &lt;!-- Container --&gt;
+  &lt;div class="row"&gt;               &lt;!-- Zeile --&gt;
+    &lt;div class="col-md-4"&gt;        &lt;!-- Spalte --&gt;
+      Content 1
+    &lt;/div&gt;
+    &lt;div class="col-md-8"&gt;        &lt;!-- Spalte --&gt;
+      Content 2
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
+        <div class="demo">
+  <div class="demo-label">Live-Vorschau: 4 + 8 = 12 Spalten</div>
+  <div class="demo-body">
+          <div style="display:flex;gap:8px">
+            <div style="flex:0 0 calc(33.333% - 4px);background:#e2d9f3;border:1px solid #7952b3;padding:8px">col-md-4</div>
+            <div style="flex:1;background:#e2d9f3;border:1px solid #7952b3;padding:8px">col-md-8</div>
+          </div>
+        </div>
+</div>
+        <h3>Container-Typen</h3>
+        <div class="table-wrap">
+          <table>
+            <tbody>
+              <tr><td><code>.container</code></td><td>Feste maximale Breite (<code>max-width</code>), die sich an jedem Breakpoint &auml;ndert</td></tr>
+              <tr><td><code>.container-fluid</code></td><td>100&nbsp;% Breite auf allen Breakpoints</td></tr>
+              <tr><td><code>.container-{breakpoint}</code></td><td>100&nbsp;% breit bis zum angegebenen Breakpoint, danach wie <code>.container</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h3>Spalten-Klassen</h3>
+        <div class="table-wrap">
+          <table>
+            <tbody>
+              <tr><td><code>.col</code></td><td>Alle Spalten gleich breit</td></tr>
+              <tr><td><code>.col-{number}</code></td><td>Bestimmte Spaltenanzahl (1&ndash;12)</td></tr>
+              <tr><td><code>.col-{breakpoint}-{number}</code></td><td>Responsive Spalten: gilt ab dem angegebenen Breakpoint</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>3 &mdash; Responsive Breakpoints</h2>
+        <p>Bootstrap definiert <strong>Breakpoints</strong> f&uuml;r verschiedene Ger&auml;tegr&ouml;&szlig;en (5 benannte plus die Basis &bdquo;X-Small&ldquo;):</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Breakpoint</th><th>Class Infix</th><th>Dimensions</th></tr></thead>
+            <tbody>
+              <tr><td><strong>X-Small</strong></td><td><em>None</em></td><td>&lt;576px</td></tr>
+              <tr><td><strong>Small</strong></td><td><code>sm</code></td><td>&ge;576px</td></tr>
+              <tr><td><strong>Medium</strong></td><td><code>md</code></td><td>&ge;768px</td></tr>
+              <tr><td><strong>Large</strong></td><td><code>lg</code></td><td>&ge;992px</td></tr>
+              <tr><td><strong>X-Large</strong></td><td><code>xl</code></td><td>&ge;1200px</td></tr>
+              <tr><td><strong>XX-Large</strong></td><td><code>xxl</code></td><td>&ge;1400px</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h3>Responsive-Grid-Beispiel</h3>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Responsive Grid</span>
+    <span class="code-lang">HTML</span>
+  </div>
+  <pre><code class="language-xml">&lt;div class="row"&gt;
+  &lt;div class="col-12 col-md-6 col-lg-4"&gt;
+    &lt;!-- Mobile: 12 Spalten, Tablet: 6 Spalten, Desktop: 4 Spalten --&gt;
+    Content 1
+  &lt;/div&gt;
+  &lt;div class="col-12 col-md-6 col-lg-8"&gt;
+    &lt;!-- Mobile: 12 Spalten, Tablet: 6 Spalten, Desktop: 8 Spalten --&gt;
+    Content 2
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
+        <div class="callout callout-info">
+  <div class="callout-icon">&#8505;</div>
+  <div class="callout-body">
+    <div class="callout-title">Mobile-First-Ansatz</div>
+    <p>Styles gelten <strong>ab dem Breakpoint aufw&auml;rts</strong>! <code>col-md-6</code> bedeutet
+          &bdquo;ab 768px: 6 Spalten&ldquo;. Darunter gilt die n&auml;chstkleinere Angabe (hier
+          <code>col-12</code>). Intern ist das genau eine Media Query mit <code>min-width</code> &ndash;
+          wie in Lektion 2.8.</p>
+  </div>
+</div>
+      </section>
+
+      <section class="section">
+        <h2>4 &mdash; Utility Classes</h2>
+        <p><strong>Bootstrap Utilities &ndash; schnelle Styles ohne eigenes CSS.</strong> Jede Utility-Klasse setzt genau eine (oder wenige) CSS-Eigenschaften.</p>
+        <h3>Spacing (Margin &amp; Padding)</h3>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Spacing</span>
+    <span class="code-lang">HTML</span>
+  </div>
+  <pre><code class="language-xml">&lt;!-- Syntax: {property}{sides}-{size} --&gt;
+&lt;div class="m-3"&gt;Margin auf allen Seiten&lt;/div&gt;
+&lt;div class="mt-4"&gt;Margin top&lt;/div&gt;
+&lt;div class="px-2"&gt;Padding left und right&lt;/div&gt;
+&lt;div class="mb-5"&gt;Margin bottom&lt;/div&gt;</code></pre>
+</div>
+        <div class="table-wrap">
+          <table>
+            <tbody>
+              <tr><td><strong>property</strong></td><td><code>m</code> = margin, <code>p</code> = padding</td></tr>
+              <tr><td><strong>sides</strong></td><td><code>t</code> top, <code>b</code> bottom, <code>s</code> start (links), <code>e</code> end (rechts), <code>x</code> links + rechts, <code>y</code> oben + unten, <em>leer</em> = alle Seiten</td></tr>
+              <tr><td><strong>size</strong></td><td><code>0</code>, <code>1</code> (0.25rem), <code>2</code> (0.5rem), <code>3</code> (1rem), <code>4</code> (1.5rem), <code>5</code> (3rem), <code>auto</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h3>Display &amp; Flex</h3>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Display &amp; Flex</span>
+    <span class="code-lang">HTML</span>
+  </div>
+  <pre><code class="language-xml">&lt;div class="d-flex justify-content-center align-items-center"&gt;
+  Zentrierter Content
+&lt;/div&gt;
+&lt;div class="d-none d-md-block"&gt;Versteckt auf Mobile&lt;/div&gt;</code></pre>
+</div>
+        <p>
+          <code>d-none d-md-block</code> hei&szlig;t: standardm&auml;&szlig;ig <code>display: none</code>, ab
+          <code>md</code> (768px) <code>display: block</code>.
+        </p>
+        <h3>Colors &amp; Backgrounds</h3>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Colors &amp; Backgrounds</span>
+    <span class="code-lang">HTML</span>
+  </div>
+  <pre><code class="language-xml">&lt;p class="text-primary"&gt;Primary Text&lt;/p&gt;
+&lt;div class="bg-success text-white p-3"&gt;Success Background&lt;/div&gt;</code></pre>
+</div>
+        <h3>Typography</h3>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Typography</span>
+    <span class="code-lang">HTML</span>
+  </div>
+  <pre><code class="language-xml">&lt;h1 class="display-4"&gt;Large Headline&lt;/h1&gt;
+&lt;p class="lead"&gt;Lead paragraph&lt;/p&gt;
+&lt;small class="text-muted"&gt;Muted text&lt;/small&gt;</code></pre>
+</div>
+        <p><strong>Spacing Scale:</strong> 0, 1 (0.25rem), 2 (0.5rem), 3 (1rem), 4 (1.5rem), 5 (3rem)</p>
+      </section>
+
+      <section class="section section-projekt">
+        <h2>Projektschritt</h2>
+<div class="projekt-box">
+  <div class="projekt-box-header">
+    <span class="projekt-step">Projektschritt 3.1</span>
+    <h3>Die Demoseite mit Bootstrap</h3>
+  </div>
+<p>
+    Wir bauen die Seite ein zweites Mal &ndash; als <code>index-bootstrap.html</code> und
+    <strong>ohne eigenes CSS</strong>, nur mit Bootstrap-Grid und Utilities. So lassen sich beide
+    Ans&auml;tze direkt vergleichen. Das Grid ersetzt unser <code>grid-template-columns: 1fr 300px</code>
+    durch <code>col-lg-8</code> + <code>col-lg-4</code>.
+  </p>
+  <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">demoseite/index-bootstrap.html (Ausschnitt)</span>
+    <span class="code-lang">HTML</span>
+  </div>
+  <pre><code class="language-xml">&lt;main class="container my-5"&gt;
+  &lt;h1 class="display-5 text-center mb-5"&gt;Demoseite: Webdesign Grundkurs&lt;/h1&gt;
+
+  &lt;!-- Inhalt + Sidebar: ab lg 8 + 4 von 12 Spalten --&gt;
+  &lt;div class="row g-4 mb-4"&gt;
+    &lt;section id="elemente" class="col-lg-8"&gt;
+      &lt;div class="bg-white p-4 rounded shadow-sm h-100"&gt; … Tabelle … &lt;/div&gt;
+    &lt;/section&gt;
+    &lt;aside class="col-lg-4"&gt;
+      &lt;div class="bg-warning-subtle p-4 rounded h-100"&gt; … VS Code … &lt;/div&gt;
+    &lt;/aside&gt;
+  &lt;/div&gt;
+
+  &lt;!-- Karten: mobil 1, ab md 2, ab lg 3 nebeneinander --&gt;
+  &lt;div class="row g-4"&gt;
+    &lt;div class="col-md-6 col-lg-4"&gt;
+      &lt;div class="bg-white p-3 rounded shadow-sm h-100"&gt; … Boxmodell … &lt;/div&gt;
+    &lt;/div&gt;
+    …
+  &lt;/div&gt;
+&lt;/main&gt;</code></pre>
+</div>
+  <p class="mb-0">&#128193; Stand nach dieser Lektion: <a href="beispiele/3.1/index.html" target="_blank">beispiele/3.1/</a></p>
+</div>
+      </section>
+
+      <section class="section section-fehler">
+        <h2>H&auml;ufige Fehler</h2>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: col ohne row</div>
+  <p>Spalten stehen untereinander statt nebeneinander, oder die R&auml;nder passen nicht.</p>
+          <p class="fehler-fix">Spalten (<code>.col-*</code>) m&uuml;ssen immer direkte Kinder einer <code>.row</code> sein, und die <code>.row</code> sollte in einem <code>.container</code> liegen.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Mehr als 12 Spalten pro Zeile</div>
+  <p><code>col-md-8</code> + <code>col-md-6</code> = 14 &ndash; die zweite Spalte rutscht in die n&auml;chste Zeile.</p>
+          <p class="fehler-fix">Pro Breakpoint sollen sich die Spalten einer Zeile auf 12 summieren (Umbr&uuml;che sind erlaubt, aber dann bewusst).</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Breakpoint falsch herum gedacht</div>
+  <p><code>col-md-6</code> wird als &bdquo;nur auf Tablets&ldquo; verstanden.</p>
+          <p class="fehler-fix">Bootstrap ist Mobile First: <code>md</code> gilt <strong>ab</strong> 768px aufw&auml;rts &ndash; also auch auf Desktop, solange kein <code>lg</code>/<code>xl</code> etwas anderes sagt.</p>
+</div>
+      </section>
+
+      <section class="section section-aufgaben">
+        <h2>Aufgaben</h2>
+        <div class="aufgaben-list">
+          <div class="aufgabe">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Aufgabe 1</span>
+    <span class="aufgabe-title">Breakpoints testen</span>
+  </div>
+  <p>Erg&auml;nze die Bootstrap-Demoseite um die drei fehlenden Karten (Selektoren, Positioning, Frameworks). Sorge daf&uuml;r, dass mobil 1, ab <code>md</code> 2 und ab <code>xl</code> 3 Karten nebeneinander stehen.</p>
+</div>
+          <div class="aufgabe">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Aufgabe 2</span>
+    <span class="aufgabe-title">Hinter die Kulissen schauen</span>
+  </div>
+  <p>Untersuche in den Entwicklertools die Klassen <code>.row</code>, <code>.col-md-6</code> und <code>.d-flex</code>. Welche CSS-Eigenschaften (und welche Media Query) stecken dahinter?</p>
+</div>
+          <div class="aufgabe">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Aufgabe 3</span>
+    <span class="aufgabe-title">Utilities statt CSS</span>
+  </div>
+  <p>Ersetze in einer Kopie deiner Demoseite (<code>index.html</code>) m&ouml;glichst viele eigene CSS-Regeln durch Bootstrap-Utilities (<code>p-*</code>, <code>m-*</code>, <code>d-flex</code>, <code>gap-*</code>, <code>text-*</code>, <code>bg-*</code>).</p>
+</div>
+          <div class="aufgabe aufgabe-bonus">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Bonus</span>
+    <span class="aufgabe-title">Grid vs. Bootstrap-Grid</span>
+  </div>
+  <p>Vergleiche dein selbst geschriebenes CSS-Grid-Layout aus Lektion 2.8 mit der Bootstrap-Version: Wie viele Zeilen CSS/HTML brauchst du jeweils? Was l&auml;sst sich leichter &auml;ndern? Schreibe drei Vor- und drei Nachteile von Bootstrap auf.</p>
+</div>
+        </div>
+      </section>
+
+    </div>
+
+    <nav class="lesson-nav">
+      <a class="nav-btn" href="2.9-transform-transition.html">&larr; Lektion 2.9: Transformationen &amp; Transitions</a>
+      <span class="nav-center-info">Lektion 3.1</span>
+      <a class="nav-btn primary" href="3.2-bootstrap-komponenten.html">Lektion 3.2: Bootstrap: Komponenten &amp; Anpassung &rarr;</a>
+    </nav>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>
+    const ham = document.getElementById('hamburger');
+    const sb = document.getElementById('sidebar');
+    const ov = document.getElementById('overlay');
+    ham.addEventListener('click', () => { sb.classList.toggle('open'); ov.classList.toggle('visible'); });
+    ov.addEventListener('click', () => { sb.classList.remove('open'); ov.classList.remove('visible'); });
+    const cur = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-link').forEach(l => {
+      if (l.getAttribute('href') === cur) l.classList.add('active');
+    });
+    const themeBtn = document.getElementById('theme-toggle');
+    const applyTheme = (t) => {
+      document.documentElement.setAttribute('data-theme', t);
+      if (themeBtn) themeBtn.innerHTML = t === 'dark' ? '&#9728;' : '&#9790;';
+    };
+    applyTheme(localStorage.getItem('kurs-theme') || 'dark');
+    setTimeout(() => document.documentElement.classList.add('theme-transitions'), 50);
+    if (themeBtn) themeBtn.addEventListener('click', () => {
+      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('kurs-theme', next);
+      applyTheme(next);
+    });
+    hljs.highlightAll();
+  </script>
+</body>
+
+</html>

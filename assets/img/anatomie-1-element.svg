@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" width="720" height="300" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <title>Element name, Opening tag, Content, Closing tag</title>
+  <rect width="720" height="300" fill="#ffffff"/>
+  <rect x="20" y="100" width="680" height="90" rx="8" fill="#1e2432"/>
+  <text x="56.0" y="162" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Consolas, monospace" font-size="50" font-weight="700" fill="#f0883e">&lt;</text>
+  <text x="88.0" y="162" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Consolas, monospace" font-size="50" font-weight="700" fill="#ff7b72">p</text>
+  <text x="120.0" y="162" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Consolas, monospace" font-size="50" font-weight="700" fill="#f0883e">&gt;</text>
+  <text x="184.0" y="162" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Consolas, monospace" font-size="50" font-weight="700" fill="#e6edf3">H</text>
+  <text x="216.0" y="162" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Consolas, monospace" font-size="50" font-weight="700" fill="#e6edf3">a</text>
+  <text x="248.0" y="162" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Consolas, monospace" font-size="50" font-weight="700" fill="#e6edf3">l</text>
+  <text x="280.0" y="162" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Consolas, monospace" font-size="50" font-weight="700" fill="#e6edf3">l</text>
+  <text x="312.0" y="162" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Consolas, monospace" font-size="50" font-weight="700" fill="#e6edf3">o</text>
+  <text x="376.0" y="162" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Consolas, monospace" font-size="50" font-weight="700" fill="#e6edf3">W</text>
+  <text x="408.0" y="162" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Consolas, monospace" font-size="50" font-weight="700" fill="#e6edf3">e</text>
+  <text x="440.0" y="162" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Consolas, monospace" font-size="50" font-weight="700" fill="#e6edf3">l</text>
+  <text x="472.0" y="162" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Consolas, monospace" font-size="50" font-weight="700" fill="#e6edf3">t</text>
+  <text x="504.0" y="162" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Consolas, monospace" font-size="50" font-weight="700" fill="#e6edf3">!</text>
+  <text x="568.0" y="162" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Consolas, monospace" font-size="50" font-weight="700" fill="#f0883e">&lt;</text>
+  <text x="600.0" y="162" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Consolas, monospace" font-size="50" font-weight="700" fill="#f0883e">/</text>
+  <text x="632.0" y="162" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Consolas, monospace" font-size="50" font-weight="700" fill="#ff7b72">p</text>
+  <text x="664.0" y="162" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Consolas, monospace" font-size="50" font-weight="700" fill="#f0883e">&gt;</text>
+  <path d="M88.0,98 L88.0,72" fill="none" stroke="#cf222e" stroke-width="2.5"/>
+  <text x="88.0" y="62" text-anchor="middle" font-size="18" font-weight="700" fill="#cf222e">Element name</text>
+  <path d="M171,92 L171,80 L517,80 L517,92 M344.0,80 L344.0,62" fill="none" stroke="#1f6feb" stroke-width="2.5"/>
+  <text x="344.0" y="52" text-anchor="middle" font-size="18" font-weight="700" fill="#1f6feb">Content</text>
+  <path d="M43,198 L43,210 L133,210 L133,198 M88.0,210 L88.0,228" fill="none" stroke="#bc4c00" stroke-width="2.5"/>
+  <text x="88.0" y="254" text-anchor="middle" font-size="18" font-weight="700" fill="#bc4c00">Opening tag</text>
+  <path d="M555,198 L555,210 L677,210 L677,198 M616.0,210 L616.0,228" fill="none" stroke="#bc4c00" stroke-width="2.5"/>
+  <text x="616.0" y="254" text-anchor="middle" font-size="18" font-weight="700" fill="#bc4c00">Closing tag</text>
+</svg>

@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<!-- GENERIERT von kurse/_build (html_css) – nicht direkt bearbeiten!
+     Quelle: kurse/_build/html_css/lessons/, bauen: python3 _build/build.py html_css -->
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1.4 &ndash; HTML-Elemente &amp; Semantik | HTML &amp; CSS Kurs</title>
+  <script>(function () { var t = localStorage.getItem('kurs-theme') || 'dark'; document.documentElement.setAttribute('data-theme', t); })();</script>
+  <link rel="stylesheet" href="assets/kurs.css">
+  <link rel="stylesheet" id="hljs-theme"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+
+<body>
+
+  <button class="hamburger" id="hamburger" aria-label="Navigation &ouml;ffnen">&#9776;</button>
+  <div class="sidebar-overlay" id="overlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html">
+        <span class="brand-icon">&lt;/&gt;</span>
+        <div>
+          <div class="brand-name">HTML &amp; CSS</div>
+          <div class="brand-sub">Web- und Mobile Computing</div>
+        </div>
+      </a>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Dark/Light Mode"
+        title="Theme wechseln">&#9728;</button>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-group">
+        <div class="nav-group-label html-label">Teil 1 &mdash; Web &amp; HTML</div>
+        <a class="nav-link" href="1.1-geschichte-internet.html"><span class="ln">1.1</span>Geschichte des Internets</a>
+        <a class="nav-link" href="1.2-grundlagen-web.html"><span class="ln">1.2</span>Grundlagen des Web: HTML, HTTP, URL</a>
+        <a class="nav-link" href="1.3-html5-grundlagen.html"><span class="ln">1.3</span>HTML5: Spezifikation, DOM &amp; APIs</a>
+        <a class="nav-link" href="1.4-html-elemente-semantik.html"><span class="ln">1.4</span>HTML-Elemente &amp; Semantik</a>
+        <a class="nav-link" href="1.5-attribute-formulare.html"><span class="ln">1.5</span>Attribute &amp; Formulare</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label css-label">Teil 2 &mdash; CSS &amp; Layout</div>
+        <a class="nav-link" href="2.1-selektoren-properties.html"><span class="ln">2.1</span>Selektoren, Einheiten &amp; Properties</a>
+        <a class="nav-link" href="2.2-box-model-display.html"><span class="ln">2.2</span>Box Model &amp; Display</a>
+        <a class="nav-link" href="2.3-vererbung-spezifitaet.html"><span class="ln">2.3</span>Vererbung, Spezifit&auml;t &amp; Kaskade</a>
+        <a class="nav-link" href="2.4-positionierung.html"><span class="ln">2.4</span>Positionierung &amp; z-index</a>
+        <a class="nav-link" href="2.5-flexbox-container.html"><span class="ln">2.5</span>Flexbox: Flex-Container</a>
+        <a class="nav-link" href="2.6-flexbox-kinder.html"><span class="ln">2.6</span>Flexbox: Flex-Kinder &amp; Patterns</a>
+        <a class="nav-link" href="2.7-grid-grundlagen.html"><span class="ln">2.7</span>CSS Grid Grundlagen</a>
+        <a class="nav-link" href="2.8-grid-responsive.html"><span class="ln">2.8</span>Media Queries &amp; responsive Grids</a>
+        <a class="nav-link" href="2.9-transform-transition.html"><span class="ln">2.9</span>Transformationen &amp; Transitions</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label fw-label">Teil 3 &mdash; CSS-Frameworks</div>
+        <a class="nav-link" href="3.1-bootstrap-grundlagen.html"><span class="ln">3.1</span>Bootstrap: Setup, Grid &amp; Utilities</a>
+        <a class="nav-link" href="3.2-bootstrap-komponenten.html"><span class="ln">3.2</span>Bootstrap: Komponenten &amp; Anpassung</a>
+        <a class="nav-link" href="3.3-tailwind.html"><span class="ln">3.3</span>Tailwind CSS</a>
+      </div>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <header class="lesson-header">
+      <p class="lesson-eyebrow">Lektion 1.4 &mdash; Teil 1: Web &amp; HTML</p>
+      <h1>HTML-Elemente &amp; Semantik</h1>
+      <div class="lesson-tags">
+        <span class="tag tag-html">HTML</span>
+        <span class="tag tag-time">ca. 90 min</span>
+        <span class="tag tag-level">Grundlagen</span>
+      </div>
+    </header>
+
+    <div class="content-area">
+      <section class="section section-lernziele">
+        <h2>Lernziele</h2>
+        <ul class="lernziele-list">
+          <li>Den Aufbau eines HTML-Elements beschreiben: Start-Tag, Inhalt, End-Tag, Attribute</li>
+          <li>Leere Elemente wie <code>&lt;br&gt;</code> und <code>&lt;hr&gt;</code> kennen</li>
+          <li>Elemente korrekt verschachteln</li>
+          <li>Navigation &uuml;ber Links und Buttons umsetzen &ndash; und wissen, welche Variante valide ist</li>
+          <li>HTML mit dem <strong>W3C Validator</strong> pr&uuml;fen</li>
+          <li>Seiten mit den semantischen HTML5-Elementen <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;aside&gt;</code>, <code>&lt;footer&gt;</code> strukturieren</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2>1 &mdash; Anatomie eines HTML-Elements</h2>
+        <h3>Start-Tag, Inhalt, End-Tag</h3>
+        <p>
+          Ein HTML-Element besteht aus einem <strong>&ouml;ffnenden Tag</strong> (Opening Tag) mit dem
+          <strong>Elementnamen</strong>, dem <strong>Inhalt</strong> (Content) und einem
+          <strong>schlie&szlig;enden Tag</strong> (Closing Tag) mit einem Schr&auml;gstrich.
+        </p>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/anatomie-1-element.svg" alt="Element name, Opening tag, Content, Closing tag" loading="lazy" style="max-width:560px"></div>
+  <figcaption>Element name, Opening tag, Content, Closing tag</figcaption>
+</figure>
+
+        <h3>Leere Elemente</h3>
+        <p>
+          Manche Elemente haben keinen Inhalt und deshalb <strong>nur ein &ouml;ffnendes Tag</strong>
+          &ndash; zum Beispiel <code>&lt;br&gt;</code> (Line Break, Zeilenumbruch) und <code>&lt;hr&gt;</code> (Horizontal Rule,
+          horizontale Linie). Weitere Beispiele: <code>&lt;img&gt;</code>, <code>&lt;input&gt;</code>, <code>&lt;meta&gt;</code>, <code>&lt;link&gt;</code>.
+        </p>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/anatomie-2-leere-elemente.svg" alt="&lt;br&gt; (Line Break) und &lt;hr&gt; (Horizontal Rule): nur ein &ouml;ffnendes Tag" loading="lazy" style="max-width:560px"></div>
+  <figcaption>&lt;br&gt; (Line Break) und &lt;hr&gt; (Horizontal Rule): nur ein &ouml;ffnendes Tag</figcaption>
+</figure>
+
+        <h3>Attribute</h3>
+        <p>
+          Im &ouml;ffnenden Tag k&ouml;nnen <strong>Attribute</strong> stehen. Ein Attribut besteht aus
+          <strong>Attributname</strong> und <strong>Attributwert</strong>. Dabei gelten Leerzeichen-Regeln:
+        </p>
+        <ul>
+          <li>Zwischen Elementname und Attribut <strong>muss</strong> ein Leerzeichen stehen.</li>
+          <li>Rund um das <code>=</code> und innerhalb der Anf&uuml;hrungszeichen am Rand ist <strong>kein</strong> Leerzeichen erlaubt.</li>
+        </ul>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/anatomie-3-attribute.svg" alt="&lt;p id=&quot;myId&quot;&gt;&lt;/p&gt;: Leerzeichen zwischen Elementname und Attribut n&ouml;tig, keine Leerzeichen um das = und vor dem &gt; &ndash; Attributname und Attributwert" loading="lazy" style="max-width:560px"></div>
+  <figcaption>&lt;p id=&quot;myId&quot;&gt;&lt;/p&gt;: Leerzeichen zwischen Elementname und Attribut n&ouml;tig, keine Leerzeichen um das = und vor dem &gt; &ndash; Attributname und Attributwert</figcaption>
+</figure>
+
+        <h3>Anf&uuml;hrungszeichen</h3>
+        <p>
+          Attributwerte werden in Anf&uuml;hrungszeichen gesetzt. Sowohl <strong>doppelte</strong>
+          (<code>"myId"</code>) als auch <strong>einfache</strong> (<code>'myId'</code>)
+          Anf&uuml;hrungszeichen sind erlaubt. &Uuml;blich sind doppelte.
+        </p>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/anatomie-4-anfuehrungszeichen.svg" alt="Doppelte und einfache Anf&uuml;hrungszeichen sind beide erlaubt" loading="lazy" style="max-width:560px"></div>
+  <figcaption>Doppelte und einfache Anf&uuml;hrungszeichen sind beide erlaubt</figcaption>
+</figure>
+
+        <h3>Verschachtelung</h3>
+        <p>
+          Elemente d&uuml;rfen ineinander verschachtelt werden. Dabei gilt:
+          <strong>Was zuletzt ge&ouml;ffnet wurde, wird zuerst geschlossen.</strong> Elemente d&uuml;rfen sich
+          nicht &uuml;berkreuzen.
+        </p>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/anatomie-5-verschachtelung.svg" alt="Links falsch (&lt;div&gt; wird nach &lt;/h1&gt; geschlossen), rechts richtig (&lt;div&gt; liegt vollst&auml;ndig in &lt;h1&gt;)" loading="lazy" style="max-width:560px"></div>
+  <figcaption>Links falsch (&lt;div&gt; wird nach &lt;/h1&gt; geschlossen), rechts richtig (&lt;div&gt; liegt vollst&auml;ndig in &lt;h1&gt;)</figcaption>
+</figure>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Verschachtelung</span>
+    <span class="code-lang">HTML</span>
+  </div>
+  <pre><code class="language-xml">&lt;!-- ✗ falsch: Tags überkreuzen sich --&gt;
+&lt;h1&gt;&lt;div&gt;Hello World!&lt;/h1&gt;&lt;/div&gt;
+
+&lt;!-- ✓ richtig: innen zuerst schließen --&gt;
+&lt;h1&gt;&lt;div&gt;Hello World!&lt;/div&gt;&lt;/h1&gt;</code></pre>
+</div>
+      </section>
+
+      <section class="section">
+        <h2>2 &mdash; Exkurs: Navigation mit Links</h2>
+        <p>
+          Das Element <code>&lt;a&gt;</code> (Anchor) erzeugt einen Hyperlink. Das Ziel steht im Attribut
+          <code>href</code>. Der Inhalt eines Links kann reiner Text oder anderes HTML sein:
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Link Navigation (1)</span>
+    <span class="code-lang">HTML</span>
+  </div>
+  <pre><code class="language-xml">&lt;!-- Anchor mit Text-Content --&gt;
+&lt;a href="https://www.orf.at"&gt;
+  ORF
+&lt;/a&gt;
+
+&lt;!-- Anchor mit HTML-Content --&gt;
+&lt;a href="https://www.orf.at"&gt;
+  &lt;div&gt;ORF&lt;/div&gt;
+&lt;/a&gt;</code></pre>
+</div>
+      </section>
+
+      <section class="section">
+        <h2>3 &mdash; Exkurs: Navigation mit Buttons</h2>
+        <p>Soll ein <strong>Button</strong> zu einer anderen Seite f&uuml;hren, gibt es mehrere Wege &ndash; nicht alle sind erlaubt:</p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Button Navigation (2)</span>
+    <span class="code-lang">HTML</span>
+  </div>
+  <pre><code class="language-xml">&lt;!-- Button mit JavaScript onclick-Handler --&gt;
+&lt;button onclick="location.href='https://www.orf.at'"
+  type="button"&gt;ORF
+&lt;/button&gt;
+
+&lt;!-- Button ohne JavaScript --&gt;
+&lt;form&gt;
+  &lt;button formaction="https://www.orf.at"&gt;ORF&lt;/button&gt;
+&lt;/form&gt;
+
+&lt;!-- Button ohne JavaScript; nicht valides HTML5 :-( --&gt;
+&lt;a href="https://www.orf.at"&gt;
+  &lt;button&gt;ORF&lt;/button&gt;
+&lt;/a&gt;</code></pre>
+</div>
+        <div class="callout callout-warning">
+  <div class="callout-icon">&#9888;</div>
+  <div class="callout-body">
+    <div class="callout-title">Interaktive Elemente nicht verschachteln</div>
+    <p>Ein <code>&lt;button&gt;</code> darf nicht in einem <code>&lt;a&gt;</code> stehen (und umgekehrt). Beide sind
+          &bdquo;interaktiv&ldquo; &ndash; der Browser w&uuml;sste nicht, welche Aktion beim Klick gilt.
+          Faustregel: <strong>Links (&lt;a&gt;) f&uuml;r Navigation, Buttons f&uuml;r Aktionen.</strong>
+          Soll ein Link wie ein Button aussehen, gestaltet man ihn mit CSS.</p>
+  </div>
+</div>
+      </section>
+
+      <section class="section">
+        <h2>4 &mdash; W3C Validator</h2>
+        <p>
+          Das W3C (World Wide Web Consortium) bietet einen <strong>Validator</strong>, mit dem man
+          HTML- (und CSS-) Markup auf Konformit&auml;t mit den Standards &uuml;berpr&uuml;fen kann.
+        </p>
+        <p>
+          Besteht das Markup diese Pr&uuml;fung, entspricht es den <strong>etablierten Webstandards</strong>.
+          <br><a href="https://validator.w3.org/" target="_blank" rel="noopener">https://validator.w3.org/</a>
+        </p>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/w3c-validator.png" alt="Der W3C Markup Validation Service: Pr&uuml;fung per URL, Datei-Upload oder direkter Eingabe" loading="lazy"></div>
+  <figcaption>Der W3C Markup Validation Service: Pr&uuml;fung per URL, Datei-Upload oder direkter Eingabe <small class="credit">Screenshot: validator.w3.org</small></figcaption>
+</figure>
+
+        <p>Pr&uuml;fen wir die nicht valide Button-Variante von oben:</p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">nicht-valide.html</span>
+    <span class="code-lang">HTML</span>
+  </div>
+  <pre><code class="language-xml">&lt;!-- Button ohne JavaScript; nicht valides HTML5 :-( --&gt;
+&lt;a href="https://www.orf.at"&gt;
+  &lt;button&gt;ORF&lt;/button&gt;
+&lt;/a&gt;</code></pre>
+</div>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/w3c-validator-fehler.png" alt="Fehlermeldung des Validators: &bdquo;The element button must not appear as a descendant of the a element.&ldquo;" loading="lazy"></div>
+  <figcaption>Fehlermeldung des Validators: &bdquo;The element button must not appear as a descendant of the a element.&ldquo; <small class="credit">Screenshot: validator.w3.org</small></figcaption>
+</figure>
+        <div class="callout callout-tip">
+  <div class="callout-icon">&#128161;</div>
+  <div class="callout-body">
+    <div class="callout-title">Validieren lohnt sich</div>
+    <p>Browser sind sehr fehlertolerant und zeigen auch fehlerhaftes HTML irgendwie an. Genau
+          deshalb fallen Fehler oft erst sp&auml;ter auf &ndash; z.&nbsp;B. wenn das Layout in einem
+          anderen Browser zerbricht oder Screenreader die Seite falsch vorlesen.</p>
+  </div>
+</div>
+      </section>
+
+      <section class="section">
+        <h2>5 &mdash; HTML5 Semantic Markup</h2>
+        <p>
+          Fr&uuml;her wurden Seiten nur mit <code>&lt;div&gt;</code>-Elementen und IDs gebaut (<code>div id="header"</code>,
+          <code>div class="post"</code> &hellip;). HTML5 f&uuml;hrte eigene Elemente ein, deren Name
+          bereits ihre <strong>Bedeutung (Semantik)</strong> beschreibt:
+        </p>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/semantic-markup.svg" alt="HTML vs. HTML5: aus div id=&quot;header&quot;, div id=&quot;menu&quot;, div class=&quot;post&quot; und div id=&quot;footer&quot; werden header, nav, article und footer" loading="lazy" style="max-width:620px"></div>
+  <figcaption>HTML vs. HTML5: aus div id=&quot;header&quot;, div id=&quot;menu&quot;, div class=&quot;post&quot; und div id=&quot;footer&quot; werden header, nav, article und footer</figcaption>
+</figure>
+
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Element</th><th>Bedeutung</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><code>&lt;header&gt;</code></td>
+                <td><strong>Kopfbereich einer Webseite oder eines Abschnitts.</strong><br>Kann den Seitentitel, das Logo, die Hauptnavigation oder andere einleitende Inhalte enthalten.</td>
+              </tr>
+              <tr>
+                <td><code>&lt;nav&gt;</code></td>
+                <td><strong>Hauptnavigation einer Webseite.</strong><br>Sollte nur f&uuml;r Hauptnavigationsbereiche verwendet werden, nicht f&uuml;r jede Gruppe von Links auf der Seite.</td>
+              </tr>
+              <tr>
+                <td><code>&lt;main&gt;</code></td>
+                <td><strong>Hauptinhalt der Webseite.</strong><br>Sollte einzigartig f&uuml;r das Dokument sein und keine Inhalte enthalten, die sich &uuml;ber mehrere Seiten wiederholen (z.&nbsp;B. Seitennavigation, Footer-Inhalte).</td>
+              </tr>
+              <tr>
+                <td><code>&lt;article&gt;</code></td>
+                <td><strong>Ein in sich geschlossener Abschnitt der Webseite.</strong><br>Ist thematisch von den umgebenden Inhalten getrennt und f&uuml;r sich allein verst&auml;ndlich (z.&nbsp;B. ein Blogpost, eine Meldung auf einer Nachrichtenseite). Kann <code>&lt;header&gt;</code>, <code>&lt;footer&gt;</code> und andere semantische Elemente enthalten.</td>
+              </tr>
+              <tr>
+                <td><code>&lt;aside&gt;</code></td>
+                <td><strong>Geh&ouml;rt nur indirekt zum Hauptinhalt</strong> und wird oft als Sidebar dargestellt.<br>Zum Beispiel Werbung, Nutzerhinweise oder Verweise auf verwandte Inhalte.</td>
+              </tr>
+              <tr>
+                <td><code>&lt;footer&gt;</code></td>
+                <td><strong>Fu&szlig;bereich einer Webseite oder eines Abschnitts.</strong><br>Kann Informationen wie Autor:in, Copyright-Hinweise oder Links zu verwandten Dokumenten enthalten.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>HTML5 Semantic &bdquo;Hello World&ldquo;</h3>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">semantic-hello-world.html</span>
+    <span class="code-lang">HTML</span>
+  </div>
+  <pre><code class="language-xml">&lt;header&gt;
+  &lt;h1&gt;Rezept&lt;/h1&gt;
+&lt;/header&gt;
+&lt;nav&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Über mich&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+&lt;article&gt;
+  &lt;h2&gt;Kochrezept&lt;/h2&gt;
+&lt;/article&gt;
+&lt;footer&gt;
+  &lt;p&gt;Copyright © 2023 Chefkoch&lt;/p&gt;
+&lt;/footer&gt;</code></pre>
+</div>
+        <div class="callout callout-info">
+  <div class="callout-icon">&#8505;</div>
+  <div class="callout-body">
+    <div class="callout-title">Warum Semantik?</div>
+    <ul>
+            <li><strong>Barrierefreiheit:</strong> Screenreader k&ouml;nnen direkt zu <code>&lt;nav&gt;</code> oder <code>&lt;main&gt;</code> springen.</li>
+            <li><strong>Suchmaschinen</strong> erkennen, was Hauptinhalt ist.</li>
+            <li><strong>Lesbarkeit:</strong> Der Code erkl&auml;rt sich selbst &ndash; <code>&lt;footer&gt;</code> statt <code>&lt;div id="footer"&gt;</code>.</li>
+          </ul>
+  </div>
+</div>
+      </section>
+
+      <section class="section">
+        <h2>6 &mdash; Links und Quellen</h2>
+        <ul>
+          <li><strong>Referenz:</strong> <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/html" target="_blank" rel="noopener">developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/html</a></li>
+          <li><strong>HTML Validator:</strong> <a href="https://validator.w3.org/detailed.html" target="_blank" rel="noopener">validator.w3.org/detailed.html</a></li>
+          <li><strong>Tutorials:</strong> <a href="https://www.w3schools.com/" target="_blank" rel="noopener">w3schools.com</a></li>
+          <li><strong>W3C Konsortium:</strong> <a href="https://www.w3.org/" target="_blank" rel="noopener">w3.org</a></li>
+          <li><strong>Web Hypertext Application Technology Working Group:</strong> <a href="https://whatwg.org/" target="_blank" rel="noopener">whatwg.org</a></li>
+        </ul>
+      </section>
+
+      <section class="section section-projekt">
+        <h2>Projektschritt</h2>
+<div class="projekt-box">
+  <div class="projekt-box-header">
+    <span class="projekt-step">Projektschritt 1.4</span>
+    <h3>Semantische Struktur</h3>
+  </div>
+<p>
+    Wir gliedern die Seite mit semantischen Elementen: <code>&lt;header&gt;</code> mit Marke und
+    <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code> mit den Bereichen als <code>&lt;section&gt;</code> (jeweils mit <code>id</code> f&uuml;r die
+    Sprungmarken), ein <code>&lt;aside&gt;</code> mit Werkzeug-Tipps und ein <code>&lt;footer&gt;</code>.
+  </p>
+  <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">demoseite/index.html (Struktur, gekürzt)</span>
+    <span class="code-lang">HTML</span>
+  </div>
+  <pre><code class="language-xml">&lt;body&gt;
+  &lt;header&gt;
+    &lt;span class="brand"&gt;Web- and Mobile Computing&lt;/span&gt;
+    &lt;nav id="nav-menu"&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href="#html"&gt;HTML&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#elemente"&gt;HTML-Elemente&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#css"&gt;CSS&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#lernprojekt"&gt;Lernprojekt&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#kontakt"&gt;Kontakt&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/nav&gt;
+  &lt;/header&gt;
+
+  &lt;main&gt;
+    &lt;h1&gt;Demoseite: Webdesign Grundkurs&lt;/h1&gt;
+
+    &lt;section id="html"&gt; … Text + HTML5-Logo … &lt;/section&gt;
+
+    &lt;section id="elemente"&gt;
+      &lt;h2&gt;HTML Elemente&lt;/h2&gt;
+      &lt;table&gt;
+        &lt;caption&gt;Wichtige HTML-Elemente&lt;/caption&gt;
+        &lt;thead&gt;
+          &lt;tr&gt;&lt;th&gt;Element&lt;/th&gt;&lt;th&gt;Erklärung&lt;/th&gt;&lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+          &lt;tr&gt;&lt;td&gt;&lt;code&gt;head&lt;/code&gt;&lt;/td&gt;&lt;td&gt;Metadaten, Titel …&lt;/td&gt;&lt;/tr&gt;
+          …
+        &lt;/tbody&gt;
+      &lt;/table&gt;
+    &lt;/section&gt;
+
+    &lt;aside&gt; … Visual Studio Code … &lt;/aside&gt;
+
+    &lt;section id="css"&gt;
+      &lt;h2&gt;CSS&lt;/h2&gt;
+      &lt;div class="cards"&gt;
+        &lt;article class="card"&gt;
+          &lt;h3&gt;Boxmodell&lt;/h3&gt;
+          &lt;p&gt;Content, Padding, Border und Margin …&lt;/p&gt;
+          &lt;img src="img/box_model.png" alt="Boxmodell"&gt;
+        &lt;/article&gt;
+        …
+      &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;section id="lernprojekt"&gt; … &lt;/section&gt;
+
+    &lt;section id="kontakt"&gt;
+      &lt;h2&gt;Kontakt&lt;/h2&gt;
+      &lt;address&gt;HTL Spengergasse&lt;br&gt;Spengergasse 20&lt;br&gt;1050 Wien&lt;/address&gt;
+    &lt;/section&gt;
+  &lt;/main&gt;
+
+  &lt;p class="back-to-top"&gt;&lt;a href="#"&gt;⬆ Nach oben&lt;/a&gt;&lt;/p&gt;
+
+  &lt;footer&gt; … © und Quick Links … &lt;/footer&gt;
+&lt;/body&gt;</code></pre>
+</div>
+  <p>
+    Die Klassen (<code>brand</code>, <code>cards</code>, <code>card</code> &hellip;) brauchen wir erst
+    ab Teil 2 f&uuml;rs CSS &ndash; wir setzen sie aber gleich jetzt, damit das HTML sp&auml;ter nicht mehr
+    ge&auml;ndert werden muss. Pr&uuml;fe die Seite anschlie&szlig;end mit dem W3C Validator.
+  </p>
+</div>
+      </section>
+
+      <section class="section section-fehler">
+        <h2>H&auml;ufige Fehler</h2>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: End-Tag vergessen oder &uuml;berkreuzt</div>
+  <p><code>&lt;p&gt;Text &lt;strong&gt;fett&lt;/p&gt;&lt;/strong&gt;</code> &ndash; die Tags sind &uuml;berkreuzt.</p>
+          <p class="fehler-fix">Immer das zuletzt ge&ouml;ffnete Element zuerst schlie&szlig;en: <code>&lt;p&gt;Text &lt;strong&gt;fett&lt;/strong&gt;&lt;/p&gt;</code>.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Button in einem Link</div>
+  <p><code>&lt;a href="…"&gt;&lt;button&gt;…&lt;/button&gt;&lt;/a&gt;</code> wird vom Validator als Fehler gemeldet.</p>
+          <p class="fehler-fix">F&uuml;r Navigation ein <code>&lt;a&gt;</code> verwenden und es per CSS wie einen Button gestalten.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Mehrere &lt;main&gt;-Elemente pro Seite</div>
+  <p><code>&lt;main&gt;</code> beschreibt den <em>einen</em> Hauptinhalt des Dokuments.</p>
+          <p class="fehler-fix">Pro Seite genau ein sichtbares <code>&lt;main&gt;</code>. F&uuml;r mehrere Bereiche <code>&lt;section&gt;</code> oder <code>&lt;article&gt;</code> verwenden.</p>
+</div>
+      </section>
+
+      <section class="section section-aufgaben">
+        <h2>Aufgaben</h2>
+        <div class="aufgaben-list">
+          <div class="aufgabe">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Aufgabe 1</span>
+    <span class="aufgabe-title">Fehler finden</span>
+  </div>
+  <p>Finde alle Fehler und korrigiere sie. Pr&uuml;fe dein Ergebnis mit dem Validator.</p>
+            <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">fehlerhaft.html</span>
+    <span class="code-lang">HTML</span>
+  </div>
+  <pre><code class="language-xml">&lt;h1 class = "titel"&gt;Meine Seite&lt;/h2&gt;
+&lt;p&gt;Das ist &lt;em&gt;wichtig&lt;/p&gt;&lt;/em&gt;
+&lt;a href="kontakt.html"&gt;&lt;button&gt;Kontakt&lt;/button&gt;&lt;/a&gt;
+&lt;img src="bild.jpg"&gt;&lt;/img&gt;</code></pre>
+</div>
+</div>
+          <div class="aufgabe">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Aufgabe 2</span>
+    <span class="aufgabe-title">Semantik statt div</span>
+  </div>
+  <p>Schreibe folgende Struktur mit semantischen HTML5-Elementen neu: <code>&lt;div id="kopf"&gt;</code>, <code>&lt;div id="menu"&gt;</code>, <code>&lt;div class="beitrag"&gt;</code> (2&times;), <code>&lt;div id="seitenleiste"&gt;</code>, <code>&lt;div id="fuss"&gt;</code>.</p>
+</div>
+          <div class="aufgabe">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Aufgabe 3</span>
+    <span class="aufgabe-title">Zweite Seite</span>
+  </div>
+  <p>Lege eine zweite Seite <code>impressum.html</code> mit derselben Header-/Footer-Struktur an und verlinke sie im Footer der Demoseite.</p>
+</div>
+          <div class="aufgabe aufgabe-bonus">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Bonus</span>
+    <span class="aufgabe-title">Sprungmarken</span>
+  </div>
+  <p>F&uuml;ge am Ende jedes Abschnitts der Demoseite einen Link &bdquo;zur&uuml;ck zur Navigation&ldquo; ein, der zum Element mit <code>id="nav-menu"</code> springt (Fragment <code>#nav-menu</code>).</p>
+</div>
+        </div>
+      </section>
+
+    </div>
+
+    <nav class="lesson-nav">
+      <a class="nav-btn" href="1.3-html5-grundlagen.html">&larr; Lektion 1.3: HTML5: Spezifikation, DOM &amp; APIs</a>
+      <span class="nav-center-info">Lektion 1.4</span>
+      <a class="nav-btn primary" href="1.5-attribute-formulare.html">Lektion 1.5: Attribute &amp; Formulare &rarr;</a>
+    </nav>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>
+    const ham = document.getElementById('hamburger');
+    const sb = document.getElementById('sidebar');
+    const ov = document.getElementById('overlay');
+    ham.addEventListener('click', () => { sb.classList.toggle('open'); ov.classList.toggle('visible'); });
+    ov.addEventListener('click', () => { sb.classList.remove('open'); ov.classList.remove('visible'); });
+    const cur = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-link').forEach(l => {
+      if (l.getAttribute('href') === cur) l.classList.add('active');
+    });
+    const themeBtn = document.getElementById('theme-toggle');
+    const applyTheme = (t) => {
+      document.documentElement.setAttribute('data-theme', t);
+      if (themeBtn) themeBtn.innerHTML = t === 'dark' ? '&#9728;' : '&#9790;';
+    };
+    applyTheme(localStorage.getItem('kurs-theme') || 'dark');
+    setTimeout(() => document.documentElement.classList.add('theme-transitions'), 50);
+    if (themeBtn) themeBtn.addEventListener('click', () => {
+      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('kurs-theme', next);
+      applyTheme(next);
+    });
+    hljs.highlightAll();
+  </script>
+</body>
+
+</html>

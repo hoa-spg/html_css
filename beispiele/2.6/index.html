@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demoseite: Web- and Mobile Computing</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <header>
+    <span class="brand">Web- and Mobile Computing</span>
+
+    <nav id="nav-menu">
+      <ul>
+        <li><a href="#html">HTML</a></li>
+        <li><a href="#elemente">HTML-Elemente</a></li>
+        <li><a href="#css">CSS</a></li>
+        <li><a href="#lernprojekt">Lernprojekt</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Demoseite: Webdesign Grundkurs</h1>
+
+    <section id="html">
+      <h2>HTML Grundlagen</h2>
+      <div class="content-with-image">
+        <div class="text-content">
+          <p>
+            HTML (HyperText Markup Language) entstand Anfang der 1990er-Jahre am CERN.
+            Tim Berners-Lee definierte eine einfache Auszeichnungssprache, um Dokumente
+            im neu entstehenden World Wide Web miteinander zu verlinken.
+          </p>
+          <p>
+            Heute steht HTML5 für modernes, semantisches HTML. Elemente wie
+            <code>header</code>, <code>nav</code>, <code>main</code>, <code>section</code>,
+            <code>aside</code> und <code>footer</code> beschreiben die Bedeutung von
+            Inhalten statt nur deren Aussehen.
+          </p>
+        </div>
+        <img src="img/html5_logo.png" alt="HTML5 Logo">
+      </div>
+    </section>
+
+    <section id="elemente">
+      <h2>HTML Elemente</h2>
+      <p>
+        Ein <em>Element</em> besteht aus Start-Tag, Inhalt und End-Tag, z.&nbsp;B.
+        <code>&lt;p&gt;Text&lt;/p&gt;</code>. Leere Elemente wie <code>&lt;img&gt;</code>
+        haben keinen Inhalt und kein End-Tag.
+      </p>
+      <table>
+        <caption>Wichtige HTML-Elemente</caption>
+        <thead>
+          <tr>
+            <th>Element</th>
+            <th>Erklärung</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>head</code></td>
+            <td>Metadaten, Titel und Verweise auf Ressourcen</td>
+          </tr>
+          <tr>
+            <td><code>body</code></td>
+            <td>Alle sichtbaren Inhalte der Seite</td>
+          </tr>
+          <tr>
+            <td><code>header</code>, <code>nav</code>, <code>main</code>, <code>footer</code></td>
+            <td>Semantische Bereiche der Seite</td>
+          </tr>
+          <tr>
+            <td><code>a</code></td>
+            <td>Hyperlink zu anderen Seiten oder Bereichen</td>
+          </tr>
+          <tr>
+            <td><code>img</code></td>
+            <td>Bild (leeres Element)</td>
+          </tr>
+          <tr>
+            <td><code>form</code>, <code>label</code>, <code>input</code></td>
+            <td>Formulareingaben</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <aside>
+      <h3>Visual Studio Code</h3>
+      <p>
+        VS&nbsp;Code ist ein kostenloser Editor und der Industriestandard für
+        Webentwicklung. Empfohlene Extensions:
+      </p>
+      <ul>
+        <li><strong>Live Server</strong> – lokaler Server mit automatischem Neuladen</li>
+        <li><strong>W3C Validator</strong> – prüft HTML direkt im Editor</li>
+      </ul>
+      <img src="img/vscode_logo.png" alt="VS Code Logo">
+    </aside>
+
+    <section id="css">
+      <h2>CSS</h2>
+      <p>
+        CSS (Cascading Style Sheets) beschreibt das Aussehen von HTML-Inhalten:
+        Farben, Schriften, Abstände und Layouts.
+      </p>
+      <div class="cards">
+        <article class="card">
+          <h3>Boxmodell</h3>
+          <p>Content, Padding, Border und Margin bestimmen Größe und Abstände.</p>
+          <img src="img/box_model.png" alt="Boxmodell">
+        </article>
+        <article class="card">
+          <h3>Selektoren</h3>
+          <p>Typ-, Klassen-, ID- und Attribut-Selektoren sowie Spezifität.</p>
+          <img src="img/css_selectors.png" alt="CSS Selektoren">
+        </article>
+        <article class="card">
+          <h3>Positioning</h3>
+          <p>static, relative, absolute, fixed, sticky und z-index.</p>
+          <img src="img/positioning.jpeg" alt="Positionierung">
+        </article>
+        <article class="card">
+          <h3>Flexbox</h3>
+          <p>1D-Layout: Ausrichtung, Verteilung und flexible Größen.</p>
+          <img src="img/flexbox.png" alt="Flexbox">
+        </article>
+        <article class="card">
+          <h3>Grid</h3>
+          <p>2D-Layout: Spalten, Zeilen und responsive Raster.</p>
+          <img src="img/grid.png" alt="Grid">
+        </article>
+        <article class="card">
+          <h3>Frameworks</h3>
+          <p>Bootstrap und Tailwind: Komponenten vs. Utility-Klassen.</p>
+          <img src="img/frameworks.jpg" alt="CSS Frameworks">
+        </article>
+      </div>
+    </section>
+
+    <section id="lernprojekt">
+      <h2>Lernprojekt</h2>
+      <p>Im Laufe des Kurses erstellen Sie eine eigene Webseite in drei Meilensteinen:</p>
+      <ol>
+        <li><strong>Meilenstein 1:</strong> Inhalte zusammenstellen, Seite mit HTML5 ohne CSS erstellen.</li>
+        <li><strong>Meilenstein 2:</strong> CSS hinzufügen: Farben, Schriften, Abstände.</li>
+        <li><strong>Meilenstein 3:</strong> Responsive Design mit Flexbox und Grid.</li>
+      </ol>
+    </section>
+
+    <section id="kontakt">
+      <h2>Kontakt</h2>
+      <address>
+        HTL Spengergasse<br>
+        Spengergasse 20<br>
+        1050 Wien
+      </address>
+      <p>E-Mail: <a href="mailto:direktion@spengergasse.at">direktion@spengergasse.at</a></p>
+    </section>
+  </main>
+
+  <p class="back-to-top"><a href="#">⬆ Nach oben</a></p>
+
+  <footer>
+    <section class="newsletter">
+      <h2>Newsletter</h2>
+      <form class="newsletter-form" action="/newsletter" method="post">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Ihr Name" required>
+
+        <label for="email">E-Mail</label>
+        <input type="email" id="email" name="email" placeholder="ihre.email@example.com" required>
+
+        <label>
+          <input type="checkbox" name="kein-roboter" required>
+          Ich bin kein Roboter
+        </label>
+
+        <button type="submit">Jetzt anmelden</button>
+      </form>
+    </section>
+
+    <div class="footer-info">
+      <div>
+        <h3>Web- and Mobile Computing</h3>
+        <p>© 2026 HTL Spengergasse</p>
+      </div>
+      <ul>
+        <li><a href="#html">HTML</a></li>
+        <li><a href="#css">CSS</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+    </div>
+  </footer>
+</body>
+
+</html>

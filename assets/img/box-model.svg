@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 380" width="640" height="380" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <title>Das Box Model: Content, Padding, Border, Margin</title>
+  <rect width="640" height="380" fill="#ffffff"/>
+  <!-- Margin -->
+  <rect x="40" y="20" width="560" height="340" fill="#fff1e5" stroke="#f0883e" stroke-width="2" stroke-dasharray="8 6"/>
+  <text x="56" y="46" font-size="17" font-weight="700" fill="#bc4c00">margin</text>
+  <!-- Border -->
+  <rect x="100" y="66" width="440" height="248" fill="#e3b341"/>
+  <text x="116" y="90" font-size="17" font-weight="700" fill="#1f2328">border</text>
+  <!-- Padding -->
+  <rect x="120" y="100" width="400" height="180" fill="#dafbe1"/>
+  <text x="136" y="124" font-size="17" font-weight="700" fill="#1a7f37">padding</text>
+  <!-- Content -->
+  <rect x="200" y="140" width="240" height="100" fill="#58a6ff"/>
+  <text x="320" y="196" text-anchor="middle" font-size="20" font-weight="700" fill="#ffffff">content</text>
+  <!-- Maße -->
+  <g font-size="13" fill="#57606a" text-anchor="middle" font-family="ui-monospace, Consolas, monospace">
+    <text x="320" y="230" fill="#ffffff">width × height</text>
+  </g>
+  <!-- Legende -->
+  <g font-size="14" fill="#1f2328">
+    <text x="320" y="345" text-anchor="middle">Von innen nach außen: content → padding → border → margin</text>
+  </g>
+</svg>

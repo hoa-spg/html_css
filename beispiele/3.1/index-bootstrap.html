@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demoseite – Bootstrap</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+  <header class="bg-dark text-white py-3 sticky-top">
+    <div class="container d-flex flex-wrap justify-content-between align-items-center gap-3">
+      <span class="fs-3 fw-bold">Web- and Mobile Computing</span>
+      <nav class="d-flex flex-wrap gap-3">
+        <a class="text-white text-decoration-none" href="#html">HTML</a>
+        <a class="text-white text-decoration-none" href="#elemente">HTML-Elemente</a>
+        <a class="text-white text-decoration-none" href="#css">CSS</a>
+        <a class="text-white text-decoration-none" href="#kontakt">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container my-5">
+    <h1 class="display-5 text-center mb-5">Demoseite: Webdesign Grundkurs</h1>
+
+    <section id="html" class="bg-white p-4 mb-4 rounded shadow-sm">
+      <h2 class="text-danger border-bottom pb-2">HTML Grundlagen</h2>
+      <div class="row align-items-center">
+        <div class="col-md-8">
+          <p>
+            HTML entstand Anfang der 1990er-Jahre am CERN. Heute steht HTML5 für
+            modernes, semantisches HTML.
+          </p>
+        </div>
+        <div class="col-md-4 text-center">
+          <img src="img/html5_logo.png" class="img-fluid" alt="HTML5 Logo">
+        </div>
+      </div>
+    </section>
+
+    <!-- Inhalt + Sidebar: ab lg 8 + 4 von 12 Spalten -->
+    <div class="row g-4 mb-4">
+      <section id="elemente" class="col-lg-8">
+        <div class="bg-white p-4 rounded shadow-sm h-100">
+          <h2 class="text-danger border-bottom pb-2">HTML Elemente</h2>
+          <table class="table table-striped table-hover">
+            <thead class="table-dark">
+              <tr><th>Element</th><th>Erklärung</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>head</code></td><td>Metadaten und Titel</td></tr>
+              <tr><td><code>body</code></td><td>Sichtbare Inhalte</td></tr>
+              <tr><td><code>a</code></td><td>Hyperlink</td></tr>
+              <tr><td><code>img</code></td><td>Bild (leeres Element)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <aside class="col-lg-4">
+        <div class="bg-warning-subtle p-4 rounded h-100">
+          <h3 class="h4">Visual Studio Code</h3>
+          <p class="mb-0">Kostenloser Editor mit den Extensions Live Server und W3C Validator.</p>
+        </div>
+      </aside>
+    </div>
+
+    <section id="css" class="mb-4">
+      <h2 class="text-danger border-bottom pb-2">CSS</h2>
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-4">
+          <div class="bg-white p-3 rounded shadow-sm h-100">
+            <img src="img/box_model.png" class="img-fluid mb-2" alt="Boxmodell">
+            <h3 class="h5">Boxmodell</h3>
+            <p class="mb-0">Content, Padding, Border und Margin.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="bg-white p-3 rounded shadow-sm h-100">
+            <img src="img/flexbox.png" class="img-fluid mb-2" alt="Flexbox">
+            <h3 class="h5">Flexbox</h3>
+            <p class="mb-0">1D-Layout mit flexiblen Größen.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="bg-white p-3 rounded shadow-sm h-100">
+            <img src="img/grid.png" class="img-fluid mb-2" alt="Grid">
+            <h3 class="h5">Grid</h3>
+            <p class="mb-0">2D-Layout mit Spalten und Zeilen.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="kontakt" class="bg-white p-4 rounded shadow-sm">
+      <h2 class="text-danger border-bottom pb-2">Kontakt</h2>
+      <address class="mb-0">HTL Spengergasse, Spengergasse 20, 1050 Wien</address>
+    </section>
+  </main>
+
+  <footer class="bg-dark text-white py-4">
+    <div class="container">
+      <small>© 2026 HTL Spengergasse</small>
+    </div>
+  </footer>
+</body>
+
+</html>

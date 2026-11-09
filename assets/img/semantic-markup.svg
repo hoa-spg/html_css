@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 520" width="860" height="520" font-family="ui-monospace, 'SF Mono', Consolas, monospace" font-size="16" text-anchor="middle">
+  <title>HTML vs. HTML5: aus div id="header", div id="menu", div class="post" und div id="footer" werden header, nav, article und footer</title>
+  <rect width="860" height="520" fill="#ffffff"/>
+  <g font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-weight="700" font-size="24" fill="#1f2328">
+    <text x="215" y="40">Nur &lt;div&gt;</text>
+    <text x="645" y="40">Semantisches HTML5</text>
+  </g>
+  <!-- Browserfenster links -->
+  <rect x="30" y="60" width="370" height="430" rx="10" fill="#f6f8fa" stroke="#8b949e" stroke-width="2"/>
+  <circle cx="50" cy="78" r="5" fill="#f85149"/><circle cx="66" cy="78" r="5" fill="#e3b341"/><circle cx="82" cy="78" r="5" fill="#3fb950"/>
+  <g fill="#d0d7de">
+    <rect x="50" y="100" width="330" height="60" rx="4"/>
+    <rect x="50" y="175" width="90" height="230" rx="4"/>
+    <rect x="155" y="175" width="225" height="107" rx="4"/>
+    <rect x="155" y="298" width="225" height="107" rx="4"/>
+    <rect x="50" y="420" width="330" height="55" rx="4"/>
+  </g>
+  <g fill="#57606a">
+    <text x="215" y="136">div id="header"</text>
+    <text x="95" y="285">div id=</text><text x="95" y="305">"menu"</text>
+    <text x="267" y="234">div class="post"</text>
+    <text x="267" y="357">div class="post"</text>
+    <text x="215" y="453">div id="footer"</text>
+  </g>
+  <!-- Browserfenster rechts -->
+  <rect x="460" y="60" width="370" height="430" rx="10" fill="#f6f8fa" stroke="#8b949e" stroke-width="2"/>
+  <circle cx="480" cy="78" r="5" fill="#f85149"/><circle cx="496" cy="78" r="5" fill="#e3b341"/><circle cx="512" cy="78" r="5" fill="#3fb950"/>
+  <rect x="480" y="100" width="330" height="60" rx="4" fill="#f0883e"/>
+  <rect x="480" y="175" width="90" height="230" rx="4" fill="#a78bfa"/>
+  <rect x="585" y="175" width="225" height="107" rx="4" fill="#58a6ff"/>
+  <rect x="585" y="298" width="225" height="107" rx="4" fill="#58a6ff"/>
+  <rect x="480" y="420" width="330" height="55" rx="4" fill="#3fb950"/>
+  <g fill="#ffffff" font-weight="700" font-size="19">
+    <text x="645" y="137">&lt;header&gt;</text>
+    <text x="525" y="296">&lt;nav&gt;</text>
+    <text x="697" y="235">&lt;article&gt;</text>
+    <text x="697" y="358">&lt;article&gt;</text>
+    <text x="645" y="454">&lt;footer&gt;</text>
+  </g>
+</svg>

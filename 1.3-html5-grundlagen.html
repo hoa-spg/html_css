@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<!-- GENERIERT von kurse/_build (html_css) – nicht direkt bearbeiten!
+     Quelle: kurse/_build/html_css/lessons/, bauen: python3 _build/build.py html_css -->
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1.3 &ndash; HTML5: Spezifikation, DOM &amp; APIs | HTML &amp; CSS Kurs</title>
+  <script>(function () { var t = localStorage.getItem('kurs-theme') || 'dark'; document.documentElement.setAttribute('data-theme', t); })();</script>
+  <link rel="stylesheet" href="assets/kurs.css">
+  <link rel="stylesheet" id="hljs-theme"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+
+<body>
+
+  <button class="hamburger" id="hamburger" aria-label="Navigation &ouml;ffnen">&#9776;</button>
+  <div class="sidebar-overlay" id="overlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html">
+        <span class="brand-icon">&lt;/&gt;</span>
+        <div>
+          <div class="brand-name">HTML &amp; CSS</div>
+          <div class="brand-sub">Web- und Mobile Computing</div>
+        </div>
+      </a>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Dark/Light Mode"
+        title="Theme wechseln">&#9728;</button>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-group">
+        <div class="nav-group-label html-label">Teil 1 &mdash; Web &amp; HTML</div>
+        <a class="nav-link" href="1.1-geschichte-internet.html"><span class="ln">1.1</span>Geschichte des Internets</a>
+        <a class="nav-link" href="1.2-grundlagen-web.html"><span class="ln">1.2</span>Grundlagen des Web: HTML, HTTP, URL</a>
+        <a class="nav-link" href="1.3-html5-grundlagen.html"><span class="ln">1.3</span>HTML5: Spezifikation, DOM &amp; APIs</a>
+        <a class="nav-link" href="1.4-html-elemente-semantik.html"><span class="ln">1.4</span>HTML-Elemente &amp; Semantik</a>
+        <a class="nav-link" href="1.5-attribute-formulare.html"><span class="ln">1.5</span>Attribute &amp; Formulare</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label css-label">Teil 2 &mdash; CSS &amp; Layout</div>
+        <a class="nav-link" href="2.1-selektoren-properties.html"><span class="ln">2.1</span>Selektoren, Einheiten &amp; Properties</a>
+        <a class="nav-link" href="2.2-box-model-display.html"><span class="ln">2.2</span>Box Model &amp; Display</a>
+        <a class="nav-link" href="2.3-vererbung-spezifitaet.html"><span class="ln">2.3</span>Vererbung, Spezifit&auml;t &amp; Kaskade</a>
+        <a class="nav-link" href="2.4-positionierung.html"><span class="ln">2.4</span>Positionierung &amp; z-index</a>
+        <a class="nav-link" href="2.5-flexbox-container.html"><span class="ln">2.5</span>Flexbox: Flex-Container</a>
+        <a class="nav-link" href="2.6-flexbox-kinder.html"><span class="ln">2.6</span>Flexbox: Flex-Kinder &amp; Patterns</a>
+        <a class="nav-link" href="2.7-grid-grundlagen.html"><span class="ln">2.7</span>CSS Grid Grundlagen</a>
+        <a class="nav-link" href="2.8-grid-responsive.html"><span class="ln">2.8</span>Media Queries &amp; responsive Grids</a>
+        <a class="nav-link" href="2.9-transform-transition.html"><span class="ln">2.9</span>Transformationen &amp; Transitions</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label fw-label">Teil 3 &mdash; CSS-Frameworks</div>
+        <a class="nav-link" href="3.1-bootstrap-grundlagen.html"><span class="ln">3.1</span>Bootstrap: Setup, Grid &amp; Utilities</a>
+        <a class="nav-link" href="3.2-bootstrap-komponenten.html"><span class="ln">3.2</span>Bootstrap: Komponenten &amp; Anpassung</a>
+        <a class="nav-link" href="3.3-tailwind.html"><span class="ln">3.3</span>Tailwind CSS</a>
+      </div>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <header class="lesson-header">
+      <p class="lesson-eyebrow">Lektion 1.3 &mdash; Teil 1: Web &amp; HTML</p>
+      <h1>HTML5: Spezifikation, DOM &amp; APIs</h1>
+      <div class="lesson-tags">
+        <span class="tag tag-html">HTML</span>
+        <span class="tag tag-time">ca. 90 min</span>
+        <span class="tag tag-level">Grundlagen</span>
+      </div>
+    </header>
+
+    <div class="content-area">
+      <section class="section section-lernziele">
+        <h2>Lernziele</h2>
+        <ul class="lernziele-list">
+          <li>Die vier S&auml;ulen der HTML5-Spezifikation kennen: Tags, DOM, APIs, Security Policies</li>
+          <li>Die wichtigsten HTML5-Tags nach Kategorien einordnen</li>
+          <li>Das Grundger&uuml;st eines HTML5-Dokuments (<code>&lt;!DOCTYPE&gt;</code>, <code>&lt;head&gt;</code>, <code>&lt;body&gt;</code>) schreiben</li>
+          <li>Verstehen, dass HTML Boxen erzeugt und der Browser daraus einen DOM-Baum baut</li>
+          <li>Wissen, was HTML5-APIs sind, und zwei Beispiele (DOM API, Media Capture API) nachvollziehen</li>
+          <li>Same-Origin-Policy und Content Security Policy grob erkl&auml;ren</li>
+          <li>Das Toolset f&uuml;r den Unterricht einrichten: VS Code, Live Server, W3C Validator</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2>1 &mdash; HTML5-Spezifikation</h2>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/html5-logo.png" alt="HTML5" loading="lazy" style="max-width:180px"></div>
+  <figcaption>HTML5 <small class="credit">Logo: W3C, <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a></small></figcaption>
+</figure>
+        <p>
+          Die HTML5-Spezifikation der WHATWG ist ein <strong>&bdquo;Living Standard&ldquo;</strong>.
+          Sie wird st&auml;ndig aktualisiert, um aktuelle Technologien und Best Practices
+          widerzuspiegeln &ndash; das f&ouml;rdert eine moderne und effiziente Webentwicklung. Die
+          Spezifikation umfasst vier gro&szlig;e Bereiche, die wir in dieser Lektion der Reihe nach
+          durchgehen:
+        </p>
+        <ol>
+          <li><strong>HTML-Tags</strong></li>
+          <li><strong>DOM</strong> (Document Object Model)</li>
+          <li><strong>APIs</strong> (Schnittstellen)</li>
+          <li><strong>Security Policies</strong></li>
+        </ol>
+        <p>
+          <a href="https://www.w3.org/TR/2011/WD-html5-20110405/" target="_blank" rel="noopener">https://www.w3.org/TR/2011/WD-html5-20110405/</a><br>
+          <a href="https://html.spec.whatwg.org/multipage/" target="_blank" rel="noopener">https://html.spec.whatwg.org/multipage/</a>
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>2 &mdash; HTML5-Tags</h2>
+        <p>
+          <strong>HTML-Tags</strong> sind die Bausteine von HTML-Dokumenten. Sie sagen dem Browser,
+          <em>was</em> ein Inhalt ist und wie er ihn anzeigen soll. Die Tags lassen sich in Kategorien
+          einteilen:
+        </p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Kategorie</th><th>Tags</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Dokument-Metadaten</strong></td><td><code>&lt;html&gt;</code>, <code>&lt;head&gt;</code>, <code>&lt;body&gt;</code>, <code>&lt;title&gt;</code>, <code>&lt;link&gt;</code>, <code>&lt;meta&gt;</code>, <code>&lt;style&gt;</code></td></tr>
+              <tr><td><strong>Struktur und Sektionierung</strong></td><td><code>&lt;header&gt;</code>, <code>&lt;footer&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;aside&gt;</code></td></tr>
+              <tr><td><strong>Gruppierungs-Elemente</strong></td><td><code>&lt;div&gt;</code>, <code>&lt;p&gt;</code>, <code>&lt;hr&gt;</code>, <code>&lt;pre&gt;</code>, <code>&lt;blockquote&gt;</code>, <code>&lt;ol&gt;</code>, <code>&lt;ul&gt;</code>, <code>&lt;li&gt;</code></td></tr>
+              <tr><td><strong>Text-Semantik-Elemente</strong></td><td><code>&lt;a&gt;</code>, <code>&lt;em&gt;</code>, <code>&lt;strong&gt;</code>, <code>&lt;small&gt;</code>, <code>&lt;cite&gt;</code>, <code>&lt;abbr&gt;</code>, <code>&lt;time&gt;</code>, <code>&lt;code&gt;</code>, <code>&lt;address&gt;</code></td></tr>
+              <tr><td><strong>Formulare und Formelemente</strong></td><td><code>&lt;form&gt;</code>, <code>&lt;input&gt;</code>, <code>&lt;textarea&gt;</code>, <code>&lt;button&gt;</code>, <code>&lt;select&gt;</code>, <code>&lt;option&gt;</code>, <code>&lt;label&gt;</code>, <code>&lt;fieldset&gt;</code>, <code>&lt;legend&gt;</code></td></tr>
+              <tr><td><strong>Eingebettete Inhalte</strong></td><td><code>&lt;img&gt;</code>, <code>&lt;video&gt;</code>, <code>&lt;audio&gt;</code>, <code>&lt;iframe&gt;</code>, <code>&lt;embed&gt;</code>, <code>&lt;object&gt;</code></td></tr>
+              <tr><td><strong>Tabellen-Elemente</strong></td><td><code>&lt;table&gt;</code>, <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code>, <code>&lt;tr&gt;</code>, <code>&lt;td&gt;</code>, <code>&lt;th&gt;</code></td></tr>
+              <tr><td><strong>Scripting-Elemente</strong></td><td><code>&lt;script&gt;</code>, <code>&lt;noscript&gt;</code>, <code>&lt;canvas&gt;</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout callout-tip">
+  <div class="callout-icon">&#128161;</div>
+  <div class="callout-body">
+    <div class="callout-title">Nicht auswendig lernen</div>
+    <p>Niemand kennt alle Tags auswendig. Wichtig ist, die Kategorien zu kennen &ndash; Details
+          schl&auml;gst du in der <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements" target="_blank" rel="noopener">MDN-Referenz</a> nach.</p>
+  </div>
+</div>
+      </section>
+
+      <section class="section">
+        <h2>3 &mdash; HTML5 &bdquo;Hello World&ldquo;</h2>
+        <p>Jedes HTML5-Dokument hat dasselbe Grundger&uuml;st:</p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">index.html</span>
+    <span class="code-lang">HTML</span>
+  </div>
+  <pre><code class="language-xml">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Hello World&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Hello World&lt;/h1&gt;
+    &lt;button&gt;Click me&lt;/button&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Teil</th><th>Bedeutung</th></tr></thead>
+            <tbody>
+              <tr><td><code>&lt;!DOCTYPE html&gt;</code></td><td>Definiert den Dokumenttyp (in diesem Fall HTML5).</td></tr>
+              <tr><td><code>&lt;head&gt; … &lt;/head&gt;</code></td><td>Hier stehen Informationen <em>&uuml;ber</em> die Webseite (Titel, Zeichensatz, Stylesheets &hellip;). Nicht sichtbar.</td></tr>
+              <tr><td><code>&lt;body&gt; … &lt;/body&gt;</code></td><td>Hier steht der <strong>sichtbare Teil</strong> der Webseite.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="demo">
+  <div class="demo-label">Live-Vorschau</div>
+  <div class="demo-body">
+          <h1 style="margin:0 0 .5rem;font-size:2rem">Hello World</h1>
+          <button>Click me</button>
+        </div>
+</div>
+      </section>
+
+      <section class="section">
+        <h2>4 &mdash; HTML erzeugt Boxen (&bdquo;Kastln&ldquo;)</h2>
+        <p>
+          Eine der wichtigsten Einsichten f&uuml;r sp&auml;ter (CSS!): <strong>Jedes HTML-Element erzeugt
+          eine rechteckige Box</strong>. Normalerweise sind die R&auml;nder unsichtbar. Mit einer kleinen
+          CSS-Regel in den Entwicklertools kann man sie sichtbar machen:
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">CSS-Regel in den Entwicklertools</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">* {
+  border: 1px solid;
+}</code></pre>
+</div>
+        <p>Diese Regel gibt allen HTML-Elementen eine sichtbare Umrandung:</p>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/html-boxes-devtools.png" alt="Das &bdquo;Hello World&ldquo;-Dokument mit sichtbaren Boxen: &lt;h1&gt; und &lt;button&gt; sind jeweils eigene K&auml;stchen innerhalb von &lt;body&gt;" loading="lazy"></div>
+  <figcaption>Das &bdquo;Hello World&ldquo;-Dokument mit sichtbaren Boxen: &lt;h1&gt; und &lt;button&gt; sind jeweils eigene K&auml;stchen innerhalb von &lt;body&gt;</figcaption>
+</figure>
+        <div class="demo">
+  <div class="demo-label">Live-Vorschau mit sichtbaren Boxen</div>
+  <div class="demo-body">
+          <div style="border:1px solid #333;padding:4px">body
+            <h1 style="border:1px solid #333;margin:.4rem 0;font-size:1.6rem">Hello World</h1>
+            <button style="border:1px solid #333">Click me</button>
+          </div>
+        </div>
+</div>
+      </section>
+
+      <section class="section">
+        <h2>5 &mdash; HTML5 DOM</h2>
+        <p>
+          Das <strong>DOM (Document Object Model)</strong> ist eine Schnittstelle, die Webseiten
+          <strong>als Baumstruktur</strong> aus Objekten darstellt. Jedes Objekt (jeder &bdquo;Knoten&ldquo;)
+          steht f&uuml;r einen Teil der Webseite.
+        </p>
+        <p>&Uuml;ber <strong>JavaScript</strong> k&ouml;nnen diese Objekte gelesen und ver&auml;ndert werden.</p>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/dom-baum.svg" alt="DOM-Baum: document &rarr; html &rarr; head/body &rarr; title, p, ul &rarr; li &rarr; Text" loading="lazy" style="max-width:620px"></div>
+  <figcaption>DOM-Baum: document &rarr; html &rarr; head/body &rarr; title, p, ul &rarr; li &rarr; Text</figcaption>
+</figure>
+        <p>
+          Der Browser liest das HTML von oben nach unten und baut daraus diesen Baum. Verschachtelte
+          Elemente werden zu <strong>Kindknoten</strong>: <code>&lt;li&gt;</code> ist ein Kind von <code>&lt;ul&gt;</code>, das wiederum ein
+          Kind von <code>&lt;body&gt;</code> ist.
+        </p>
+
+        <h3>Exkurs: DOM API</h3>
+        <p>Das folgende Beispiel f&uuml;gt dem Button einen <code>click</code>-Handler hinzu:</p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">index.html</span>
+    <span class="code-lang">HTML</span>
+  </div>
+  <pre><code class="language-xml">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Hello World&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Hello World&lt;/h1&gt;
+    &lt;button&gt;Click me&lt;/button&gt;
+    &lt;script&gt;
+      // Document Object Model (DOM) API
+      const button = document.querySelector('button');
+      button.addEventListener('click', function() {
+        console.log('Button was clicked');
+      });
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</div>
+        <ul>
+          <li><code>document.querySelector('button')</code> sucht im DOM-Baum das erste <code>&lt;button&gt;</code>-Element.</li>
+          <li><code>addEventListener('click', …)</code> registriert eine Funktion, die bei jedem Klick ausgef&uuml;hrt wird.</li>
+          <li><code>console.log(…)</code> schreibt in die Konsole der Entwicklertools (<kbd>F12</kbd> &rarr; Console).</li>
+        </ul>
+        <div class="callout callout-info">
+  <div class="callout-icon">&#8505;</div>
+  <div class="callout-body">
+    <div class="callout-title">JavaScript kommt im Sommersemester</div>
+    <p>Du musst diesen Code jetzt noch nicht selbst schreiben k&ouml;nnen. Er zeigt nur, <em>warum</em>
+          das DOM wichtig ist: Es ist die Br&uuml;cke zwischen HTML und JavaScript.</p>
+  </div>
+</div>
+      </section>
+
+      <section class="section">
+        <h2>6 &mdash; HTML5 APIs</h2>
+        <p>
+          <strong>HTML5 APIs</strong> bieten Entwickler:innen Schnittstellen, mit denen sie
+          fortschrittliche Funktionen und interaktive Inhalte in Webanwendungen integrieren k&ouml;nnen.
+        </p>
+        <p>
+          Beispiele sind APIs f&uuml;r Drag-and-Drop, Offline-Anwendungen, Lokalisierung und die
+          Interaktion mit Multimedia-Elementen wie Video und Audio.
+          &Uuml;bersicht: <a href="https://developer.mozilla.org/en-US/docs/Web/API" target="_blank" rel="noopener">developer.mozilla.org/en-US/docs/Web/API</a>
+        </p>
+        <div class="two-col">
+          <ul>
+            <li>Document Object Model (DOM) API</li>
+            <li>Geolocation API</li>
+            <li>Web Storage API</li>
+            <li>Fetch API</li>
+            <li>Canvas API</li>
+            <li>Web Audio API</li>
+            <li>WebRTC API</li>
+            <li>Media Capture and Streams API</li>
+          </ul>
+          <ul>
+            <li>WebSockets API</li>
+            <li>Web Animations API</li>
+            <li>File API</li>
+            <li>Notification API</li>
+            <li>Payment Request API</li>
+            <li>IndexedDB API</li>
+            <li>History API</li>
+            <li>Drag and Drop API</li>
+          </ul>
+        </div>
+
+        <h3>Exkurs: Media Capture API</h3>
+        <p>Dieses Beispiel &ouml;ffnet die Kamera und streamt das Bild in das <code>&lt;video&gt;</code>-Element:</p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">kamera.html</span>
+    <span class="code-lang">HTML</span>
+  </div>
+  <pre><code class="language-xml">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Hello Camera&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;video autoplay playsinline&gt;&lt;/video&gt;
+    &lt;script&gt;
+      const video = document.querySelector('video');
+      // Media Capture and Streams API
+      navigator.mediaDevices.getUserMedia({ video: true })
+        .then((stream) =&gt; {
+          video.srcObject = stream;
+        });
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</div>
+        <div class="callout callout-warning">
+  <div class="callout-icon">&#9888;</div>
+  <div class="callout-body">
+    <div class="callout-title">Kamera nur &uuml;ber HTTPS oder localhost</div>
+    <p>Aus Sicherheitsgr&uuml;nden erlauben Browser den Kamerazugriff nur auf sicheren Seiten
+          (<code>https://</code>) oder lokal (<code>localhost</code>, <code>127.0.0.1</code>). Au&szlig;erdem
+          fragt der Browser immer um Erlaubnis.</p>
+  </div>
+</div>
+      </section>
+
+      <section class="section">
+        <h2>7 &mdash; HTML5 Security Policies</h2>
+        <p>
+          <strong>Sicherheitsrichtlinien (Security Policies)</strong> erh&ouml;hen die Sicherheit beim
+          Surfen. Sie schr&auml;nken sch&auml;dliche Aktionen ein, die &uuml;ber Webseiten ausgef&uuml;hrt
+          werden k&ouml;nnten, indem sie Regeln f&uuml;r die Ausf&uuml;hrung von Scripts und den Zugriff auf
+          Ressourcen festlegen.
+        </p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Policy</th><th>Beschreibung</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>Same-Origin-Policy (SOP)</strong></td>
+                <td>Der Browser verhindert, dass eine Webseite auf Daten zugreift, die von einer anderen Webseite (einem anderen &bdquo;Origin&ldquo;) stammen.<br>
+                  <a href="https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy" target="_blank" rel="noopener">MDN: Same-origin policy</a></td>
+              </tr>
+              <tr>
+                <td><strong>Content Security Policy (CSP)</strong></td>
+                <td>Eine zus&auml;tzliche Sicherheitsebene, mit der Webentwickler:innen festlegen, aus welchen Quellen eine Seite Scripts, Bilder, Styles usw. laden darf.<br>
+                  <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP" target="_blank" rel="noopener">MDN: Content Security Policy</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Exkurs: Same-Origin-Policy</h3>
+        <p>
+          Die <strong>Fetch API</strong> f&uuml;hrt in JavaScript einen HTTP-Request aus. Ob der Browser
+          die Antwort an das Script weitergibt, h&auml;ngt vom Origin ab:
+        </p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Seite</th><th>Request an</th><th>Art</th><th>Ergebnis</th></tr></thead>
+            <tbody>
+              <tr><td><code>www.orf.at</code></td><td><code>www.orf.at</code></td><td>Same Origin</td><td class="text-green">Erlaubt</td></tr>
+              <tr><td><code>www.orf.at</code></td><td><code>www.google.com</code></td><td>Cross Origin</td><td class="text-red">Der Browser blockiert die Antwort von Google</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/same-origin-policy.jpg" alt="Konsole auf orf.at: Der Request an orf.at funktioniert, der Request an google.com wird mit &bdquo;Cross-Origin Request Blocked&ldquo; blockiert" loading="lazy"></div>
+  <figcaption>Konsole auf orf.at: Der Request an orf.at funktioniert, der Request an google.com wird mit &bdquo;Cross-Origin Request Blocked&ldquo; blockiert</figcaption>
+</figure>
+        <div class="callout callout-info">
+  <div class="callout-icon">&#8505;</div>
+  <div class="callout-body">
+    <div class="callout-title">Was ist ein Origin?</div>
+    <p>Der <strong>Origin</strong> ist die Kombination aus <strong>Scheme + Host + Port</strong>.
+          <code>https://www.orf.at</code> und <code>https://api.orf.at</code> sind bereits
+          <em>unterschiedliche</em> Origins.</p>
+  </div>
+</div>
+      </section>
+
+      <section class="section">
+        <h2>8 &mdash; Toolset f&uuml;r den Unterricht</h2>
+        <p>F&uuml;r den Kurs verwenden wir folgende Werkzeuge:</p>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/vscode.png" alt="Visual Studio Code &ndash; unser Editor" loading="lazy" style="max-width:260px"></div>
+  <figcaption>Visual Studio Code &ndash; unser Editor <small class="credit">Logo &copy; Microsoft</small></figcaption>
+</figure>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/live-server.png" alt="VS-Code-Extension &bdquo;Live Server&ldquo; (Ritwick Dey): startet einen lokalen Entwicklungsserver mit automatischem Neuladen bei jeder &Auml;nderung" loading="lazy"></div>
+  <figcaption>VS-Code-Extension &bdquo;Live Server&ldquo; (Ritwick Dey): startet einen lokalen Entwicklungsserver mit automatischem Neuladen bei jeder &Auml;nderung <small class="credit">Screenshot: Visual Studio Marketplace</small></figcaption>
+</figure>
+        <figure class="figure">
+  <div class="figure-img"><img src="assets/img/w3c-validator-extension.png" alt="VS-Code-Extension &bdquo;W3C Web Validator&ldquo; (Celian Riboulet): pr&uuml;ft HTML/CSS-Dateien direkt im Editor" loading="lazy"></div>
+  <figcaption>VS-Code-Extension &bdquo;W3C Web Validator&ldquo; (Celian Riboulet): pr&uuml;ft HTML/CSS-Dateien direkt im Editor <small class="credit">Screenshot: Visual Studio Marketplace</small></figcaption>
+</figure>
+        <div class="callout callout-tip">
+  <div class="callout-icon">&#128161;</div>
+  <div class="callout-body">
+    <div class="callout-title">Live Server starten</div>
+    <p>Rechtsklick auf <code>index.html</code> &rarr; <strong>Open with Live Server</strong>, oder
+          unten rechts in der Statusleiste auf <strong>Go Live</strong> klicken. Die Seite &ouml;ffnet sich
+          unter <code>http://127.0.0.1:5500/</code>.</p>
+  </div>
+</div>
+      </section>
+
+      <section class="section section-projekt">
+        <h2>Projektschritt</h2>
+<div class="projekt-box">
+  <div class="projekt-box-header">
+    <span class="projekt-step">Projektschritt 1.3</span>
+    <h3>Das Grundger&uuml;st der Demoseite</h3>
+  </div>
+<p>
+    Erstelle <code>demoseite/index.html</code> mit dem HTML5-Grundger&uuml;st. Zus&auml;tzlich zum
+    &bdquo;Hello World&ldquo; geben wir Sprache (<code>lang="de"</code>), Zeichensatz und Viewport an
+    &ndash; diese drei Angaben geh&ouml;ren in jedes echte Projekt. Das HTML5-Logo legst du in
+    <code>img/</code> ab.
+  </p>
+  <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">demoseite/index.html</span>
+    <span class="code-lang">HTML</span>
+  </div>
+  <pre><code class="language-xml">&lt;!DOCTYPE html&gt;
+&lt;html lang="de"&gt;
+
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Demoseite: Web- and Mobile Computing&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+  &lt;h1&gt;Demoseite: Webdesign Grundkurs&lt;/h1&gt;
+
+  &lt;h2&gt;HTML Grundlagen&lt;/h2&gt;
+  &lt;p&gt;
+    HTML (HyperText Markup Language) entstand Anfang der 1990er-Jahre am CERN.
+    Tim Berners-Lee definierte eine einfache Auszeichnungssprache, um Dokumente
+    im neu entstehenden World Wide Web miteinander zu verlinken.
+  &lt;/p&gt;
+  &lt;img src="img/html5_logo.png" alt="HTML5 Logo"&gt;
+
+  &lt;h2&gt;Themen dieses Kurses&lt;/h2&gt;
+  &lt;ul&gt;
+    &lt;li&gt;HTML&lt;/li&gt;
+    &lt;li&gt;CSS&lt;/li&gt;
+    &lt;li&gt;JavaScript&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+</div>
+  <p>
+    Starte die Seite mit <strong>Live Server</strong> und finde im Tab <strong>Elements</strong> der
+    Entwicklertools den DOM-Baum.
+  </p>
+</div>
+      </section>
+
+      <section class="section section-fehler">
+        <h2>H&auml;ufige Fehler</h2>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Sichtbarer Inhalt im &lt;head&gt;</div>
+  <p><code>&lt;h1&gt;</code> oder Text werden in den <code>&lt;head&gt;</code> geschrieben.</p>
+          <p class="fehler-fix">Im <code>&lt;head&gt;</code> stehen nur Metadaten (Titel, Zeichensatz, Stylesheets). Alles Sichtbare geh&ouml;rt in den <code>&lt;body&gt;</code>.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Umlaute werden falsch angezeigt (&bdquo;F&Atilde;&frac14;r&ldquo;)</div>
+  <p>Der Browser kennt den Zeichensatz der Datei nicht und r&auml;t falsch.</p>
+          <p class="fehler-fix"><code>&lt;meta charset="UTF-8"&gt;</code> als erstes Element in den <code>&lt;head&gt;</code> schreiben und die Datei als UTF-8 speichern.</p>
+</div>
+        <div class="fehler-item">
+  <div class="fehler-title">Fehler: Datei per Doppelklick statt &uuml;ber Live Server ge&ouml;ffnet</div>
+  <p>Die Adresse beginnt mit <code>file://</code>. Einige APIs (z.&nbsp;B. Fetch, Kamera) funktionieren dann nicht, und die Seite l&auml;dt nicht automatisch neu.</p>
+          <p class="fehler-fix">Die Seite immer &uuml;ber Live Server (<code>http://127.0.0.1:5500/</code>) &ouml;ffnen.</p>
+</div>
+      </section>
+
+      <section class="section section-aufgaben">
+        <h2>Aufgaben</h2>
+        <div class="aufgaben-list">
+          <div class="aufgabe">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Aufgabe 1</span>
+    <span class="aufgabe-title">Tags zuordnen</span>
+  </div>
+  <p>Ordne folgende Tags ihrer Kategorie zu: <code>&lt;nav&gt;</code>, <code>&lt;time&gt;</code>, <code>&lt;canvas&gt;</code>, <code>&lt;legend&gt;</code>, <code>&lt;blockquote&gt;</code>, <code>&lt;iframe&gt;</code>, <code>&lt;meta&gt;</code>, <code>&lt;th&gt;</code>.</p>
+</div>
+          <div class="aufgabe">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Aufgabe 2</span>
+    <span class="aufgabe-title">DOM-Baum zeichnen</span>
+  </div>
+  <p>Zeichne den DOM-Baum deiner <code>demoseite/index.html</code> auf Papier (wie in der Abbildung oben) und vergleiche ihn mit dem Tab <strong>Elements</strong> in den Entwicklertools.</p>
+</div>
+          <div class="aufgabe">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Aufgabe 3</span>
+    <span class="aufgabe-title">Boxen sichtbar machen</span>
+  </div>
+  <p>F&uuml;ge in den Entwicklertools unter <strong>Styles</strong> die Regel <code>* { border: 1px solid red; }</code> hinzu. Welche Elemente sind so breit wie die Seite, welche nur so breit wie ihr Inhalt?</p>
+</div>
+          <div class="aufgabe aufgabe-bonus">
+  <div class="aufgabe-header">
+    <span class="aufgabe-num">Bonus</span>
+    <span class="aufgabe-title">Hello Camera</span>
+  </div>
+  <p>Probiere das Media-Capture-Beispiel &uuml;ber Live Server aus. Was passiert, wenn du den Kamerazugriff verweigerst? Schau in die Konsole.</p>
+</div>
+        </div>
+      </section>
+
+    </div>
+
+    <nav class="lesson-nav">
+      <a class="nav-btn" href="1.2-grundlagen-web.html">&larr; Lektion 1.2: Grundlagen des Web: HTML, HTTP, URL</a>
+      <span class="nav-center-info">Lektion 1.3</span>
+      <a class="nav-btn primary" href="1.4-html-elemente-semantik.html">Lektion 1.4: HTML-Elemente &amp; Semantik &rarr;</a>
+    </nav>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>
+    const ham = document.getElementById('hamburger');
+    const sb = document.getElementById('sidebar');
+    const ov = document.getElementById('overlay');
+    ham.addEventListener('click', () => { sb.classList.toggle('open'); ov.classList.toggle('visible'); });
+    ov.addEventListener('click', () => { sb.classList.remove('open'); ov.classList.remove('visible'); });
+    const cur = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-link').forEach(l => {
+      if (l.getAttribute('href') === cur) l.classList.add('active');
+    });
+    const themeBtn = document.getElementById('theme-toggle');
+    const applyTheme = (t) => {
+      document.documentElement.setAttribute('data-theme', t);
+      if (themeBtn) themeBtn.innerHTML = t === 'dark' ? '&#9728;' : '&#9790;';
+    };
+    applyTheme(localStorage.getItem('kurs-theme') || 'dark');
+    setTimeout(() => document.documentElement.classList.add('theme-transitions'), 50);
+    if (themeBtn) themeBtn.addEventListener('click', () => {
+      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('kurs-theme', next);
+      applyTheme(next);
+    });
+    hljs.highlightAll();
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 380" width="900" height="380" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <title>Links inline: vertikales Padding überlappt die Nachbarzeilen. Rechts inline-block: die Box schiebt die Zeilen auseinander</title>
+  <defs>
+    <pattern id="h" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect width="8" height="8" fill="#ffffff"/><line x1="0" y1="0" x2="0" y2="8" stroke="#a78bfa" stroke-width="4"/>
+    </pattern>
+  </defs>
+  <rect width="900" height="380" fill="#ffffff"/>
+  <text x="220" y="40" text-anchor="middle" font-family="ui-monospace, Consolas, monospace" font-size="22" font-weight="700" fill="#1f2328">inline</text>
+  <text x="680" y="40" text-anchor="middle" font-family="ui-monospace, Consolas, monospace" font-size="22" font-weight="700" fill="#1f2328">inline-block</text>
+
+  <!-- inline: Zeilen bleiben, Padding ragt darüber -->
+  <g fill="#d0d7de">
+    <rect x="40" y="80" width="110" height="30" rx="3"/><rect x="160" y="80" width="140" height="30" rx="3"/><rect x="310" y="80" width="90" height="30" rx="3"/>
+    <rect x="40" y="130" width="80" height="30" rx="3"/><rect x="290" y="130" width="110" height="30" rx="3"/>
+    <rect x="40" y="180" width="150" height="30" rx="3"/><rect x="200" y="180" width="120" height="30" rx="3"/><rect x="330" y="180" width="70" height="30" rx="3"/>
+    <rect x="40" y="230" width="100" height="30" rx="3"/><rect x="150" y="230" width="130" height="30" rx="3"/>
+  </g>
+  <rect x="130" y="104" width="150" height="82" fill="url(#h)" opacity="0.85" stroke="#6e40c9" stroke-width="2"/>
+  <rect x="150" y="130" width="110" height="30" rx="3" fill="#a78bfa"/>
+  <text x="220" y="300" text-anchor="middle" font-size="19" fill="#57606a">Padding überlappt die Nachbarzeilen,</text>
+  <text x="220" y="328" text-anchor="middle" font-size="19" fill="#57606a">die Zeilenabstände bleiben gleich</text>
+
+  <line x1="450" y1="70" x2="450" y2="340" stroke="#d0d7de" stroke-width="2"/>
+
+  <!-- inline-block: Zeile wird höher -->
+  <g fill="#d0d7de">
+    <rect x="500" y="80" width="110" height="30" rx="3"/><rect x="620" y="80" width="140" height="30" rx="3"/><rect x="770" y="80" width="90" height="30" rx="3"/>
+    <rect x="500" y="160" width="80" height="30" rx="3"/><rect x="750" y="160" width="110" height="30" rx="3"/>
+    <rect x="500" y="240" width="150" height="30" rx="3"/><rect x="660" y="240" width="120" height="30" rx="3"/><rect x="790" y="240" width="70" height="30" rx="3"/>
+  </g>
+  <rect x="590" y="122" width="150" height="104" fill="url(#h)" opacity="0.85" stroke="#6e40c9" stroke-width="2"/>
+  <rect x="610" y="160" width="110" height="30" rx="3" fill="#a78bfa"/>
+  <text x="680" y="300" text-anchor="middle" font-size="19" fill="#57606a">Die Box schiebt die Zeilen</text>
+  <text x="680" y="328" text-anchor="middle" font-size="19" fill="#57606a">darüber und darunter weg</text>
+</svg>

@@ -74,7 +74,7 @@
         <h2>Lernziele</h2>
         <ul class="lernziele-list">
           <li>Ein externes Stylesheet einbinden und den Aufbau einer CSS-Regel verstehen</li>
-          <li>Die h&auml;ufigsten Selektoren anwenden: Tag-, ID-, Klassen- und Nachkommens-Selektor</li>
+          <li>Die h&auml;ufigsten Selektoren anwenden (Tag-, ID-, Klassen-Selektor) und mit dem Nachfahren-Kombinator kombinieren</li>
           <li>Die Pseudo-Klasse <code>:hover</code> und die Pseudo-Elemente <code>::before</code>/<code>::after</code> einsetzen</li>
           <li>CSS-Einheiten (<code>px</code>, <code>%</code>, <code>em</code>, <code>rem</code>, <code>vh</code>, <code>vw</code>) unterscheiden</li>
           <li>Die wichtigsten Properties f&uuml;r Schrift, Farbe, Display, Sichtbarkeit und Overflow kennen</li>
@@ -144,10 +144,33 @@ header {
               <tr><td><strong>Tag-Selektor</strong></td><td>Auswahl <strong>ALLER</strong> Elemente &uuml;ber ihren HTML-Tag.</td><td><code>header { .. }</code></td><td>beide <code>&lt;header&gt;</code></td></tr>
               <tr><td><strong>ID-Selektor</strong></td><td>Auswahl <strong>EINES</strong> Elements &uuml;ber sein HTML-Attribut <code>id</code>.</td><td><code>#main-header { .. }</code></td><td>nur den &auml;u&szlig;eren <code>&lt;header&gt;</code></td></tr>
               <tr><td><strong>Klassen-Selektor</strong></td><td>Auswahl <strong>ALLER</strong> Elemente &uuml;ber ihr HTML-Attribut <code>class</code>.</td><td><code>.light { .. }</code></td><td><code>&lt;h1&gt;</code> und <code>&lt;h2&gt;</code></td></tr>
-              <tr><td><strong>Nachkommens-Selektor</strong></td><td>Auswahl <strong>ALLER</strong> Elemente, die (beliebig tief) innerhalb eines anderen Elements liegen.</td><td><code>main header { .. }</code></td><td>nur den <code>&lt;header&gt;</code> im <code>&lt;article&gt;</code></td></tr>
             </tbody>
           </table>
         </div>
+
+        <h3>Selektoren kombinieren</h3>
+        <p>
+          Die Selektoren oben lassen sich <strong>kombinieren</strong>. Steht ein
+          <strong>Leerzeichen</strong> zwischen zwei Selektoren, ist das der
+          <strong>Nachfahren-Kombinator</strong>: Er w&auml;hlt alle Elemente, die (beliebig tief)
+          <strong>innerhalb</strong> des ersten Elements liegen. Das ist kein eigener Selektor-Typ,
+          sondern eine Verbindung von zwei Selektoren.
+        </p>
+        <div class="code-block">
+  <div class="code-header">
+    <span class="code-filename">Nachfahren-Kombinator</span>
+    <span class="code-lang">CSS</span>
+  </div>
+  <pre><code class="language-css">/* nur der header im article */
+main header { .. }
+
+/* nur das h1 im äußeren header */
+#main-header .light { .. }</code></pre>
+</div>
+        <p>
+          Weitere Kombinatoren (<code>&gt;</code>, <code>+</code>, <code>~</code>) lernst du in
+          Lektion 2.3 kennen.
+        </p>
         <p>Deep Dive Selectors: <a href="https://developer.mozilla.org/de/docs/Web/CSS/CSS_Selectors" target="_blank" rel="noopener">developer.mozilla.org/de/docs/Web/CSS/CSS_Selectors</a></p>
 
         <h3>Pseudo-Klasse :hover</h3>

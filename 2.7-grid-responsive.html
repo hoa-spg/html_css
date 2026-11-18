@@ -444,80 +444,27 @@
 <div class="projekt-box">
   <div class="projekt-box-header">
     <span class="projekt-step">Projektschritt 2.7</span>
-    <h3>Responsive mit Burger-Men&uuml;</h3>
+    <h3>Responsive mit Media Query</h3>
   </div>
-<p>Unter 800px Breite schalten wir das Grid ab und ersetzen die Navigation durch ein <strong>Burger-Men&uuml; ganz ohne JavaScript</strong>: Eine versteckte Checkbox merkt sich den Zustand, das zugeh&ouml;rige <code>&lt;label&gt;</code> ist das Icon.</p>
-  <div class="code-block">
-  <div class="code-header">
-    <span class="code-filename">demoseite/index.html (im header, vor nav)</span>
-    <span class="code-lang">HTML</span>
-  </div>
-  <pre><code class="language-xml">&lt;input type="checkbox" id="nav-toggle"&gt;
-&lt;label for="nav-toggle" aria-label="Menü öffnen"&gt;
-  &lt;span class="bar"&gt;&lt;/span&gt;
-  &lt;span class="bar"&gt;&lt;/span&gt;
-  &lt;span class="bar"&gt;&lt;/span&gt;
-&lt;/label&gt;</code></pre>
-</div>
+<p>Unter 800px Breite schalten wir das Grid ab: Die Sidebar rutscht unter den Inhalt. Text und Bild im HTML-Abschnitt sowie der Footer stehen untereinander statt nebeneinander. Die Navigation bricht dank <code>flex-wrap</code> aus Lektion 2.5 schon von selbst um.</p>
   <div class="code-block">
   <div class="code-header">
     <span class="code-filename">demoseite/css/style.css (neu in 2.7)</span>
     <span class="code-lang">CSS</span>
   </div>
-  <pre><code class="language-css">/* ---- 2.7 Media Queries &amp; responsive Grids ------------------ */
+  <pre><code class="language-css">/* ---- 2.7 Media Queries ------------------------------------- */
 
-/* Burger-Menü: Checkbox ist unsichtbar, das Label ist das Icon */
-#nav-toggle,
-label[for="nav-toggle"] {
-  display: none;
-}
-
-label[for="nav-toggle"] .bar {
-  display: block;
-  width: 25px;
-  height: 3px;
-  margin: 4px 0;
-  background-color: white;
-}
-
+/* Schmale Bildschirme: alles untereinander */
 @media (max-width: 800px) {
-  /* Grid aus: alles untereinander */
+  /* Grid aus: Sidebar unter den Inhalt */
   main {
     display: block;
   }
 
-  /* Burger anzeigen, Navigation zunächst verstecken */
-  label[for="nav-toggle"] {
-    display: block;
-    cursor: pointer;
-  }
-
-  #nav-menu {
-    display: none;
-    width: 100%;
-  }
-
-  /* Checkbox angehakt → Navigation einblenden (~ = Geschwister-Kombinator) */
-  #nav-toggle:checked ~ #nav-menu {
-    display: block;
-  }
-
-  #nav-menu ul {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
+  /* Text/Bild und Footer: Spalte statt Zeile */
   .content-with-image,
   .footer-info {
     flex-direction: column;
-  }
-}
-
-/* Beim Drucken keine Navigation */
-@media print {
-  header,
-  .back-to-top {
-    display: none;
   }
 }</code></pre>
 </div>

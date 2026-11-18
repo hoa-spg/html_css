@@ -548,7 +548,7 @@ p.text.highlight { color: green; }     /* 0-0-2-1 = 21 */
     <span class="projekt-step">Projektschritt 2.3</span>
     <h3>Zebrastreifen, Vererbung &amp; Formular</h3>
   </div>
-<p>Mit Pseudo-Klassen, Vererbung und einem Attribut-Selektor gestalten wir Tabelle, Footer und Formular. Achte auf die Kommentare zur Spezifit&auml;t.</p>
+<p>Mit Pseudo-Klassen, Vererbung und einem Attribut-Selektor gestalten wir Tabelle, Footer und Formular. Achte auf den Kommentar zur Spezifit&auml;t.</p>
   <div class="code-block">
   <div class="code-header">
     <span class="code-filename">demoseite/css/style.css (neu in 2.3)</span>
@@ -556,13 +556,9 @@ p.text.highlight { color: green; }     /* 0-0-2-1 = 21 */
   </div>
   <pre><code class="language-css">/* ---- 2.3 Vererbung, Spezifität &amp; Kaskade ------------------- */
 
-/* Zebrastreifen mit Pseudo-Klassen */
+/* Zebrastreifen mit Pseudo-Klasse */
 tbody tr:nth-child(even) {
-  background: #d5dbdb;
-}
-
-tbody tr:hover {
-  background: #aab7b8;
+  background-color: #eee;
 }
 
 /* Links im Footer erben die weiße Schrift vom footer */
@@ -575,18 +571,6 @@ footer ul {
   padding: 0;
 }
 
-/* Kopf und Fuß ohne graue Section-Box (Spezifität: 0-0-1-1 schlägt 0-0-0-1) */
-footer section {
-  background: none;
-  border: none;
-  box-shadow: none;
-  padding: 0;
-}
-
-footer h2 {
-  color: white;
-}
-
 /* Formular */
 label {
   display: block;
@@ -597,16 +581,15 @@ label {
 input {
   width: 100%;
   padding: 0.8rem;
-  border: 2px solid #bdc3c7;
+  border: 2px solid silver;
   border-radius: 5px;
 }
 
 input:focus {
-  outline: none;
   border-color: #e74c3c;
 }
 
-/* Attribut-Selektor (0-0-1-1) überschreibt "input" (0-0-0-1) */
+/* Attribut-Selektor (0-0-1-1) schlägt "input" (0-0-0-1) */
 input[type="checkbox"] {
   width: auto;
   margin-right: 0.5rem;
@@ -617,14 +600,9 @@ input[type="checkbox"] {
   padding: 1rem 2rem;
   border: none;
   border-radius: 5px;
-  background: #e74c3c;
+  background-color: #e74c3c;
   color: white;
   font-weight: bold;
-  cursor: pointer;
-}
-
-.newsletter-form button:hover {
-  background: #c0392b;
 }</code></pre>
 </div>
   <p class="mb-0">&#128193; Stand nach dieser Lektion: <a href="beispiele/2.3/index.html" target="_blank">beispiele/2.3/</a></p>

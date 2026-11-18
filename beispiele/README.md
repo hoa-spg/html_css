@@ -7,14 +7,14 @@ Demoseite **nach** der jeweiligen Lektion. Öffnen mit Live Server (`index.html`
 | Ordner | Neu in dieser Lektion |
 |--------|-----------------------|
 | `1.5`  | Teil 1 komplett: HTML5-Grundgerüst, semantische Struktur, Tabelle, Newsletter-Formular |
-| `2.1`  | `css/style.css`: Schriften, Farben, Tabelle, Hover, `::before` |
+| `2.1`  | `css/style.css`: Schriften, Farben, Tabelle, Hover, Nachfahren-Kombinator, `::before` |
 | `2.2`  | Reset, Box Model (auch Tabelle), Display |
 | `2.3`  | Zebrastreifen, Vererbung, Formular-Styling, Spezifität |
 | `2.4`  | Sticky Header, fixierter „Nach oben“-Link |
 | `2.5`  | Flexbox: Header, Navigation und Footer; Text/Bild-Layout und Karten mit Flex-Kindern |
 | `2.6`  | Seitenlayout mit CSS Grid (Inhalt + Sidebar) |
-| `2.7`  | Media Queries, Burger-Menü (nur CSS), Druckansicht |
-| `2.8`  | Sanfte Hover-Effekte: Transitions, Karten und Button mit `transform` |
+| `2.7`  | Media Query: unter 800px alles untereinander |
+| `2.8`  | Karten-Hover mit `transform` und `transition` |
 | `3.1`  | `index-bootstrap.html`: Grid und Utilities |
 | `3.2`  | Bootstrap: Navbar, Cards, Formular, Alert |
 | `3.3`  | `index-tailwind.html`: dieselbe Seite mit Tailwind |

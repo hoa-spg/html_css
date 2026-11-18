@@ -157,6 +157,7 @@ padding: 10px 5px;                    /* oben/unten 10px, links/rechts 5px */
 padding-left/right/top/bottom: 10px;  /* nur eine Seite 10px */
 
 border: 1px solid black;
+border-radius: 10px;                  /* abgerundete Ecken */
 
 margin: 10px;                         /* alle Seiten 10px */
 margin: 10px 5px;                     /* oben/unten 10px, links/rechts 5px */
@@ -312,7 +313,8 @@ margin-left/right/top/bottom: 10px;   /* nur eine Seite 10px */</code></pre>
             <h4>Inline-Block</h4>
             <ul>
               <li>Kleine Buttons nebeneinander</li>
-              <li>Navigationsmen&uuml;s</li>
+              <li>Navigationsmen&uuml;s: die <code>&lt;li&gt;</code> auf <code>inline-block</code>, dazu
+                <code>list-style: none</code> beim <code>&lt;ul&gt;</code> gegen die Aufz&auml;hlungspunkte</li>
               <li>Kleine Boxen oder Badges</li>
               <li>Elemente, die nebeneinanderstehen, aber definierte Abmessungen haben sollen</li>
             </ul>
@@ -448,7 +450,6 @@ margin-left/right/top/bottom: 10px;   /* nur eine Seite 10px */</code></pre>
 
 body {
   line-height: 1.6;
-  background-color: whitesmoke;
 }
 
 header {
@@ -474,8 +475,6 @@ main {
 
 h1 {
   margin-bottom: 2rem;
-  padding: 1.5rem;
-  border-radius: 10px;
 }
 
 h2 {
@@ -484,11 +483,10 @@ h2 {
   border-bottom: 3px solid;
 }
 
-section,
+main section,
 aside {
   margin: 2rem 0;
   padding: 2rem;
-  border: 1px solid #ccc;
   border-radius: 10px;
 }
 

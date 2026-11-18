@@ -732,7 +732,6 @@ header {
 
 .content-with-image img {
   flex: 1;
-  min-width: 0;
   max-width: 200px;
 }
 
@@ -747,20 +746,14 @@ header {
   flex: 1 1 250px;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  gap: 0.5rem;
+  padding: 1rem;
   border-radius: 10px;
-  background: white;
+  background-color: white;
 }
 
 .card img {
-  order: -1;           /* Bild nach oben, obwohl es im HTML zuletzt steht */
-  height: 150px;
-  object-fit: cover;
-}
-
-.card h3,
-.card p {
-  margin: 1rem 1rem 0;
+  order: -1;  /* Bild nach oben, obwohl es im HTML zuletzt steht */
 }</code></pre>
 </div>
   <p class="mb-0">&#128193; Stand nach dieser Lektion: <a href="beispiele/2.5/index.html" target="_blank">beispiele/2.5/</a></p>

@@ -268,7 +268,7 @@ nav li:hover .submenu {
     <span class="projekt-step">Projektschritt 2.8</span>
     <h3>Sanfte Hover-Effekte</h3>
   </div>
-<p>Zum Abschluss von Teil 2 bekommt die Demoseite Bewegung: Der Schatten der Abschnitte &auml;ndert sich sanft, die Karten heben sich beim Hovern an und der &bdquo;Nach oben&ldquo;-Button wird gr&ouml;&szlig;er. H&auml;nge den Abschnitt an <code>style.css</code> an.</p>
+<p>Zum Abschluss von Teil 2 bekommt die Demoseite Bewegung: Die Karten heben sich beim Hovern sanft an und bekommen einen Schatten. H&auml;nge den Abschnitt an <code>style.css</code> an.</p>
   <div class="code-block">
   <div class="code-header">
     <span class="code-filename">demoseite/css/style.css (neu in 2.8)</span>
@@ -276,34 +276,14 @@ nav li:hover .submenu {
   </div>
   <pre><code class="language-css">/* ---- 2.8 Transformationen &amp; Transitions -------------------- */
 
-/* Der Schatten der Abschnitte (Hover aus 2.1) ändert sich jetzt sanft */
-section {
-  transition: box-shadow 0.5s ease;
-}
-
-/* Navigationslinks wechseln die Farbe weich */
-#nav-menu a {
-  transition: color 0.3s ease;
-}
-
-/* Karten heben sich beim Hover leicht an */
+/* Karten heben sich beim Hover sanft an */
 .card {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-}
-
-/* "Nach oben"-Button wird beim Hover etwas größer */
-.back-to-top a {
-  transition: transform 0.3s ease, background-color 0.3s ease;
-}
-
-.back-to-top a:hover {
-  transform: scale(1.1);
-  background-color: #7f8c8d;
+  box-shadow: 0 8px 20px silver;
 }
 
 /* Wer im Betriebssystem "Bewegung reduzieren" eingestellt hat,

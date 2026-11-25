@@ -56,6 +56,9 @@
         <a class="nav-link" href="3.3-tailwind.html"><span class="ln">3.3</span>Tailwind CSS</a>
       </div>
     </nav>
+    <div class="sidebar-footer">
+      <a class="sidebar-home" href="https://hoa-spg.github.io/">&larr; Kursseite</a>
+    </div>
   </aside>
 
   <main class="main-content">
@@ -610,7 +613,9 @@ input[type="checkbox"] {
       </section>
 
       <section class="section section-fehler">
-        <h2>H&auml;ufige Fehler</h2>
+<details class="fold-box">
+<summary><h2>H&auml;ufige Fehler</h2><span class="quiz-box-hint">3 Fehler &middot; zum Aufklappen klicken</span></summary>
+<div class="fold-body">
         <div class="fehler-item">
   <div class="fehler-title">Fehler: Regel wird &bdquo;ignoriert&ldquo;</div>
   <p><code>.rot { color: red; }</code> wirkt nicht, weil weiter oben <code>#inhalt p { color: black; }</code> steht.</p>
@@ -626,10 +631,14 @@ input[type="checkbox"] {
   <p>Eine Regel wird mit <code>!important</code> erzwungen, die n&auml;chste &Auml;nderung braucht wieder <code>!important</code> &hellip;</p>
           <p class="fehler-fix">Selektoren flach halten (eine Klasse) und Regeln in der Reihenfolge allgemein &rarr; spezifisch anordnen.</p>
 </div>
+</div>
+</details>
       </section>
 
       <section class="section section-aufgaben">
-        <h2>Aufgaben</h2>
+<details class="fold-box">
+<summary><h2>Aufgaben</h2><span class="quiz-box-hint">3 Aufgaben + Bonus &middot; zum Aufklappen klicken</span></summary>
+<div class="fold-body">
         <div class="aufgaben-list">
           <div class="aufgabe">
   <div class="aufgabe-header">
@@ -667,6 +676,8 @@ input[type="checkbox"] {
   <p>Hebe im Einreichen-Formular alle Pflichtfelder (<code>[required]</code>) mit einem linken Rahmen hervor. Kennzeichne au&szlig;erdem alle externen Links (<code>a[href^="http"]</code>) mit einem nachgestellten &bdquo;&#8599;&ldquo; per <code>::after</code>.</p>
 </div>
         </div>
+</div>
+</details>
       </section>
 
       <section class="section section-quiz">

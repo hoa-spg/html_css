@@ -56,6 +56,9 @@
         <a class="nav-link" href="3.3-tailwind.html"><span class="ln">3.3</span>Tailwind CSS</a>
       </div>
     </nav>
+    <div class="sidebar-footer">
+      <a class="sidebar-home" href="https://hoa-spg.github.io/">&larr; Kursseite</a>
+    </div>
   </aside>
 
   <main class="main-content">
@@ -492,7 +495,9 @@ footer li::before {
       </section>
 
       <section class="section section-fehler">
-        <h2>H&auml;ufige Fehler</h2>
+<details class="fold-box">
+<summary><h2>H&auml;ufige Fehler</h2><span class="quiz-box-hint">4 Fehler &middot; zum Aufklappen klicken</span></summary>
+<div class="fold-body">
         <div class="fehler-item">
   <div class="fehler-title">Fehler: Punkt bzw. Raute vergessen</div>
   <p><code>card { … }</code> sucht ein (nicht existierendes) HTML-Element <code>&lt;card&gt;</code>.</p>
@@ -513,10 +518,14 @@ footer li::before {
   <p>Die Seite bleibt ungestylt, in der Konsole steht ein 404-Fehler f&uuml;r <code>style.css</code>.</p>
           <p class="fehler-fix">Den relativen Pfad pr&uuml;fen: Liegt die Datei in <code>css/style.css</code>, lautet das Attribut <code>href="css/style.css"</code>.</p>
 </div>
+</div>
+</details>
       </section>
 
       <section class="section section-aufgaben">
-        <h2>Aufgaben</h2>
+<details class="fold-box">
+<summary><h2>Aufgaben</h2><span class="quiz-box-hint">3 Aufgaben + Bonus &middot; zum Aufklappen klicken</span></summary>
+<div class="fold-body">
         <div class="aufgaben-list">
           <div class="aufgabe">
   <div class="aufgabe-header">
@@ -547,6 +556,8 @@ footer li::before {
   <p>F&uuml;ge auf der Demoseite mit <code>::before</code> vor jeder <code>&lt;h2&gt;</code> ein Symbol ein (z.&nbsp;B. <code>&sect;&nbsp;</code>). F&auml;rbe das Symbol anders, sobald die Maus &uuml;ber der &Uuml;berschrift ist (<code>h2:hover::before</code>).</p>
 </div>
         </div>
+</div>
+</details>
       </section>
 
       <section class="section section-quiz">

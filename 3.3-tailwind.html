@@ -56,6 +56,9 @@
         <a class="nav-link" href="3.3-tailwind.html"><span class="ln">3.3</span>Tailwind CSS</a>
       </div>
     </nav>
+    <div class="sidebar-footer">
+      <a class="sidebar-home" href="https://hoa-spg.github.io/">&larr; Kursseite</a>
+    </div>
   </aside>
 
   <main class="main-content">
@@ -314,7 +317,9 @@
       </section>
 
       <section class="section section-fehler">
-        <h2>H&auml;ufige Fehler</h2>
+<details class="fold-box">
+<summary><h2>H&auml;ufige Fehler</h2><span class="quiz-box-hint">3 Fehler &middot; zum Aufklappen klicken</span></summary>
+<div class="fold-body">
         <div class="fehler-item">
   <div class="fehler-title">Fehler: Bootstrap-Klassen in Tailwind (oder umgekehrt)</div>
   <p><code>class="btn btn-primary"</code> oder <code>container row col-md-6</code> bewirken in Tailwind nichts bzw. etwas anderes.</p>
@@ -330,10 +335,14 @@
   <p><code>"bg-" + farbe + "-600"</code> in JavaScript erzeugt eine Klasse, die der Tailwind-Build nie im Quelltext gesehen hat &ndash; sie hat daher keine Styles.</p>
           <p class="fehler-fix">Immer vollst&auml;ndige Klassennamen im Code schreiben (z.&nbsp;B. eine Zuordnung <code>{ rot: 'bg-red-600', blau: 'bg-blue-600' }</code>).</p>
 </div>
+</div>
+</details>
       </section>
 
       <section class="section section-aufgaben">
-        <h2>Aufgaben</h2>
+<details class="fold-box">
+<summary><h2>Aufgaben</h2><span class="quiz-box-hint">3 Aufgaben + Bonus &middot; zum Aufklappen klicken</span></summary>
+<div class="fold-body">
         <div class="aufgaben-list">
           <div class="aufgabe">
   <div class="aufgabe-header">
@@ -364,6 +373,8 @@
   <p>Vergleiche <code>index.html</code>, <code>index-bootstrap.html</code> und <code>index-tailwind.html</code>: Anzahl Zeilen HTML/CSS, Aufwand f&uuml;r eine Farb&auml;nderung, Lesbarkeit. Welche Variante w&uuml;rdest du f&uuml;r dein Lernprojekt w&auml;hlen &ndash; und warum?</p>
 </div>
         </div>
+</div>
+</details>
       </section>
 
       <section class="section section-quiz">

@@ -56,6 +56,9 @@
         <a class="nav-link" href="3.3-tailwind.html"><span class="ln">3.3</span>Tailwind CSS</a>
       </div>
     </nav>
+    <div class="sidebar-footer">
+      <a class="sidebar-home" href="https://hoa-spg.github.io/">&larr; Kursseite</a>
+    </div>
   </aside>
 
   <main class="main-content">
@@ -299,7 +302,9 @@ nav li:hover .submenu {
       </section>
 
       <section class="section section-fehler">
-        <h2>H&auml;ufige Fehler</h2>
+<details class="fold-box">
+<summary><h2>H&auml;ufige Fehler</h2><span class="quiz-box-hint">3 Fehler &middot; zum Aufklappen klicken</span></summary>
+<div class="fold-body">
         <div class="fehler-item">
   <div class="fehler-title">Fehler: transition nur in der :hover-Regel</div>
   <p>Die Animation l&auml;uft beim Hineinfahren, beim Verlassen springt das Element aber sofort zur&uuml;ck.</p>
@@ -315,10 +320,14 @@ nav li:hover .submenu {
   <p><code>transform: scale(1.1);</code> in <code>:hover</code> hebt ein vorher gesetztes <code>transform: rotate(5deg);</code> auf.</p>
           <p class="fehler-fix">Alle Funktionen in <em>eine</em> Deklaration schreiben: <code>transform: rotate(5deg) scale(1.1);</code></p>
 </div>
+</div>
+</details>
       </section>
 
       <section class="section section-aufgaben">
-        <h2>Aufgaben</h2>
+<details class="fold-box">
+<summary><h2>Aufgaben</h2><span class="quiz-box-hint">3 Aufgaben + Bonus &middot; zum Aufklappen klicken</span></summary>
+<div class="fold-body">
         <div class="aufgaben-list">
           <div class="aufgabe">
   <div class="aufgabe-header">
@@ -349,6 +358,8 @@ nav li:hover .submenu {
   <p>Lass das &bdquo;Tipp der Woche&ldquo;-<code>&lt;aside&gt;</code> beim Hovern sanft aufklappen: zun&auml;chst nur die &Uuml;berschrift sichtbar (<code>max-height</code>), beim Hover der volle Inhalt (mit <code>transition</code>).</p>
 </div>
         </div>
+</div>
+</details>
       </section>
 
       <section class="section section-quiz">

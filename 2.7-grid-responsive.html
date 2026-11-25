@@ -56,6 +56,9 @@
         <a class="nav-link" href="3.3-tailwind.html"><span class="ln">3.3</span>Tailwind CSS</a>
       </div>
     </nav>
+    <div class="sidebar-footer">
+      <a class="sidebar-home" href="https://hoa-spg.github.io/">&larr; Kursseite</a>
+    </div>
   </aside>
 
   <main class="main-content">
@@ -473,7 +476,9 @@
       </section>
 
       <section class="section section-fehler">
-        <h2>H&auml;ufige Fehler</h2>
+<details class="fold-box">
+<summary><h2>H&auml;ufige Fehler</h2><span class="quiz-box-hint">3 Fehler &middot; zum Aufklappen klicken</span></summary>
+<div class="fold-body">
         <div class="fehler-item">
   <div class="fehler-title">Fehler: Media Query wird nie aktiv</div>
   <p>Die Regeln in <code>@media (min-width: 900px)</code> wirken nicht, obwohl das Fenster breit genug ist.</p>
@@ -489,10 +494,14 @@
   <p>Ein Item mit <code>grid-column: span 2</code> in einem einspaltigen Grid erzeugt eine zus&auml;tzliche implizite Spalte und horizontales Scrollen.</p>
           <p class="fehler-fix">Das <code>span</code> in einer Media Query nur ab der Breite setzen, ab der es gen&uuml;gend Spalten gibt.</p>
 </div>
+</div>
+</details>
       </section>
 
       <section class="section section-aufgaben">
-        <h2>Aufgaben</h2>
+<details class="fold-box">
+<summary><h2>Aufgaben</h2><span class="quiz-box-hint">3 Aufgaben + Bonus &middot; zum Aufklappen klicken</span></summary>
+<div class="fold-body">
         <div class="aufgaben-list">
           <div class="aufgabe">
   <div class="aufgabe-header">
@@ -523,6 +532,8 @@
   <p>Sorge mit <code>grid-template-rows: subgrid</code> daf&uuml;r, dass in allen Karten einer Zeile Bild, Titel und Text exakt auf gleicher H&ouml;he stehen &ndash; auch wenn die Texte unterschiedlich lang sind.</p>
 </div>
         </div>
+</div>
+</details>
       </section>
 
       <section class="section section-quiz">

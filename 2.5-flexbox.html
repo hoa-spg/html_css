@@ -56,6 +56,9 @@
         <a class="nav-link" href="3.3-tailwind.html"><span class="ln">3.3</span>Tailwind CSS</a>
       </div>
     </nav>
+    <div class="sidebar-footer">
+      <a class="sidebar-home" href="https://hoa-spg.github.io/">&larr; Kursseite</a>
+    </div>
   </aside>
 
   <main class="main-content">
@@ -761,7 +764,9 @@ header {
       </section>
 
       <section class="section section-fehler">
-        <h2>H&auml;ufige Fehler</h2>
+<details class="fold-box">
+<summary><h2>H&auml;ufige Fehler</h2><span class="quiz-box-hint">3 Fehler &middot; zum Aufklappen klicken</span></summary>
+<div class="fold-body">
         <div class="fehler-item">
   <div class="fehler-title">Fehler: display: flex auf dem Kind statt auf dem Container</div>
   <p>Die Elemente stehen weiterhin untereinander.</p>
@@ -777,10 +782,14 @@ header {
   <p>Mit <code>flex-grow: 1</code> allein sind Spalten mit mehr Text breiter.</p>
           <p class="fehler-fix"><code>flex: 1</code> verwenden &ndash; das setzt zus&auml;tzlich <code>flex-basis: 0</code>, sodass der Inhalt keine Rolle spielt.</p>
 </div>
+</div>
+</details>
       </section>
 
       <section class="section section-aufgaben">
-        <h2>Aufgaben</h2>
+<details class="fold-box">
+<summary><h2>Aufgaben</h2><span class="quiz-box-hint">3 Aufgaben + Bonus &middot; zum Aufklappen klicken</span></summary>
+<div class="fold-body">
         <div class="aufgaben-list">
           <div class="aufgabe">
   <div class="aufgabe-header">
@@ -819,6 +828,8 @@ header {
   <p>Sorge daf&uuml;r, dass der Footer auch bei wenig Inhalt immer ganz unten im Fenster steht: <code>body</code> als Flex-Container mit <code>flex-direction: column; min-height: 100vh;</code> &ndash; welches Kind braucht <code>flex: 1</code>?</p>
 </div>
         </div>
+</div>
+</details>
       </section>
 
       <section class="section section-quiz">

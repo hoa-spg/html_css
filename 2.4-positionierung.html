@@ -56,6 +56,9 @@
         <a class="nav-link" href="3.3-tailwind.html"><span class="ln">3.3</span>Tailwind CSS</a>
       </div>
     </nav>
+    <div class="sidebar-footer">
+      <a class="sidebar-home" href="https://hoa-spg.github.io/">&larr; Kursseite</a>
+    </div>
   </aside>
 
   <main class="main-content">
@@ -468,7 +471,9 @@ header {
       </section>
 
       <section class="section section-fehler">
-        <h2>H&auml;ufige Fehler</h2>
+<details class="fold-box">
+<summary><h2>H&auml;ufige Fehler</h2><span class="quiz-box-hint">3 Fehler &middot; zum Aufklappen klicken</span></summary>
+<div class="fold-body">
         <div class="fehler-item">
   <div class="fehler-title">Fehler: absolute-Element springt in die Ecke der Seite</div>
   <p>Das Badge erscheint ganz oben rechts im Browserfenster statt in der Karte.</p>
@@ -484,10 +489,14 @@ header {
   <p>Die Navigation mit <code>position: sticky</code> scrollt ganz normal mit.</p>
           <p class="fehler-fix">Einen Offset angeben (<code>top: 0</code>) und pr&uuml;fen, ob ein Vorfahre <code>overflow: hidden</code> hat &ndash; das verhindert sticky.</p>
 </div>
+</div>
+</details>
       </section>
 
       <section class="section section-aufgaben">
-        <h2>Aufgaben</h2>
+<details class="fold-box">
+<summary><h2>Aufgaben</h2><span class="quiz-box-hint">3 Aufgaben + Bonus &middot; zum Aufklappen klicken</span></summary>
+<div class="fold-body">
         <div class="aufgaben-list">
           <div class="aufgabe">
   <div class="aufgabe-header">
@@ -518,6 +527,8 @@ header {
   <p>Lege &uuml;ber ein Kartenbild (in einem <code>&lt;figure&gt;</code>) eine halbtransparente Leiste mit dem Kartentitel, die am unteren Bildrand klebt (<code>position: absolute; bottom: 0;</code>).</p>
 </div>
         </div>
+</div>
+</details>
       </section>
 
       <section class="section section-quiz">

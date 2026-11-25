@@ -690,10 +690,10 @@ input[type="checkbox"] {
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 1</span> Welcher Selektor trifft nur <code>&lt;a&gt;</code>-Elemente, die <strong>direkte Kinder</strong> von <code>.menu</code> sind?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-1"> <span><code>.menu a</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-1"> <span><code>.menu ~ a</code></span></label></li>
       <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-1"> <span><code>.menu &gt; a</code></span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-1"> <span><code>.menu + a</code></span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-1"> <span><code>.menu ~ a</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-1"> <span><code>.menu a</code></span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
@@ -703,11 +703,11 @@ input[type="checkbox"] {
     <p class="quiz-q"><span class="quiz-num">Frage 2</span> Welche Properties werden standardmäßig <strong>vererbt</strong>?</p>
     <p class="quiz-hint">Mehrere Antworten sind richtig.</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-1-2"> <span><code>color</code></span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-1-2"> <span><code>font-family</code></span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-1-2"> <span><code>margin</code></span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-1-2"> <span><code>border</code></span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-1-2"> <span><code>color</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-1-2"> <span><code>margin</code></span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-1-2"> <span><code>background-color</code></span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-1-2"> <span><code>font-family</code></span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
@@ -716,8 +716,8 @@ input[type="checkbox"] {
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 3</span> Welche Spezifität hat der Selektor <code>#inhalt p</code>?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-3"> <span>0-0-1-1</span></label></li>
       <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-3"> <span>0-1-0-1</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-3"> <span>0-0-1-1</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-3"> <span>0-1-1-0</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-3"> <span>1-0-0-1</span></label></li>
     </ul>
@@ -725,25 +725,26 @@ input[type="checkbox"] {
     <p class="quiz-feedback" hidden></p>
     <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Eine ID (100) und ein Element (1): 0-1-0-1. Er schlägt daher eine einzelne Klasse wie <code>.rot</code> (0-0-1-0).</div>
   </div>
-  <div class="quiz-frage" data-multi="0">
+  <div class="quiz-frage" data-multi="1">
     <p class="quiz-q"><span class="quiz-num">Frage 4</span> Gewinnen 11 Klassen in einem Selektor gegen eine einzige ID?</p>
+    <p class="quiz-hint">Mehrere Antworten sind richtig.</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-4"> <span>Ja, denn 11 × 10 = 110 ist mehr als 100</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-4"> <span>Nein – zuerst wird die ID-Stelle verglichen, erst bei Gleichstand die Klassen-Stelle</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-4"> <span>Nur, wenn die Klassen-Regel später im Stylesheet steht</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-4"> <span>Ja, wenn alle Klassen am selben Element hängen</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-1-4"> <span>Nein – eine ID schlägt jede beliebige Anzahl von Klassen</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-1-4"> <span>Nein – zuerst wird die ID-Stelle verglichen, erst bei Gleichstand die Klassen-Stelle</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-1-4"> <span>Ja, denn 11 × 10 = 110 ist mehr als 100</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-1-4"> <span>Ja, wenn alle Klassen am selben Element hängen</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
-    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Jede Stelle der Spezifität ist eine eigene Kategorie. Die Schreibweise 0-1-0-0 vs. 0-0-11-0 zeigt das besser als eine Summe.</div>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Die Spezifität wird stellenweise verglichen: zuerst die ID-Stelle, erst bei Gleichstand die Klassen-Stelle. Eine ID schlägt deshalb jede Anzahl von Klassen; Stellen werden nicht „übertragen“ wie beim Rechnen. Die Reihenfolge im Stylesheet zählt erst bei gleicher Spezifität.</div>
   </div>
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 5</span> Zwei Regeln mit <strong>gleicher Spezifität</strong> setzen verschiedene Farben für dasselbe Element. Welche gewinnt?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-5"> <span>Die erste im Stylesheet</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-5"> <span>Die später definierte</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-5"> <span>Die mit dem kürzeren Selektor</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-5"> <span>Keine – der Browser nimmt die Default-Farbe</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-5"> <span>Die mit dem kürzeren Selektor</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-5"> <span>Die später definierte</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-5"> <span>Die erste im Stylesheet</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>

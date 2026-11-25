@@ -548,9 +548,9 @@
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 1</span> Welche vier großen Bereiche umfasst die HTML5-Spezifikation?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-1"> <span>HTML-Tags, DOM, APIs und Security Policies</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-1"> <span>HTML, CSS, JavaScript und HTTP</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-1"> <span>Head, Body, Footer und Navigation</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-1"> <span>HTML, CSS, JavaScript und HTTP</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-1"> <span>HTML-Tags, DOM, APIs und Security Policies</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-1"> <span>Server, Browser, Datenbank und Netzwerk</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
@@ -560,10 +560,10 @@
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 2</span> Was steht im <code>&lt;head&gt;</code> eines HTML-Dokuments?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-2"> <span>Der sichtbare Inhalt der Seite</span></label></li>
       <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-2"> <span>Informationen über die Seite wie Titel, Zeichensatz und Stylesheets – nicht sichtbar</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-2"> <span>Die Hauptüberschrift <code>&lt;h1&gt;</code></span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-2"> <span>Nur der Doctype</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-2"> <span>Der sichtbare Inhalt der Seite</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-2"> <span>Die Hauptüberschrift <code>&lt;h1&gt;</code></span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
@@ -572,10 +572,10 @@
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 3</span> Was ist das <strong>DOM</strong>?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-3"> <span>Ein Programm zum Validieren von HTML</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-3"> <span>Eine Baumstruktur aus Objekten, die der Browser aus dem HTML baut und die JavaScript lesen und verändern kann</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-3"> <span>Der Name des HTML5-Standards</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-3"> <span>Ein CSS-Framework</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-3"> <span>Eine Baumstruktur aus Objekten, die der Browser aus dem HTML baut und die JavaScript lesen und verändern kann</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-3"> <span>Ein Programm zum Validieren von HTML</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-3"> <span>Der Name des HTML5-Standards</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
@@ -584,26 +584,27 @@
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 4</span> Woraus besteht ein <strong>Origin</strong> im Sinne der Same-Origin-Policy?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-4"> <span>Nur aus der Domain</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-4"> <span>Aus Scheme + Host + Port</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-4"> <span>Aus Path und Query-String</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-4"> <span>Aus der IP-Adresse des Browsers</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-4"> <span>Nur aus der Domain</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-4"> <span>Aus Scheme + Host + Port</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
     <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Schon <code>https://www.orf.at</code> und <code>https://api.orf.at</code> sind unterschiedliche Origins, weil der Host verschieden ist.</div>
   </div>
-  <div class="quiz-frage" data-multi="0">
-    <p class="quiz-q"><span class="quiz-num">Frage 5</span> Wann erlaubt der Browser einer Seite den Zugriff auf die Kamera (Media Capture API)?</p>
+  <div class="quiz-frage" data-multi="1">
+    <p class="quiz-q"><span class="quiz-num">Frage 5</span> Unter welchen Bedingungen erlaubt der Browser einer Seite den Zugriff auf die Kamera (Media Capture API)?</p>
+    <p class="quiz-hint">Mehrere Antworten sind richtig.</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-5"> <span>Immer, sobald die Seite es anfordert</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-5"> <span>Nur auf sicheren Seiten (https:// oder localhost) und nach Zustimmung der Benutzer:in</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-5"> <span>Nur, wenn die Seite über http:// geladen wurde</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-5"> <span>Nie – Kamerazugriff ist nur für Apps möglich</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-1-5"> <span>Die Seite ist sicher geladen (<code>https://</code> oder <code>localhost</code>)</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-1-5"> <span>Keine – Kamerazugriff ist nur für Apps möglich</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-1-5"> <span>Die Benutzer:in hat dem Zugriff zugestimmt</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-1-5"> <span>Keine – der Zugriff ist erlaubt, sobald die Seite ihn anfordert</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
-    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Aus Sicherheitsgründen ist der Kamerazugriff nur in sicheren Kontexten möglich, und der Browser fragt immer um Erlaubnis.</div>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Kamerazugriff gibt es nur auf sicheren Seiten (<code>https://</code> oder <code>localhost</code>) – und auch dort erst, nachdem die Benutzer:in zugestimmt hat. Über <code>http://</code> geladene Seiten bekommen keinen Zugriff.</div>
   </div>
   <div class="quiz-summary"><span class="quiz-score"></span><button type="button" class="quiz-reset">Zur&uuml;cksetzen</button></div>
 </div>

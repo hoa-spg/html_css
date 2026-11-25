@@ -384,25 +384,26 @@
         <details class="quiz-box">
 <summary><h2>Quiz</h2><span class="quiz-box-hint">5 Fragen &middot; zum Aufklappen klicken</span></summary>
 <div class="quiz" id="quiz-1">
-  <div class="quiz-frage" data-multi="0">
+  <div class="quiz-frage" data-multi="1">
     <p class="quiz-q"><span class="quiz-num">Frage 1</span> Was bedeutet der <strong>Utility-First</strong>-Ansatz von Tailwind?</p>
+    <p class="quiz-hint">Mehrere Antworten sind richtig.</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-1"> <span>Tailwind liefert fertige Komponenten wie Cards und Navbars</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-1"> <span>Tailwind liefert viele kleine Klassen, die je eine CSS-Deklaration setzen; das Design entsteht durch Kombination im HTML</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-1"> <span>Tailwind generiert das HTML automatisch</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-1"> <span>Tailwind funktioniert nur mit JavaScript-Frameworks</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-1-1"> <span>Tailwind funktioniert nur mit JavaScript-Frameworks</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-1-1"> <span>Tailwind liefert fertige Komponenten wie Cards und Navbars</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-1-1"> <span>Tailwind liefert viele kleine Klassen, die je eine CSS-Deklaration setzen</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-1-1"> <span>Das Design entsteht durch Kombination dieser Klassen im HTML</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
-    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Bootstrap setzt auf Komponenten (<code>card</code>, <code>btn</code>), Tailwind auf Utilities (<code>p-6</code>, <code>rounded-lg</code>, <code>bg-white</code>).</div>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Tailwind liefert viele kleine Klassen, die je eine CSS-Deklaration setzen. Das Design entsteht durch Kombination dieser Klassen direkt im HTML. Fertige Komponenten wie Cards liefert eher Bootstrap; HTML erzeugt Tailwind nicht.</div>
   </div>
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 2</span> Welche CSS-Deklaration steckt hinter der Tailwind-Klasse <code>p-4</code>?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-2"> <span><code>padding: 4px</code></span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-2"> <span><code>padding: 1rem</code></span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-2"> <span><code>position: 4</code></span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-2"> <span><code>padding: 4rem</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-2"> <span><code>position: 4</code></span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-2"> <span><code>padding: 1rem</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-2"> <span><code>padding: 4px</code></span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
@@ -411,10 +412,10 @@
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 3</span> Was bedeutet <code>class="flex-col md:flex-row"</code>?</p>
     <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-3"> <span>Ein Fehler – es darf nur eine Richtung angegeben werden</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-3"> <span>Nur auf mittleren Bildschirmen nebeneinander</span></label></li>
       <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-3"> <span>Untereinander auf kleinen Bildschirmen, ab 768px nebeneinander</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-3"> <span>Nebeneinander auf kleinen Bildschirmen, ab 768px untereinander</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-3"> <span>Ein Fehler – es darf nur eine Richtung angegeben werden</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
@@ -423,26 +424,27 @@
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 4</span> Wie schreibt man in Tailwind einen Wert, der nicht in der Skala vorkommt, z. B. eine Breite von 300px?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-4"> <span><code>w-300</code></span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-4"> <span><code>w-[300px]</code></span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-4"> <span><code>width-300px</code></span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-4"> <span>Das geht nur mit eigenem CSS</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-4"> <span><code>w-[300px]</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-4"> <span><code>w-300</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-4"> <span><code>width-300px</code></span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
     <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Beliebige Werte stehen in eckigen Klammern, z. B. <code>w-[300px]</code> oder <code>bg-[#e74c3c]</code>.</div>
   </div>
-  <div class="quiz-frage" data-multi="0">
+  <div class="quiz-frage" data-multi="1">
     <p class="quiz-q"><span class="quiz-num">Frage 5</span> Warum verwendet man in echten Projekten nicht das Tailwind-CDN-Script?</p>
+    <p class="quiz-hint">Mehrere Antworten sind richtig.</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-5"> <span>Weil es nur in Chrome funktioniert</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-5"> <span>Weil es das CSS erst im Browser erzeugt; in Projekten kompiliert ein Build-Tool eine kleine CSS-Datei mit genau den verwendeten Klassen</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-5"> <span>Weil es keine responsiven Varianten kennt</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-5"> <span>Weil es kostenpflichtig ist</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-1-5"> <span>Weil es nur in Chrome funktioniert</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-1-5"> <span>Weil es das CSS erst im Browser erzeugt – das kostet bei jedem Seitenaufruf Zeit</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-1-5"> <span>Weil ein Build-Tool stattdessen vorab eine kleine CSS-Datei mit genau den verwendeten Klassen erzeugt</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-1-5"> <span>Weil es kostenpflichtig ist</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
-    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Der Browser-Build ist für Prototypen gedacht. Produktiv wird Tailwind über npm installiert und z. B. mit Vite gebaut.</div>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Das CDN-Script erzeugt das CSS erst im Browser – das kostet bei jedem Aufruf Zeit. In Projekten erzeugt ein Build-Tool vorab eine kleine CSS-Datei mit genau den verwendeten Klassen. Responsive Varianten kennt auch das CDN-Script, und kostenpflichtig ist es nicht.</div>
   </div>
   <div class="quiz-summary"><span class="quiz-score"></span><button type="button" class="quiz-reset">Zur&uuml;cksetzen</button></div>
 </div>

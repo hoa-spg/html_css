@@ -724,10 +724,10 @@ $font-family-sans-serif: 'Your Font', sans-serif;
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 1</span> Was bewirkt <code>navbar-expand-lg</code> bei der Bootstrap-Navbar?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-1"> <span>Die Navbar wird größer gezeichnet</span></label></li>
       <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-1"> <span>Ab <code>lg</code> (992px) ist das Menü ausgeklappt, darunter erscheint der Toggler (Hamburger-Menü)</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-1"> <span>Die Navbar ist nur auf großen Bildschirmen sichtbar</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-1"> <span>Die Links werden nach rechts geschoben</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-1"> <span>Die Navbar ist nur auf großen Bildschirmen sichtbar</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-1"> <span>Die Navbar wird größer gezeichnet</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
@@ -736,9 +736,9 @@ $font-family-sans-serif: 'Your Font', sans-serif;
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 2</span> Ein Modal sieht richtig aus, reagiert aber nicht auf Klicks. Was fehlt wahrscheinlich?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-2"> <span>Das Bootstrap-Stylesheet</span></label></li>
       <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-2"> <span>Das Bootstrap-Script (JavaScript-Bundle)</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-2"> <span>Die Klasse <code>container</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-2"> <span>Das Bootstrap-Stylesheet</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-2"> <span>Ein <code>&lt;form&gt;</code>-Element</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
@@ -748,34 +748,35 @@ $font-family-sans-serif: 'Your Font', sans-serif;
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 3</span> Wie löst man mit Bootstrap valide das Problem „Button, der zu einer anderen Seite führt“?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-3"> <span><code>&lt;a href="#kontakt"&gt;&lt;button class="btn"&gt;Kontakt&lt;/button&gt;&lt;/a&gt;</code></span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-3"> <span><code>&lt;a href="#kontakt" class="btn btn-primary"&gt;Kontakt&lt;/a&gt;</code></span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-3"> <span><code>&lt;button href="#kontakt"&gt;Kontakt&lt;/button&gt;</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-3"> <span><code>&lt;a href="#kontakt"&gt;&lt;button class="btn"&gt;Kontakt&lt;/button&gt;&lt;/a&gt;</code></span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-3"> <span>Gar nicht – Bootstrap kennt keine Links</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-3"> <span><code>&lt;a href="#kontakt" class="btn btn-primary"&gt;Kontakt&lt;/a&gt;</code></span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
     <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Die Klasse <code>btn</code> funktioniert auch auf <code>&lt;a&gt;</code>: Es bleibt ein Link (Navigation), sieht aber wie ein Button aus.</div>
   </div>
-  <div class="quiz-frage" data-multi="0">
-    <p class="quiz-q"><span class="quiz-num">Frage 4</span> Was übernimmt Bootstrap bei Formularen – und was nicht?</p>
+  <div class="quiz-frage" data-multi="1">
+    <p class="quiz-q"><span class="quiz-num">Frage 4</span> Was übernimmt Bootstrap bei Formularen?</p>
+    <p class="quiz-hint">Mehrere Antworten sind richtig.</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-4"> <span>Es ersetzt <code>label</code>, <code>name</code> und <code>required</code> durch eigene Klassen</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-4"> <span>Es ändert nur das Aussehen (z. B. <code>form-control</code>); <code>label for</code>/<code>id</code>, <code>name</code>, <code>required</code> funktionieren wie in reinem HTML</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-4"> <span>Es schickt die Daten automatisch an einen Server</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-4"> <span>Es prüft die Eingaben serverseitig</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-1-4"> <span>Es ändert nur das Aussehen, z. B. mit <code>form-control</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-1-4"> <span>Es ersetzt <code>label</code>, <code>name</code> und <code>required</code> durch eigene Klassen</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-1-4"> <span><code>label for</code>/<code>id</code>, <code>name</code> und <code>required</code> funktionieren wie in reinem HTML</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-1-4"> <span>Es prüft die Eingaben serverseitig</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
-    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Bootstrap ist eine Styling-Schicht. Die Semantik und Validierung bleiben Sache des HTML (und des Servers).</div>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Bootstrap ändert nur das Aussehen, z. B. mit <code>form-control</code>. <code>label for</code>/<code>id</code>, <code>name</code> und <code>required</code> funktionieren wie in reinem HTML. Daten verschickt oder prüft Bootstrap nicht – das bleibt Sache des Formulars bzw. des Servers.</div>
   </div>
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 5</span> Dein eigenes Stylesheet soll Bootstrap-Styles überschreiben. Was musst du beachten?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-5"> <span>Es muss vor Bootstrap eingebunden werden</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-5"> <span>Es muss nach Bootstrap eingebunden werden, damit es bei gleicher Spezifität gewinnt</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-5"> <span>Jede Regel braucht <code>!important</code></span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-5"> <span>Eigene Stylesheets sind mit Bootstrap nicht möglich</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-5"> <span>Es muss nach Bootstrap eingebunden werden, damit es bei gleicher Spezifität gewinnt</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-5"> <span>Es muss vor Bootstrap eingebunden werden</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>

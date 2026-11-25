@@ -463,57 +463,59 @@
     <p class="quiz-q"><span class="quiz-num">Frage 1</span> Was bewirkt <code>&lt;input disabled="false"&gt;</code>?</p>
     <ul class="quiz-opts">
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-1"> <span>Das Feld ist aktiv, weil der Wert <code>false</code> ist</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-1"> <span>Das Feld ist deaktiviert – bei Boolean-Attributen zählt nur, ob das Attribut vorhanden ist</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-1"> <span>Der Browser meldet einen Fehler und zeigt das Feld nicht an</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-1"> <span>Das Feld ist deaktiviert – bei Boolean-Attributen zählt nur, ob das Attribut vorhanden ist</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-1"> <span>Das Feld ist nur lesbar, aber nicht deaktiviert</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
     <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Boolean-Attribute wie <code>disabled</code>, <code>required</code> oder <code>checked</code> schalten schon durch ihre Anwesenheit ein. Zum Aktivieren muss man das Attribut ganz weglassen.</div>
   </div>
-  <div class="quiz-frage" data-multi="0">
-    <p class="quiz-q"><span class="quiz-num">Frage 2</span> Wozu dient das Attribut <code>for</code> bei <code>&lt;label for="email"&gt;</code>?</p>
+  <div class="quiz-frage" data-multi="1">
+    <p class="quiz-q"><span class="quiz-num">Frage 2</span> Was bewirkt das Attribut <code>for</code> bei <code>&lt;label for="email"&gt;</code>?</p>
+    <p class="quiz-hint">Mehrere Antworten sind richtig.</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-2"> <span>Es legt fest, unter welchem Namen der Wert an den Server geschickt wird</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-2"> <span>Es verbindet das Label mit dem Eingabefeld, das <code>id="email"</code> hat</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-2"> <span>Es macht das Feld zum Pflichtfeld</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-2"> <span>Es gibt den Input-Typ an</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-1-2"> <span>Ein Klick auf den Label-Text setzt den Fokus in das Eingabefeld</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-1-2"> <span>Es gibt den Input-Typ an</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-1-2"> <span>Es verbindet das Label mit dem Eingabefeld, das <code>id="email"</code> hat</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-1-2"> <span>Es legt fest, unter welchem Namen der Wert an den Server geschickt wird</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
-    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> <code>for</code> verweist auf die <code>id</code> des Feldes. Ein Klick aufs Label setzt den Cursor ins Feld, und Screenreader lesen das Label vor. Übertragen wird der Wert unter dem <code>name</code>.</div>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> <code>for</code> verbindet das Label mit dem Eingabefeld, das <code>id="email"</code> hat. Dadurch setzt ein Klick auf den Label-Text den Fokus ins Feld, und Screenreader lesen das Label vor. Der Name für den Server steht in <code>name</code>.</div>
   </div>
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 3</span> Unter welchem Schlüssel wird <code>&lt;input id="email" name="kontakt_email"&gt;</code> beim Absenden übertragen?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-3"> <span><code>email</code></span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-3"> <span><code>kontakt_email</code></span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-3"> <span>Unter beiden</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-3"> <span>Unter dem Text des Labels</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-3"> <span><code>email</code></span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-3"> <span><code>kontakt_email</code></span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
     <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Der Server bekommt den Wert unter dem <code>name</code>, z. B. <code>?kontakt_email=max@example.com</code>. Die <code>id</code> dient nur der Identifikation auf der Seite.</div>
   </div>
-  <div class="quiz-frage" data-multi="0">
-    <p class="quiz-q"><span class="quiz-num">Frage 4</span> Was ist der Unterschied zwischen <code>method="get"</code> und <code>method="post"</code>?</p>
+  <div class="quiz-frage" data-multi="1">
+    <p class="quiz-q"><span class="quiz-num">Frage 4</span> Was trifft auf <code>method="get"</code> und <code>method="post"</code> zu?</p>
+    <p class="quiz-hint">Mehrere Antworten sind richtig.</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-4"> <span>GET verschlüsselt die Daten, POST nicht</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-4"> <span>Bei GET werden die Daten Teil der URL (Query-String), bei POST stehen sie im Request-Body</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-4"> <span>GET ist nur für Dateien, POST nur für Text</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-4"> <span>Es gibt keinen Unterschied</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-1-4"> <span>Es gibt keinen Unterschied</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-1-4"> <span>GET verschlüsselt die Daten, POST nicht</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-1-4"> <span>Bei POST stehen die Daten im Request-Body</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-1-4"> <span>Bei GET werden die Daten Teil der URL (Query-String)</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
-    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Eine Suche mit GET erzeugt z. B. <code>/suche?q=html</code>. Mit POST sind die Daten nicht in der URL sichtbar – verschlüsselt sind sie dadurch aber nicht.</div>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Bei GET werden die Formulardaten Teil der URL (Query-String), bei POST stehen sie im Request-Body. Verschlüsselt wird dabei nichts – das leistet erst HTTPS. Beide Methoden können Text übertragen.</div>
   </div>
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 5</span> Reicht die eingebaute HTML-Validierung (<code>required</code>, <code>pattern</code> …) als Schutz aus?</p>
     <ul class="quiz-opts">
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-5"> <span>Ja, der Browser lässt ungültige Daten nie durch</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-5"> <span>Nein, sie verbessert die Bedienbarkeit, lässt sich aber leicht umgehen – der Server muss die Daten selbst prüfen</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-5"> <span>Ja, wenn zusätzlich <code>method="post"</code> verwendet wird</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-5"> <span>Nein, sie funktioniert nur mit JavaScript</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-5"> <span>Nein, sie verbessert die Bedienbarkeit, lässt sich aber leicht umgehen – der Server muss die Daten selbst prüfen</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>

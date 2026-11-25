@@ -413,8 +413,8 @@
     <ul class="quiz-opts">
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-1"> <span>Es war ein zentrales Netz mit einem Hauptrechner, über den alle Daten liefen</span></label></li>
       <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-1"> <span>Es war dezentral und nutzte Packet Switching – fällt ein Knoten aus, funktioniert der Rest weiter</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-1"> <span>Es verband von Anfang an Privathaushalte über Glasfaser</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-1"> <span>Es wurde von Tim Berners-Lee am CERN entwickelt</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-1"> <span>Es verband von Anfang an Privathaushalte über Glasfaser</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
@@ -423,9 +423,9 @@
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 2</span> Auf welcher TCP/IP-Schicht arbeiten Web-Entwickler:innen fast ausschließlich?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-2"> <span>Link Layer (Ethernet, WLAN)</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-2"> <span>Internet-Layer (IPv4, IPv6)</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-2"> <span>Transport-Layer (TCP, UDP)</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-2"> <span>Internet-Layer (IPv4, IPv6)</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-2"> <span>Link Layer (Ethernet, WLAN)</span></label></li>
       <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-2"> <span>Application-Layer (z. B. HTTP)</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
@@ -436,35 +436,36 @@
     <p class="quiz-q"><span class="quiz-num">Frage 3</span> Welche Grundbausteine des Web hat <strong>Tim Berners-Lee</strong> am CERN erfunden?</p>
     <p class="quiz-hint">Mehrere Antworten sind richtig.</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-1-3"> <span>HTTP</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-1-3"> <span>HTML</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-1-3"> <span>URL</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-1-3"> <span>CSS</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-1-3"> <span>HTML</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-1-3"> <span>HTTP</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-1-3"> <span>URL</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-1-3"> <span>JavaScript</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
     <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Berners-Lee erfand HTTP, HTML und die URL und programmierte den ersten Browser und HTTP-Server. CSS stammt von Håkon Lie (1994), JavaScript von Brendan Eich (1995).</div>
   </div>
-  <div class="quiz-frage" data-multi="0">
-    <p class="quiz-q"><span class="quiz-num">Frage 4</span> Was ist der Unterschied zwischen <strong>Internet</strong> und <strong>World Wide Web</strong>?</p>
+  <div class="quiz-frage" data-multi="1">
+    <p class="quiz-q"><span class="quiz-num">Frage 4</span> Was trifft auf Internet und World Wide Web zu?</p>
+    <p class="quiz-hint">Mehrere Antworten sind richtig.</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-4"> <span>Es gibt keinen – beide Begriffe bedeuten dasselbe</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-4"> <span>Das Internet ist das weltweite Rechnernetz, das WWW ist ein Dienst, der darauf läuft</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-4"> <span>Das WWW ist das Netzwerk, das Internet ein Dienst des WWW</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-4"> <span>Das Internet ist nur für E-Mail, das WWW nur für Webseiten</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-1-4"> <span>Das Internet ist das weltweite Rechnernetz, das WWW ist ein Dienst, der darauf läuft</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-1-4"> <span>Das WWW ist das Netzwerk, das Internet ein Dienst des WWW</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-1-4"> <span>Neben dem WWW laufen weitere Dienste über das Internet, z. B. E-Mail</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-1-4"> <span>Es gibt keinen – beide Begriffe bedeuten dasselbe</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
-    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Das Internet (ARPANET, TCP/IP) ist die Infrastruktur. Das WWW ist ein Dienst darauf – neben anderen wie E-Mail (SMTP) oder FTP.</div>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Das Internet ist das weltweite Rechnernetz; das WWW ist ein Dienst, der darauf läuft. Daneben gibt es weitere Dienste im Internet, etwa E-Mail. Die beiden Begriffe bedeuten also nicht dasselbe.</div>
   </div>
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 5</span> Worüber läuft der größte Teil des heutigen Internetverkehrs zwischen den Kontinenten?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-5"> <span>Über Satelliten</span></label></li>
       <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-5"> <span>Über Glasfaser-Unterseekabel</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-5"> <span>Über Telefonleitungen wie beim ARPANET</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-5"> <span>Über Satelliten</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-5"> <span>Über Rechenzentren „in der Cloud“, die ohne Kabel verbunden sind</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-5"> <span>Über Telefonleitungen wie beim ARPANET</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>

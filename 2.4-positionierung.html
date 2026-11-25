@@ -541,10 +541,10 @@ header {
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 1</span> Worauf bezieht sich ein Element mit <code>position: absolute</code>?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-1"> <span>Immer auf seine ursprüngliche Position</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-1"> <span>Auf den nächsten positionierten Vorfahren – gibt es keinen, auf den Viewport</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-1"> <span>Immer auf das <code>&lt;body&gt;</code>-Element</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-1"> <span>Auf das vorherige Geschwister-Element</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-1"> <span>Auf den nächsten positionierten Vorfahren – gibt es keinen, auf den Viewport</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-1"> <span>Immer auf seine ursprüngliche Position</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-1"> <span>Immer auf das <code>&lt;body&gt;</code>-Element</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
@@ -567,9 +567,9 @@ header {
     <p class="quiz-hint">Mehrere Antworten sind richtig.</p>
     <ul class="quiz-opts">
       <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-1-3"> <span>Es fehlt ein Offset wie <code>top: 0</code></span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-1-3"> <span>Ein Vorfahre hat <code>overflow: hidden</code></span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-1-3"> <span>Das Element hat eine Hintergrundfarbe</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-1-3"> <span>Sticky funktioniert nur zusammen mit <code>z-index</code></span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-1-3"> <span>Ein Vorfahre hat <code>overflow: hidden</code></span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
@@ -578,10 +578,10 @@ header {
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 4</span> Warum hat <code>z-index: 999</code> auf einem Element keine Wirkung?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-4"> <span>Weil der Maximalwert 100 ist</span></label></li>
       <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-4"> <span>Weil das Element <code>position: static</code> hat – z-index wirkt nur bei positionierten Elementen</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-4"> <span>Weil z-index nur bei Bildern funktioniert</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-4"> <span>Weil z-index immer in <code>px</code> angegeben werden muss</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-4"> <span>Weil der Maximalwert 100 ist</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-4"> <span>Weil z-index nur bei Bildern funktioniert</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
@@ -591,9 +591,9 @@ header {
     <p class="quiz-q"><span class="quiz-num">Frage 5</span> Ein Kind mit <code>z-index: 1000</code> liegt unter einem anderen Element mit <code>z-index: 2</code>. Wie ist das möglich?</p>
     <ul class="quiz-opts">
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-5"> <span>Das ist ein Browser-Bug</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-5"> <span>Der Parent des Kindes bildet mit <code>z-index: 1</code> einen Stacking-Context, den das Kind nicht verlassen kann</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-5"> <span>Höhere z-index-Werte liegen weiter hinten</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-5"> <span>Das Kind hat <code>position: relative</code> statt <code>absolute</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-5"> <span>Höhere z-index-Werte liegen weiter hinten</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-5"> <span>Der Parent des Kindes bildet mit <code>z-index: 1</code> einen Stacking-Context, den das Kind nicht verlassen kann</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>

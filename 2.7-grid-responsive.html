@@ -543,24 +543,25 @@
         <details class="quiz-box">
 <summary><h2>Quiz</h2><span class="quiz-box-hint">5 Fragen &middot; zum Aufklappen klicken</span></summary>
 <div class="quiz" id="quiz-1">
-  <div class="quiz-frage" data-multi="0">
+  <div class="quiz-frage" data-multi="1">
     <p class="quiz-q"><span class="quiz-num">Frage 1</span> Was bedeutet <strong>Mobile First</strong> bei Media Queries?</p>
+    <p class="quiz-hint">Mehrere Antworten sind richtig.</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-1"> <span>Die Seite funktioniert nur auf Smartphones</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-1"> <span>Das Basis-CSS gilt für kleine Bildschirme und wird mit <code>min-width</code>-Queries für größere erweitert</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-1"> <span>Man schreibt zuerst das Desktop-CSS und schränkt es mit <code>max-width</code> ein</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-1"> <span>Man verwendet für Smartphones ein eigenes Stylesheet</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-1-1"> <span>Die Seite funktioniert nur auf Smartphones</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-1-1"> <span>Für größere Bildschirme erweitert man es mit <code>min-width</code>-Queries</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-1-1"> <span>Das Basis-CSS gilt für kleine Bildschirme</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-1-1"> <span>Man schreibt zuerst das Desktop-CSS und schränkt es mit <code>max-width</code> ein</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
-    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Mobile First ist empfohlen und wird auch von Bootstrap und Tailwind so umgesetzt. Desktop First arbeitet umgekehrt mit <code>max-width</code>.</div>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Bei Mobile First gilt das Basis-CSS für kleine Bildschirme. Für größere Bildschirme erweitert man es mit <code>min-width</code>-Queries. Desktop-CSS mit <code>max-width</code> einzuschränken ist der umgekehrte Ansatz (Desktop First).</div>
   </div>
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 2</span> Auf dem Smartphone wird die Desktop-Ansicht winzig verkleinert angezeigt. Was fehlt?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-2"> <span>Eine Media Query mit <code>print</code></span></label></li>
       <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-2"> <span><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code> im <code>&lt;head&gt;</code></span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-2"> <span><code>display: grid</code> auf dem <code>&lt;body&gt;</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-2"> <span>Eine Media Query mit <code>print</code></span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-2"> <span>Das Attribut <code>lang="de"</code></span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
@@ -570,10 +571,10 @@
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 3</span> Die Regeln in <code>@media (min-width: 900px)</code> wirken nicht, obwohl das Fenster breit genug ist. Was ist eine typische Ursache?</p>
     <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-3"> <span>Media Queries brauchen JavaScript</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-3"> <span>Media Queries funktionieren nur mit <code>max-width</code></span></label></li>
       <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-3"> <span>Die Media Query steht vor den Basis-Regeln – bei gleicher Spezifität gewinnt die spätere Regel</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-3"> <span>Die Breite muss in <code>em</code> angegeben werden</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-3"> <span>Media Queries brauchen JavaScript</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
@@ -582,10 +583,10 @@
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 4</span> Wie baut man ein Holy-Grail-Layout mit <code>grid-template-areas</code> für Smartphones um?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-4"> <span>Man muss das HTML umsortieren</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-4"> <span>Man ändert in einer Media Query nur die „Zeichnung“ in <code>grid-template-areas</code> – das HTML bleibt unverändert</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-4"> <span>Man ersetzt Grid durch Tabellen</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-4"> <span>Man ändert in einer Media Query nur die „Zeichnung“ in <code>grid-template-areas</code> – das HTML bleibt unverändert</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-4"> <span>Das ist mit Grid nicht möglich</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-4"> <span>Man muss das HTML umsortieren</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
@@ -594,10 +595,10 @@
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 5</span> Was bewirkt <code>grid-auto-flow: dense</code>?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-5"> <span>Die Items werden kleiner gezeichnet</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-5"> <span>Lücken, die durch große Items entstehen, werden mit späteren, kleineren Items aufgefüllt</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-5"> <span>Das Grid bekommt keinen <code>gap</code> mehr</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-5"> <span>Alle Items werden in einer Zeile zusammengedrängt</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-5"> <span>Lücken, die durch große Items entstehen, werden mit späteren, kleineren Items aufgefüllt</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-5"> <span>Die Items werden kleiner gezeichnet</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-5"> <span>Das Grid bekommt keinen <code>gap</code> mehr</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>

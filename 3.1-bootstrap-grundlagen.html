@@ -409,36 +409,38 @@
         <details class="quiz-box">
 <summary><h2>Quiz</h2><span class="quiz-box-hint">5 Fragen &middot; zum Aufklappen klicken</span></summary>
 <div class="quiz" id="quiz-1">
-  <div class="quiz-frage" data-multi="0">
+  <div class="quiz-frage" data-multi="1">
     <p class="quiz-q"><span class="quiz-num">Frage 1</span> Worauf baut das Bootstrap-Grid technisch auf?</p>
+    <p class="quiz-hint">Mehrere Antworten sind richtig.</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-1"> <span>Auf HTML-Tabellen</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-1"> <span>Auf CSS Flexbox und Media Queries mit <code>min-width</code></span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-1"> <span>Auf JavaScript, das die Spaltenbreiten berechnet</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-1"> <span>Auf <code>position: absolute</code></span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-1-1"> <span>Auf Media Queries mit <code>min-width</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-1-1"> <span>Auf HTML-Tabellen</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-1-1"> <span>Auf CSS Flexbox</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-1-1"> <span>Auf <code>position: absolute</code></span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
-    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Bootstrap ist „nur“ CSS – mit genau den Techniken, die du in Teil 2 gelernt hast. In den Entwicklertools siehst du die Regeln hinter jeder Klasse.</div>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Das Bootstrap-Grid besteht aus CSS: Flexbox ordnet die Spalten an, Media Queries mit <code>min-width</code> schalten die Breakpoints. JavaScript, Tabellen oder absolute Positionierung braucht es dafür nicht.</div>
   </div>
-  <div class="quiz-frage" data-multi="0">
+  <div class="quiz-frage" data-multi="1">
     <p class="quiz-q"><span class="quiz-num">Frage 2</span> Was bedeutet <code>class="col-12 col-md-6"</code>?</p>
+    <p class="quiz-hint">Mehrere Antworten sind richtig.</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-2"> <span>Nur auf Tablets 6 Spalten breit, sonst unsichtbar</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-2"> <span>Unter 768px volle Breite (12 von 12 Spalten), ab 768px halbe Breite (6 von 12)</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-2"> <span>12 Pixel breit, auf Tablets 6 Pixel</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-2"> <span>Ab 768px volle Breite, darunter halbe Breite</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-1-2"> <span>Nur auf Tablets 6 Spalten breit, sonst unsichtbar</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-1-2"> <span>Ab 768px volle Breite, darunter halbe Breite</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-1-2"> <span>Unter 768px nimmt das Element die volle Breite ein (12 von 12 Spalten)</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-1-2"> <span>Ab 768px nimmt es die halbe Breite ein (6 von 12 Spalten)</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
-    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Bootstrap ist Mobile First: <code>md</code> gilt ab 768px aufwärts – also auch auf dem Desktop, solange <code>lg</code>/<code>xl</code> nichts anderes sagen.</div>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Ohne Präfix gilt <code>col-12</code> ab 0px: volle Breite (12 von 12 Spalten). <code>col-md-6</code> gilt ab 768px und überschreibt das: halbe Breite (6 von 12). Die Zahlen sind Spaltenanteile, keine Pixel.</div>
   </div>
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 3</span> Spalten stehen untereinander statt nebeneinander. Was ist eine typische Ursache?</p>
     <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-3"> <span>Die Spalten summieren sich auf genau 12</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-3"> <span>Es fehlt das Bootstrap-JavaScript</span></label></li>
       <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-3"> <span>Die <code>.col-*</code>-Elemente sind keine direkten Kinder einer <code>.row</code></span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-3"> <span>Die Spalten summieren sich auf genau 12</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-3"> <span>Der <code>.container</code> ist zu breit</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
@@ -448,9 +450,9 @@
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 4</span> Was bewirkt die Utility-Klasse <code>mt-3</code>?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-4"> <span><code>margin: 3px</code></span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-4"> <span><code>margin-top: 1rem</code></span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-4"> <span><code>padding-top: 3rem</code></span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-4"> <span><code>margin-top: 1rem</code></span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-4"> <span><code>margin: 3px</code></span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-4"> <span>Drei Spalten Abstand nach oben</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
@@ -460,10 +462,10 @@
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 5</span> Was bedeutet <code>class="d-none d-md-block"</code>?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-5"> <span>Das Element ist nur auf Smartphones sichtbar</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-5"> <span>Standardmäßig ausgeblendet, ab 768px als Block sichtbar</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-5"> <span>Das Element ist immer unsichtbar</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-5"> <span>Ab 768px ausgeblendet</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-5"> <span>Standardmäßig ausgeblendet, ab 768px als Block sichtbar</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-5"> <span>Das Element ist nur auf Smartphones sichtbar</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-5"> <span>Das Element ist immer unsichtbar</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>

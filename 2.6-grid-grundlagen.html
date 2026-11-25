@@ -571,25 +571,26 @@ main &gt; aside {
         <details class="quiz-box">
 <summary><h2>Quiz</h2><span class="quiz-box-hint">5 Fragen &middot; zum Aufklappen klicken</span></summary>
 <div class="quiz" id="quiz-1">
-  <div class="quiz-frage" data-multi="0">
+  <div class="quiz-frage" data-multi="1">
     <p class="quiz-q"><span class="quiz-num">Frage 1</span> Was unterscheidet CSS Grid grundsätzlich von Flexbox?</p>
+    <p class="quiz-hint">Mehrere Antworten sind richtig.</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-1"> <span>Grid funktioniert nur mit Bildern</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-1"> <span>Grid ist zweidimensional (Zeilen und Spalten gleichzeitig), Flexbox ordnet entlang einer Achse an</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-1"> <span>Flexbox ist neuer und ersetzt Grid</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-1"> <span>Grid wirkt auf alle Nachfahren, Flexbox nur auf direkte Kinder</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-1-1"> <span>Grid wirkt auf alle Nachfahren, Flexbox nur auf direkte Kinder</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-1-1"> <span>Flexbox ordnet Elemente entlang einer Achse an</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-1-1"> <span>Grid funktioniert nur mit Bildern</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-1-1"> <span>Grid ist zweidimensional (Zeilen und Spalten gleichzeitig)</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
-    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Grid eignet sich für Seiten-Layouts mit Zeilen und Spalten, Flexbox für Komponenten entlang einer Richtung. Beide lassen sich kombinieren.</div>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Grid ist zweidimensional und ordnet Zeilen und Spalten gleichzeitig an; Flexbox ordnet entlang einer Achse an. Beide wirken nur auf ihre direkten Kinder, und keines ersetzt das andere.</div>
   </div>
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 2</span> Ein Container ist 900px breit und hat <code>grid-template-columns: 200px 1fr 100px</code>. Wie breit wird die mittlere Spalte?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-2"> <span>300px</span></label></li>
       <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-2"> <span>600px</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-2"> <span>1px</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-2"> <span>300px</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-2"> <span>900px</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-2"> <span>1px</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
@@ -598,34 +599,35 @@ main &gt; aside {
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 3</span> Ein Grid hat 3 Spalten. Was bewirkt <code>grid-column: 1 / 3</code>?</p>
     <ul class="quiz-opts">
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-3"> <span>Das Item wird in Spalte 3 verschoben</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-3"> <span>Das Item belegt Spalte 1 bis 3, also alle drei Spalten</span></label></li>
       <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-3"> <span>Das Item reicht von Linie 1 bis Linie 3, belegt also die ersten zwei Spalten</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-3"> <span>Das Item belegt ein Drittel der Breite</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-3"> <span>Das Item wird in Spalte 3 verschoben</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
     <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Die Zahlen sind Grid Lines, nicht Spalten. Bei 3 Spalten gibt es die Linien 1–4. Alle drei Spalten wären <code>1 / 4</code> oder <code>1 / -1</code>.</div>
   </div>
-  <div class="quiz-frage" data-multi="0">
-    <p class="quiz-q"><span class="quiz-num">Frage 4</span> Welche Regel gilt für <code>grid-template-areas</code>?</p>
+  <div class="quiz-frage" data-multi="1">
+    <p class="quiz-q"><span class="quiz-num">Frage 4</span> Welche Regeln gelten für <code>grid-template-areas</code>?</p>
+    <p class="quiz-hint">Mehrere Antworten sind richtig.</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-4"> <span>Ein Bereich darf eine beliebige Form wie ein „L“ haben</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-4"> <span>Jeder benannte Bereich muss ein Rechteck bilden; ein Punkt (<code>.</code>) steht für eine leere Zelle</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-4"> <span>Die Namen müssen den Klassennamen im HTML entsprechen</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-4"> <span>Pro Grid ist nur ein benannter Bereich erlaubt</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-1-4"> <span>Ein Bereich darf eine beliebige Form wie ein „L“ haben</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-1-4"> <span>Ein Punkt (<code>.</code>) steht für eine leere Zelle</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-1-4"> <span>Jeder benannte Bereich muss ein Rechteck bilden</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-1-4"> <span>Die Namen müssen den Klassennamen im HTML entsprechen</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
-    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Man „zeichnet“ das Layout: Jede Zeichenkette ist eine Grid-Zeile, jedes Wort eine Zelle. Die Items bekommen den Bereich mit <code>grid-area</code>.</div>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Jeder benannte Bereich muss ein Rechteck bilden – L-Formen sind nicht erlaubt. Ein Punkt (<code>.</code>) steht für eine leere Zelle. Die Namen sind frei wählbar und werden mit <code>grid-area</code> zugeordnet; es darf beliebig viele Bereiche geben.</div>
   </div>
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 5</span> Was erzeugt <code>grid-template-columns: repeat(auto-fit, minmax(250px, 1fr))</code>?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-5"> <span>Genau vier Spalten mit je 250px</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-5"> <span>Spalten, die nie breiter als 250px werden</span></label></li>
       <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-5"> <span>So viele Spalten, wie mit mindestens 250px Platz haben – ein Raster, das sich ohne Media Queries anpasst</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-5"> <span>Eine einzige Spalte, die mindestens 250px breit ist</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-5"> <span>Spalten, die nie breiter als 250px werden</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-5"> <span>Genau vier Spalten mit je 250px</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>

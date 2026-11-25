@@ -596,9 +596,9 @@ td {
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 1</span> In welcher Reihenfolge liegen die Schichten des Box Models von innen nach außen?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-1"> <span>Margin, Border, Padding, Content</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-1"> <span>Content, Padding, Border, Margin</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-1"> <span>Content, Border, Padding, Margin</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-1"> <span>Content, Padding, Border, Margin</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-1"> <span>Margin, Border, Padding, Content</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-1"> <span>Padding, Content, Margin, Border</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
@@ -608,9 +608,9 @@ td {
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 2</span> Wie breit ist ein Element mit <code>width: 200px; padding: 20px; border: 5px solid;</code> bei <code>box-sizing: content-box</code>?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-2"> <span>200px</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-2"> <span>225px</span></label></li>
       <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-2"> <span>250px</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-2"> <span>225px</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-2"> <span>200px</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-2"> <span>150px</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
@@ -621,34 +621,35 @@ td {
     <p class="quiz-q"><span class="quiz-num">Frage 3</span> Welche Properties haben bei einem <strong>Inline-Element</strong> wie <code>&lt;span&gt;</code> keine Wirkung?</p>
     <p class="quiz-hint">Mehrere Antworten sind richtig.</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-1-3"> <span><code>width</code> und <code>height</code></span></label></li>
       <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-1-3"> <span><code>margin-top</code> und <code>margin-bottom</code></span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-1-3"> <span><code>margin-left</code> und <code>margin-right</code></span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-1-3"> <span><code>color</code></span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-1-3"> <span><code>width</code> und <code>height</code></span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
     <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Inline-Elemente fließen wie Text. Breite, Höhe und vertikale Margins werden ignoriert, horizontale Abstände wirken. Abhilfe: <code>display: inline-block</code>.</div>
   </div>
-  <div class="quiz-frage" data-multi="0">
+  <div class="quiz-frage" data-multi="1">
     <p class="quiz-q"><span class="quiz-num">Frage 4</span> Was zeichnet <code>display: inline-block</code> aus?</p>
+    <p class="quiz-hint">Mehrere Antworten sind richtig.</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-4"> <span>Das Element beginnt immer in einer neuen Zeile</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-4"> <span>Es steht in der Zeile wie ein Inline-Element, respektiert aber Breite, Höhe und alle Abstände</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-4"> <span>Es ist unsichtbar, nimmt aber Platz ein</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-4"> <span>Es nimmt immer die volle Breite des Eltern-Elements ein</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-1-4"> <span>Es steht in der Zeile wie ein Inline-Element</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-1-4"> <span>Es nimmt immer die volle Breite des Eltern-Elements ein</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-1-4"> <span>Das Element beginnt immer in einer neuen Zeile</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-1-4"> <span>Es respektiert <code>width</code>, <code>height</code> und alle Abstände</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
-    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> <code>inline-block</code> kombiniert beides – praktisch z. B. für Buttons oder Menüpunkte nebeneinander.</div>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Ein Inline-Block-Element steht in der Zeile wie ein Inline-Element, respektiert aber <code>width</code>, <code>height</code> und alle Abstände wie ein Block-Element. Es beginnt keine neue Zeile und nimmt nicht automatisch die volle Breite ein.</div>
   </div>
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 5</span> Woher kommt die kleine Lücke von ca. 4px zwischen nebeneinanderstehenden Inline-Block-Elementen?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-5"> <span>Vom Default-Margin des Browsers</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-5"> <span>Vom Zeilenumbruch bzw. den Leerzeichen im HTML-Quelltext, die als Leerzeichen dargestellt werden</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-5"> <span>Von <code>box-sizing: content-box</code></span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-5"> <span>Vom Border der Elemente</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-5"> <span>Vom Zeilenumbruch bzw. den Leerzeichen im HTML-Quelltext, die als Leerzeichen dargestellt werden</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-5"> <span>Vom Default-Margin des Browsers</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-5"> <span>Von <code>box-sizing: content-box</code></span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>

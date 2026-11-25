@@ -372,10 +372,10 @@ nav li:hover .submenu {
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 1</span> Was passiert mit den Nachbar-Elementen, wenn ein Element mit <code>transform: scale(1.5)</code> vergrößert wird?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-1"> <span>Sie rücken zur Seite, um Platz zu machen</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-1"> <span>Nichts – transform ändert nur die Darstellung, der ursprüngliche Platz bleibt reserviert</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-1"> <span>Sie werden ebenfalls vergrößert</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-1"> <span>Sie verschwinden hinter dem Element</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-1"> <span>Sie werden ebenfalls vergrößert</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-1"> <span>Nichts – transform ändert nur die Darstellung, der ursprüngliche Platz bleibt reserviert</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-1"> <span>Sie rücken zur Seite, um Platz zu machen</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
@@ -384,10 +384,10 @@ nav li:hover .submenu {
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 2</span> Die Animation läuft beim Hovern, beim Verlassen springt das Element aber sofort zurück. Warum?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-2"> <span>Weil transition nur in eine Richtung funktioniert</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-2"> <span>Weil <code>transition-delay</code> fehlt</span></label></li>
       <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-2"> <span>Weil <code>transition</code> nur in der <code>:hover</code>-Regel steht statt auf dem Element selbst</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-2"> <span>Weil die Dauer in <code>ms</code> statt <code>s</code> angegeben ist</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-2"> <span>Weil <code>transition-delay</code> fehlt</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-2"> <span>Weil transition nur in eine Richtung funktioniert</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
@@ -397,10 +397,10 @@ nav li:hover .submenu {
     <p class="quiz-q"><span class="quiz-num">Frage 3</span> Welche Properties lassen sich mit <code>transition</code> animieren?</p>
     <p class="quiz-hint">Mehrere Antworten sind richtig.</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-1-3"> <span><code>opacity</code></span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-1-3"> <span><code>background-color</code></span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-1-3"> <span><code>display</code></span></label></li>
       <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-1-3"> <span><code>transform</code></span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-1-3"> <span><code>opacity</code></span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-1-3"> <span><code>background-color</code></span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-1-3"> <span><code>font-family</code></span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
@@ -410,26 +410,27 @@ nav li:hover .submenu {
   <div class="quiz-frage" data-multi="0">
     <p class="quiz-q"><span class="quiz-num">Frage 4</span> Ein Element hat <code>transform: rotate(5deg)</code>. Im <code>:hover</code> steht <code>transform: scale(1.1)</code>. Was passiert beim Hovern?</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-4"> <span>Das Element wird gedreht und vergrößert</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-4"> <span>Die Drehung geht verloren – die zweite Deklaration ersetzt die erste vollständig</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-4"> <span>Das Element wird nur gedreht</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-4"> <span>Das Element wird gedreht und vergrößert</span></label></li>
       <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-4"> <span>Der Browser meldet einen Fehler</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-4"> <span>Die Drehung geht verloren – die zweite Deklaration ersetzt die erste vollständig</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
     <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Alle Funktionen gehören in eine Deklaration: <code>transform: rotate(5deg) scale(1.1);</code></div>
   </div>
-  <div class="quiz-frage" data-multi="0">
-    <p class="quiz-q"><span class="quiz-num">Frage 5</span> Wozu dient die Media Query <code>prefers-reduced-motion</code>?</p>
+  <div class="quiz-frage" data-multi="1">
+    <p class="quiz-q"><span class="quiz-num">Frage 5</span> Was trifft auf die Media Query <code>prefers-reduced-motion</code> zu?</p>
+    <p class="quiz-hint">Mehrere Antworten sind richtig.</p>
     <ul class="quiz-opts">
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-5"> <span>Sie erkennt langsame Internetverbindungen</span></label></li>
-      <li class="quiz-opt" data-correct="1"><label><input type="radio" name="quiz-1-5"> <span>Sie erkennt, dass die Benutzer:in im Betriebssystem „Bewegung reduzieren“ eingestellt hat – dann schaltet man Animationen ab oder schwächt sie ab</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-5"> <span>Sie beschleunigt Animationen auf schwachen Geräten</span></label></li>
-      <li class="quiz-opt" data-correct="0"><label><input type="radio" name="quiz-1-5"> <span>Sie deaktiviert <code>:hover</code> auf Smartphones</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-1-5"> <span>Sie deaktiviert <code>:hover</code> auf Smartphones</span></label></li>
+      <li class="quiz-opt" data-correct="0"><label><input type="checkbox" name="quiz-1-5"> <span>Sie erkennt langsame Internetverbindungen</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-1-5"> <span>Sie erkennt, dass die Benutzer:in im Betriebssystem „Bewegung reduzieren“ eingestellt hat</span></label></li>
+      <li class="quiz-opt" data-correct="1"><label><input type="checkbox" name="quiz-1-5"> <span>Darin schaltet man Animationen ab oder schwächt sie ab</span></label></li>
     </ul>
     <div class="quiz-actions"><button type="button" class="quiz-check" disabled>Antwort pr&uuml;fen</button><button type="button" class="quiz-reveal">L&ouml;sung zeigen</button></div>
     <p class="quiz-feedback" hidden></p>
-    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Manche Menschen reagieren auf Animationen mit Schwindel oder Übelkeit. Rücksichtsvolle Seiten respektieren diese Einstellung.</div>
+    <div class="quiz-erklaerung" hidden><strong>Erkl&auml;rung:</strong> Sie erkennt, dass die Benutzer:in im Betriebssystem „Bewegung reduzieren“ eingestellt hat. Darin schaltet man Animationen ab oder schwächt sie ab. Mit Verbindungsgeschwindigkeit oder <code>:hover</code> hat sie nichts zu tun.</div>
   </div>
   <div class="quiz-summary"><span class="quiz-score"></span><button type="button" class="quiz-reset">Zur&uuml;cksetzen</button></div>
 </div>
